@@ -1,12 +1,6 @@
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# Package Files
-*.jar
-
 # IntelliJ Files
-/.idea/
-Szofti.iml
+.idea/
+*.iml
+
+# Binary Files
+target/
