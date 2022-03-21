@@ -12,6 +12,5 @@ public abstract class Code {
 	 * @param aCost - szükséges aminosav
 	 */
 	public void craftAgent(int nCost, int aCost) {
-
 	}
 }

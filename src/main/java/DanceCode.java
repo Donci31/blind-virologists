@@ -9,6 +9,12 @@ public class DanceCode extends Code {
 	 * @param aCost - szükséges aminosav
 	 */
 	public void craftAgent(int nCost, int aCost) {
-
+		if (true) { // Itt kell feltenni a felhasználónak egy értelmes kérdést, pl. "Does the virologist have enough resources?"
+			// HIBA! Nem ismeri a virológust!
+			DanceVirus d = new DanceVirus();
+			//v.removeNucleotide(this.nCost)
+			//v.removeAminoAcid(this.aCost)
+			//v.addCraftedAgent(a)
+		}
 	}
 }

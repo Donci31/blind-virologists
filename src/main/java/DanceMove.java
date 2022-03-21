@@ -8,5 +8,9 @@ public class DanceMove implements Move {
 	 * @param v - lépő virológus
 	 */
 	public void move(Field f, Virologist v) {
+		Field f1 = v.getField();
+		f1.remove(v);
+		// Itt kéne egy random szomszédos mező választás
+		//random.accept(v);
 	}
 }

@@ -10,7 +10,7 @@ public class AmniVirus extends Agent {
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
 	public void smear(Virologist v) {
-
+		v.forgetCodes();
 	}
 
 	/**

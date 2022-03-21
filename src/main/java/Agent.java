@@ -14,13 +14,11 @@ public abstract class Agent implements Steppable {
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
 	public void smear(Virologist v) {
-
 	}
 
 	/**
 	 * Körönként meghívódik, ha az ágens már fel van kenve, 1-el csökkenti a virusTimer értékét.
 	 */
 	public void step() {
-
 	}
 }

@@ -18,6 +18,20 @@ public class Virologist implements Steppable {
 	private Move moveStrat;
 
 	/**
+	 * A field attribútum gettere.
+	 */
+	public Field getField() {
+		return field;
+	}
+
+	/**
+	 * A moveStrat attribútum settere.
+	 */
+	public void setMoveStrat(Move moveStrat) {
+		this.moveStrat = moveStrat;
+	}
+
+	/**
 	 * A virológus átlép a paraméterként adott mezőre.
 	 * @param f - a mező
 	 */
