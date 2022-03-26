@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.Random;
+
 /**
  * A virológus vitustáncos lépését megvalósító osztály.
  */
@@ -8,9 +11,16 @@ public class DanceMove implements Move {
 	 * @param v - lépő virológus
 	 */
 	public void move(Field f, Virologist v) {
+		System.out.println("-> DanceMove");
 		Field f1 = v.getField();
 		f1.remove(v);
-		// Itt kéne egy random szomszédos mező választás
-		//random.accept(v);
+
+		List<Field> neighbours = f1.getNeighbors();
+		Random r = new Random();
+
+		Field f2 = neighbours.get(r.nextInt(neighbours.size()));
+		f2.accept(v);
+
+		System.out.println("-> DanceMove()");
 	}
 }

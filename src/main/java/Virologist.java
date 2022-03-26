@@ -23,7 +23,16 @@ public class Virologist implements Steppable {
 	 * A field attribútum gettere.
 	 */
 	public Field getField() {
+		System.out.println("-> getField()");
+		System.out.println("<- getField()");
 		return field;
+	}
+
+	/**
+	 * A field attribútum settere.
+	 */
+	public void setField(Field f) {
+		field = f;
 	}
 
 	/**
@@ -38,7 +47,9 @@ public class Virologist implements Steppable {
 	 * @param f - a mező
 	 */
 	public void move(Field f) {
-
+		System.out.println("-> move()");
+		moveStrat.move(f, this);
+		System.out.println("<- move()");
 	}
 
 	/**

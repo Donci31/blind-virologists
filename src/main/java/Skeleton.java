@@ -3,15 +3,44 @@
  */
 public class Skeleton {
     public static void main(String[] args) {
-        PickUpGlove();
+        Move();
     }
 
+    /**
+     * A virológus arréb lép egy mezővel
+     */
     public static void Move() {
+        //initialization
+        var v = new Virologist();
+        var d = new DefaultMove();
+        var f1 = new Field();
+        var f2 = new Field();
+        v.setMoveStrat(d);
+        f1.accept(v);
+        v.setField(f1);
+        f1.setNeighbor(0, f2);
+        f2.setNeighbor(0, f1);
 
+        //action
+        v.move(f2);
     }
 
+    /**
+     * A virológus arréb lép véletlenszerűen egy mezővel
+     */
     public static void DanceMove() {
+        //initialization
+        var v = new Virologist();
+        var d = new DefaultMove();
+        var f1 = new Field();
+        var random = new Field();
+        v.setMoveStrat(d);
+        f1.accept(v);
+        f1.setNeighbor(0, random);
+        random.setNeighbor(0, f1);
 
+        //action
+        v.move(random);
     }
 
     /**
