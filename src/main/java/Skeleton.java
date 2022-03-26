@@ -3,7 +3,9 @@
  */
 public class Skeleton {
     public static void main(String[] args) {
-        DanceMove();
+        PickUpGlove();
+        PickUpRobe();
+        PickUpSack();
     }
 
     /**
@@ -48,48 +50,53 @@ public class Skeleton {
      * A virológus felvesz egy védőkesztyűt és az absorb strategy-je GloveAbsorb lesz
      */
     public static void PickUpGlove(){
-        System.out.println("-> PickUpGlove()");
+        log("-> test.PickUpGlove()");
         //initialization
-        var virologist = new Virologist();
         var glove = new GloveGear();
         var shelter = new Shelter();
+        var virologist = new Virologist(shelter);
         shelter.addGear(glove);
         virologist.move(shelter);
 
         //action
         virologist.touch();
 
-        System.out.println("<- PickUpGlove()");
+        log("<- test.PickUpGlove()");
     }
 
     /**
      * A virológus felvesz egy védőkesztyűt és az absorb strategy-je RobeAbsorb lesz
      */
     public static void PickUpRobe(){
+        log("-> test.PickUpRobe()");
         //initialization
-        var virologist = new Virologist();
         var robe = new RobeGear();
         var shelter = new Shelter();
         shelter.addGear(robe);
+        var virologist = new Virologist(shelter);
         virologist.move(shelter);
 
         //action
         virologist.touch();
+        log("<- test.PickUpRobe()");
     }
 
     /**
      * A virológus felvesz egy zsákot és megnövekszik az anyagszállítóképessége
      */
     public static void PickUpSack(){
+        log("<- test.PickUpSack()");
         //initialization
-        var virologist = new Virologist();
         var sack = new SackGear();
         var shelter = new Shelter();
+        var virologist = new Virologist(shelter);
         shelter.addGear(sack);
         virologist.move(shelter);
 
         //action
         virologist.touch();
+
+        log("<- test.PickUpSack()");
     }
 
     public static void LearnCode(){
@@ -99,6 +106,13 @@ public class Skeleton {
     public static void GatherResources(){
 
     }
-
+    /**
+     * függvényhívások és visszatérések kiírásához használt függvény
+     */
+    public static void log(String s){
+        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+        int depth = stacktrace.length;
+        System.out.println("\t".repeat(Math.max(0, depth - 4)) + s);
+    }
     // stb.
 }

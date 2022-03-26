@@ -2,7 +2,7 @@
  * Ez az osztály azt a védőfelszerelést valósítja meg, amivel a viselőre kent ágensek visszadobhatóak a kenőre.
  */
 public class GloveGear extends Gear {
-	private GloveAbsorb strat;
+	private GloveAbsorb strat = new GloveAbsorb();
 
 	/**
 	 * Megváltoztatja a paraméterként kapott virológus viselkedési stratégiáját a rákent ágensekkel szemben.
@@ -10,6 +10,9 @@ public class GloveGear extends Gear {
 	 * @param v - virológus, akire hatni fog
 	 */
 	public void giveStat(Virologist v) {
+		Skeleton.log("-> giveStat(v: Virologist)");
+		v.addAbsorbStrat(strat);
+		Skeleton.log("<- giveStat(v: Virologist)");
 	}
 
 	/**

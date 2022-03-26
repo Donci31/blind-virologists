@@ -8,23 +8,29 @@ import java.util.*;
  * Ez az osztály felelős a karakterek mozgásáért, és világgal valamint egymással való interakcióik kezeléséért.
  */
 public class Virologist implements Steppable {
-	private int nucleotide;
-	private int aminoAcid;
-	private int resourceLimit;
-	private boolean stunned;
-	private ArrayList<Absorb> absorbStrats;
-	private ArrayList<Agent> craftedAgents;
-	private ArrayList<Gear> gears;
+	private int nucleotide = 0;
+	private int aminoAcid = 0;
+	private int resourceLimit = 100;
+	private boolean stunned = false;
+	private ArrayList<Absorb> absorbStrats = new ArrayList<>();
+	private ArrayList<Agent> craftedAgents = new ArrayList<>();
+	private ArrayList<Gear> gears = new ArrayList<>();
 	private Field field;
-	private ArrayList<Code> learntCodes;
-	private Move moveStrat;
+	private ArrayList<Code> learntCodes = new ArrayList<>();
+	private Move moveStrat = new DefaultMove();
 
+	public Virologist(){
+
+	}
+	public Virologist(Field f){
+		field = f;
+	}
 	/**
 	 * A field attribútum gettere.
 	 */
 	public Field getField() {
-		System.out.println("-> getField()");
-		System.out.println("<- getField()");
+		Skeleton.log("-> getField()");
+		Skeleton.log("<- getField()");
 		return field;
 	}
 
@@ -47,9 +53,9 @@ public class Virologist implements Steppable {
 	 * @param f - a mező
 	 */
 	public void move(Field f) {
-		System.out.println("-> move()");
+		Skeleton.log("-> move()");
 		moveStrat.move(f, this);
-		System.out.println("<- move()");
+		Skeleton.log("<- move()");
 	}
 
 	/**
@@ -73,7 +79,9 @@ public class Virologist implements Steppable {
 	 * A virológus interaktál a mezővel, amin éppen áll.
 	 */
 	public void touch() {
+		Skeleton.log("-> touch()");
 		field.interactWithField(this);
+		Skeleton.log("<- touch()");
 	}
 
 	/**
@@ -90,12 +98,14 @@ public class Virologist implements Steppable {
 	 * @param g - felvevendő védőfelszerelés
 	 */
 	public void pickUpGear(Gear g) {
+		Skeleton.log("-> pickUpGear(g: Gear)");
 		gears.add(g);
 		g.giveStat(this);
 		if(gears.size() > 3){
 			loseGear(chooseFrom(gears));
 			//loseGear(gears.get((int)(Math.random() * gears.size())));
 		}
+		Skeleton.log("<- pickUpGear(g: Gear)");
 	}
 
 	/**
@@ -104,8 +114,10 @@ public class Virologist implements Steppable {
 	 * @param g - eldobandó védőfelszerelés
 	 */
 	public void loseGear(Gear g) {
+		Skeleton.log("-> loseGear(g: Gear)");
 		g.removeStat(this);
 		gears.remove(g);
+		Skeleton.log("<- loseGear(g: Gear)");
 	}
 
 	/**
