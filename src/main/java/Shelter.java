@@ -10,7 +10,8 @@ public class Shelter extends Field {
 	 * @param v - mezővel interaktáló virológus
 	 */
 	public void interactWithField(Virologist v) {
-
+		v.pickUpGear(gear);
+		gear.giveStat(v);
 	}
 
 	/**

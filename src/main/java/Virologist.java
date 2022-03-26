@@ -1,4 +1,4 @@
-import java.util.List;
+import java.util.*;
 
 /**
  * A játékosok által irányított karaktereket reprezentáló osztály.
@@ -12,11 +12,11 @@ public class Virologist implements Steppable {
 	private int aminoAcid;
 	private int resourceLimit;
 	private boolean stunned;
-	private List<Absorb> absorbStrats;
-	private List<Agent> craftedAgents;
-	private List<Gear> gears;
+	private ArrayList<Absorb> absorbStrats;
+	private ArrayList<Agent> craftedAgents;
+	private ArrayList<Gear> gears;
 	private Field field;
-	private List<Code> learntCodes;
+	private ArrayList<Code> learntCodes;
 	private Move moveStrat;
 
 	/**
@@ -82,10 +82,8 @@ public class Virologist implements Steppable {
 		gears.add(g);
 		g.giveStat(this);
 		if(gears.size() > 3){
-			//a játékosnak ki kéne választania egyet
-			//kéne egy függvény amivel ki lehet választani egy listából egy elemet - később hasznos lesz még
-			//pl.:
-			//loseGear(ChooseFrom(gears));
+			loseGear(chooseFrom(gears));
+			//loseGear(gears.get((int)(Math.random() * gears.size())));
 		}
 	}
 
@@ -95,7 +93,8 @@ public class Virologist implements Steppable {
 	 * @param g - eldobandó védőfelszerelés
 	 */
 	public void loseGear(Gear g) {
-
+		g.removeStat(this);
+		gears.remove(g);
 	}
 
 	/**
@@ -184,5 +183,18 @@ public class Virologist implements Steppable {
 	 */
 	public void removeAbsorbStrat(Absorb a) {
 
+	}
+
+	/**
+	 *  segédfüggvény, a játékos kiválaszthat egy elemet egy listából
+	 */
+	private <T> T chooseFrom(ArrayList<T> c){
+		for(int i = 0; i < c.size(); i++){
+			System.out.println(i + " " +c.get(i).toString());
+		}
+		//majd le lesz cserélve grafikus megoldásra
+		Scanner scanner = new Scanner(System.in);
+		int index = scanner.nextInt();
+		return c.get(index);
 	}
 }

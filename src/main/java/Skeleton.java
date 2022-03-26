@@ -3,7 +3,7 @@
  */
 public class Skeleton {
     public static void main(String[] args) {
-
+        PickUpGlove();
     }
 
     public static void Move() {
@@ -18,6 +18,7 @@ public class Skeleton {
      * A virológus felvesz egy védőkesztyűt és az absorb strategy-je GloveAbsorb lesz
      */
     public static void PickUpGlove(){
+        System.out.println("-> PickUpGlove()");
         //initialization
         var virologist = new Virologist();
         var glove = new GloveGear();
@@ -28,6 +29,7 @@ public class Skeleton {
         //action
         virologist.touch();
 
+        System.out.println("<- PickUpGlove()");
     }
 
     /**
