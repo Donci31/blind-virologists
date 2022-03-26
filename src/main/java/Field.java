@@ -25,9 +25,9 @@ public class Field {
 	 * @param v - lépő virológus
 	 */
 	public void accept(Virologist v) {
-		System.out.println("-> accept()");
+		Skeleton.log("-> accept()");
 		virologists.add(v);
-		System.out.println("<- accept()");
+		Skeleton.log("<- accept()");
 	}
 
 	/**
@@ -35,9 +35,9 @@ public class Field {
 	 * @param v - ellépő virológus
 	 */
 	public void remove(Virologist v) {
-		System.out.println("-> remove()");
+		Skeleton.log("-> remove()");
 		virologists.remove(v);
-		System.out.println("<- remove()");
+		Skeleton.log("<- remove()");
 	}
 
 	/**

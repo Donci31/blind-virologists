@@ -3,6 +3,8 @@
  */
 public class Skeleton {
     public static void main(String[] args) {
+        DefaultMove();
+        DanceMove();
         PickUpGlove();
         PickUpRobe();
         PickUpSack();
@@ -11,7 +13,8 @@ public class Skeleton {
     /**
      * A virológus arréb lép egy mezővel
      */
-    public static void Move() {
+    public static void DefaultMove() {
+        log("-> test.DefaultMove()");
         //initialization
         var v = new Virologist();
         var d = new DefaultMove();
@@ -25,12 +28,14 @@ public class Skeleton {
 
         //action
         v.move(f2);
+        log("<- test.DefaultMove()");
     }
 
     /**
      * A virológus arréb lép véletlenszerűen egy mezővel
      */
     public static void DanceMove() {
+        log("-> test.DanceMove()");
         //initialization
         var v = new Virologist();
         var d = new DanceMove();
@@ -44,6 +49,7 @@ public class Skeleton {
 
         //action
         v.move(random);
+        log("<- test.DanceMove()");
     }
 
     /**
@@ -85,7 +91,7 @@ public class Skeleton {
      * A virológus felvesz egy zsákot és megnövekszik az anyagszállítóképessége
      */
     public static void PickUpSack(){
-        log("<- test.PickUpSack()");
+        log("-> test.PickUpSack()");
         //initialization
         var sack = new SackGear();
         var shelter = new Shelter();
@@ -111,8 +117,8 @@ public class Skeleton {
      */
     public static void log(String s){
         StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
-        int depth = stacktrace.length;
-        System.out.println("\t".repeat(Math.max(0, depth - 4)) + s);
+        int depth = stacktrace.length - 4;
+        System.out.println("\t".repeat(depth) + s);
     }
     // stb.
 }

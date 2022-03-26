@@ -8,10 +8,10 @@ public class DefaultMove implements Move {
 	 * @param v - lépő virológus
 	 */
 	public void move(Field f, Virologist v) {
-		System.out.println("-> DefaultMove()");
+		Skeleton.log("-> move(f: Field, v: Virologist)");
 		Field f1 = v.getField();
 		f1.remove(v);
 		f.accept(v); 	// Ez a szekvenciában f2 nevű
-		System.out.println("<- DefaultMove()");
+		Skeleton.log("<- move(f: Field, v: Virologist)");
 	}
 }
