@@ -3,7 +3,7 @@
  */
 public class Skeleton {
     public static void main(String[] args) {
-        Move();
+        DanceMove();
     }
 
     /**
@@ -31,11 +31,12 @@ public class Skeleton {
     public static void DanceMove() {
         //initialization
         var v = new Virologist();
-        var d = new DefaultMove();
+        var d = new DanceMove();
         var f1 = new Field();
         var random = new Field();
         v.setMoveStrat(d);
         f1.accept(v);
+        v.setField(f1);
         f1.setNeighbor(0, random);
         random.setNeighbor(0, f1);
 

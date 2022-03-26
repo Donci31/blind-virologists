@@ -21,6 +21,6 @@ public class DanceMove implements Move {
 		Field f2 = neighbours.get(r.nextInt(neighbours.size()));
 		f2.accept(v);
 
-		System.out.println("-> DanceMove()");
+		System.out.println("<- DanceMove()");
 	}
 }
