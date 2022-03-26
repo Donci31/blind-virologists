@@ -135,7 +135,7 @@ public class Virologist implements Steppable {
 	 * @param c - megtanulandó genetikai kód
 	 */
 	public void learnCode(Code c) {
-
+		learntCodes.add(c);
 	}
 
 	/**
@@ -143,6 +143,7 @@ public class Virologist implements Steppable {
 	 * @param c - a létrehozandó ágens kódja
 	 */
 	public void craftAgent(Code c) {
+		c.craftAgent(nucleotide, aminoAcid);
 	}
 
 	/**
@@ -197,7 +198,7 @@ public class Virologist implements Steppable {
 	 * @param a - az új ágens
 	 */
 	public void addCraftedAgent(Agent a) {
-
+		craftedAgents.add(a);
 	}
 
 	/**

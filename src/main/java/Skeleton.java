@@ -53,6 +53,66 @@ public class Skeleton {
     }
 
     /**
+     * A virológus craftol egy AmniVirus-t
+     */
+    public static void CraftAmniVirus() {
+        log("-> test.CraftAmniVirus()");
+        //initialization
+        var v = new Virologist();
+        var c = new AmniCode();
+        v.learnCode(c);
+
+        //action
+        v.craftAgent(c);
+        log("<- test.CraftAmniVirus()");
+    }
+
+    /**
+     * A virológus craftol egy DanceVirus-t
+     */
+    public static void CraftDanceVirus() {
+        log("-> test.CraftDanceVirus()");
+        //initialization
+        var v = new Virologist();
+        var c = new DanceCode();
+        v.learnCode(c);
+
+        //action
+        v.craftAgent(c);
+        log("<- test.CraftDanceVirus()");
+    }
+
+    /**
+     * A virológus craftol egy ProtVaccine-t
+     */
+    public static void CraftProtVaccine() {
+        log("-> test.CraftProtVaccine()");
+        //initialization
+        var v = new Virologist();
+        var c = new ProtCode();
+        v.learnCode(c);
+
+        //action
+        v.craftAgent(c);
+        log("<- test.CraftProtVaccine()");
+    }
+
+    /**
+     * A virológus craftol egy StunVirus-t
+     */
+    public static void CraftStunVirus() {
+        log("-> test.CraftStunVirus()");
+        //initialization
+        var v = new Virologist();
+        var c = new StunCode();
+        v.learnCode(c);
+
+        //action
+        v.craftAgent(c);
+        log("<- test.CraftStunVirus()");
+    }
+
+    /**
      * A virológus felvesz egy védőkesztyűt és az absorb strategy-je GloveAbsorb lesz
      */
     public static void PickUpGlove(){
@@ -105,13 +165,6 @@ public class Skeleton {
         log("<- test.PickUpSack()");
     }
 
-    public static void LearnCode(){
-
-    }
-
-    public static void GatherResources(){
-
-    }
     /**
      * függvényhívások és visszatérések kiírásához használt függvény
      */
