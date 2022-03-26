@@ -11,5 +11,7 @@ public class DefaultAbsorb implements Absorb {
 		// HIBA! DefaultAbsorb nem tudja, melyik virológuson kéne meghívnia a smeart
 		// Talán ha a strategy-kben eltárolnánk azt, hogy melyik virológusra vannak hatással egy referenciában még a strategy létrehozásakor (konstruktorban), akkor ez megoldaná a problémánkat
 		//a.smear(victim);
+		a.smear(a.getSmearedVirologist());
+
 	}
 }

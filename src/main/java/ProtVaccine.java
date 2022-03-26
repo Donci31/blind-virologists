@@ -11,7 +11,8 @@ public class ProtVaccine extends Agent {
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
 	public void smear(Virologist v) {
-
+		ProtVaccineAbsorb protabs= new ProtVaccineAbsorb();
+		v.addAbsorbStrat(protabs);
 	}
 
 	/**

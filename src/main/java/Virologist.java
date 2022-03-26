@@ -48,6 +48,12 @@ public class Virologist implements Steppable {
 		this.moveStrat = moveStrat;
 	}
 
+
+	/**
+	 * A stun attribútum settere
+	 */
+	public void setStunned(Boolean b){stunned=b;}
+
 	/**
 	 * A virológus átlép a paraméterként adott mezőre.
 	 * @param f - a mező
@@ -65,6 +71,9 @@ public class Virologist implements Steppable {
 	 */
 	public void smearAgent(Agent a, Virologist v) {
 
+		a.setSmearedVirologist(v);			//Beállítja a célvirológust, hogy az absorbok ismerjék kire kell kenni
+		v.absorb(a);
+
 	}
 
 	/**
@@ -72,6 +81,7 @@ public class Virologist implements Steppable {
 	 * @param a - virológusra kent ágens
 	 */
 	public void absorb(Agent a) {
+		chooseFrom(absorbStrats).absorb(a);
 
 	}
 
@@ -196,7 +206,7 @@ public class Virologist implements Steppable {
 	 * @param a - az új védekező viselkedés
 	 */
 	public void addAbsorbStrat(Absorb a) {
-
+		absorbStrats.add(a);
 	}
 
 	/**
