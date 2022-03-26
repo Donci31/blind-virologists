@@ -1,3 +1,5 @@
+import java.util.List;
+
 /**
  * A játékosok által irányított karaktereket reprezentáló osztály.
  * Nyilvántartja a karakter aktuális pozícióját a pályán, a megtanult kódokat, az összegyűjtött védőfelszereléseket,
@@ -10,11 +12,11 @@ public class Virologist implements Steppable {
 	private int aminoAcid;
 	private int resourceLimit;
 	private boolean stunned;
-	private Absorb absorbStrats;
-	private Agent craftedAgents;
-	private Gear gears;
+	private List<Absorb> absorbStrats;
+	private List<Agent> craftedAgents;
+	private List<Gear> gears;
 	private Field field;
-	private Code learntCodes;
+	private List<Code> learntCodes;
 	private Move moveStrat;
 
 	/**
@@ -60,7 +62,7 @@ public class Virologist implements Steppable {
 	 * A virológus interaktál a mezővel, amin éppen áll.
 	 */
 	public void touch() {
-
+		field.interactWithField(this);
 	}
 
 	/**
@@ -77,7 +79,14 @@ public class Virologist implements Steppable {
 	 * @param g - felvevendő védőfelszerelés
 	 */
 	public void pickUpGear(Gear g) {
-
+		gears.add(g);
+		g.giveStat(this);
+		if(gears.size() > 3){
+			//a játékosnak ki kéne választania egyet
+			//kéne egy függvény amivel ki lehet választani egy listából egy elemet - később hasznos lesz még
+			//pl.:
+			//loseGear(ChooseFrom(gears));
+		}
 	}
 
 	/**
