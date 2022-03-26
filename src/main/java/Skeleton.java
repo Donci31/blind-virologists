@@ -6,11 +6,11 @@ public class Skeleton {
 
     }
 
-    public void Move() {
+    public static void Move() {
 
     }
 
-    public void DanceMove() {
+    public static void DanceMove() {
 
     }
 

@@ -27,7 +27,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>Skeleton</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
