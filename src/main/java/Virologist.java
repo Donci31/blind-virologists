@@ -25,6 +25,21 @@ public class Virologist implements Steppable {
 	public Virologist(Field f){
 		field = f;
 	}
+
+	/**
+	 * A resourceLimit attribútum gettere.
+	 */
+	public int getResourceLimit() {
+		return resourceLimit;
+	}
+
+	/**
+	 * A resourceLimit attribútum settere.
+	 */
+	public void setResourceLimit(int resourceLimit) {
+		this.resourceLimit = resourceLimit;
+	}
+
 	/**
 	 * A field attribútum gettere.
 	 */
@@ -135,7 +150,9 @@ public class Virologist implements Steppable {
 	 * @param c - megtanulandó genetikai kód
 	 */
 	public void learnCode(Code c) {
+		Skeleton.log("-> learnCode(c: Code)");
 		learntCodes.add(c);
+		Skeleton.log("<- learnCode(c: Code)");
 	}
 
 	/**
@@ -150,16 +167,24 @@ public class Virologist implements Steppable {
 	 * Megnöveli a virológus nukleotid készletét, de a felső limitnél nem enged több nukleotidot tárolni.
 	 * @param n - felvett nukleotid
 	 */
-	public void addNucleotide(int n) {
-
+	public int addNucleotide(int n) {
+		Skeleton.log("-> addNucleotide(n: int)");
+		int addable = Math.min(n, resourceLimit - nucleotide - aminoAcid);
+		nucleotide += addable;
+		Skeleton.log("<- addNucleotide(n: int)");
+		return addable;
 	}
 
 	/**
 	 * Megnöveli a virológus aminosav készletét, de a felső limitnél nem enged több aminosavat tárolni.
 	 * @param a - felvett aminosav
 	 */
-	public void addAminoAcid(int a) {
-
+	public int addAminoAcid(int a) {
+		Skeleton.log("-> addAminoAcid(a: int)");
+		int addable = Math.min(a, resourceLimit - nucleotide - aminoAcid);
+		aminoAcid += addable;
+		Skeleton.log("<- addAminoAcid(a: int)");
+		return addable;
 	}
 
 	/**

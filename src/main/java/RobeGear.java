@@ -4,14 +4,16 @@
  * Az új stratégia a RobeAbsorb lesz.
  */
 public class RobeGear extends Gear {
-	private RobeAbsorb strat;
+	private RobeAbsorb strat = new RobeAbsorb();
 
 	/**
 	 * Megváltoztatja a paraméterként kapott virológus viselkedési stratégiáját a rákent ágensekkel szemben.
 	 * @param v - virológus, akire hatni fog
 	 */
 	public void giveStat(Virologist v) {
-
+		Skeleton.log("-> giveStat(v: Virologist)");
+		v.addAbsorbStrat(strat);
+		Skeleton.log("<- giveStat(v: Virologist)");
 	}
 
 	/**
@@ -19,6 +21,8 @@ public class RobeGear extends Gear {
 	 * @param v - virológus, akiről eltávolítja a hatását
 	 */
 	public void removeStat(Virologist v) {
-
+		Skeleton.log("-> removeStat(v: Virologist)");
+		v.removeAbsorbStrat(strat);
+		Skeleton.log("<- removeStat(v: Virologist)");
 	}
 }

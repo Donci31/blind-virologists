@@ -8,6 +8,8 @@ public class Skeleton {
         PickUpGlove();
         PickUpRobe();
         PickUpSack();
+        GetResources();
+        LearnCode();
     }
 
     /**
@@ -122,7 +124,6 @@ public class Skeleton {
         var shelter = new Shelter();
         var virologist = new Virologist(shelter);
         shelter.addGear(glove);
-        virologist.move(shelter);
 
         //action
         virologist.touch();
@@ -140,7 +141,6 @@ public class Skeleton {
         var shelter = new Shelter();
         shelter.addGear(robe);
         var virologist = new Virologist(shelter);
-        virologist.move(shelter);
 
         //action
         virologist.touch();
@@ -157,7 +157,6 @@ public class Skeleton {
         var shelter = new Shelter();
         var virologist = new Virologist(shelter);
         shelter.addGear(sack);
-        virologist.move(shelter);
 
         //action
         virologist.touch();
@@ -165,13 +164,44 @@ public class Skeleton {
         log("<- test.PickUpSack()");
     }
 
+    public static void GetResources(){
+        log("-> test.GetResources()");
+        //init
+        var warehouse = new Warehouse();
+        var virologist = new Virologist(warehouse);
+
+        //action
+        virologist.touch();
+        log("<- test.GetResources()");
+    }
+
+    public static void LearnCode(){
+        log("-> test.LearnCode()");
+        //init
+        var laboratory = new Laboratory();
+        var code = new StunCode();
+        var virologist = new Virologist(laboratory);
+        laboratory.placeCode(code);
+
+        //action
+        virologist.touch();
+        log("<- test.LearnCode()");
+    }
+
+
+
+
+
+
+
+
     /**
      * függvényhívások és visszatérések kiírásához használt függvény
      */
     public static void log(String s){
         StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
         int depth = stacktrace.length - 4;
-        System.out.println("\t".repeat(depth) + s);
+        System.out.println("\t".repeat(depth) + s /*+ "@" +stacktrace[3].getClassName()*/);
     }
     // stb.
 }

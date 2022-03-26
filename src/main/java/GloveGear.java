@@ -20,5 +20,8 @@ public class GloveGear extends Gear {
 	 * @param v - virológus, akiről eltávolítja a hatását
 	 */
 	public void removeStat(Virologist v) {
+		Skeleton.log("-> removeStat(v: Virologist)");
+		v.removeAbsorbStrat(strat);
+		Skeleton.log("<- removeStat(v: Virologist)");
 	}
 }

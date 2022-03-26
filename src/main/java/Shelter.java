@@ -12,7 +12,6 @@ public class Shelter extends Field {
 	public void interactWithField(Virologist v) {
 		Skeleton.log("-> interactWithField(v: Virologist)");
 		v.pickUpGear(gear);
-		gear.giveStat(v);
 		Skeleton.log("<- interactWithField(v: Virologist)");
 	}
 
