@@ -85,10 +85,10 @@ public class Virologist implements Steppable {
 	 * @param v - megcélzott virológus
 	 */
 	public void smearAgent(Agent a, Virologist v) {
-
+		Skeleton.log("->smearAgent(a: Agent,v: Virologist)");
 		a.setSmearedVirologist(v);			//Beállítja a célvirológust, hogy az absorbok ismerjék kire kell kenni
 		v.absorb(a);
-
+		Skeleton.log("<-smearAgent(a: Agent, v: Virologist)");
 	}
 
 	/**
@@ -96,8 +96,9 @@ public class Virologist implements Steppable {
 	 * @param a - virológusra kent ágens
 	 */
 	public void absorb(Agent a) {
+		Skeleton.log("->absorb(a: Agent)");
 		chooseFrom(absorbStrats).absorb(a);
-
+		Skeleton.log("<-absorb(a: Agent)");
 	}
 
 	/**
