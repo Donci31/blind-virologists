@@ -60,14 +60,20 @@ public class Virologist implements Steppable {
 	 * A moveStrat attribútum settere.
 	 */
 	public void setMoveStrat(Move moveStrat) {
+		Skeleton.log("-> setMoveStrat(moveStrat: Move)");
 		this.moveStrat = moveStrat;
+		Skeleton.log("<- setMoveStrat(moveStrat: Move)");
 	}
 
 
 	/**
 	 * A stun attribútum settere
 	 */
-	public void setStunned(Boolean b){stunned=b;}
+	public void setStunned(Boolean b){
+		Skeleton.log("-> setStunned()");
+		stunned = b;
+		Skeleton.log("<- setStunned()");
+	}
 
 	/**
 	 * A virológus átlép a paraméterként adott mezőre.
@@ -211,7 +217,9 @@ public class Virologist implements Steppable {
 	 * Ez a függvény minden kör végén meghívódik, és törli a virológus felhasználatlan ágenseit (az ágensek csak egy körig használhatóak).
 	 */
 	public void step() {
-
+		Skeleton.log("-> step()");
+		craftedAgents.clear();
+		Skeleton.log("<- step()");
 	}
 
 	/**
@@ -250,6 +258,7 @@ public class Virologist implements Steppable {
 	 */
 	public void removeAbsorbStrat(Absorb a) {
 		Skeleton.log("-> removeAbsorbStrat(a: Absorb)");
+		absorbStrats.remove(a);
 		Skeleton.log("<- removeAbsorbStrat(a: Absorb)");
 	}
 

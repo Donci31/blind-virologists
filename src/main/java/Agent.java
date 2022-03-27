@@ -30,6 +30,7 @@ public abstract class Agent implements Steppable {
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
 	public void smear(Virologist v) {
+		setSmearedVirologist(v);
 	}
 
 	/**

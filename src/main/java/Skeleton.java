@@ -186,6 +186,83 @@ public class Skeleton {
         log("<- test.LearnCode()");
     }
 
+    public static void UpdateWarehouse() {
+        log("-> test.UpdateWarehouse()");
+        //init
+        var warehouse = new Warehouse();
+
+        //action
+        warehouse.step();
+        log("<- test.UpdateWarehouse()");
+    }
+
+    /**
+     * A kör végén a StunVirus működése
+     */
+    public static void UpdateStunVirus() {
+        log("-> test.UpdateStunVirus()");
+        //init
+        var v = new Virologist();
+        var stunVirus = new StunVirus();
+        stunVirus.smear(v);
+        //action
+        stunVirus.step();
+        log("<- test.UpdateStunVirus()");
+    }
+
+    /**
+     * A kör végén a Virologist működése
+     */
+    public static void UpdateVirologist() {
+        log("-> test.UpdateVirologist()");
+        //init
+        var v = new Virologist();
+        //action
+        v.step();
+        log("<- test.UpdateVirologist()");
+    }
+
+    /**
+     * A kör végén a DanceVirus működése
+     */
+    public static void UpdateDanceVirus() {
+        log("-> test.UpdateDanceVirus()");
+        //init
+        var v = new Virologist();
+        var danceVirus = new DanceVirus();
+        danceVirus.smear(v);
+        //action
+        danceVirus.step();
+        log("<- test.UpdateDanceVirus()");
+    }
+
+    /**
+     * A kör végén az AmniVirus működése
+     */
+    public static void UpdateAmniVirus() {
+        log("-> test.UpdateAmniVirus()");
+        //init
+        var amniVirus = new AmniVirus();
+        //action
+        amniVirus.step();
+        log("<- test.UpdateAmniVirus()");
+    }
+    
+    /**
+     * A kör végén a ProtVaccine működése
+     */
+    public static void UpdateProtVaccine() {
+        log("-> test.UpdateProtVaccine()");
+        //init
+        var v = new Virologist();
+        var protVaccine = new ProtVaccine();
+        protVaccine.smear(v); // <<create>> ProtVaccineAbsorb
+        //action
+        protVaccine.step();
+        log("<- test.UpdateProtVaccine()");
+    }
+
+
 
 
 

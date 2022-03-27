@@ -9,8 +9,10 @@ public class Warehouse extends Field implements Steppable {
 	 * Körönként egyszer hívódik meg, a raktárban található anyagok száma random értékkel növekszik.
 	 */
 	public void step() {
+		Skeleton.log("-> step()");
 		nProduced += (int)(Math.random()*10);
 		aProduced += (int)(Math.random()*10);
+		Skeleton.log("<- step()");
 	}
 
 	/**
