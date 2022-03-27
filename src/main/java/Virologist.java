@@ -20,8 +20,10 @@ public class Virologist implements Steppable {
 	private Move moveStrat = new DefaultMove();
 
 	public Virologist(){
+		Skeleton.log("->Virologist()");
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
+		Skeleton("<-Virologist()");
 	}
 	public Virologist(Field f){
 		field = f;
