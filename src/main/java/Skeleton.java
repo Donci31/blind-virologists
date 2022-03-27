@@ -285,7 +285,7 @@ public class Skeleton {
 
 
     /**
-     * Virológus stunvírust ken egy másikra
+     * Virológus StunVírust ken egy másik virológusra, aki ezt az összes absorbal kezelheti
      *
      */
     public static void SmearStunVirus(){
@@ -306,7 +306,7 @@ public class Skeleton {
     }
 
     /**
-     * Virológus stunvírust ken egy másikra
+     * Virológus DanceVírust ken egy másik virológusra, aki ezt az összes absorbal kezelheti
      *
      */
     public static void SmearDanceVirus(){
@@ -327,7 +327,7 @@ public class Skeleton {
     }
 
     /**
-     * Virológus stunvírust ken egy másikra
+     * Virológus AmniVírust ken egy másik virológusra, aki ezt az összes absorbal kezelheti
      *
      */
     public static void SmearAmniVirus(){
@@ -348,7 +348,7 @@ public class Skeleton {
     }
 
     /**
-     * Virológus stunvírust ken egy másikra
+     * Virológus ProtVaccine-t ken magára, ezt akármilyen absorbal kezelheti
      *
      */
     public static void SmearProtVaccine(){
@@ -366,6 +366,18 @@ public class Skeleton {
         log("<-test.SmearProtVaccine");
 
     }
+
+    /**
+     * Játék indítása, pálya inicializálódás
+     *
+     */
+    public static void StartGame(){
+        Skeleton.log("->test.StartGame");
+        var g= new Game();
+        g.startGame();
+        Skeleton.log("<-test.StartGame");
+    }
+
 
     /**
      * Eldöntendő kérdés kiírása és válasz bekérése. Érvénytelen válasz esetén ismét felteszi a kérdést.
