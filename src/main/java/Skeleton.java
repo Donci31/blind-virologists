@@ -264,7 +264,7 @@ public class Skeleton {
 
 
     /**
-     * Virológus stunvírust ken egy másikra
+     * Virológus StunVírust ken egy másik virológusra, aki ezt az összes absorbal kezelheti
      *
      */
     public static void SmearStunVirus(){
@@ -273,13 +273,19 @@ public class Skeleton {
         var smearedVirologist=new Virologist();
         var s =new StunVirus();
         fromV.addCraftedAgent(s);
+        var g= new GloveAbsorb();
+        var p = new ProtVaccineAbsorb();
+        var r= new RobeAbsorb();
+        smearedVirologist.addAbsorbStrat(g);
+        smearedVirologist.addAbsorbStrat(p);
+        smearedVirologist.addAbsorbStrat(r);
         fromV.smearAgent(s,smearedVirologist);
         log("<-test.SmearStunVirus");
 
     }
 
     /**
-     * Virológus stunvírust ken egy másikra
+     * Virológus DanceVírust ken egy másik virológusra, aki ezt az összes absorbal kezelheti
      *
      */
     public static void SmearDanceVirus(){
@@ -288,13 +294,19 @@ public class Skeleton {
         var smearedVirologist=new Virologist();
         var d =new DanceVirus();
         fromV.addCraftedAgent(d);
+        var g= new GloveAbsorb();
+        var p = new ProtVaccineAbsorb();
+        var r= new RobeAbsorb();
+        smearedVirologist.addAbsorbStrat(g);
+        smearedVirologist.addAbsorbStrat(p);
+        smearedVirologist.addAbsorbStrat(r);
         fromV.smearAgent(d,smearedVirologist);
         log("<-test.SmearDanceVirus");
 
     }
 
     /**
-     * Virológus stunvírust ken egy másikra
+     * Virológus AmniVírust ken egy másik virológusra, aki ezt az összes absorbal kezelheti
      *
      */
     public static void SmearAmniVirus(){
@@ -303,13 +315,19 @@ public class Skeleton {
         var smearedVirologist=new Virologist();
         var a =new AmniVirus();
         fromV.addCraftedAgent(a);
+        var g= new GloveAbsorb();
+        var p = new ProtVaccineAbsorb();
+        var r= new RobeAbsorb();
+        smearedVirologist.addAbsorbStrat(g);
+        smearedVirologist.addAbsorbStrat(p);
+        smearedVirologist.addAbsorbStrat(r);
         fromV.smearAgent(a,smearedVirologist);
         log("<-test.SmearAmniVirus");
 
     }
 
     /**
-     * Virológus stunvírust ken egy másikra
+     * Virológus ProtVaccine-t ken magára, ezt akármilyen absorbal kezelheti
      *
      */
     public static void SmearProtVaccine(){
@@ -317,10 +335,28 @@ public class Skeleton {
         var fromV= new Virologist();
         var p =new ProtVaccine();
         fromV.addCraftedAgent(p);
+        var g= new GloveAbsorb();
+        var pAbs = new ProtVaccineAbsorb();
+        var r= new RobeAbsorb();
+        fromV.addAbsorbStrat(g);
+        fromV.addAbsorbStrat(pAbs);
+        fromV.addAbsorbStrat(r);
         fromV.smearAgent(p,fromV);
         log("<-test.SmearProtVaccine");
 
     }
+
+    /**
+     * Játék indítása, pálya inicializálódás
+     *
+     */
+    public static void StartGame(){
+        Skeleton.log("->test.StartGame");
+        var g= new Game();
+        g.startGame();
+        Skeleton.log("<-test.StartGame");
+    }
+
 
     /**
      * Eldöntendő kérdés kiírása és válasz bekérése. Érvénytelen válasz esetén ismét felteszi a kérdést.
