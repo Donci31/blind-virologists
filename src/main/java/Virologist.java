@@ -20,10 +20,10 @@ public class Virologist implements Steppable {
 	private Move moveStrat = new DefaultMove();
 
 	public Virologist(){
-		Skeleton.log("->Virologist()");
+		Skeleton.log("-> Virologist()");
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
-		Skeleton.log("<-Virologist()");
+		Skeleton.log("<- Virologist()");
 	}
 	public Virologist(Field f){
 		field = f;
@@ -271,11 +271,16 @@ public class Virologist implements Steppable {
 	 *  segédfüggvény, a játékos kiválaszthat egy elemet egy listából
 	 */
 	private <T> T chooseFrom(ArrayList<T> c){
+		StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+		int depth = stacktrace.length - 4;
 		for(int i = 0; i < c.size(); i++){
-			System.out.println(i + " " +c.get(i).toString());
+			System.out.print("\t".repeat(depth));
+			System.out.println(i + " " +c.get(i).getClass().toString().split(" ")[1]);
 		}
 		//majd le lesz cserélve grafikus megoldásra
+		System.out.print("\t".repeat(depth) + "~~ Which Absorb mechanic to use? ");
 		int index = Skeleton.input.nextInt();
+		Skeleton.input.nextLine();
 		return c.get(index);
 	}
 }
