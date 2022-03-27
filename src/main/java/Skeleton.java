@@ -1,9 +1,13 @@
+import java.util.Scanner;
+
 /**
  * Központi szkeleton osztály, amely a use-case-ek lefuttatásáért és a konzolos megjelenítésért felelős.
  */
 public class Skeleton {
+
+    private static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-        CraftAmniVirus();
+        
     }
 
     /**
