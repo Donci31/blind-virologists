@@ -20,10 +20,6 @@ public class Field {
 		return neighbors;
 	}
 
-	public void addNeighbour(Field f){neighbors.add(f);}
-
-	public int numberOfNeighbours(){return neighbors.size();}
-
 	/**
 	 * Felvesz egy virológust a mezőre.
 	 * @param v - lépő virológus

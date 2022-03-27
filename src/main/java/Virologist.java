@@ -229,7 +229,8 @@ public class Virologist implements Steppable {
 	 * Hatására a virológus elfelejti az eddig megtanult genetikait kódokat.
 	 */
 	public void forgetCodes() {
-
+		Skeleton.log("->forgetCodes()");
+		Skeleton.log("<-forgetCodes()");
 	}
 
 	/**

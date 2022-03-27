@@ -351,9 +351,10 @@ public class Skeleton {
      *
      */
     public static void StartGame(){
+        Skeleton.log("->test.StartGame");
         var g= new Game();
         g.startGame();
-
+        Skeleton.log("<-test.StartGame");
     }
 
 
