@@ -23,7 +23,7 @@ public class Virologist implements Steppable {
 		Skeleton.log("->Virologist()");
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
-		Skeleton("<-Virologist()");
+		Skeleton.log("<-Virologist()");
 	}
 	public Virologist(Field f){
 		field = f;
