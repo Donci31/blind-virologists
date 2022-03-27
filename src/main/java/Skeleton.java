@@ -273,6 +273,12 @@ public class Skeleton {
         var smearedVirologist=new Virologist();
         var s =new StunVirus();
         fromV.addCraftedAgent(s);
+        var g= new GloveAbsorb();
+        var p = new ProtVaccineAbsorb();
+        var r= new RobeAbsorb();
+        smearedVirologist.addAbsorbStrat(g);
+        smearedVirologist.addAbsorbStrat(p);
+        smearedVirologist.addAbsorbStrat(r);
         fromV.smearAgent(s,smearedVirologist);
         log("<-test.SmearStunVirus");
 
@@ -288,6 +294,12 @@ public class Skeleton {
         var smearedVirologist=new Virologist();
         var d =new DanceVirus();
         fromV.addCraftedAgent(d);
+        var g= new GloveAbsorb();
+        var p = new ProtVaccineAbsorb();
+        var r= new RobeAbsorb();
+        smearedVirologist.addAbsorbStrat(g);
+        smearedVirologist.addAbsorbStrat(p);
+        smearedVirologist.addAbsorbStrat(r);
         fromV.smearAgent(d,smearedVirologist);
         log("<-test.SmearDanceVirus");
 
@@ -303,6 +315,12 @@ public class Skeleton {
         var smearedVirologist=new Virologist();
         var a =new AmniVirus();
         fromV.addCraftedAgent(a);
+        var g= new GloveAbsorb();
+        var p = new ProtVaccineAbsorb();
+        var r= new RobeAbsorb();
+        smearedVirologist.addAbsorbStrat(g);
+        smearedVirologist.addAbsorbStrat(p);
+        smearedVirologist.addAbsorbStrat(r);
         fromV.smearAgent(a,smearedVirologist);
         log("<-test.SmearAmniVirus");
 
@@ -317,6 +335,12 @@ public class Skeleton {
         var fromV= new Virologist();
         var p =new ProtVaccine();
         fromV.addCraftedAgent(p);
+        var g= new GloveAbsorb();
+        var pAbs = new ProtVaccineAbsorb();
+        var r= new RobeAbsorb();
+        fromV.addAbsorbStrat(g);
+        fromV.addAbsorbStrat(pAbs);
+        fromV.addAbsorbStrat(r);
         fromV.smearAgent(p,fromV);
         log("<-test.SmearProtVaccine");
 
