@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Map;
 
 /**
  * Központi szkeleton osztály, amely a use-case-ek lefuttatásáért és a konzolos megjelenítésért felelős.
@@ -7,7 +9,26 @@ public class Skeleton {
 
     public static final Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-        UpdateDanceVirus();
+        Map<String, SkeletonHelper> testMap = new HashMap<>();
+        testMap.put("move", Skeleton::DefaultMove);
+        testMap.put("dancemove", Skeleton::DanceMove);
+        testMap.put("craft amnivirus", Skeleton::CraftAmniVirus);
+        testMap.put("craft dancevirus", Skeleton::CraftDanceVirus);
+        testMap.put("craft protvaccine", Skeleton::CraftProtVaccine);
+        testMap.put("craft stunvirus", Skeleton::CraftStunVirus);
+        testMap.put("start game", Skeleton::StartGame);
+        testMap.put("pick up glove", Skeleton::PickUpGlove);
+        testMap.put("pick up robe", Skeleton::PickUpRobe);
+        testMap.put("pick up sack", Skeleton::PickUpSack);
+        testMap.put("get resources", Skeleton::GetResources);
+        testMap.put("learn code", Skeleton::LearnCode);
+        testMap.put("update warehouse", Skeleton::UpdateWarehouse);
+
+
+        while(true) {
+            int testCaseIndex = Integer.parseInt(input.nextLine());
+
+        }
     }
 
     /**
@@ -313,11 +334,11 @@ public class Skeleton {
         log("->test.SmearAmniVirus");
         var fromV= new Virologist();
         var smearedVirologist=new Virologist();
-        var a =new AmniVirus();
+        var a = new AmniVirus();
         fromV.addCraftedAgent(a);
-        var g= new GloveAbsorb();
+        var g = new GloveAbsorb();
         var p = new ProtVaccineAbsorb();
-        var r= new RobeAbsorb();
+        var r = new RobeAbsorb();
         smearedVirologist.addAbsorbStrat(g);
         smearedVirologist.addAbsorbStrat(p);
         smearedVirologist.addAbsorbStrat(r);
@@ -332,12 +353,12 @@ public class Skeleton {
      */
     public static void SmearProtVaccine(){
         log("->test.SmearProtVaccine");
-        var fromV= new Virologist();
-        var p =new ProtVaccine();
+        var fromV = new Virologist();
+        var p = new ProtVaccine();
         fromV.addCraftedAgent(p);
-        var g= new GloveAbsorb();
+        var g = new GloveAbsorb();
         var pAbs = new ProtVaccineAbsorb();
-        var r= new RobeAbsorb();
+        var r = new RobeAbsorb();
         fromV.addAbsorbStrat(g);
         fromV.addAbsorbStrat(pAbs);
         fromV.addAbsorbStrat(r);
