@@ -12,6 +12,7 @@ public class DanceVirus extends Agent {
 	 */
 	public void smear(Virologist v) {
 		Skeleton.log("-> smear(v: Virologist)");
+		smearedVirologist = v;
 		DanceMove dm = new DanceMove();
 		// this.strat = dm; // ?
 		v.setMoveStrat(dm);
