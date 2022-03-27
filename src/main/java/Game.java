@@ -8,6 +8,8 @@ public class Game {
 	 * Elindítja a játékot.
 	 */
 	public void startGame() {
+		var m=new Map();
+		m.generateMap();
 	}
 
 	/**
