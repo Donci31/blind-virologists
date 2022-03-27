@@ -8,13 +8,18 @@ public class Game {
 	 * Elindítja a játékot.
 	 */
 	public void startGame() {
+		Skeleton.log("->startGame()");
 		var m=new Map();
 		m.generateMap();
+		Skeleton.log("<-startGame()");
 	}
 
 	/**
 	 * Megállítja a játékot
 	 */
 	public void endGame() {
+		Skeleton.log("->endGame()");
+		Skeleton.log("<-endGame()");
+
 	}
 }
