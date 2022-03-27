@@ -11,9 +11,11 @@ public class DanceVirus extends Agent {
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
 	public void smear(Virologist v) {
+		Skeleton.log("->smear(v:Virologist)");
 		smearedVirologist = v;
 		DanceMove dm = new DanceMove();
 		v.setMoveStrat(dm);
+		Skeleton.log("<-smear(v:Virologist)");
 	}
 
 	/**

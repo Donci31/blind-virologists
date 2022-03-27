@@ -20,7 +20,8 @@ public class Virologist implements Steppable {
 	private Move moveStrat = new DefaultMove();
 
 	public Virologist(){
-
+		var defAbs=new DefaultAbsorb();
+		addAbsorbStrat(defAbs);
 	}
 	public Virologist(Field f){
 		field = f;

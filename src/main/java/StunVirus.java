@@ -10,8 +10,10 @@ public class StunVirus extends Agent {
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
 	public void smear(Virologist v) {
+		Skeleton.log("->smear(v:Virologist)");
 		v.setStunned(true);
 		setSmearedVirologist(v);
+		Skeleton.log("<-smear(v:Virologist)");
 	}
 
 	/**

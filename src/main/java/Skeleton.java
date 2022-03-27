@@ -182,9 +182,64 @@ public class Skeleton {
         log("<- test.LearnCode()");
     }
 
+    /**
+     * Virológus stunvírust ken egy másikra
+     *
+     */
+    public static void SmrearStunVirus(){
+        log("->test.SmearStunVirus");
+        var fromV= new Virologist();
+        var smearedVirologist=new Virologist();
+        var s =new StunVirus();
+        fromV.addCraftedAgent(s);
+        fromV.smearAgent(s,smearedVirologist);
+        log("<-test.SmearStunVirus");
 
+    }
 
+    /**
+     * Virológus stunvírust ken egy másikra
+     *
+     */
+    public static void SmrearDanceVirus(){
+        log("->test.SmearDanceVirus");
+        var fromV= new Virologist();
+        var smearedVirologist=new Virologist();
+        var d =new DanceVirus();
+        fromV.addCraftedAgent(d);
+        fromV.smearAgent(d,smearedVirologist);
+        log("<-test.SmearDanceVirus");
 
+    }
+
+    /**
+     * Virológus stunvírust ken egy másikra
+     *
+     */
+    public static void SmrearAmniVirus(){
+        log("->test.SmearAmniVirus");
+        var fromV= new Virologist();
+        var smearedVirologist=new Virologist();
+        var a =new AmniVirus();
+        fromV.addCraftedAgent(a);
+        fromV.smearAgent(a,smearedVirologist);
+        log("<-test.SmearAmniVirus");
+
+    }
+
+    /**
+     * Virológus stunvírust ken egy másikra
+     *
+     */
+    public static void SmrearProtVaccine(){
+        log("->test.SmearProtVaccine");
+        var fromV= new Virologist();
+        var p =new ProtVaccine();
+        fromV.addCraftedAgent(p);
+        fromV.smearAgent(p,fromV);
+        log("<-test.SmearProtVaccine");
+
+    }
 
 
     /**
