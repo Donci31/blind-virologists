@@ -10,24 +10,38 @@ public class Skeleton {
     public static final Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
         Map<String, SkeletonHelper> testMap = new HashMap<>();
+
         testMap.put("move", Skeleton::DefaultMove);
         testMap.put("dancemove", Skeleton::DanceMove);
-        testMap.put("craft amnivirus", Skeleton::CraftAmniVirus);
-        testMap.put("craft dancevirus", Skeleton::CraftDanceVirus);
-        testMap.put("craft protvaccine", Skeleton::CraftProtVaccine);
-        testMap.put("craft stunvirus", Skeleton::CraftStunVirus);
-        testMap.put("start game", Skeleton::StartGame);
-        testMap.put("pick up glove", Skeleton::PickUpGlove);
-        testMap.put("pick up robe", Skeleton::PickUpRobe);
-        testMap.put("pick up sack", Skeleton::PickUpSack);
-        testMap.put("get resources", Skeleton::GetResources);
-        testMap.put("learn code", Skeleton::LearnCode);
-        testMap.put("update warehouse", Skeleton::UpdateWarehouse);
-
+        testMap.put("craftamnivirus", Skeleton::CraftAmniVirus);
+        testMap.put("craftdancevirus", Skeleton::CraftDanceVirus);
+        testMap.put("craftprotvaccine", Skeleton::CraftProtVaccine);
+        testMap.put("craftstunvirus", Skeleton::CraftStunVirus);
+        testMap.put("startgame", Skeleton::StartGame);
+        testMap.put("pickupglove", Skeleton::PickUpGlove);
+        testMap.put("pickuprobe", Skeleton::PickUpRobe);
+        testMap.put("pickupsack", Skeleton::PickUpSack);
+        testMap.put("getresources", Skeleton::GetResources);
+        testMap.put("learncode", Skeleton::LearnCode);
+        testMap.put("updatewarehouse", Skeleton::UpdateWarehouse);
+        testMap.put("updatestunvirus", Skeleton::UpdateStunVirus);
+        testMap.put("updateprotvaccine", Skeleton::UpdateProtVaccine);
+        testMap.put("updateamnivirus", Skeleton::UpdateAmniVirus);
+        testMap.put("updatedancevirus", Skeleton::UpdateDanceVirus);
+        testMap.put("updatevirologist", Skeleton::UpdateVirologist);
+        testMap.put("smearprotvaccine", Skeleton::SmearProtVaccine);
+        testMap.put("smearstunvirus", Skeleton::SmearStunVirus);
+        testMap.put("smeardancevirus", Skeleton::SmearDanceVirus);
+        testMap.put("smearamnivirus", Skeleton::SmearAmniVirus);
 
         while(true) {
-            int testCaseIndex = Integer.parseInt(input.nextLine());
+            System.out.println("\n\nChoose from the possible use-cases:");
+            for (String s : testMap.keySet())
+                System.out.println(s);
 
+            System.out.print("\nSelect use-case to run: ");
+            String testCase = input.nextLine();
+            testMap.get(testCase).test();
         }
     }
 
@@ -409,5 +423,5 @@ public class Skeleton {
         int depth = stacktrace.length - 4;
         System.out.println("\t".repeat(depth) + s /*+ "@" +stacktrace[3].getClassName()*/);
     }
-    // stb.
+
 }

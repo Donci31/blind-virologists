@@ -13,8 +13,7 @@ public class AmniCode extends Code {
 		Skeleton.log("-> craftAgent(v: Virologist, nCost: int, aCost: int)");
 		var hasEnoughResource = Skeleton.askYesOrNo("Does the virologist have enough resources?");
 
-		if (hasEnoughResource) { // Itt kell feltenni a felhasználónak egy értelmes kérdést, pl. "Does the virologist have enough resources?"
-			// HIBA! Nem ismeri a virológust!
+		if (hasEnoughResource) {
 			Skeleton.log("-> AmniVirus()");
 			AmniVirus a = new AmniVirus();
 			Skeleton.log("<- AmniVirus()");
