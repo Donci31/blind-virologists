@@ -12,6 +12,5 @@ public abstract class Code {
 	 * @param nCost - szükséges nukleotid
 	 * @param aCost - szükséges aminosav
 	 */
-	public void craftAgent(Virologist v, int nCost, int aCost) {
-	}
+	public abstract void craftAgent(Virologist v, int nCost, int aCost);
 }
