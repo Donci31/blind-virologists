@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * A ProtVaccine ágenst kódoló genetikai kódot megvalósító osztály.
  * Felelős az ilyen vírusok létrehozásáért.
@@ -13,12 +11,9 @@ public class ProtCode extends Code {
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
 		Skeleton.log("-> craftAgent(v: Virologist, nCost: int, aCost: int)");
-		Skeleton.logq("~~ Does the virologist have enough resources? (Y/N): ");
-		Scanner input = new Scanner(System.in);
+		var hasEnoughResource = Skeleton.askYesOrNo("~~ Does the virologist have enough resources? (Y/N): ");
 
-		String answer = input.nextLine();
-
-		if (answer.charAt(0) == 'Y') { // Itt kell feltenni a felhasználónak egy értelmes kérdést, pl. "Does the virologist have enough resources?"
+		if (hasEnoughResource) {
 			// HIBA! Nem ismeri a virológust!
 			Skeleton.log("-> ProtVaccine()");
 			ProtVaccine p = new ProtVaccine();

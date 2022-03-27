@@ -5,9 +5,9 @@ import java.util.Scanner;
  */
 public class Skeleton {
 
-    private static Scanner input = new Scanner(System.in);
+    public static final Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-        
+        UpdateDanceVirus();
     }
 
     /**
@@ -293,7 +293,11 @@ public class Skeleton {
      */
 
     public static boolean askYesOrNo(String question) {
-        String answer = ask("~~ " + question + " (Y/N): ").toLowerCase();
+        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+        int depth = stacktrace.length - 4;
+        System.out.print("\t".repeat(depth) + "~~ " + question + " (Y/N): ");
+        String answer = input.nextLine().toLowerCase();
+
         if (answer.equals("y") || answer.equals("yes")) {
             return true;
         } else if (answer.equals("n") || answer.equals("no")) {

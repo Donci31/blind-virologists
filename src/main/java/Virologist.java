@@ -270,8 +270,7 @@ public class Virologist implements Steppable {
 			System.out.println(i + " " +c.get(i).toString());
 		}
 		//majd le lesz cserélve grafikus megoldásra
-		Scanner scanner = new Scanner(System.in);
-		int index = scanner.nextInt();
+		int index = Skeleton.input.nextInt();
 		return c.get(index);
 	}
 }
