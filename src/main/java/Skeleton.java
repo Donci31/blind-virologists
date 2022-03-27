@@ -3,13 +3,7 @@
  */
 public class Skeleton {
     public static void main(String[] args) {
-        DefaultMove();
-        DanceMove();
-        PickUpGlove();
-        PickUpRobe();
-        PickUpSack();
-        GetResources();
-        LearnCode();
+        CraftAmniVirus();
     }
 
     /**
@@ -193,7 +187,14 @@ public class Skeleton {
 
 
 
-
+    /**
+     * Kérdések kiírásához használt függvény
+     */
+    public static void logq(String s){
+        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+        int depth = stacktrace.length - 4;
+        System.out.print("\t".repeat(depth) + s);
+    }
 
     /**
      * függvényhívások és visszatérések kiírásához használt függvény

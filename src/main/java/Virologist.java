@@ -160,7 +160,9 @@ public class Virologist implements Steppable {
 	 * @param c - a létrehozandó ágens kódja
 	 */
 	public void craftAgent(Code c) {
-		c.craftAgent(nucleotide, aminoAcid);
+		Skeleton.log("-> craftAgent(c: Code)");
+		c.craftAgent(this, nucleotide, aminoAcid);
+		Skeleton.log("<- craftAgent(c: Code)");
 	}
 
 	/**
@@ -192,7 +194,8 @@ public class Virologist implements Steppable {
 	 * @param n - levonandó nukleotid
 	 */
 	public void removeNucleotide(int n) {
-
+		Skeleton.log("-> removeNucleotide(n: int)");
+		Skeleton.log("<- removeNucleotide(n: int)");
 	}
 
 	/**
@@ -200,7 +203,8 @@ public class Virologist implements Steppable {
 	 * @param a - levonandó aminosav
 	 */
 	public void removeAminoAcid(int a) {
-
+		Skeleton.log("-> removeAminoAcid(n: int)");
+		Skeleton.log("<- removeAminoAcid(n: int)");
 	}
 
 	/**
@@ -223,7 +227,9 @@ public class Virologist implements Steppable {
 	 * @param a - az új ágens
 	 */
 	public void addCraftedAgent(Agent a) {
+		Skeleton.log("-> addCraftedAgent(a: Agent)");
 		craftedAgents.add(a);
+		Skeleton.log("<- addCraftedAgent(a: Agent)");
 	}
 
 	/**
@@ -232,7 +238,9 @@ public class Virologist implements Steppable {
 	 * @param a - az új védekező viselkedés
 	 */
 	public void addAbsorbStrat(Absorb a) {
+		Skeleton.log("-> addAbsorbStrat(a: Absorb)");
 		absorbStrats.add(a);
+		Skeleton.log("<- addAbsorbStrat(a: Absorb)");
 	}
 
 	/**
@@ -241,7 +249,8 @@ public class Virologist implements Steppable {
 	 * @param a - a már nemkívánatos védekező viselkedés
 	 */
 	public void removeAbsorbStrat(Absorb a) {
-
+		Skeleton.log("-> removeAbsorbStrat(a: Absorb)");
+		Skeleton.log("<- removeAbsorbStrat(a: Absorb)");
 	}
 
 	/**

@@ -8,9 +8,10 @@ public abstract class Code {
 
 	/**
 	 * Létrehozza a kódolt ágenst, és elveszi a virológustól a kódoláshoz szükséges anyagokat.
+	 * @param v - craftoló virológus
 	 * @param nCost - szükséges nukleotid
 	 * @param aCost - szükséges aminosav
 	 */
-	public void craftAgent(int nCost, int aCost) {
+	public void craftAgent(Virologist v, int nCost, int aCost) {
 	}
 }
