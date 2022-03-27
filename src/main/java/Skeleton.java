@@ -322,25 +322,6 @@ public class Skeleton {
 
     }
 
-
-    /**
-     * Kérdések kiírásához használt függvény
-     */
-    public static void logq(String s){
-        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
-        int depth = stacktrace.length - 4;
-        System.out.print("\t".repeat(depth) + s);
-    }
-
-    public static String ask(String question){
-        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
-        int depth = stacktrace.length - 4;
-        System.out.print("\t".repeat(depth) + question);
-
-        String answer = input.nextLine();
-        return answer;
-    }
-
     /**
      * Eldöntendő kérdés kiírása és válasz bekérése. Érvénytelen válasz esetén ismét felteszi a kérdést.
      * @param question A kérdés
@@ -363,7 +344,8 @@ public class Skeleton {
     }
 
     /**
-     * függvényhívások és visszatérések kiírásához használt függvény
+     * Függvényhívások és visszatérések kiírásához használt függvény
+     * @param s Kiírt szöveg
      */
     public static void log(String s){
         StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
