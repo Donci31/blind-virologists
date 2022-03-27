@@ -196,6 +196,32 @@ public class Skeleton {
         System.out.print("\t".repeat(depth) + s);
     }
 
+    public static String ask(String question){
+        StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
+        int depth = stacktrace.length - 4;
+        System.out.print("\t".repeat(depth) + question);
+
+        String answer = input.nextLine();
+        return answer;
+    }
+
+    /**
+     * Eldöntendő kérdés kiírása és válasz bekérése. Érvénytelen válasz esetén ismét felteszi a kérdést.
+     * @param question A kérdés
+     * @return `true` ha a válasz igen, `false` ha nem
+     */
+
+    public static boolean askYesOrNo(String question) {
+        String answer = ask("~~ " + question + " (Y/N): ").toLowerCase();
+        if (answer.equals("y") || answer.equals("yes")) {
+            return true;
+        } else if (answer.equals("n") || answer.equals("no")) {
+            return false;
+        } else {
+            return askYesOrNo(question);
+        }
+    }
+
     /**
      * függvényhívások és visszatérések kiírásához használt függvény
      */
