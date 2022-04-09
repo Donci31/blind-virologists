@@ -3,7 +3,7 @@
  * Ha ezt a vírust kenik egy virológusra, az lebénul, és a hatás elmúlásáig nem tud semmilyen akciót végrehajtani.
  * A bénulás ideje alatt más virológusok elvehetnek tőle védőfelszereléseket.
  */
-public class StunVirus extends Agent {
+public class StunVirus extends Agent implements Steppable{
 	/**
 	 * A paraméterként kapott virológusra kenődik az ágens, az ágensnek megfelelő hatás aktiválódik a virológuson és az ágens időzítője elkezd visszaszámolni.
 	 * A virológus stunned attribútuma igazra állítódik át.

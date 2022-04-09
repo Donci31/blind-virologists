@@ -2,7 +2,7 @@
  * A más ágensek ellen védelmet nyújtó ágenst megvalósító oszály.
  * Felelős a hatás aktiválásáért, a hatásidő nyilvántartásáért, és az idő leteltével a hatás megszüntetéséért.
  */
-public class ProtVaccine extends Agent {
+public class ProtVaccine extends Agent implements Steppable{
 	private ProtVaccineAbsorb strat;
 
 	/**

@@ -8,7 +8,7 @@ public class SackGear extends Gear {
 	 * Növeli a paraméterként kapott virológus anyaggyűjtő képességét.
 	 * @param v - virológus, akire hatni fog
 	 */
-	public void giveStat(Virologist v) {
+	public void giveStrat(Virologist v) {
 		Skeleton.log("-> giveStat(v: Virologist)");
 		v.setResourceLimit(v.getResourceLimit() + limitUpgrade);
 		Skeleton.log("<- giveStat(v: Virologist)");
@@ -18,7 +18,7 @@ public class SackGear extends Gear {
 	 * Csökkenti a paraméterként kapott virológus anyaggyűjtő képességét.
 	 * @param v - virológus, akiről eltávolítja a hatását
 	 */
-	public void removeStat(Virologist v) {
+	public void removeStrat(Virologist v) {
 		Skeleton.log("-> removeStat(v: Virologist)");
 		v.setResourceLimit(v.getResourceLimit() - limitUpgrade);
 		Skeleton.log("<- removeStat(v: Virologist)");

@@ -125,7 +125,7 @@ public class Virologist implements Steppable {
 	 * @param g - a kiválasztott védőfelszerelés
 	 */
 	public void loot(Virologist v, Gear g) {
-
+		//TODO
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class Virologist implements Steppable {
 	public void pickUpGear(Gear g) {
 		Skeleton.log("-> pickUpGear(g: Gear)");
 		gears.add(g);
-		g.giveStat(this);
+		g.giveStrat(this);
 		if(gears.size() > 3){
 			loseGear(chooseFrom(gears));
 			//loseGear(gears.get((int)(Math.random() * gears.size())));
@@ -150,7 +150,7 @@ public class Virologist implements Steppable {
 	 */
 	public void loseGear(Gear g) {
 		Skeleton.log("-> loseGear(g: Gear)");
-		g.removeStat(this);
+		g.removeStrat(this);
 		gears.remove(g);
 		Skeleton.log("<- loseGear(g: Gear)");
 	}
@@ -205,6 +205,7 @@ public class Virologist implements Steppable {
 	 */
 	public void removeNucleotide(int n) {
 		Skeleton.log("-> removeNucleotide(n: int)");
+		//TODO
 		Skeleton.log("<- removeNucleotide(n: int)");
 	}
 
@@ -214,6 +215,7 @@ public class Virologist implements Steppable {
 	 */
 	public void removeAminoAcid(int a) {
 		Skeleton.log("-> removeAminoAcid(n: int)");
+		//TODO
 		Skeleton.log("<- removeAminoAcid(n: int)");
 	}
 

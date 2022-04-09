@@ -4,6 +4,7 @@
  */
 public class Laboratory extends Field {
 	private Code code;
+	private boolean infected;
 
 	/**
 	 * A paraméterül kapott virológus megtanulja a laboratóriumban található genetikai kódot.

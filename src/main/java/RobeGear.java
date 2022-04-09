@@ -10,7 +10,7 @@ public class RobeGear extends Gear {
 	 * Megváltoztatja a paraméterként kapott virológus viselkedési stratégiáját a rákent ágensekkel szemben.
 	 * @param v - virológus, akire hatni fog
 	 */
-	public void giveStat(Virologist v) {
+	public void giveStrat(Virologist v) {
 		Skeleton.log("-> giveStat(v: Virologist)");
 		v.addAbsorbStrat(strat);
 		Skeleton.log("<- giveStat(v: Virologist)");
@@ -20,7 +20,7 @@ public class RobeGear extends Gear {
 	 * Kiveszi a paraméterként kapott virológus ágensekkel szemben védekező stratégiái közül az általa betett RobeAbsorb-ot.
 	 * @param v - virológus, akiről eltávolítja a hatását
 	 */
-	public void removeStat(Virologist v) {
+	public void removeStrat(Virologist v) {
 		Skeleton.log("-> removeStat(v: Virologist)");
 		v.removeAbsorbStrat(strat);
 		Skeleton.log("<- removeStat(v: Virologist)");
