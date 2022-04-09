@@ -45,7 +45,7 @@ public class Field {
 	 * @param v - mezővel interaktáló virológus
 	 */
 	public void interactWithField(Virologist v) {
-
+		//do nothing
 	}
 
 	/**
@@ -62,6 +62,13 @@ public class Field {
 	 * @param v - a fertőző virológus
 	 */
 	public void smearAllVirologists(Virologist v){
-		//TODO
+		//TODO:
+	}
+
+	/**
+	 * Elpusztítja az összes a mezőn található anyagot. Csak raktárak esetében van hatása.
+	 */
+	public void destroyResources(){
+		//do nothing
 	}
 }

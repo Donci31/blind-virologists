@@ -18,11 +18,14 @@ public class Virologist implements Steppable {
 	private Field field;
 	private ArrayList<Code> learntCodes = new ArrayList<>();
 	private Move moveStrat = new DefaultMove();
+	private ArrayList<Hit> hitStrat = new ArrayList<>();
+
 
 	public Virologist(){
 		Skeleton.log("-> Virologist()");
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
+		hitStrat.add(new DefaultHit());
 		Skeleton.log("<- Virologist()");
 	}
 	public Virologist(Field f){
@@ -275,15 +278,37 @@ public class Virologist implements Steppable {
 	 * @param v - a megütött virológus
 	 */
 	public void hit(Virologist v){
-		//TODO
+		v.receiveHit();
+		//TODO: then what
 	}
 
 	/**
 	 * A virológusra ütést mérnek
 	 */
 	public void receiveHit(){
-		//TODO
+		//TODO: die
 	}
+
+	/**
+	 * ha a virológus felvesz egy fegyvert, akkor meghívódik ez a függvény,
+	 * és hozzáad a virológus ütési viselkedés befolyásoló listájához egy új,
+	 * a fegyverre jellemző - itt paraméterként kapott - viselkedést.
+	 * @param h - a felvett ütési viselkedés
+	 */
+	public void addHitStrat(Hit h){
+		hitStrat.add(h);
+	}
+
+	/**
+	 * ha a virológus eldob vagy elhasznál egy fegyvert, akkor meghívódik ez a függvény,
+	 * és kivesz a virológus ütési viselkedés befolyásoló listájából egy,
+	 * a fegyverre jellemző - itt paraméterként kapott - viselkedést.
+	 * @param h - az eltávolított ütési viselkedés
+	 */
+	public void removeHitStrat(Hit h){
+		hitStrat.remove(h);
+	}
+
 
 	/**
 	 *  segédfüggvény, a játékos kiválaszthat egy elemet egy listából

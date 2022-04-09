@@ -25,4 +25,12 @@ public class Warehouse extends Field implements Steppable {
 		aProduced -= v.addAminoAcid(aProduced);
 		Skeleton.log("<- interactWithField(v: Virologist)");
 	}
+
+	/**
+	 * Elpusztítja az összes a mezőn található anyagot.
+	 */
+	public void destroyResources(){
+		aProduced = 0;
+		nProduced = 0;
+	}
 }

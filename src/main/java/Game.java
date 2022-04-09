@@ -19,7 +19,7 @@ public class Game {
 	 */
 	public void endGame() {
 		Skeleton.log("->endGame()");
+		//TODO
 		Skeleton.log("<-endGame()");
-
 	}
 }

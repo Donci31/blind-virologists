@@ -3,7 +3,7 @@
  * Ha ezt a vírust kenik egy virológusra, az vitustáncba kezd, és a vírus hatásának elmúlásáig kontrollálhatatlanul fog mozogni.
  */
 public class DanceVirus extends Agent implements Steppable{
-	private DanceMove strat;
+	private DanceMove strat = new DanceMove();
 
 	/**
 	 * A paraméterként kapott virológusra kenődik az ágens, az ágensnek megfelelő hatás aktiválódik a virológuson és az ágens időzítője elkezd visszaszámolni.
@@ -13,9 +13,7 @@ public class DanceVirus extends Agent implements Steppable{
 	public void smear(Virologist v) {
 		Skeleton.log("-> smear(v: Virologist)");
 		smearedVirologist = v;
-		DanceMove dm = new DanceMove();
-		// this.strat = dm; // ?
-		v.setMoveStrat(dm);
+		v.setMoveStrat(strat);
 		super.smear(v);
 		Skeleton.log("<- smear(v: Virologist)");
 	}
