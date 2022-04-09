@@ -56,4 +56,12 @@ public class Field {
 	public void setNeighbor(int idx, Field f) {
 		neighbors.add(idx, f);
 	}
+
+	/**
+	 * A paraméterként kapott virológus megfertőzi mezőn lévő összes virológust medvevírussal.
+	 * @param v - a fertőző virológus
+	 */
+	public void smearAllVirologists(Virologist v){
+		//TODO
+	}
 }

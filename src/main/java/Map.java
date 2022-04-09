@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public class Map {
 	private int uniqueCodeCount;
-	private ArrayList<Field> fields=new ArrayList<Field>();
+	private ArrayList<Field> fields= new ArrayList<>();
 
 	/**
 	 * Létrehozza a pálya mezőit, beállítja a szomszédosságot. Leteszi a virológusokat

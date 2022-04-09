@@ -205,7 +205,7 @@ public class Virologist implements Steppable {
 	 */
 	public void removeNucleotide(int n) {
 		Skeleton.log("-> removeNucleotide(n: int)");
-		//TODO
+		nucleotide -= n;
 		Skeleton.log("<- removeNucleotide(n: int)");
 	}
 
@@ -215,7 +215,7 @@ public class Virologist implements Steppable {
 	 */
 	public void removeAminoAcid(int a) {
 		Skeleton.log("-> removeAminoAcid(n: int)");
-		//TODO
+		aminoAcid -= a;
 		Skeleton.log("<- removeAminoAcid(n: int)");
 	}
 
@@ -234,6 +234,7 @@ public class Virologist implements Steppable {
 	 */
 	public void forgetCodes() {
 		Skeleton.log("->forgetCodes()");
+		learntCodes.clear();
 		Skeleton.log("<-forgetCodes()");
 	}
 
@@ -270,7 +271,23 @@ public class Virologist implements Steppable {
 	}
 
 	/**
+	 * Megüti a paraméterként megadott virológust a saját támadási viselkedési szerint.
+	 * @param v - a megütött virológus
+	 */
+	public void hit(Virologist v){
+		//TODO
+	}
+
+	/**
+	 * A virológusra ütést mérnek
+	 */
+	public void receiveHit(){
+		//TODO
+	}
+
+	/**
 	 *  segédfüggvény, a játékos kiválaszthat egy elemet egy listából
+	 * @param c - a lista amiből választunk
 	 */
 	private <T> T chooseFrom(ArrayList<T> c){
 		StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();

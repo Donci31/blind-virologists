@@ -6,6 +6,10 @@ public class Laboratory extends Field {
 	private Code code;
 	private boolean infected;
 
+	public Laboratory(){
+		infected = Math.random() > 0.8;
+	}
+
 	/**
 	 * A paraméterül kapott virológus megtanulja a laboratóriumban található genetikai kódot.
 	 * @param v - mezővel interaktáló virológus
@@ -22,5 +26,16 @@ public class Laboratory extends Field {
 	 */
 	public void placeCode(Code c) {
 		code = c;
+	}
+
+	/**
+	 * Felvesz egy virológust a mezőre. Ha a labor medvevírussal fertőzött, a virológus megfertőződik
+	 * @param v - lépő virológus
+	 */
+	public void accept(Virologist v){
+		virologists.add(v);
+		if(infected){
+			//TODO
+		}
 	}
 }

@@ -32,6 +32,6 @@ public class GloveGear extends Gear {
 	 */
 	public void useGlove(){
 		timesUsed++;
-		//TODO: implement usage
+		//TODO
 	}
 }

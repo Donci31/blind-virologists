@@ -2,7 +2,7 @@
  * Ez az osztály azt a védőfelszerelést valósítja meg, ami a virológusok anyaggyűjtő képességét növeli meg.
  */
 public class SackGear extends Gear {
-	private int limitUpgrade = 100;
+	private final int limitUpgrade = 100;
 
 	/**
 	 * Növeli a paraméterként kapott virológus anyaggyűjtő képességét.
