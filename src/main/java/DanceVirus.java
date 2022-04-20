@@ -2,7 +2,7 @@
  * A felejtést okozó vírus kezeléséért felelős osztály.
  * Ha ezt a vírust kenik egy virológusra, az vitustáncba kezd, és a vírus hatásának elmúlásáig kontrollálhatatlanul fog mozogni.
  */
-public class DanceVirus extends Agent implements Steppable{
+public class DanceVirus extends Agent {
 	private DanceMove strat = new DanceMove();
 
 	/**

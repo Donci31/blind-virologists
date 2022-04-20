@@ -4,7 +4,7 @@
  * Amíg medvetáncot jár, addig minden alapanyagot elpusztít a raktárakon, amelyekre rálép,
  * és minden vele egy mezőn álló virológust megfertőz a medvevírussal.
  */
-public class BearVirus extends Agent implements Steppable{
+public class BearVirus extends Agent {
     private BearMove strat = new BearMove();
     /**
      * A paraméterként kapott virológusra kenődik az ágens,
