@@ -67,4 +67,9 @@ public class Field {
 	public void destroyResources(){
 		//do nothing
 	}
+
+	/**
+	 * Ez a metódus megadja, hogy a paraméterként megadott mező szomszédja-e ennek a mezőnek.
+	 */
+	public boolean isNeighbor(Field f) { return neighbors.contains(f); }
 }

@@ -113,6 +113,7 @@ public class Virologist implements Steppable {
 	 */
 	public void loot(Virologist v, Gear g) {
 		//TODO
+		// Itt már addolja a saját felszereléseihez g Gear-t
 	}
 
 	/**
@@ -248,7 +249,7 @@ public class Virologist implements Steppable {
 	}
 
 	/**
-	 * ha a virológus felvesz egy fegyvert, akkor meghívódik ez a függvény,
+	 * Ha a virológus felvesz egy fegyvert, akkor meghívódik ez a függvény,
 	 * és hozzáad a virológus ütési viselkedés befolyásoló listájához egy új,
 	 * a fegyverre jellemző - itt paraméterként kapott - viselkedést.
 	 * @param h - a felvett ütési viselkedés
@@ -258,7 +259,7 @@ public class Virologist implements Steppable {
 	}
 
 	/**
-	 * ha a virológus eldob vagy elhasznál egy fegyvert, akkor meghívódik ez a függvény,
+	 * Ha a virológus eldob vagy elhasznál egy fegyvert, akkor meghívódik ez a függvény,
 	 * és kivesz a virológus ütési viselkedés befolyásoló listájából egy,
 	 * a fegyverre jellemző - itt paraméterként kapott - viselkedést.
 	 * @param h - az eltávolított ütési viselkedés
@@ -266,7 +267,6 @@ public class Virologist implements Steppable {
 	public void removeHitStrat(Hit h){
 		hitStrat.remove(h);
 	}
-
 
 	/**
 	 *  segédfüggvény, a játékos kiválaszthat egy elemet egy listából
