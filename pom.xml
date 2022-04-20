@@ -7,9 +7,10 @@
     <groupId>hu.progchamps</groupId>
     <artifactId>ProgChamps</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
-        <exec.mainClass>Skeleton</exec.mainClass>
+        <exec.mainClass>Prototype</exec.mainClass>
     </properties>
 
     <build>
@@ -31,15 +32,48 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>Skeleton</mainClass>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>libs/</classpathPrefix>
+                            <mainClass>Prototype</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/libs
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>${basedir}/target/dependency</directory>
+            </resource>
+        </resources>
     </build>
 
     <dependencies>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.30</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -47,6 +81,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    
 </project>
