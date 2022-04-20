@@ -9,10 +9,8 @@ public class Warehouse extends Field implements Steppable {
 	 * Körönként egyszer hívódik meg, a raktárban található anyagok száma random értékkel növekszik.
 	 */
 	public void step() {
-		Skeleton.log("-> step()");
 		nProduced += (int)(Math.random()*10);
 		aProduced += (int)(Math.random()*10);
-		Skeleton.log("<- step()");
 	}
 
 	/**
@@ -20,10 +18,8 @@ public class Warehouse extends Field implements Steppable {
 	 * @param v - mezővel interaktáló virológus
 	 */
 	public void interactWithField(Virologist v) {
-		Skeleton.log("-> interactWithField(v: Virologist)");
 		nProduced -= v.addNucleotide(nProduced);
 		aProduced -= v.addAminoAcid(aProduced);
-		Skeleton.log("<- interactWithField(v: Virologist)");
 	}
 
 	/**

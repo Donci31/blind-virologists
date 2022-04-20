@@ -10,17 +10,13 @@ public class AmniVirus extends Agent {
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
 	public void smear(Virologist v) {
-		Skeleton.log("-> smear(v: Virologist)");
 		v.forgetCodes();
 		super.smear(v);
-		Skeleton.log("<- smear(v: Virologist)");
 	}
 
 	/**
 	 * Felülírja az ős step függvényét, nem csinál semmit.
 	 */
 	public void step() {
-		Skeleton.log("-> step()");
-		Skeleton.log("<- step()");
 	}
 }

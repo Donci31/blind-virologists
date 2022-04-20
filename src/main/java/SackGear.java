@@ -9,9 +9,7 @@ public class SackGear extends Gear {
 	 * @param v - virológus, akire hatni fog
 	 */
 	public void giveStrat(Virologist v) {
-		Skeleton.log("-> giveStat(v: Virologist)");
 		v.setResourceLimit(v.getResourceLimit() + limitUpgrade);
-		Skeleton.log("<- giveStat(v: Virologist)");
 	}
 
 	/**
@@ -19,8 +17,6 @@ public class SackGear extends Gear {
 	 * @param v - virológus, akiről eltávolítja a hatását
 	 */
 	public void removeStrat(Virologist v) {
-		Skeleton.log("-> removeStat(v: Virologist)");
 		v.setResourceLimit(v.getResourceLimit() - limitUpgrade);
-		Skeleton.log("<- removeStat(v: Virologist)");
 	}
 }

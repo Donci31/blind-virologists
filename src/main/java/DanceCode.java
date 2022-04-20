@@ -10,18 +10,13 @@ public class DanceCode extends Code {
 	 * @param aCost - szükséges aminosav
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
-		Skeleton.log("-> craftAgent(v: Virologist, nCost: int, aCost: int)");
-		var hasEnoughResource = Skeleton.askYesOrNo("Does the virologist have enough resources?");
 
-		if (hasEnoughResource) { // Itt kell feltenni a felhasználónak egy értelmes kérdést, pl. "Does the virologist have enough resources?"
+		if (true) { // Itt kell feltenni a felhasználónak egy értelmes kérdést, pl. "Does the virologist have enough resources?"
 			// HIBA! Nem ismeri a virológust!
-			Skeleton.log("-> DanceVirus()");
 			DanceVirus d = new DanceVirus();
-			Skeleton.log("<- DanceVirus()");
 			v.removeNucleotide(50);
 			v.removeAminoAcid(100);
 			v.addCraftedAgent(d);
 		}
-		Skeleton.log("<- craftAgent(v: Virologist, nCost: int, aCost: int)");
 	}
 }

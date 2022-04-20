@@ -11,18 +11,12 @@ public class StunCode extends Code {
 	 * @param aCost - szükséges aminosav
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
-		Skeleton.log("-> craftAgent(v: Virologist, nCost: int, aCost: int)");
-		var hasEnoughResource = Skeleton.askYesOrNo("~~ Does the virologist have enough resources? (Y/N): ");
-
-		if (hasEnoughResource) {
+		if (true) {
 			// HIBA! Nem ismeri a virológust!
-			Skeleton.log("-> StunVirus()");
 			StunVirus s = new StunVirus();
-			Skeleton.log("<- StunVirus()");
 			v.removeNucleotide(50);
 			v.removeAminoAcid(100);
 			v.addCraftedAgent(s);
 		}
-		Skeleton.log("<- craftAgent(v: Virologist, nCost: int, aCost: int)");
 	}
 }

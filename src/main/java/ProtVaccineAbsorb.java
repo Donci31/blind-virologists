@@ -8,8 +8,6 @@ public class ProtVaccineAbsorb implements Absorb {
 	 * @param a - felkent ágens
 	 */
 	public void absorb(Agent a) {
-		Skeleton.log("->absorb(a)");
 		//üres mert nem csinál semmit, esetleg kitörölheti majd a smearedVirologist a vírusból
-		Skeleton.log("<-absorb(a)");
 	}
 }

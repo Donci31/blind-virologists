@@ -22,11 +22,9 @@ public class Virologist implements Steppable {
 
 
 	public Virologist(){
-		Skeleton.log("-> Virologist()");
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
 		hitStrat.add(new DefaultHit());
-		Skeleton.log("<- Virologist()");
 	}
 	public Virologist(Field f){
 		field = f;
@@ -50,8 +48,6 @@ public class Virologist implements Steppable {
 	 * A field attribútum gettere.
 	 */
 	public Field getField() {
-		Skeleton.log("-> getField()");
-		Skeleton.log("<- getField()");
 		return field;
 	}
 
@@ -66,9 +62,7 @@ public class Virologist implements Steppable {
 	 * A moveStrat attribútum settere.
 	 */
 	public void setMoveStrat(Move moveStrat) {
-		Skeleton.log("-> setMoveStrat(moveStrat: Move)");
 		this.moveStrat = moveStrat;
-		Skeleton.log("<- setMoveStrat(moveStrat: Move)");
 	}
 
 
@@ -76,9 +70,7 @@ public class Virologist implements Steppable {
 	 * A stun attribútum settere
 	 */
 	public void setStunned(Boolean b){
-		Skeleton.log("-> setStunned()");
 		stunned = b;
-		Skeleton.log("<- setStunned()");
 	}
 
 	/**
@@ -86,9 +78,7 @@ public class Virologist implements Steppable {
 	 * @param f - a mező
 	 */
 	public void move(Field f) {
-		Skeleton.log("-> move()");
 		moveStrat.move(f, this);
-		Skeleton.log("<- move()");
 	}
 
 	/**
@@ -97,10 +87,8 @@ public class Virologist implements Steppable {
 	 * @param v - megcélzott virológus
 	 */
 	public void smearAgent(Agent a, Virologist v) {
-		Skeleton.log("-> smearAgent(a: Agent,v: Virologist)");
 		a.setSmearedVirologist(v);			//Beállítja a célvirológust, hogy az absorbok ismerjék kire kell kenni
 		v.absorb(a);
-		Skeleton.log("<- smearAgent(a: Agent, v: Virologist)");
 	}
 
 	/**
@@ -108,18 +96,14 @@ public class Virologist implements Steppable {
 	 * @param a - virológusra kent ágens
 	 */
 	public void absorb(Agent a) {
-		Skeleton.log("-> absorb(a: Agent)");
 		chooseFrom(absorbStrats).absorb(a);
-		Skeleton.log("<- absorb(a: Agent)");
 	}
 
 	/**
 	 * A virológus interaktál a mezővel, amin éppen áll.
 	 */
 	public void touch() {
-		Skeleton.log("-> touch()");
 		field.interactWithField(this);
-		Skeleton.log("<- touch()");
 	}
 
 	/**
@@ -136,14 +120,12 @@ public class Virologist implements Steppable {
 	 * @param g - felvevendő védőfelszerelés
 	 */
 	public void pickUpGear(Gear g) {
-		Skeleton.log("-> pickUpGear(g: Gear)");
 		gears.add(g);
 		g.giveStrat(this);
 		if(gears.size() > 3){
 			loseGear(chooseFrom(gears));
 			//loseGear(gears.get((int)(Math.random() * gears.size())));
 		}
-		Skeleton.log("<- pickUpGear(g: Gear)");
 	}
 
 	/**
@@ -152,10 +134,8 @@ public class Virologist implements Steppable {
 	 * @param g - eldobandó védőfelszerelés
 	 */
 	public void loseGear(Gear g) {
-		Skeleton.log("-> loseGear(g: Gear)");
 		g.removeStrat(this);
 		gears.remove(g);
-		Skeleton.log("<- loseGear(g: Gear)");
 	}
 
 	/**
@@ -163,9 +143,7 @@ public class Virologist implements Steppable {
 	 * @param c - megtanulandó genetikai kód
 	 */
 	public void learnCode(Code c) {
-		Skeleton.log("-> learnCode(c: Code)");
 		learntCodes.add(c);
-		Skeleton.log("<- learnCode(c: Code)");
 	}
 
 	/**
@@ -173,9 +151,7 @@ public class Virologist implements Steppable {
 	 * @param c - a létrehozandó ágens kódja
 	 */
 	public void craftAgent(Code c) {
-		Skeleton.log("-> craftAgent(c: Code)");
 		c.craftAgent(this, nucleotide, aminoAcid);
-		Skeleton.log("<- craftAgent(c: Code)");
 	}
 
 	/**
@@ -183,10 +159,8 @@ public class Virologist implements Steppable {
 	 * @param n - felvett nukleotid
 	 */
 	public int addNucleotide(int n) {
-		Skeleton.log("-> addNucleotide(n: int)");
 		int addable = Math.min(n, resourceLimit - nucleotide - aminoAcid);
 		nucleotide += addable;
-		Skeleton.log("<- addNucleotide(n: int)");
 		return addable;
 	}
 
@@ -195,10 +169,8 @@ public class Virologist implements Steppable {
 	 * @param a - felvett aminosav
 	 */
 	public int addAminoAcid(int a) {
-		Skeleton.log("-> addAminoAcid(a: int)");
 		int addable = Math.min(a, resourceLimit - nucleotide - aminoAcid);
 		aminoAcid += addable;
-		Skeleton.log("<- addAminoAcid(a: int)");
 		return addable;
 	}
 
@@ -207,9 +179,7 @@ public class Virologist implements Steppable {
 	 * @param n - levonandó nukleotid
 	 */
 	public void removeNucleotide(int n) {
-		Skeleton.log("-> removeNucleotide(n: int)");
 		nucleotide -= n;
-		Skeleton.log("<- removeNucleotide(n: int)");
 	}
 
 	/**
@@ -217,18 +187,14 @@ public class Virologist implements Steppable {
 	 * @param a - levonandó aminosav
 	 */
 	public void removeAminoAcid(int a) {
-		Skeleton.log("-> removeAminoAcid(n: int)");
 		aminoAcid -= a;
-		Skeleton.log("<- removeAminoAcid(n: int)");
 	}
 
 	/**
 	 * Ez a függvény minden kör végén meghívódik, és törli a virológus felhasználatlan ágenseit (az ágensek csak egy körig használhatóak).
 	 */
 	public void step() {
-		Skeleton.log("-> step()");
 		craftedAgents.clear();
-		Skeleton.log("<- step()");
 	}
 
 	/**
@@ -236,9 +202,7 @@ public class Virologist implements Steppable {
 	 * Hatására a virológus elfelejti az eddig megtanult genetikait kódokat.
 	 */
 	public void forgetCodes() {
-		Skeleton.log("->forgetCodes()");
 		learntCodes.clear();
-		Skeleton.log("<-forgetCodes()");
 	}
 
 	/**
@@ -246,9 +210,7 @@ public class Virologist implements Steppable {
 	 * @param a - az új ágens
 	 */
 	public void addCraftedAgent(Agent a) {
-		Skeleton.log("-> addCraftedAgent(a: Agent)");
 		craftedAgents.add(a);
-		Skeleton.log("<- addCraftedAgent(a: Agent)");
 	}
 
 	/**
@@ -257,9 +219,7 @@ public class Virologist implements Steppable {
 	 * @param a - az új védekező viselkedés
 	 */
 	public void addAbsorbStrat(Absorb a) {
-		Skeleton.log("-> addAbsorbStrat(a: Absorb)");
 		absorbStrats.add(a);
-		Skeleton.log("<- addAbsorbStrat(a: Absorb)");
 	}
 
 	/**
@@ -268,9 +228,7 @@ public class Virologist implements Steppable {
 	 * @param a - a már nemkívánatos védekező viselkedés
 	 */
 	public void removeAbsorbStrat(Absorb a) {
-		Skeleton.log("-> removeAbsorbStrat(a: Absorb)");
 		absorbStrats.remove(a);
-		Skeleton.log("<- removeAbsorbStrat(a: Absorb)");
 	}
 
 	/**
@@ -323,8 +281,10 @@ public class Virologist implements Steppable {
 		}
 		//majd le lesz cserélve grafikus megoldásra
 		System.out.print("\t".repeat(depth) + "~~ Which Absorb mechanic to use? ");
-		int index = Skeleton.input.nextInt();
-		Skeleton.input.nextLine();
+
+		Scanner input = new Scanner(System.in);
+		int index = input.nextInt();
+		input.nextLine();
 		return c.get(index);
 	}
 }

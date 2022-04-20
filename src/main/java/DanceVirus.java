@@ -11,23 +11,18 @@ public class DanceVirus extends Agent {
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
 	public void smear(Virologist v) {
-		Skeleton.log("-> smear(v: Virologist)");
 		smearedVirologist = v;
 		v.setMoveStrat(strat);
 		super.smear(v);
-		Skeleton.log("<- smear(v: Virologist)");
 	}
 
 	/**
 	 * Felülírja az ős step függvényét, csökkenti a virusTimer értékét, és ha lejárt az ideje, akkor visszaállítja a virológus alapraméretezett mozgását.
 	 */
 	public void step() {
-		Skeleton.log("-> step()");
-		var expired = Skeleton.askYesOrNo("VirusTimer expired?");
-		if (expired) {
+		if (true) {
 			DefaultMove def = new DefaultMove(); // <<create>> DefaultMove
 			smearedVirologist.setMoveStrat(def);
 		}
-		Skeleton.log("<- step()");
 	}
 }

@@ -25,9 +25,7 @@ public class Field {
 	 * @param v - lépő virológus
 	 */
 	public void accept(Virologist v) {
-		Skeleton.log("-> accept()");
 		virologists.add(v);
-		Skeleton.log("<- accept()");
 	}
 
 	/**
@@ -35,9 +33,7 @@ public class Field {
 	 * @param v - ellépő virológus
 	 */
 	public void remove(Virologist v) {
-		Skeleton.log("-> remove()");
 		virologists.remove(v);
-		Skeleton.log("<- remove()");
 	}
 
 	/**

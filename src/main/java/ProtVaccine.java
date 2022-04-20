@@ -11,11 +11,9 @@ public class ProtVaccine extends Agent {
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
 	public void smear(Virologist v) {
-		Skeleton.log("-> smear(v: Virologist)");
 		this.strat = new ProtVaccineAbsorb();
 		v.addAbsorbStrat(this.strat);
 		super.smear(v);
-		Skeleton.log("<- smear(v: Virologist)");
 	}
 
 	/**
@@ -23,11 +21,8 @@ public class ProtVaccine extends Agent {
 	 * Ha lejárt az idő, akkor kiveszi a rá jellemző absorb stratégiát a virológusáról (ProtVaccineAbsorb).
 	 */
 	public void step() {
-		Skeleton.log("-> step()");
-		var expired = Skeleton.askYesOrNo("VirusTimer expired?");
-		if (expired) {
+		if (true) {
 			this.getSmearedVirologist().removeAbsorbStrat(this.strat);
 		}
-		Skeleton.log("<- step()");
 	}
 }

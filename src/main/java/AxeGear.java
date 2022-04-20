@@ -11,9 +11,7 @@ public class AxeGear extends Gear {
      * @param v - virológus, akire hatni fog
      */
     public void giveStrat(Virologist v) {
-        Skeleton.log("-> giveStat(v: Virologist)");
         v.addHitStrat(strat);
-        Skeleton.log("<- giveStat(v: Virologist)");
     }
 
     /**
@@ -21,9 +19,7 @@ public class AxeGear extends Gear {
      * @param v - virológus, akiről eltávolítja a hatását
      */
     public void removeStrat(Virologist v) {
-        Skeleton.log("-> removeStat(v: Virologist)");
         v.removeHitStrat(strat);
-        Skeleton.log("<- removeStat(v: Virologist)");
     }
     /**
      * Használja a kesztyűt, azaz a timesUsed nő egy értékkel.

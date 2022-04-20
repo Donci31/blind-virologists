@@ -15,9 +15,7 @@ public class Laboratory extends Field {
 	 * @param v - mezővel interaktáló virológus
 	 */
 	public void interactWithField(Virologist v) {
-		Skeleton.log("-> interactWithField(v: Virologist)");
 		v.learnCode(code);
-		Skeleton.log("<- interactWithField(v: Virologist)");
 	}
 
 	/**

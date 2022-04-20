@@ -9,9 +9,7 @@ public class GloveAbsorb implements Absorb {
 	 * @param a - felkent ágens
 	 */
 	public void absorb(Agent a) {
-		Skeleton.log("->absorb(a)");
 		a.setSmearedVirologist(a.getCrafterVirologist());
 		a.smear(a.getSmearedVirologist());
-		Skeleton.log("<-absorb(a)");
 	}
 }

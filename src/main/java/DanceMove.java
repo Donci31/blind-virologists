@@ -11,7 +11,6 @@ public class DanceMove implements Move {
 	 * @param v - lépő virológus
 	 */
 	public void move(Field f, Virologist v) {
-		Skeleton.log("-> move(f: Field, v: Virologist)");
 		Field f1 = v.getField();
 		f1.remove(v);
 
@@ -20,7 +19,5 @@ public class DanceMove implements Move {
 
 		Field f2 = neighbours.get(r.nextInt(neighbours.size()));
 		f2.accept(v);
-
-		Skeleton.log("<- move(f: Field, v: Virologist)");
 	}
 }

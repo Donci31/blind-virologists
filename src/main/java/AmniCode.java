@@ -10,17 +10,12 @@ public class AmniCode extends Code {
 	 * @param aCost - szükséges aminosav
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
-		Skeleton.log("-> craftAgent(v: Virologist, nCost: int, aCost: int)");
-		var hasEnoughResource = Skeleton.askYesOrNo("Does the virologist have enough resources?");
 
-		if (hasEnoughResource) {
-			Skeleton.log("-> AmniVirus()");
+		if (true) {
 			AmniVirus a = new AmniVirus();
-			Skeleton.log("<- AmniVirus()");
 			v.removeNucleotide(50);
 			v.removeAminoAcid(100);
 			v.addCraftedAgent(a);
 		}
-		Skeleton.log("<- craftAgent(v: Virologist, nCost: int, aCost: int)");
 	}
 }
