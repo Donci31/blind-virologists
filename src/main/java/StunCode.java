@@ -11,11 +11,10 @@ public class StunCode extends Code {
 	 * @param aCost - szükséges aminosav
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
-		if (true) {
-			// HIBA! Nem ismeri a virológust!
+		if (v.getAminoAcid() > aCost && v.getNucleotide() > nCost) {
 			StunVirus s = new StunVirus();
-			v.removeNucleotide(50);
-			v.removeAminoAcid(100);
+			v.removeNucleotide(nCost);
+			v.removeAminoAcid(aCost);
 			v.addCraftedAgent(s);
 		}
 	}

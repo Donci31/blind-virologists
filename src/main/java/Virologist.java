@@ -120,8 +120,12 @@ public class Virologist implements Steppable {
 	 * @param g - a kiválasztott védőfelszerelés
 	 */
 	public void loot(Virologist v, Gear g) {
-		//TODO
 		// Itt már addolja a saját felszereléseihez g Gear-t
+		//TODO: check
+		if (v.stunned) {
+			v.loseGear(g);
+			gears.add(g);
+		}
 	}
 
 	/**
@@ -160,7 +164,7 @@ public class Virologist implements Steppable {
 	 * @param c - a létrehozandó ágens kódja
 	 */
 	public void craftAgent(Code c) {
-		c.craftAgent(this, nucleotide, aminoAcid);
+		c.craftAgent(this, c.nCost, c.aCost);
 	}
 
 	/**
@@ -189,6 +193,7 @@ public class Virologist implements Steppable {
 	 */
 	public void removeNucleotide(int n) {
 		nucleotide -= n;
+		if (nucleotide < 0) nucleotide = 0;
 	}
 
 	/**
@@ -197,6 +202,7 @@ public class Virologist implements Steppable {
 	 */
 	public void removeAminoAcid(int a) {
 		aminoAcid -= a;
+		if (aminoAcid < 0) aminoAcid = 0;
 	}
 
 	/**
@@ -245,8 +251,9 @@ public class Virologist implements Steppable {
 	 * @param v - a megütött virológus
 	 */
 	public void hit(Virologist v){
-		v.receiveHit();
-		//TODO: then what
+		//v.receiveHit();
+		//TODO: choose hitstrat??
+		hitStrat.get(0).hit(v);
 	}
 
 	/**

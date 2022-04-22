@@ -11,10 +11,10 @@ public class AmniCode extends Code {
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
 
-		if (true) {
+		if (v.getAminoAcid() > aCost && v.getNucleotide() > nCost) {
 			AmniVirus a = new AmniVirus();
-			v.removeNucleotide(50);
-			v.removeAminoAcid(100);
+			v.removeNucleotide(nCost);
+			v.removeAminoAcid(aCost);
 			v.addCraftedAgent(a);
 		}
 	}

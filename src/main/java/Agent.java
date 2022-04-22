@@ -31,6 +31,7 @@ public abstract class Agent implements Steppable {
 	 */
 	public void smear(Virologist v) {
 		setSmearedVirologist(v);
+		// TODO: Add to steppables
 	}
 
 	/**

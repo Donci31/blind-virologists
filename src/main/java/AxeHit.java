@@ -10,6 +10,6 @@ public class AxeHit implements Hit{
      */
     public void hit(Virologist v){
         axe.useAxe();
-        //TODO: kill target virologist
+        v.receiveHit();
     }
 }

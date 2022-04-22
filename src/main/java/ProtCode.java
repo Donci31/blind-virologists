@@ -11,11 +11,10 @@ public class ProtCode extends Code {
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
 
-		if (true) {
-			// HIBA! Nem ismeri a virológust!
+		if (v.getAminoAcid() > aCost && v.getNucleotide() > nCost) {
 			ProtVaccine p = new ProtVaccine();
-			v.removeNucleotide(50);
-			v.removeAminoAcid(100);
+			v.removeNucleotide(nCost);
+			v.removeAminoAcid(aCost);
 			v.addCraftedAgent(p);
 		}
 	}

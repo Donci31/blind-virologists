@@ -28,6 +28,8 @@ public class GloveGear extends Gear {
 	 */
 	public void useGlove(){
 		timesUsed++;
-		//TODO
+		if(timesUsed == 3){
+			//TODO
+		}
 	}
 }

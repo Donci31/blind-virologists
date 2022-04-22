@@ -22,12 +22,10 @@ public class AxeGear extends Gear {
         v.removeHitStrat(strat);
     }
     /**
-     * Használja a kesztyűt, azaz a timesUsed nő egy értékkel.
-     * Ha az a növelést követően 3 lenne, akkor a kesztyű elromlik, eldobjuk.
+     * Beállítja a used attribútumot igazra, azaz a balta használva volt.
      */
     public void useAxe(){
         if(!used){
-            //TODO
             used = true;
         }
     }

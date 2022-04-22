@@ -62,7 +62,11 @@ public class Field {
 	 * @param v - a fertőző virológus
 	 */
 	public void smearAllVirologists(Virologist v){
-		//TODO:
+		for(Virologist target : virologists){
+			if (v != target) {
+				v.smearAgent(new BearVirus(), target);
+			}
+		}
 	}
 
 	/**

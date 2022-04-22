@@ -12,5 +12,6 @@ public class Map {
 	 * Létrehozza a pálya mezőit, beállítja a szomszédosságot. Leteszi a virológusokat
 	 */
 	public void generateMap() {
+		//TODO
 	}
 }

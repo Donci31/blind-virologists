@@ -33,7 +33,7 @@ public class Laboratory extends Field {
 	public void accept(Virologist v){
 		virologists.add(v);
 		if(infected){
-			//TODO
+			v.absorb(new BearVirus());
 		}
 	}
 }

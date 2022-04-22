@@ -19,7 +19,8 @@ public class StunVirus extends Agent {
 	 * Ha lejárt az idő, akkor kiveszi a rá jellemző absorb stratégiát a virológusáról (StunAbsorb).
 	 */
 	public void step() {
-		if (true) {
+		virusTimer--;
+		if (virusTimer == 0) {
 			smearedVirologist.setStunned(false);
 		}
 	}

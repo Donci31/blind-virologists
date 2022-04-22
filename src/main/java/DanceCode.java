@@ -11,11 +11,10 @@ public class DanceCode extends Code {
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
 
-		if (true) { // Itt kell feltenni a felhasználónak egy értelmes kérdést, pl. "Does the virologist have enough resources?"
-			// HIBA! Nem ismeri a virológust!
+		if (v.getAminoAcid() > aCost && v.getNucleotide() > nCost) {
 			DanceVirus d = new DanceVirus();
-			v.removeNucleotide(50);
-			v.removeAminoAcid(100);
+			v.removeNucleotide(nCost);
+			v.removeAminoAcid(aCost);
 			v.addCraftedAgent(d);
 		}
 	}

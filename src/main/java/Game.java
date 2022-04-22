@@ -10,6 +10,7 @@ public class Game {
 	public void startGame() {
 		var m = new Map();
 		m.generateMap();
+		// TODO
 	}
 
 	/**

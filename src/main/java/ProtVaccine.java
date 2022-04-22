@@ -21,7 +21,8 @@ public class ProtVaccine extends Agent {
 	 * Ha lejárt az idő, akkor kiveszi a rá jellemző absorb stratégiát a virológusáról (ProtVaccineAbsorb).
 	 */
 	public void step() {
-		if (true) {
+		virusTimer--;
+		if (virusTimer == 0) {
 			this.getSmearedVirologist().removeAbsorbStrat(this.strat);
 		}
 	}

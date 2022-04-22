@@ -13,7 +13,6 @@ public class BearVirus extends Agent {
      * @param v - virológus, aki megfertőződik a vírussal
      */
     public void smear(Virologist v) {
-        smearedVirologist = v;
         v.setMoveStrat(strat);
         super.smear(v);
     }
