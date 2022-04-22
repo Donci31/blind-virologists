@@ -16,6 +16,10 @@ public class Field {
 		neighbors = new ArrayList<>();
 	}
 
+	public List<Virologist> getVirologists() {
+		return virologists;
+	}
+
 	public List<Field> getNeighbors() {
 		return neighbors;
 	}

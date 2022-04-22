@@ -10,8 +10,6 @@ import java.util.Map;
  */
 public class Prototype {
     private static boolean deterministic = false;
-    private static SteppableController controller = new SteppableController();
-
     // A prototípus számon tartja a különböző fajta objektumpéldányok azonosítóit, és hozzárendeli a valódi objektumok referenciáihoz
     private static Map<String, Virologist> virologists = new HashMap<>();
     private static Map<String, Field> fields = new HashMap<>();
@@ -239,12 +237,14 @@ public class Prototype {
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void step(String[] args) {
-        controller.step();
+        SteppableController.step();
     }
 
     public static void main(String[] args) {
         Field f1 = new Field();
         Field f2 = new Field();
+        f1.accept(new Virologist());
+        f1.accept(new Virologist());
         f1.setNeighbor(0, f2);
         InputReaderWriter.printField(f1);
     }

@@ -22,8 +22,14 @@ public abstract class InputReaderWriter {
 
         LinkedHashMap<String, Object> mainMap = new LinkedHashMap<>();
         LinkedHashMap<String, Object> fieldMap = new LinkedHashMap<>();
-        fieldMap.put("Name", "f1");
+        fieldMap.put("Name", f.toString());
         fieldMap.put("Neighbors", getNeighborBlock(f.getNeighbors()));
+
+        ArrayList<LinkedHashMap<String, Object>> virologists = new ArrayList<>();
+        for (Virologist v : f.getVirologists()) {
+            virologists.add(getVirologistBlock(v));
+        }
+        fieldMap.put("Virologists", virologists);
         mainMap.put(getClassName(f), fieldMap);
         try (FileWriter file = new FileWriter("./src/main/resources/file.yml")) {
             yaml.dump(mainMap, file);
@@ -42,5 +48,16 @@ public abstract class InputReaderWriter {
             names.add(neighbor.toString());
         }
         return names;
+    }
+
+    private static LinkedHashMap<String, Object> getVirologistBlock(Virologist v) {
+        LinkedHashMap<String, Object> virologistMap = new LinkedHashMap<>();
+        virologistMap.put("Name", v.toString());
+        virologistMap.put("nCount", v.getNucleotide());
+        virologistMap.put("aCount", v.getAminoAcid());
+        virologistMap.put("Gears", v.getAminoAcid());
+        virologistMap.put("Crafted Agents", v.getAminoAcid());
+        virologistMap.put("Learnt Codes", v.getAminoAcid());
+        return virologistMap;
     }
 }

@@ -30,6 +30,14 @@ public class Virologist implements Steppable {
 		field = f;
 	}
 
+	public int getAminoAcid() {
+		return aminoAcid;
+	}
+
+	public int getNucleotide() {
+		return nucleotide;
+	}
+
 	/**
 	 * A resourceLimit attribútum gettere.
 	 */
