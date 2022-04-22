@@ -243,35 +243,9 @@ public class Prototype {
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        Yaml yaml = new Yaml();
-
-        // A parancsokat tartalmazó HashMap feltöltése a parancsokat megvalósító metódusok referenciáival
-        Map<String, Command> commands = new HashMap<>();
-        commands.put("load", Prototype::load);
-        commands.put("save", Prototype::save);
-        commands.put("move", Prototype::move);
-        commands.put("smear", Prototype::smear);
-        commands.put("craft_agent", Prototype::craftAgent);
-        commands.put("learn_code", Prototype::learnCode);
-        commands.put("get_gear", Prototype::getGear);
-        commands.put("loot", Prototype::loot);
-        commands.put("hit", Prototype::hit);
-        commands.put("gather_resources", Prototype::gatherResources);
-        commands.put("set_deterministic", Prototype::setDeterministic);
-        commands.put("step", Prototype::step);
-
-        while (true) {
-            String line = scanner.nextLine();
-            String[] cmd = line.split(" ");
-
-            if ("exit".equals(cmd[0])) {
-                break;
-            } else if (commands.containsKey(cmd[0])) {
-                commands.get(cmd[0]).execute(cmd);
-            } else {
-                System.out.println("Error! Unknown command");
-            }
-        }
+        Field f1 = new Field();
+        Field f2 = new Field();
+        f1.setNeighbor(0, f2);
+        InputReaderWriter.printField(f1);
     }
 }
