@@ -1,5 +1,3 @@
-import org.yaml.snakeyaml.Yaml;
-
 import java.io.*;
 import java.util.*;
 import java.util.Map;
@@ -31,9 +29,6 @@ public class Prototype {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
     }
 
     /**
@@ -93,7 +88,7 @@ public class Prototype {
 
         if (args[4].length() > 1 && (gears.containsKey(args[4]) || agents.containsKey(args[4]))) {
             // Ha van opcionális 4. paraméter, át kell adni a védekezés típusát is
-            //attacker.smearAgent(agent, victim); // TODO új paraméter a függvénybe
+            //attacker.smearAgent(agent, victim); // TODO új paraméter a függvénybe, try-catch kell még ide
         } else {
             // Ha nincs, nem kell átadni a védekezés típusát
             attacker.smearAgent(agent, victim);
@@ -192,7 +187,7 @@ public class Prototype {
 
         Virologist attacker = virologists.get(args[1]);
         Virologist victim = virologists.get(args[2]);
-        // TODO vajon itt érdemes a "szomszédosságot" leellenőrízni vagy bent a loot() metódusban?
+        // TODO vajon itt érdemes a "szomszédosságot" leellenőrízni vagy bent a hit() metódusban?
         if (attacker.getField() == victim.getField()) {
             attacker.hit(victim);
         }
