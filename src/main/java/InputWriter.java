@@ -42,7 +42,7 @@ public abstract class InputWriter {
     private static LinkedHashMap<String, Object> getFieldBlock(Field f) {
         LinkedHashMap<String, Object> fieldMap = new LinkedHashMap<>();
         fieldMap.put("Type", getClassName(f));
-        fieldMap.put("Name", f.toString());
+        fieldMap.put("Name", f.getName());
         fieldMap.put("Neighbors", getNeighborList(f.getNeighbors()));
 
         ArrayList<LinkedHashMap<String, Object>> virologists = new ArrayList<>();
@@ -56,14 +56,14 @@ public abstract class InputWriter {
     private static ArrayList<Object> getNeighborList(List<Field> neighbors) {
         ArrayList<Object> names = new ArrayList<>();
         for (Field neighbor : neighbors) {
-            names.add(neighbor.toString());
+            names.add(neighbor.getName());
         }
         return names;
     }
 
     private static LinkedHashMap<String, Object> getVirologistBlock(Virologist v) {
         LinkedHashMap<String, Object> virologistMap = new LinkedHashMap<>();
-        virologistMap.put("Name", v.toString());
+        virologistMap.put("Name", (String)v.getName());
         virologistMap.put("nCount", v.getNucleotide());
         virologistMap.put("aCount", v.getAminoAcid());
         virologistMap.put("Gears", getGearsList(v));

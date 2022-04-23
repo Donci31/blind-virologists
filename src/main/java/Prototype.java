@@ -251,5 +251,14 @@ public class Prototype {
         fields.add(f1);
         fields.add(f2);
         InputWriter.printFields(fields);
+
+        var ir = new InputReader();
+        ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");
+        for(Field f : fieldsLoaded){
+            System.out.println("Field: " + f.getName() + "\n");
+            for(Virologist v: f.getVirologists()){
+                System.out.println("Virologist: " + v.getName() + "\n");
+            }
+        }
     }
 }

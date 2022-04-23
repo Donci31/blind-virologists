@@ -1,5 +1,8 @@
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * Az üres mezőket megvalósító osztály, valamint ősosztálya az összes többi mezőnek.
@@ -10,8 +13,17 @@ import java.util.List;
 public class Field {
 	protected List<Virologist> virologists;
 	protected List<Field> neighbors;
+	private String name;
+
+	public Field(String name) {
+		this.name = name;
+		virologists = new ArrayList<>();
+		neighbors = new ArrayList<>();
+	}
 
 	public Field() {
+		//generate random name
+		this.name = "Field@" + UUID.randomUUID();
 		virologists = new ArrayList<>();
 		neighbors = new ArrayList<>();
 	}
@@ -80,4 +92,9 @@ public class Field {
 	 * Ez a metódus megadja, hogy a paraméterként megadott mező szomszédja-e ennek a mezőnek.
 	 */
 	public boolean isNeighbor(Field f) { return neighbors.contains(f); }
+
+	/**
+	 * Visszaadja a mező azonosítóját
+	 */
+	public String getName(){return name;}
 }

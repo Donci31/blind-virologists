@@ -1,3 +1,4 @@
+import java.nio.charset.Charset;
 import java.util.*;
 
 /**
@@ -12,6 +13,7 @@ public class Virologist implements Steppable {
 	private int aminoAcid = 0;
 	private int resourceLimit = 100;
 	private boolean stunned = false;
+	private String name;
 	private ArrayList<Absorb> absorbStrats = new ArrayList<>();
 	private ArrayList<Agent> craftedAgents = new ArrayList<>();
 	private ArrayList<Gear> gears = new ArrayList<>();
@@ -21,11 +23,21 @@ public class Virologist implements Steppable {
 	private ArrayList<Hit> hitStrat = new ArrayList<>();
 
 
-	public Virologist(){
+	public Virologist(String name){
+		this.name = name;
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
 		hitStrat.add(new DefaultHit());
 	}
+
+	public Virologist(){
+		//generate random name
+		this.name = "Virologist@" + UUID.randomUUID();
+		var defAbs=new DefaultAbsorb();
+		addAbsorbStrat(defAbs);
+		hitStrat.add(new DefaultHit());
+	}
+
 	public Virologist(Field f){
 		field = f;
 	}
@@ -36,6 +48,14 @@ public class Virologist implements Steppable {
 
 	public int getNucleotide() {
 		return nucleotide;
+	}
+
+	public void setAminoAcid(int a) {
+		aminoAcid = a;
+	}
+
+	public void setNucleotide(int n) {
+		nucleotide = n;
 	}
 
 	public ArrayList<Gear> getGears() {
@@ -49,6 +69,20 @@ public class Virologist implements Steppable {
 	public ArrayList<Code> getLearntCodes() {
 		return learntCodes;
 	}
+
+	/**
+	 * hozzáad egy ágenst a virológus ágenslistájához
+	 * @param a - a hozzáadott ágens
+	 */
+	public void addAgent(Agent a){
+		craftedAgents.add(a);
+	}
+
+	/**
+	 *
+	 * @return visszatér a virológus azonosítójával
+	 */
+	public String getName() { return name;}
 
 	/**
 	 * A resourceLimit attribútum gettere.
