@@ -1,15 +1,16 @@
-Field:
-    Name: Field@887af79
+Fields:
+    Type: Field
+    Name: Field@1f28c152
     Neighbors:
-    - Field@7fac631b
+    - Field@7d907bac
     Virologists:
-    -   Name: Virologist@5b87ed94
+    -   Name: Virologist@7791a895
         nCount: 0
         aCount: 0
         Gears: 0
         Crafted Agents: 0
         Learnt Codes: 0
-    -   Name: Virologist@6e0e048a
+    -   Name: Virologist@3a5ed7a6
         nCount: 0
         aCount: 0
         Gears: 0

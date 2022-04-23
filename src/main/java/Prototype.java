@@ -246,6 +246,9 @@ public class Prototype {
         f1.accept(new Virologist());
         f1.accept(new Virologist());
         f1.setNeighbor(0, f2);
-        InputReaderWriter.printField(f1);
+        ArrayList<Field> fields = new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        InputReaderWriter.printFields(fields);
     }
 }

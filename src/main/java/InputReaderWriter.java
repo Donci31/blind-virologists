@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class InputReaderWriter {
 
-    public static void printField(Field f) {
+    public static void printFields(ArrayList<Field> fields) {
         DumperOptions options = new DumperOptions();
         options.setIndent(4);
         options.setPrettyFlow(true);
@@ -22,15 +22,16 @@ public abstract class InputReaderWriter {
 
         LinkedHashMap<String, Object> mainMap = new LinkedHashMap<>();
         LinkedHashMap<String, Object> fieldMap = new LinkedHashMap<>();
-        fieldMap.put("Name", f.toString());
-        fieldMap.put("Neighbors", getNeighborBlock(f.getNeighbors()));
+        fieldMap.put("Type", getClassName(fields.get(0)));
+        fieldMap.put("Name", fields.get(0).toString());
+        fieldMap.put("Neighbors", getNeighborBlock(fields.get(0).getNeighbors()));
 
         ArrayList<LinkedHashMap<String, Object>> virologists = new ArrayList<>();
-        for (Virologist v : f.getVirologists()) {
+        for (Virologist v : fields.get(0).getVirologists()) {
             virologists.add(getVirologistBlock(v));
         }
         fieldMap.put("Virologists", virologists);
-        mainMap.put(getClassName(f), fieldMap);
+        mainMap.put("Fields", fieldMap);
         try (FileWriter file = new FileWriter("./src/main/resources/file.yml")) {
             yaml.dump(mainMap, file);
         } catch (IOException e) {
