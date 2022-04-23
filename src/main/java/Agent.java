@@ -6,7 +6,7 @@
 public abstract class Agent implements Steppable {
 	protected int virusTimer;
 	protected Virologist smearedVirologist;
-	protected Virologist crafterVirologist;
+	protected Virologist crafterVirologist=null;
 
 
 	/**
@@ -23,6 +23,8 @@ public abstract class Agent implements Steppable {
 	 * A crafterVirologist gettere
 	 */
 	public Virologist getCrafterVirologist(){return crafterVirologist;}
+
+	public void setCrafterVirologist(Virologist v){crafterVirologist=v;}
 
 	/**
 	 * A paraméterként kapott virológusra kenődik az ágens, az ágensnek megfelelő hatás aktiválódik a virológuson

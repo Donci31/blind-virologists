@@ -38,6 +38,8 @@ public class Virologist implements Steppable {
 		return nucleotide;
 	}
 
+	public ArrayList<Code> getLearntCodes(){return learntCodes;}
+
 	/**
 	 * A resourceLimit attribútum gettere.
 	 */
@@ -95,7 +97,8 @@ public class Virologist implements Steppable {
 	 * @param v - megcélzott virológus
 	 */
 	public void smearAgent(Agent a, Virologist v) {
-		a.setSmearedVirologist(v);			//Beállítja a célvirológust, hogy az absorbok ismerjék kire kell kenni
+		a.setSmearedVirologist(v);//Beállítja a célvirológust, hogy az absorbok ismerjék kire kell kenni
+		a.setCrafterVirologist(this); //Beállítja a Fromvirologúst ha vissza kell dobni az ágenst
 		v.absorb(a);
 	}
 
@@ -164,7 +167,9 @@ public class Virologist implements Steppable {
 	 * @param c - a létrehozandó ágens kódja
 	 */
 	public void craftAgent(Code c) {
-		c.craftAgent(this, c.nCost, c.aCost);
+		if(learntCodes.contains(c)) {
+			c.craftAgent(this, c.nCost, c.aCost);
+		}
 	}
 
 	/**
