@@ -38,7 +38,17 @@ public class Virologist implements Steppable {
 		return nucleotide;
 	}
 
-	public ArrayList<Code> getLearntCodes(){return learntCodes;}
+	public ArrayList<Gear> getGears() {
+		return gears;
+	}
+
+	public ArrayList<Agent> getCraftedAgents() {
+		return craftedAgents;
+	}
+
+	public ArrayList<Code> getLearntCodes() {
+		return learntCodes;
+	}
 
 	/**
 	 * A resourceLimit attribútum gettere.

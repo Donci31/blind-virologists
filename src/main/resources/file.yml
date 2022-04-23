@@ -1,18 +1,31 @@
 Fields:
-    Type: Field
-    Name: Field@1f28c152
+-   Type: Field
+    Name: Field@47ef968d
     Neighbors:
-    - Field@7d907bac
+    - Field@23e028a9
     Virologists:
-    -   Name: Virologist@7791a895
+    -   Name: Virologist@3dd4520b
         nCount: 0
         aCount: 0
-        Gears: 0
-        Crafted Agents: 0
-        Learnt Codes: 0
-    -   Name: Virologist@3a5ed7a6
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+    -   Name: Virologist@5ae63ade
         nCount: 0
         aCount: 0
-        Gears: 0
-        Crafted Agents: 0
-        Learnt Codes: 0
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+-   Type: Field
+    Name: Field@23e028a9
+    Neighbors:
+    - Field@47ef968d
+    Virologists: [
+        ]
+Applied Agents: Yo
