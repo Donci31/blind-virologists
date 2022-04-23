@@ -24,6 +24,7 @@ public class ProtVaccine extends Agent {
 		virusTimer--;
 		if (virusTimer == 0) {
 			this.getSmearedVirologist().removeAbsorbStrat(this.strat);
+			SteppableController.removeSteppable(this);
 		}
 	}
 }

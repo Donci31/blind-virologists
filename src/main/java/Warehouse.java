@@ -1,5 +1,6 @@
 /**
- *
+ * A raktár típusú mezők megvalósításáért felelős osztály.
+ * Ezeken a mezőkön nyersanyag található, amelyet az ide érkező virológusok összeszedhetnek.
  */
 public class Warehouse extends Field implements Steppable {
 	private int nProduced = 0;

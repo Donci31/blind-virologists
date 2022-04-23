@@ -3,7 +3,7 @@
  */
 public class GloveGear extends Gear {
 	private GloveAbsorb strat = new GloveAbsorb();
-	//TODO: implement tracking of usage
+	private Virologist virologist;
 	private int timesUsed;
 
 	/**
@@ -13,6 +13,7 @@ public class GloveGear extends Gear {
 	 */
 	public void giveStrat(Virologist v) {
 		v.addAbsorbStrat(strat);
+		virologist = v;
 	}
 
 	/**
@@ -22,6 +23,7 @@ public class GloveGear extends Gear {
 	public void removeStrat(Virologist v) {
 		v.removeAbsorbStrat(strat);
 	}
+
 	/**
 	 * Használja a kesztyűt, azaz a timesUsed nő egy értékkel.
 	 * Ha az a növelést követően 3 lenne, akkor a kesztyű elromlik, eldobjuk.
@@ -29,7 +31,7 @@ public class GloveGear extends Gear {
 	public void useGlove(){
 		timesUsed++;
 		if(timesUsed == 3){
-			//TODO
+			virologist.loseGear(this);
 		}
 	}
 }

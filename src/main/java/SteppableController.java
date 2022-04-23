@@ -14,4 +14,20 @@ public abstract class SteppableController {
             steppable.step();
         }
     }
+
+    /**
+     * A Steppable objektumok listájához hozzáad egy új Steppable objektumot.
+     * @param s - hozzáadandó léptethető objektum
+     */
+    public static void addSteppable(Steppable s) {
+        steppables.add(s);
+    }
+
+    /**
+     * A Steppable objektumok listájából kivesz egy korábban hozzáadott Steppable objektumot.
+     * @param s - kivonandó léptethető objektum
+     */
+    public static void removeSteppable(Steppable s) {
+        steppables.remove(s);
+    }
 }

@@ -1,4 +1,3 @@
-import java.nio.charset.Charset;
 import java.util.*;
 
 /**
@@ -30,6 +29,9 @@ public class Virologist implements Steppable {
 		hitStrat.add(new DefaultHit());
 	}
 
+	/**
+	 * Default konstruktor.
+	 */
 	public Virologist(){
 		//generate random name
 		this.name = "Virologist@" + UUID.randomUUID();
@@ -38,34 +40,68 @@ public class Virologist implements Steppable {
 		hitStrat.add(new DefaultHit());
 	}
 
+	/**
+	 * Konstruktor, amiben a virológus a megadott mezőn kezdi a játékot.
+	 * @param f a mező, ahova a virológus meg fog születni
+	 */
 	public Virologist(Field f){
 		field = f;
+		var defAbs=new DefaultAbsorb();
+		addAbsorbStrat(defAbs);
+		hitStrat.add(new DefaultHit());
 	}
 
+	/**
+	 * Az aminosav gettere.
+	 * @return aminosav mennyisége
+	 */
 	public int getAminoAcid() {
 		return aminoAcid;
 	}
 
+	/**
+	 * A nukleotid gettere.
+	 * @return nukleotid mennyisége
+	 */
 	public int getNucleotide() {
 		return nucleotide;
 	}
 
+	/**
+	 * Az aminosav settere
+	 * @param a - az új érték
+	 */
 	public void setAminoAcid(int a) {
 		aminoAcid = a;
 	}
 
+	/**
+	 * A nukleotidok settere
+	 * @param n - az új érték
+	 */
 	public void setNucleotide(int n) {
 		nucleotide = n;
 	}
-
+	/**
+	 * A virológus felszereléseinek gettere.
+	 * @return a virológus felszereléseinek listája
+	 */
 	public ArrayList<Gear> getGears() {
 		return gears;
 	}
 
+	/**
+	 * A virológus craftolt ágenseinek gettere.
+	 * @return a virológus craftolt ágenseinek listája
+	 */
 	public ArrayList<Agent> getCraftedAgents() {
 		return craftedAgents;
 	}
 
+	/**
+	 * A virológus megtanult genetikai kódjainak gettere.
+	 * @return a virológus megtanult genetikai kódjainak listája
+	 */
 	public ArrayList<Code> getLearntCodes() {
 		return learntCodes;
 	}
@@ -350,5 +386,32 @@ public class Virologist implements Steppable {
 		int index = input.nextInt();
 		input.nextLine();
 		return c.get(index);
+	}
+
+	/**
+	 * Az ágens elleni a paraméterként megadott védőfelszerelésével védekezzen.
+	 * @param g a kiválasztott védekező felszerelés
+	 * @throws IllegalArgumentException
+	 */
+	public void absorbWithGear(Gear g) throws IllegalArgumentException {
+		if (!gears.contains(g)) {
+			throw new IllegalArgumentException();
+		}
+
+		// A lista elejére helyezi a kiválasztott felszerelés absorb stratégiáját (prioritási sor elejére kerül így)
+		//absorbStrats.remove()
+	}
+
+	/**
+	 * Az ágens elleni a paraméterként megadott ágensével védekezzen.
+	 * @param a a kiválasztott védekező ágens
+	 * @throws IllegalArgumentException
+	 */
+	public void absorbWithAgent(Agent a) throws IllegalArgumentException {
+		if (!craftedAgents.contains(a)) {
+			throw new IllegalArgumentException();
+		}
+
+		// A lista elejére helyezi a kiválasztott ágens absorb stratégiáját (prioritási sor elejére kerül így)
 	}
 }
