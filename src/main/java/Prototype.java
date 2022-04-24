@@ -213,7 +213,7 @@ public class Prototype {
         } else {
             System.out.println("Error in command 'set_deterministic'! Usage: set_deterministic (Y/N)");
         }
-
+    }
         /*Test1
         Field f1=new Field();
         Field f2=new Field();
@@ -343,9 +343,145 @@ public class Prototype {
         a1.smear(v1);
         */
 
-        //Test 11
+        /*Test 11
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f1.accept(v2);
+        RobeGear g1=new RobeGear();
+        v1.addGear(g1);
+        GloveGear g2=new GloveGear();
+        SackGear g3 =new SackGear();
+        AxeGear g4=new AxeGear();
+        v1.addGear(g2);
+        v1.addGear(g3);
+        v2.addGear(g4);
+        StunVirus a1=new StunVirus();
+        a1.smear(v2);
+        */
 
-    }
+        /*Test 12
+        Warehouse f1=new Warehouse();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        f1.accept(v1);
+        f1.step();
+        f1.step();
+        f1.step();
+        f1.step();
+        */
+
+        /*Test 13
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f1.accept(v2);
+        AmniVirus a1=new AmniVirus();
+        v1.addCraftedAgent(a1);
+        */
+
+        /*Test 14
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f1.accept(v2);
+        StunVirus a1=new StunVirus();
+        v1.addCraftedAgent(a1);
+        GloveGear g1=new GloveGear();
+        v2.addGear(g1);
+        */
+
+
+        /*Test 15
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f1.accept(v2);
+        DanceVirus a1=new DanceVirus();
+        v1.addCraftedAgent(a1);
+        ProtVaccine a2=new ProtVaccine();
+        a2.smear(v2);
+        */
+
+        /*Test 16
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f1.accept(v2);
+        ProtVaccine a1=new ProtVaccine();
+        v1.addCraftedAgent(a1);
+        RobeGear g1=new RobeGear();
+        v2.addGear(g1);
+        */
+
+        /*Test 17
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        f1.accept(v1);
+        AmniCode c1=new AmniCode();
+        v1.learnCode(c1);
+        v1.addNucleotide(100);
+        v1.addAminoAcid(100);
+        */
+
+        /*Test 18
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        f1.accept(v1);
+        ProtCode c1=new ProtCode();
+        v1.learnCode(c1);
+        v1.addNucleotide(50);
+        v1.addAminoAcid(50);
+        */
+
+        /*Test 19
+        Field f1 = new Field();
+        Field f2 = new Field()
+        Field f3 = new Field();
+        f1.setNeighbor(0, f2);
+        f1.setNeighbor(0, f3);
+        f2.setNeighbor(0, f1);
+        f3.setNeighbor(1, f1);
+        DanceVirus a1=new DanceVirus();
+        Virologist v1=new Virologist();
+        f1.accept(v1);
+        a1.smear(v1);
+        */
+
+        /*Test 20
+        Field f1 = new Field();
+        Field f2 = new Field()
+        Warehouse f3 = new Warehouse();
+        f1.setNeighbor(0, f2);
+        f1.setNeighbor(0, f3);
+        f2.setNeighbor(0, f1);
+        f3.setNeighbor(1, f1);
+        BearVirus a1=new BearVirus();
+        Virologist v1=new Virologist();
+        f1.accept(v1);
+        a1.smear(v1);
+        */
+
 
     /**
      * A step parancs hatását megvalósító metódus.
