@@ -1,19 +1,19 @@
 Fields:
 -   Type: Warehouse
     nCount: 4500
-    aCount: 5000
+    aCount: 4500
     Name: f1
     Neighbors: [
         ]
     Virologists:
     -   Name: v1
         nCount: 500
-        aCount: 0
+        aCount: 500
         Gears: [
             ]
         Crafted Agents: [
             ]
         Learnt Codes: [
             ]
-Applied Agents:
-- StunVirus a1 on=v2 remaining=2
+Applied Agents: [
+    ]

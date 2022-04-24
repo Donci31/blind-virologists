@@ -273,7 +273,7 @@ public class Virologist implements Steppable {
 	 * @param n - felvett nukleotid
 	 */
 	public int addNucleotide(int n) {
-		int addable = Math.min(n, resourceLimit - nucleotide - aminoAcid);
+		int addable = Math.min(n, resourceLimit);
 		nucleotide += addable;
 		return addable;
 	}
@@ -283,7 +283,7 @@ public class Virologist implements Steppable {
 	 * @param a - felvett aminosav
 	 */
 	public int addAminoAcid(int a) {
-		int addable = Math.min(a, resourceLimit - nucleotide - aminoAcid);
+		int addable = Math.min(a, resourceLimit);
 		aminoAcid += addable;
 		return addable;
 	}
