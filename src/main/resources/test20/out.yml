@@ -2,27 +2,19 @@ Fields:
 -   Type: Field
     Name: f1
     Neighbors:
-    - f2
     - f3
+    - f2
     Virologists: [
         ]
 -   Type: Field
     Name: f2
     Neighbors:
     - f1
-    Virologists:
-    -   Name: v1
-        nCount: 40
-        aCount: 30
-        Gears: [
-            ]
-        Crafted Agents: [
-            ]
-        Learnt Codes: [
-            ]
+    Virologists: [
+        ]
 -   Type: Warehouse
-    nCount: 500
-    aCount: 500
+    nCount: 0
+    aCount: 0
     Name: f3
     Neighbors:
     - f1
@@ -36,5 +28,15 @@ Fields:
             ]
         Learnt Codes: [
             ]
+    -   Name: v1
+        nCount: 40
+        aCount: 30
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
 Applied Agents:
 - BearVirus a1 on=v1 remaining=0
+- BearVirus a2 on=v2 remaining=0
