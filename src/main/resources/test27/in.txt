@@ -1,0 +1,3 @@
+load test27/start_state.yml
+learn_code v1
+save test27/out.yml

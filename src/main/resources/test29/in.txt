@@ -1,0 +1,3 @@
+load test29/start_state.yml
+smear v1 a1 v2
+save test29/out.yml

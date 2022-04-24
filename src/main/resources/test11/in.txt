@@ -1,0 +1,3 @@
+load test11/start_state.yml
+loot v1 v2 g1
+save test11/out.yml

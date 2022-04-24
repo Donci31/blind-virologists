@@ -1,0 +1,3 @@
+load test37/start_state.yml
+
+save test37/out.yml

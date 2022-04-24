@@ -1413,42 +1413,6 @@ public void valami() {
     }
 
     public static void main(String[] args) {
-        Laboratory f1 = new Laboratory();
-        f1.setInfected(true);
-        Laboratory f2 = new Laboratory();
-        Field f3 = new Field();
-        ArrayList<Field> fields=new ArrayList<>();
-        fields.add(f1);
-        fields.add(f2);
-        fields.add(f3);
-        Virologist v1 = new Virologist();
-        Virologist v2 = new Virologist();
-        f1.setNeighbor(0, f2);
-        f1.setNeighbor(1, f3);
-        f2.setNeighbor(0, f1);
-        f2.setNeighbor(1, f3);
-        f3.setNeighbor(0, f1);
-        f3.setNeighbor(1, f2);
-        //BearVirus a1 = new BearVirus();
-        //a1.smear(v1);
-        Code c1 = new AmniCode();
-        c1.setnCost(20);
-        c1.setaCost(30);
-        f1.placeCode(c1);
-        v1.learnCode(c1);
-        AmniVirus a2 = new AmniVirus();
-        v1.addCraftedAgent(a2);
-        Code c2 = new ProtCode();
-        c2.setnCost(50);
-        c2.setaCost(60);
-        AxeGear g1 = new AxeGear();
-        f2.placeCode(c2);
-        v2.learnCode(c2);
-        v2.addGear(g1);
-        f1.accept(v1);
-        f2.accept(v2);
-        InputWriter.printFields("test35/start_state.yml", fields);
-        //InputWriter.printFields("test35/expected.yml", fields);
 
         /*var ir = new InputReader();
         ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");

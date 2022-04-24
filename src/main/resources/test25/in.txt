@@ -1,0 +1,4 @@
+load test25/start_state.yml
+step
+move v1 f2
+save test25/out.yml

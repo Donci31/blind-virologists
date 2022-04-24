@@ -1,0 +1,3 @@
+load test3/start_state.yml
+move v1 f2
+save test3/out.yml

@@ -1,6 +1,7 @@
 Fields:
 -   Type: Laboratory
     Infected: false
+    Code: 0
     Name: f1
     Neighbors:
     - f2
@@ -8,6 +9,7 @@ Fields:
         ]
 -   Type: Laboratory
     Infected: false
+    Code: 0
     Name: f2
     Neighbors:
     - f1

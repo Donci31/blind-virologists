@@ -15,6 +15,7 @@ Fields:
         - AmniCode c1
 -   Type: Laboratory
     Infected: true
+    Code: 0
     Name: f2
     Neighbors:
     - f1
