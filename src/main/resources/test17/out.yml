@@ -1,0 +1,25 @@
+Fields:
+-   Type: Field
+    Name: f1
+    Neighbors: [
+        ]
+    Virologists:
+    -   Name: v1
+        nCount: 100
+        aCount: 100
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes:
+        - AmniCode c1
+Applied Agents:
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- ProtVaccine a2 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2

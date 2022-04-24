@@ -218,7 +218,7 @@ public class Virologist implements Steppable {
 		//TODO: check
 		if (v.stunned) {
 			v.loseGear(g);
-			gears.add(g);
+			pickUpGear(g);
 		}
 	}
 
