@@ -32,6 +32,7 @@ public class Virologist implements Steppable {
 		SteppableController.addSteppable(this);
 		id_counter++;
 		this.name = name;
+		Prototype.virologists.put(name, this);
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
 	}
@@ -42,26 +43,11 @@ public class Virologist implements Steppable {
 	public Virologist() {
 		SteppableController.addSteppable(this);
 		this.name = "v" + id_counter++;
+		Prototype.virologists.put(name, this);
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
 	}
 
-	//A tesztesetekhez kell, hogy hozzá lehessen adni a virológushoz a geart
-	public void addGear(Gear g1) {
-		gears.add(g1);
-		g1.giveStrat(this);
-	}
-
-	/**
-	 * Konstruktor, amiben a virológus a megadott mezőn kezdi a játékot.
-	 * @param f a mező, ahova a virológus meg fog születni
-	 */
-	public Virologist(Field f) {
-		SteppableController.addSteppable(this);
-		field = f;
-		var defAbs=new DefaultAbsorb();
-		addAbsorbStrat(defAbs);
-	}
 	/**
 	 * Az aminosav gettere.
 	 * @return aminosav mennyisége

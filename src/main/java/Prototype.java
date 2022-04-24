@@ -37,7 +37,7 @@ public class Prototype {
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void save(String[] args) {
-        InputWriter.printFields(args[1], new ArrayList<>(fields.values()));
+        InputWriter.printFields("./src/main/resources/" + args[1], new ArrayList<>(fields.values()));
     }
 
     /**
@@ -246,6 +246,20 @@ public class Prototype {
     }
 
     public static void main(String[] args) {
+        Map<String, Command> commands = new HashMap<>();
+        commands.put("load", Prototype::load);
+        commands.put("save", Prototype::save);
+        commands.put("move", Prototype::move);
+        commands.put("smear", Prototype::smear);
+        commands.put("craft_agent", Prototype::craftAgent);
+        commands.put("learn_code", Prototype::learnCode);
+        commands.put("get_gear", Prototype::getGear);
+        commands.put("loot", Prototype::loot);
+        commands.put("hit", Prototype::hit);
+        commands.put("gather_resources", Prototype::gatherResources);
+        commands.put("set_deterministic", Prototype::setDeterministic);
+        commands.put("step", Prototype::step);
+
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -266,8 +280,9 @@ public class Prototype {
                 Scanner input = new Scanner(inputFile);
                 while (input.hasNextLine()) {
                     String[] command = input.nextLine().split(" ");
+                    commands.get(command[0]).execute(command);
                 }
-            } catch (FileNotFoundException e) {
+            } catch (Exception e) {
                 continue;
             }
         }
