@@ -677,8 +677,8 @@ public class Prototype {
         v1.learnCode(c1);
         AmniVirus a1=new AmniVirus();
         v1.addCraftedAgent(a1);
-        v1.addNucleotide(100-c1.getnCost());
-        v1.addAminoAcid(100-c1.getaCost());
+        v1.addNucleotide(50);
+        v1.addAminoAcid(50);
      */
 
         /*Test 18
@@ -1306,25 +1306,23 @@ public void valami() {
     }
 
     public static void main(String[] args) {
-        Field f1=new Field();
+        Field f1 = new Field();
+        Field f2 = new Field();
+        Field f3 = new Field();
         ArrayList<Field> fields=new ArrayList<>();
         fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
+        f1.setNeighbor(0, f2);
+        f1.setNeighbor(1, f3);
+        f2.setNeighbor(0, f1);
+        f3.setNeighbor(0, f1);
+        DanceVirus a1=new DanceVirus();
         Virologist v1=new Virologist();
-        Virologist v2=new Virologist();
-        f1.accept(v1);
-        f1.accept(v2);
-        RobeGear g1=new RobeGear();
-        v1.addGear(g1);
-        GloveGear g2=new GloveGear();
-        SackGear g3 =new SackGear();
-        AxeGear g4=new AxeGear();
-        v1.addGear(g2);
-        v1.addGear(g3);
-        v2.addGear(g4);
-        StunVirus a1=new StunVirus();
-        a1.smear(v2);
-        //InputWriter.printFields("test11/start_state.yml", fields);
-        InputWriter.printFields("test11/expected.yml", fields);
+        f3.accept(v1);
+        a1.smear(v1);
+        //InputWriter.printFields("test19/start_state.yml", fields);
+        InputWriter.printFields("test19/expected.yml", fields);
 
         /*var ir = new InputReader();
         ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");
