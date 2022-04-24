@@ -175,6 +175,14 @@ public class Virologist implements Steppable {
 	}
 
 	/**
+	 * A stun attribútum gettere.
+	 * @return stun attribútum
+	 */
+	public boolean isStunned() {
+		return stunned;
+	}
+
+	/**
 	 * A virológus átlép a paraméterként adott mezőre.
 	 * @param f - a mező
 	 */
@@ -368,6 +376,7 @@ public class Virologist implements Steppable {
 	public void receiveHit(){
 		SteppableController.removeSteppable(this);
 		field.remove(this);
+		SteppableController.removeVirologistsAgents(this);
 	}
 
 	/**

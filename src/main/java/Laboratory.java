@@ -49,7 +49,9 @@ public class Laboratory extends Field {
 	public void accept(Virologist v){
 		virologists.add(v);
 		if(infected){
-			v.absorb(new BearVirus());
+			BearVirus bearVirus = new BearVirus();
+			bearVirus.setSmearedVirologist(v);
+			v.absorb(bearVirus);
 		}
 	}
 }

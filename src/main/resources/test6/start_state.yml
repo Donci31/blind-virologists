@@ -1,0 +1,18 @@
+Fields:
+-   Type: Shelter
+    Gear: AxeGear g1
+    Name: f1
+    Neighbors: [
+        ]
+    Virologists:
+    -   Name: v1
+        nCount: 0
+        aCount: 0
+        Gears:
+        - SackGear g2
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+Applied Agents: [
+    ]

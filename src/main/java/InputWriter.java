@@ -95,7 +95,7 @@ public abstract class InputWriter {
                 names.add(getClassName(g) + " " + g.getId() + " timesUsed=" + out.getTimesUsed());
             } else if (getClassName(g).equals("AxeGear")) {
                 AxeGear out = (AxeGear) g;
-                names.add(getClassName(g) + " " + g.getId() + " timesUsed=" + out.isUsed());
+                names.add(getClassName(g) + " " + g.getId() + " used=" + out.isUsed());
             }
             else {
                 names.add(getClassName(g) + " " + g.getId());

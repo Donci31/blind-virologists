@@ -58,4 +58,18 @@ public abstract class SteppableController {
     public static ArrayList<Agent> getAppliedAgents() {
         return appliedAgents;
     }
+
+    /**
+     * A megadott virológus aktív ágenseit törli a listából. Akkor hívódik, ha a virológus meghalt.
+     * @param v eltűnő virológus
+     */
+    public static void removeVirologistsAgents(Virologist v) {
+        for (int i = 0; i < appliedAgents.size(); ) {
+            if (appliedAgents.get(i).smearedVirologist == v) {
+                appliedAgents.remove(i);
+            } else {
+                i++;
+            }
+        }
+    }
 }
