@@ -9,7 +9,7 @@ import java.util.List;
 
 public abstract class InputWriter {
 
-    public static void printFields(ArrayList<Field> fields) {
+    public static void printFields(String filename, ArrayList<Field> fields) {
         // Szép kiíráshoz szükséges konfiguráció
         DumperOptions options = new DumperOptions();
         options.setIndent(4);
@@ -19,8 +19,8 @@ public abstract class InputWriter {
 
         LinkedHashMap<String, Object> mainMap = new LinkedHashMap<>();
         mainMap.put("Fields", getFieldsList(fields));
-        mainMap.put("Applied Agents", "Yo");
-        try (FileWriter file = new FileWriter("./src/main/resources/file.yml")) {
+        mainMap.put("Applied Agents", getAppliedAgentsList());
+        try (FileWriter file = new FileWriter("./src/main/resources/" + filename)) {
             yaml.dump(mainMap, file);
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,9 +50,13 @@ public abstract class InputWriter {
             Warehouse out = (Warehouse) f;
             fieldMap.put("nCount", out.getnProduced());
             fieldMap.put("aCount", out.getaProduced());
-        }//TODO shelter?
-
-
+        } else if (getClassName(f).equals("Shelter")) {
+            Shelter out = (Shelter) f;
+            if (out.getGear() == null)
+                fieldMap.put("Gear", 0);
+            else
+                fieldMap.put("Gear", out.getGear());
+        }
         fieldMap.put("Name", f.getName());
         fieldMap.put("Neighbors", getNeighborList(f.getNeighbors()));
 
@@ -112,6 +116,14 @@ public abstract class InputWriter {
         ArrayList<Object> names = new ArrayList<>();
         for (Code c : v.getLearntCodes()) {
             names.add(getClassName(c) + " " + c.getId());
+        }
+        return names;
+    }
+
+    private static ArrayList<Object> getAppliedAgentsList() {
+        ArrayList<Object> names = new ArrayList<>();
+        for (Agent a :SteppableController.getAppliedAgents()) {
+            names.add(getClassName(a) + " " + a.getId() + " " + a.getSmearedVirologist() + " remaining=" + a.getVirusTimer());
         }
         return names;
     }
