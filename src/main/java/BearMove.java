@@ -17,8 +17,12 @@ public class BearMove implements Move{
         f1.remove(v);
 
         List<Field> neighbours = f1.getNeighbors();
-        Random r = new Random();
-
+        if(Prototype.getDeterministic()){
+           int r=0;
+        }
+        else {
+            Random r = new Random();
+        }
         Field f2 = neighbours.get(r.nextInt(neighbours.size()));
         f2.accept(v);
         f2.smearAllVirologists(v);

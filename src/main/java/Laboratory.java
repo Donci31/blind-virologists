@@ -9,12 +9,12 @@ public class Laboratory extends Field {
 
 	public Laboratory(){
 		super();
-		infected = Math.random() > 0.8;
+		infected = Math.random() > 0.8&&!Prototype.getDeterministic();
 	}
 
 	public Laboratory(String name){
 		super(name);
-		infected = Math.random() > 0.8;
+		infected = Math.random() > 0.8&&!Prototype.getDeterministic();
 	}
 
 	public Code getCode() {

@@ -9,7 +9,7 @@ public class RobeAbsorb implements Absorb {
 	 * @param a - felkent ágens
 	 */
 	public void absorb(Agent a) {
-		if(Math.random()>0.823){
+		if(Math.random()>0.823||Prototype.getDeterministic()){
 			a.smear(a.getSmearedVirologist());
 		}
 	}
