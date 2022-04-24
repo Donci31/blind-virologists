@@ -55,7 +55,7 @@ public abstract class InputWriter {
             if (out.getGear() == null)
                 fieldMap.put("Gear", 0);
             else
-                fieldMap.put("Gear", out.getGear().getId());
+                fieldMap.put("Gear", getClassName(out.getGear()) + " " + out.getGear().getId());
         }
         fieldMap.put("Name", f.getName());
         fieldMap.put("Neighbors", getNeighborList(f.getNeighbors()));
