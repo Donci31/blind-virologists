@@ -1,8 +1,5 @@
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-import java.util.UUID;
 
 /**
  * Az üres mezőket megvalósító osztály, valamint ősosztálya az összes többi mezőnek.
@@ -17,25 +14,16 @@ public class Field {
 
 	private static int id_counter = 1;
 
-	protected String id;
-
 	public Field(String name) {
-		id = "f" + id_counter++;
 		this.name = name;
 		virologists = new ArrayList<>();
 		neighbors = new ArrayList<>();
 	}
 
 	public Field() {
-		id = "f" + id_counter++;
-		//generate random name
-		this.name = "Field@" + UUID.randomUUID();
+		this.name = "f" + id_counter++;
 		virologists = new ArrayList<>();
 		neighbors = new ArrayList<>();
-	}
-
-	public String getId() {
-		return id;
 	}
 
 	public List<Virologist> getVirologists() {

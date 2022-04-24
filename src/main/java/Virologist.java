@@ -20,12 +20,11 @@ public class Virologist implements Steppable {
 	private ArrayList<Code> learntCodes = new ArrayList<>();
 	private Move moveStrat = new DefaultMove();
 	private Hit hitStrat = new DefaultHit();
-	private String id;
 	private static int id_counter = 1;
 
-	public Virologist(String name){
+	public Virologist(String name) {
 		SteppableController.addSteppable(this);
-		id = "v" + id_counter++;
+		id_counter++;
 		this.name = name;
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
@@ -34,17 +33,15 @@ public class Virologist implements Steppable {
 	/**
 	 * Default konstruktor.
 	 */
-	public Virologist(){
+	public Virologist() {
 		SteppableController.addSteppable(this);
-		id = "v" + id_counter++;
-		//generate random name
-		this.name = "Virologist@" + UUID.randomUUID();
+		this.name = "v" + id_counter++;
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
 	}
 
 	//A tesztesetekhez kell, hogy hozzá lehessen adni a virológushoz a geart
-	public void addGear(Gear g1){
+	public void addGear(Gear g1) {
 		gears.add(g1);
 		g1.giveStrat(this);
 	}
@@ -53,21 +50,12 @@ public class Virologist implements Steppable {
 	 * Konstruktor, amiben a virológus a megadott mezőn kezdi a játékot.
 	 * @param f a mező, ahova a virológus meg fog születni
 	 */
-	public Virologist(Field f){
+	public Virologist(Field f) {
 		SteppableController.addSteppable(this);
 		field = f;
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
 	}
-
-	/**
-	 * Az id gettere.
-	 * @return id
-	 */
-	public String getId() {
-		return id;
-	}
-
 	/**
 	 * Az aminosav gettere.
 	 * @return aminosav mennyisége
