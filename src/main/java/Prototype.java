@@ -865,9 +865,10 @@ public class Prototype {
         a1.smear(v1);
         for(int i=0;i<a1.getVirusTimer()-1;i++){
             a1.step();
-            v1.setAminoAcid(100);
-        v1.setNucleotide(100);
+
         }
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
 
 
      */
@@ -1038,6 +1039,59 @@ public class Prototype {
       The game has ended, v1 won!
 
     */
+
+    /*Teszt 28
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f1.accept(v2);
+        AmniCode c1=new AmniCode();
+        DanceCode c2=new DanceCode();
+        v2.learnCode(c1);
+        v2.learnCode(c2);
+        v1.setAminoAcid(30);
+        v1.setNucleotide(20);
+        v2.setAminoAcid(50);
+        v2.setNucleotide(50);
+        AmniVirus a1=new AmniVirus();
+        DanceVirus a2=new DanceVirus();
+        v2.addCraftedAgent(a1);
+        v2.addCraftedAgent(a2);
+        GloveGear g1=new GloveGear();
+        v1.addGear(g1);
+        g1.setTimesUsed(2);
+
+     */
+
+    /*Test 28 exp
+	    Error! v1 doesn’t have g1!
+
+     */
+
+    /* Test 29
+        Field f1=new Field();
+        Field f2=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f2.accept(v2);
+        AmniVirus a1=new AmniVirus();
+        v1.addCraftedAgent(a1);
+
+     */
+
+    /*Test 29 exp
+        Error! v1 can’t reach v2!
+
+     */
 
 
 
@@ -1334,5 +1388,20 @@ public void valami() {
                 System.out.println("Virologist: " + v.getName() + "\n");
             }
         }*/
+        Field f1=new Field();
+        Field f2=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f2.accept(v2);
+        AmniVirus a1=new AmniVirus();
+        v1.addCraftedAgent(a1);
+
+
     }
 }
