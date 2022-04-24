@@ -37,7 +37,7 @@ public class Prototype {
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void save(String[] args) {
-        InputWriter.printFields("./src/main/resources/" + args[1], new ArrayList<>(fields.values()));
+        InputWriter.printFields(args[1], new ArrayList<>(fields.values()));
     }
 
     /**

@@ -10,7 +10,7 @@ import java.util.*;
 public class Virologist implements Steppable {
 	private int nucleotide = 0;
 	private int aminoAcid = 0;
-	private int resourceLimit = 100;
+	private int resourceLimit = 500;
 	private boolean stunned = false;
 	private String name;
 	private ArrayList<Absorb> absorbStrats = new ArrayList<>();
@@ -20,7 +20,6 @@ public class Virologist implements Steppable {
 	private ArrayList<Code> learntCodes = new ArrayList<>();
 	private Move moveStrat = new DefaultMove();
 	private Hit hitStrat = new DefaultHit();
-	private String id;
 	private static int id_counter = 1;
 	private int chosenAbsorbStratIdx = 0;
 
@@ -364,6 +363,7 @@ public class Virologist implements Steppable {
 		SteppableController.removeSteppable(this);
 		field.remove(this);
 		SteppableController.removeVirologistsAgents(this);
+		Prototype.virologists.remove(this.name);
 	}
 
 	/**

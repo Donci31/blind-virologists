@@ -3,6 +3,12 @@ Fields:
     Name: f1
     Neighbors:
     - f2
+    Virologists: [
+        ]
+-   Type: Field
+    Name: f2
+    Neighbors:
+    - f1
     Virologists:
     -   Name: v1
         nCount: 0
@@ -13,11 +19,5 @@ Fields:
             ]
         Learnt Codes: [
             ]
--   Type: Field
-    Name: f2
-    Neighbors:
-    - f1
-    Virologists: [
-        ]
 Applied Agents: [
     ]

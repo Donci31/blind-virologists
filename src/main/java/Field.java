@@ -42,6 +42,7 @@ public class Field {
 	 */
 	public void accept(Virologist v) {
 		virologists.add(v);
+		v.setField(this);
 	}
 
 	/**
