@@ -20,6 +20,13 @@ public abstract class Agent implements Steppable {
 	}
 
 	/**
+	 * Visszaadja a vírus hátralevő idejét
+	 */
+	public int getVirusTimer() {
+		return virusTimer;
+	}
+
+	/**
 	 * A smearedVirologist settere
 	 */
 	public void setSmearedVirologist(Virologist v){smearedVirologist=v;}

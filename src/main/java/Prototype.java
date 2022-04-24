@@ -32,7 +32,7 @@ public class Prototype {
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void save(String[] args) {
-        InputWriter.printFields(new ArrayList<>(fields.values()));
+        InputWriter.printFields(args[1], new ArrayList<>(fields.values()));
     }
 
     /**
@@ -506,7 +506,7 @@ public class Prototype {
         fields.add(f1);
         fields.add(f2);
         fields.add(f3);
-        InputWriter.printFields(fields);
+        InputWriter.printFields("test.yml", fields);
 
         /*var ir = new InputReader();
         ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");

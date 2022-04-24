@@ -21,6 +21,13 @@ public class Shelter extends Field {
 	}
 
 	/**
+	 * Visszaadja a mező gearjét
+	 */
+	public Gear getGear() {
+		return gear;
+	}
+
+	/**
 	 * Beállítja a paraméterül kapott védőfelszerelést az óvóhelyen megszerezhető védőfelszerelésnek.
 	 * @param g - a mezőn elhelyezendő védőfelszerelés
 	 */
