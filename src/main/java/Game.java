@@ -16,7 +16,8 @@ public class Game {
 	/**
 	 * Megállítja a játékot
 	 */
-	public void endGame() {
-		//TODO
+	public void endGame(Virologist virologist) {
+		//TODO controller should be calling this, for now it has a Virologist parameter
+		System.out.println("The game has ended, " + virologist.getName() + " won!");
 	}
 }
