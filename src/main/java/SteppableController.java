@@ -72,4 +72,12 @@ public abstract class SteppableController {
             }
         }
     }
+
+    /**
+     * Kiüríti a Steppable-k listáit egy futás végén.
+     */
+    public static void clearSteppables() {
+        steppables.clear();
+        appliedAgents.clear();
+    }
 }

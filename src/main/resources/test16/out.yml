@@ -9,8 +9,8 @@ Fields:
         aCount: 0
         Gears: [
             ]
-        Crafted Agents: [
-            ]
+        Crafted Agents:
+        - ProtVaccine a3
         Learnt Codes: [
             ]
     -   Name: v2
@@ -22,5 +22,5 @@ Fields:
             ]
         Learnt Codes: [
             ]
-Applied Agents: [
-    ]
+Applied Agents:
+- ProtVaccine a2 on=v2 remaining=2

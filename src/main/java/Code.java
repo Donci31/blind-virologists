@@ -14,6 +14,10 @@ public abstract class Code {
 		Prototype.codes.put(id, this);
 	}
 
+	/**
+	 * Az id alapraméretezett állapotba állító függvénye.
+	 */
+	public static void resetID() {id_counter = 1; }
 	public void setID(String id){ this.id = id;}
 	public String getId() {
 		return id;

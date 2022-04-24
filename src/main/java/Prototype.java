@@ -21,6 +21,28 @@ public class Prototype {
     public static boolean getDeterministic(){return deterministic;}
 
     /**
+     * Kitöröl minden egyes korábbi objektumot az azonsoítókat tartalmazó map-ekből
+     */
+    protected static void clearMaps() {
+        virologists.clear();
+        fields.clear();
+        agents.clear();
+        codes.clear();
+        gears.clear();
+    }
+
+    /**
+     * Az összes id-t az alapraméretezett állapotba állítja
+     */
+    protected static void resetAllID() {
+        Field.resetID();
+        Agent.resetID();
+        Code.resetID();
+        Gear.resetID();
+        Virologist.resetID();
+    }
+
+    /**
      * A load parancs hatását megvalósító metódus.
      * Betölti az első argumentumban megadott fájlból a játék állapotát.
      * @param args - a parancs argumentumainak tömbje
@@ -264,6 +286,9 @@ public class Prototype {
         deterministic=true;
 
         while (true) {
+            clearMaps();
+            resetAllID();
+            SteppableController.clearSteppables();
             System.out.print("Select test to run (1-38): ");
             int testid;
 
@@ -309,6 +334,7 @@ public class Prototype {
                 } else {
                     System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
                 }
+
             } catch (Exception e) {
                 System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
                 e.printStackTrace();

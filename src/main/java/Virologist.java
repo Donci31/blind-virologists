@@ -48,6 +48,11 @@ public class Virologist implements Steppable {
 	}
 
 	/**
+	 * Az id alapraméretezett állapotba állító függvénye.
+	 */
+	public static void resetID() {id_counter = 1; }
+
+	/**
 	 * Az aminosav gettere.
 	 * @return aminosav mennyisége
 	 */

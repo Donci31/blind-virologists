@@ -28,6 +28,11 @@ public class Field {
 		Prototype.fields.put(name, this);
 	}
 
+	/**
+	 * Az id alapraméretezett állapotba állító függvénye.
+	 */
+	public static void resetID() {id_counter = 1; }
+
 	public List<Virologist> getVirologists() {
 		return virologists;
 	}
