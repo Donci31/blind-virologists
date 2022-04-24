@@ -21,8 +21,7 @@ public class Prototype {
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void load(String[] args) {
-        try {
-            FileInputStream f = new FileInputStream(args[1]);
+        try (FileInputStream f = new FileInputStream(args[1])) {
 
             //TODO
 
@@ -37,8 +36,7 @@ public class Prototype {
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void save(String[] args) {
-        try {
-            FileOutputStream f = new FileOutputStream(args[1]);
+        try (FileOutputStream f = new FileOutputStream(args[1])) {
 
             //TODO
 
@@ -384,13 +382,13 @@ public class Prototype {
         fields.add(f3);
         InputWriter.printFields(fields);
 
-        /*var ir = new InputReader();
+        var ir = new InputReader();
         ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");
         for(Field f : fieldsLoaded){
             System.out.println("Field: " + f.getName() + "\n");
             for(Virologist v: f.getVirologists()){
                 System.out.println("Virologist: " + v.getName() + "\n");
             }
-        }*/
+        }
     }
 }

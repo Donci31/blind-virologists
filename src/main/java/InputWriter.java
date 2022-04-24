@@ -23,7 +23,7 @@ public abstract class InputWriter {
         try (FileWriter file = new FileWriter("./src/main/resources/file.yml")) {
             yaml.dump(mainMap, file);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 

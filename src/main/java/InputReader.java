@@ -1,10 +1,6 @@
-import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -18,7 +14,6 @@ public class InputReader {
             Map<String, Object> obj = yaml.load(file);
             var mapList = (ArrayList<LinkedHashMap<String, Object>>) obj.get("Fields");
             fieldList = buildFields(mapList);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -44,11 +39,11 @@ public class InputReader {
             ArrayList<LinkedHashMap<String, Object>> virologistList= (ArrayList<LinkedHashMap<String, Object>>) map.get("Virologists");
             String name = map.get("Name").toString();
             var active = fieldHashMap.get(name);
-            for(int i = 0; i < virologistList.size(); i++){
-                active.accept(virologistFromMap(virologistList.get(i)));
+            for (LinkedHashMap<String, Object> stringObjectLinkedHashMap : virologistList) {
+                active.accept(virologistFromMap(stringObjectLinkedHashMap));
             }
         }
-        ArrayList<Field> fieldArray = new ArrayList<Field>(fieldHashMap.values());
+        ArrayList<Field> fieldArray = new ArrayList<>(fieldHashMap.values());
 
 
         return fieldArray;

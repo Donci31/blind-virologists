@@ -13,8 +13,6 @@ public class Laboratory extends Field {
 	public void setInfected(boolean infected) {
 		this.infected = infected;
 	}
-
-
 	/**
 	 * Visszaadja, hogy fertőzőtt-e a mező
 	 */
