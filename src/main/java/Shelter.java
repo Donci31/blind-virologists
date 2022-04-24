@@ -5,6 +5,13 @@
 public class Shelter extends Field {
 	private Gear gear;
 
+	public Shelter(){
+		super();
+	}
+
+	public Shelter(String name){
+		super(name);
+	}
 	/**
 	 * A paraméterként kapott virológus felveszi a mezőn található védőfelszerelést.
 	 * @param v - mezővel interaktáló virológus

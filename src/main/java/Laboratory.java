@@ -6,7 +6,14 @@ public class Laboratory extends Field {
 	private Code code;
 	private boolean infected;
 
+
 	public Laboratory(){
+		super();
+		infected = Math.random() > 0.8;
+	}
+
+	public Laboratory(String name){
+		super(name);
 		infected = Math.random() > 0.8;
 	}
 

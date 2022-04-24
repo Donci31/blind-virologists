@@ -20,9 +20,14 @@ public class Virologist implements Steppable {
 	private ArrayList<Code> learntCodes = new ArrayList<>();
 	private Move moveStrat = new DefaultMove();
 	private Hit hitStrat = new DefaultHit();
+	private String id;
 	private static int id_counter = 1;
 	private int chosenAbsorbStratIdx = 0;
 
+	/**
+	 * Konstruktor ami beállítja a virológus nevét a paraméterének megfelelően
+	 * @param name - a virológus neve
+	 */
 	public Virologist(String name) {
 		SteppableController.addSteppable(this);
 		id_counter++;
@@ -252,12 +257,7 @@ public class Virologist implements Steppable {
 	 * @param c - megtanulandó genetikai kód
 	 */
 	public void learnCode(Code c) {
-		if (!learntCodes.contains(c)) {
-			learntCodes.add(c);
-			if (learntCodes.size() >= 4) {
-				Game.endGame(this);
-			}
-		}
+		learntCodes.add(c);
 	}
 
 	/**

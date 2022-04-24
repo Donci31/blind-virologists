@@ -7,6 +7,12 @@ public class Warehouse extends Field implements Steppable {
 	private int aProduced = 0;
 
 	public Warehouse() {
+		super();
+		SteppableController.addSteppable(this);
+	}
+
+	public Warehouse(String name) {
+		super(name);
 		SteppableController.addSteppable(this);
 	}
 
@@ -22,6 +28,22 @@ public class Warehouse extends Field implements Steppable {
 	 */
 	public int getaProduced() {
 		return aProduced;
+	}
+
+	/**
+	 * beállítja az nukleotidok számát
+	 * @param n - az új szám
+	 */
+	public void setnProduced(int n) {
+		nProduced = n;
+	}
+
+	/**
+	 * beállítja az aminosavak számát
+	 * @param a - az új szám
+	 */
+	public void setaProduced(int a) {
+		aProduced = a;
 	}
 
 	/**
