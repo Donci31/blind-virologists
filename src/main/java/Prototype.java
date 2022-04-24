@@ -130,7 +130,11 @@ public class Prototype {
         if (v.isStunned()) return;
 
         Code code = codes.get(args[2]);
-        v.craftAgent(code);
+        try {
+            v.craftAgent(code);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Error! " + v.getName() + " lacks resources!");
+        }
     }
 
     /**
@@ -196,7 +200,6 @@ public class Prototype {
 
         Virologist victim = virologists.get(args[2]);
         Gear gear = gears.get(args[3]);
-        // TODO vajon itt érdemes a "szomszédosságot" leellenőrízni vagy bent a loot() metódusban?
         if (attacker.getField() == victim.getField()) {
             attacker.loot(victim, gear);
         }
@@ -217,7 +220,6 @@ public class Prototype {
         if (attacker.isStunned()) return;
 
         Virologist victim = virologists.get(args[2]);
-        // TODO vajon itt érdemes a "szomszédosságot" leellenőrízni vagy bent a hit() metódusban?
         if (attacker.getField() == victim.getField()) {
             attacker.hit(victim);
         }
@@ -327,6 +329,31 @@ public class Prototype {
                     String line = reader.nextLine();
                     System.out.println(line);
                     expectedFileString += line + '\n';
+                }
+
+                if (outFileString.equals(expectedFileString)) {
+                    System.out.println("\nSuccessfully run test" + testid + "!\n\n");
+                } else {
+                    System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
+                }
+
+            } catch (IllegalArgumentException e) {
+                System.out.println("\n--------Actual output--------");
+                String outFileString = e.getMessage();
+                System.out.println(e.getMessage());
+
+                String expectedFileString = "";
+                File expectedFile = new File("./src/main/resources/test" + testid + "/expected.yml");
+                try {
+                    Scanner reader = new Scanner(expectedFile);
+                    System.out.println("\n-------Expected output-------");
+                    while (reader.hasNextLine()) {
+                        String line = reader.nextLine();
+                        System.out.println(line);
+                        expectedFileString += line;
+                    }
+                } catch (FileNotFoundException ex) {
+                    e.printStackTrace();
                 }
 
                 if (outFileString.equals(expectedFileString)) {
