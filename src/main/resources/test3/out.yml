@@ -5,6 +5,14 @@ Fields:
     Name: f1
     Neighbors:
     - f2
+    Virologists: [
+        ]
+-   Type: Warehouse
+    nCount: 0
+    aCount: 0
+    Name: f2
+    Neighbors:
+    - f1
     Virologists:
     -   Name: v1
         nCount: 0
@@ -15,13 +23,5 @@ Fields:
             ]
         Learnt Codes: [
             ]
--   Type: Warehouse
-    nCount: 0
-    aCount: 0
-    Name: f2
-    Neighbors:
-    - f1
-    Virologists: [
-        ]
 Applied Agents: [
     ]

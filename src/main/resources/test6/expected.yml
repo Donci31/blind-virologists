@@ -9,7 +9,7 @@ Fields:
         nCount: 0
         aCount: 0
         Gears:
-        - AxeGear g1 timesUsed=false
+        - AxeGear g1 used=false
         Crafted Agents: [
             ]
         Learnt Codes: [

@@ -109,11 +109,9 @@ public class InputReader {
                     switch (gearName) {
                         case "GloveGear":
                             g = new GloveGear();
-                            ((GloveGear)g).setTimesUsed(Integer.parseInt(split[3]));
                             break;
                         case "AxeGear":
                             g = new AxeGear();
-                            ((AxeGear)g).setUsed(Boolean.parseBoolean(split[3]));
                             break;
                         case "RobeGear":
                             g = new RobeGear();
@@ -192,11 +190,11 @@ public class InputReader {
                 switch (gearName) {
                     case "GloveGear":
                         g = new GloveGear();
-                        ((GloveGear)g).setTimesUsed(Integer.parseInt(split[3]));
+                        ((GloveGear)g).setTimesUsed(Integer.parseInt(split[2].split("=")[1]));
                         break;
                     case "AxeGear":
                         g = new AxeGear();
-                        ((AxeGear)g).setUsed(Boolean.parseBoolean(split[3]));
+                        ((AxeGear)g).setUsed(Boolean.parseBoolean(split[2].split("=")[1]));
                         break;
                     case "RobeGear":
                         g = new RobeGear();

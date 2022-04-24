@@ -1,6 +1,6 @@
 Fields:
 -   Type: Shelter
-    Gear: 0
+    Gear: AxeGear g1
     Name: f1
     Neighbors: [
         ]
@@ -10,6 +10,7 @@ Fields:
         aCount: 0
         Gears:
         - SackGear g2
+        - AxeGear g1 used=false
         Crafted Agents: [
             ]
         Learnt Codes: [
