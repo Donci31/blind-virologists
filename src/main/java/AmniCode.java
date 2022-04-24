@@ -4,9 +4,8 @@
  */
 public class AmniCode extends Code {
 	AmniCode(){
-		nCost=100;
+		nCost=50;
 		aCost=100;
-
 	}
 
 	/**
@@ -17,7 +16,7 @@ public class AmniCode extends Code {
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
 
-		if (v.getAminoAcid() > aCost && v.getNucleotide() > nCost) {
+		if (v.getAminoAcid() >= aCost && v.getNucleotide() >= nCost) {
 			AmniVirus a = new AmniVirus();
 			v.removeNucleotide(nCost);
 			v.removeAminoAcid(aCost);

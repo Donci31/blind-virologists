@@ -6,9 +6,9 @@ public class ProtCode extends Code {
 
 	ProtCode(){
 		nCost=100;
-		aCost=70;
-
+		aCost=100;
 	}
+
 	/**
 	 * Létrehozza az ágenst, és elveszi a virológustól a kódoláshoz szükséges anyagokat.
 	 * @param v - craftoló virológus
@@ -17,7 +17,7 @@ public class ProtCode extends Code {
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
 
-		if (v.getAminoAcid() > aCost && v.getNucleotide() > nCost) {
+		if (v.getAminoAcid() >= aCost && v.getNucleotide() >= nCost) {
 			ProtVaccine p = new ProtVaccine();
 			v.removeNucleotide(nCost);
 			v.removeAminoAcid(aCost);
