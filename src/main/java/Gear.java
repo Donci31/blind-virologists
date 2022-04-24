@@ -14,6 +14,11 @@ public abstract class Gear {
 	}
 
 	/**
+	 * Az id alapraméretezett állapotba állító függvénye.
+	 */
+	public static void resetID() {id_counter = 1; }
+
+	/**
 	 * Az id gettere.
 	 * @return id
 	 */

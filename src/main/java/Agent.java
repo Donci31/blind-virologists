@@ -16,6 +16,11 @@ public abstract class Agent implements Steppable {
 		Prototype.agents.put(id, this);
 	}
 
+	/**
+	 * Az id alapraméretezett állapotba állító függvénye.
+	 */
+	public static void resetID() {id_counter = 1; }
+
 	public String getId() {
 		return id;
 	}

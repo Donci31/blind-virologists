@@ -3,6 +3,11 @@
  * Ilyenkor az osztály absorb függvénye kezeli ezt az eseményt.
  */
 public class GloveAbsorb implements Absorb {
+	GloveGear glove;
+
+	public GloveAbsorb(GloveGear g) {
+		this.glove = g;
+	}
 	/**
 	 * Az ágens hatását az ágenst dobó virológusra fejti ki.
 	 * Az így érintett virológust az ágens egyik attribútumából ismeri.
@@ -13,5 +18,6 @@ public class GloveAbsorb implements Absorb {
 			a.setSmearedVirologist(a.getCrafterVirologist());
 		}
 		a.smear(a.getSmearedVirologist());
+		glove.useGlove();
 	}
 }

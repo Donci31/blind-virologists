@@ -2,7 +2,7 @@
  * Ez az osztály azt a védőfelszerelést valósítja meg, amivel a viselőre kent ágensek visszadobhatóak a kenőre.
  */
 public class GloveGear extends Gear {
-	private GloveAbsorb strat = new GloveAbsorb();
+	private GloveAbsorb strat = new GloveAbsorb(this);
 	private Virologist virologist;
 	private int timesUsed;
 

@@ -9,8 +9,8 @@ Fields:
         aCount: 0
         Gears: [
             ]
-        Crafted Agents:
-        - AmniVirus a2
+        Crafted Agents: [
+            ]
         Learnt Codes: [
             ]
     -   Name: v2
@@ -23,5 +23,4 @@ Fields:
         Learnt Codes: [
             ]
 Applied Agents:
-- AmniVirus a1 on=v2 remaining=3
 - AmniVirus a1 on=v2 remaining=3
