@@ -261,6 +261,7 @@ public class Prototype {
         commands.put("step", Prototype::step);
 
         Scanner scanner = new Scanner(System.in);
+        deterministic=true;
 
         while (true) {
             System.out.print("Select test to run (1-38): ");

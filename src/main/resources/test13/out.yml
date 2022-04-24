@@ -10,7 +10,7 @@ Fields:
         Gears: [
             ]
         Crafted Agents:
-        - AmniVirus a3
+        - AmniVirus a2
         Learnt Codes: [
             ]
     -   Name: v2
@@ -23,7 +23,5 @@ Fields:
         Learnt Codes: [
             ]
 Applied Agents:
-- StunVirus a1 on=v2 remaining=2
-- StunVirus a1 on=v2 remaining=2
-- StunVirus a1 on=v2 remaining=2
-- StunVirus a1 on=v2 remaining=2
+- AmniVirus a1 on=v2 remaining=3
+- AmniVirus a1 on=v2 remaining=3
