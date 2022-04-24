@@ -2,8 +2,8 @@ Fields:
 -   Type: Field
     Name: f1
     Neighbors:
-    - f2
     - f3
+    - f2
     Virologists:
     -   Name: v1
         nCount: 40
