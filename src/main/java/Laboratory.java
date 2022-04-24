@@ -52,7 +52,7 @@ public class Laboratory extends Field {
 	 */
 	public void accept(Virologist v){
 		super.accept(v);
-		if(infected){
+		if(infected&&!v.getBear()){
 			BearVirus bearVirus = new BearVirus();
 			bearVirus.setSmearedVirologist(v);
 			v.absorb(bearVirus);

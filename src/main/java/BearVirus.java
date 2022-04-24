@@ -14,6 +14,7 @@ public class BearVirus extends Agent {
      */
     public void smear(Virologist v) {
         v.setMoveStrat(strat);
+        v.setBear(true);
         super.smear(v);
     }
 

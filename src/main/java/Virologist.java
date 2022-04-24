@@ -22,7 +22,12 @@ public class Virologist implements Steppable {
 	private Hit hitStrat = new DefaultHit();
 	private static int id_counter = 1;
 	private int chosenAbsorbStratIdx = 0;
+	private boolean isBear=false;
 
+
+	public boolean getBear(){return isBear;}
+
+	public void setBear(boolean f){isBear=f;}
 	/**
 	 * Konstruktor, ami a virologist_id-t fogadja paraméterként.
 	 * @param name virologist_id
