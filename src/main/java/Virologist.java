@@ -181,10 +181,10 @@ public class Virologist implements Steppable {
 	 * @param v - megcélzott virológus
 	 */
 	public void smearAgent(Agent a, Virologist v) {
+		craftedAgents.remove(a);
 		a.setSmearedVirologist(v);//Beállítja a célvirológust, hogy az absorbok ismerjék kire kell kenni
 		a.setCrafterVirologist(this); //Beállítja a Fromvirologúst ha vissza kell dobni az ágenst
 		v.absorb(a);
-		SteppableController.addAppliedAgent(a);
 	}
 
 	/**
