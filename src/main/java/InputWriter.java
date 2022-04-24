@@ -42,6 +42,7 @@ public abstract class InputWriter {
     private static LinkedHashMap<String, Object> getFieldBlock(Field f) {
         LinkedHashMap<String, Object> fieldMap = new LinkedHashMap<>();
         fieldMap.put("Type", getClassName(f));
+
         if (getClassName(f).equals("Laboratory")) {
             Laboratory out = (Laboratory) f;
             fieldMap.put("Infected", out.isInfected());
@@ -49,7 +50,9 @@ public abstract class InputWriter {
             Warehouse out = (Warehouse) f;
             fieldMap.put("nCount", out.getnProduced());
             fieldMap.put("aCount", out.getaProduced());
-        }
+        }//TODO shelter?
+
+
         fieldMap.put("Name", f.getName());
         fieldMap.put("Neighbors", getNeighborList(f.getNeighbors()));
 

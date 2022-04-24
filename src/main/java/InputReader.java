@@ -45,7 +45,28 @@ public class InputReader {
             //kiolvassa a mező nevét
             String name = map.get("Name").toString();
             //létrehoz egy mezőt az adott névvel és beteszi a mapbe
-            fieldHashMap.put(name, new Field(name));
+            String type = map.get("Type").toString();
+            Field created = new Field(name);
+            switch (type){
+                case "Laboratory":
+                    created = new Laboratory(name);
+                    ((Laboratory)created).setInfected((boolean)map.get("Infected"));
+                    break;
+                case "Warehouse":
+                    created = new Warehouse(name);
+                    ((Warehouse)created).setnProduced((int)map.get("nCount"));
+                    ((Warehouse)created).setaProduced((int)map.get("aCount"));
+                    break;
+                case "Shelter":
+                    created = new Shelter(name);
+                    //TODO load gears
+                    break;
+                default:
+                    break;
+
+            }
+            fieldHashMap.put(name, created);
+
         }
         //beállítjuk a létrehozott mezők szomszédjait
         for(LinkedHashMap<String, Object> map : list){
@@ -96,20 +117,31 @@ public class InputReader {
         ArrayList<String> gearStrings = (ArrayList<String>)map.get("Gears");
         if(gearStrings != null) {
             for (String s : gearStrings) {
-                String gearName = s.split(" ")[0];
+                String[] split = s.split(" ");
+                String gearName = split[0];
+                Gear g;
                 switch (gearName) {
                     case "GloveGear":
-                        v.pickUpGear(new GloveGear());
+                        g = new GloveGear();
+                        ((GloveGear)g).setTimesUsed(Integer.parseInt(split[3]));
                         break;
                     case "AxeGear":
-                        v.pickUpGear(new AxeGear());
+                        g = new AxeGear();
+                        ((AxeGear)g).setUsed(Boolean.parseBoolean(split[3]));
                         break;
                     case "RobeGear":
-                        v.pickUpGear(new RobeGear());
+                        g = new RobeGear();
                         break;
                     case "SackGear":
-                        v.pickUpGear(new SackGear());
+                        g = new SackGear();
                         break;
+                    default:
+                        g = null;
+                        break;
+                }
+                if(g != null){
+                    g.setID(split[1]);
+                    v.pickUpGear(g);
                 }
             }
         }
@@ -117,20 +149,29 @@ public class InputReader {
         ArrayList<String> codeStrings = (ArrayList<String>)map.get("Learnt Codes");
         if(codeStrings != null) {
             for (String s : codeStrings) {
-                String codeName = s.split(" ")[0];
+                String[] split = s.split(" ");
+                String codeName = split[0];
+                Code c;
                 switch (codeName) {
                     case "AmniCode":
-                        v.learnCode(new AmniCode());
+                        c = new AmniCode();
                         break;
                     case "DanceCode":
-                        v.learnCode(new DanceCode());
+                        c = new DanceCode();
                         break;
                     case "ProtCode":
-                        v.learnCode(new ProtCode());
+                        c = new ProtCode();
                         break;
                     case "StunCode":
-                        v.learnCode(new StunCode());
+                        c = new StunCode();
                         break;
+                    default:
+                        c = null;
+                        break;
+                }
+                if(c != null){
+                    c.setID(split[1]);
+                    v.learnCode(c);
                 }
             }
         }

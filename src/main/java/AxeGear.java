@@ -13,6 +13,13 @@ public class AxeGear extends Gear {
     }
 
     /**
+     * beállítja a balta használtságát
+     * @param b - használtság
+     */
+    public void setUsed(boolean b){
+        used = b;
+    }
+    /**
      * Megváltoztatja a paraméterként kapott virológus viselkedési stratégiáját a rákent ágensekkel szemben.
      * Az új stratégia a GloveAbsorb lesz.
      * @param v - virológus, akire hatni fog

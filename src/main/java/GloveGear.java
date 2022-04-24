@@ -14,6 +14,13 @@ public class GloveGear extends Gear {
 	}
 
 	/**
+	 * beállítja a használatok számát
+	 * @param t - a szám
+	 */
+	public void setTimesUsed(int t){
+		timesUsed = t;
+	}
+	/**
 	 * Megváltoztatja a paraméterként kapott virológus viselkedési stratégiáját a rákent ágensekkel szemben.
 	 * Az új stratégia a GloveAbsorb lesz.
 	 * @param v - virológus, akire hatni fog

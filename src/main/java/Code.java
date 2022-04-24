@@ -13,6 +13,7 @@ public abstract class Code {
 		id = "c" + id_counter++;
 	}
 
+	public void setID(String id){ this.id = id;}
 	public String getId() {
 		return id;
 	}

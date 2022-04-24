@@ -12,6 +12,7 @@ public abstract class Gear {
 	public String getId() {
 		return id;
 	}
+	public void setID(String id){ this.id = id;}
 	/**
 	 * Megváltoztatja virológus valamilyen, a védőfelszerelésre jellemző tulajdonságát.
 	 * @param v - virológus, akire hatni fog
