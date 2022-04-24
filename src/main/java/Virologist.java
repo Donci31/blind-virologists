@@ -257,7 +257,12 @@ public class Virologist implements Steppable {
 	 * @param c - megtanulandó genetikai kód
 	 */
 	public void learnCode(Code c) {
-		learntCodes.add(c);
+		if (!learntCodes.contains(c)) {
+			learntCodes.add(c);
+			if (learntCodes.size() >= 4) {
+				Game.endGame(this);
+			}
+		}
 	}
 
 	/**

@@ -52,7 +52,7 @@ public abstract class SteppableController {
     }
 
     /**
-     * Az aktív ágensek listájának gettere.
+     * Az aktív ágensek listájának gettere a kiíratáshoz.
      * @return aktív ágensek listája
      */
     public static ArrayList<Agent> getAppliedAgents() {

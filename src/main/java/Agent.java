@@ -43,7 +43,7 @@ public abstract class Agent implements Steppable {
 	 */
 	public void smear(Virologist v) {
 		setSmearedVirologist(v);
-		SteppableController.addSteppable(this); // Hozzáadja a léptethetők listájához az ágenst
+		SteppableController.addAppliedAgent(this); // Hozzáadja a léptethetők listájához az ágenst
 	}
 
 	/**
