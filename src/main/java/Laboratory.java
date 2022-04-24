@@ -17,6 +17,10 @@ public class Laboratory extends Field {
 		infected = Math.random() > 0.8;
 	}
 
+	public Code getCode() {
+		return code;
+	}
+
 	public void setInfected(boolean infected) {
 		this.infected = infected;
 	}
