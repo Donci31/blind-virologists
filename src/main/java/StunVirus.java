@@ -28,7 +28,7 @@ public class StunVirus extends Agent {
 		virusTimer--;
 		if (virusTimer == 0) {
 			smearedVirologist.setStunned(false);
-			SteppableController.removeAppliedAgent(this);
+			SteppableController.kidob(this);
 		}
 	}
 }

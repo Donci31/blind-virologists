@@ -6,6 +6,9 @@ import java.util.ArrayList;
 public abstract class SteppableController {
     private static ArrayList<Steppable> steppables = new ArrayList<>();
     private static ArrayList<Agent> appliedAgents = new ArrayList<>();
+    private static ArrayList<Agent> kidobott=new ArrayList<>();
+
+    public static void kidob(Agent a){SteppableController.kidobott.add(a);}
 
     /**
      * Ez a metódus minden Steppable interface-t megvalósító objektumra meghívja a step() metódust.
@@ -16,6 +19,9 @@ public abstract class SteppableController {
         }
         for (Agent a : appliedAgents) {
             a.step();
+        }
+        for(Agent a: kidobott){
+            appliedAgents.remove(a);
         }
     }
 
