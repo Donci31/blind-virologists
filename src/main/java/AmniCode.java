@@ -13,6 +13,7 @@ public class AmniCode extends Code {
 	 * @param v - craftoló virológus
 	 * @param nCost - szükséges nukleotid
 	 * @param aCost - szükséges aminosav
+	 * @throws IllegalArgumentException - ha túlköltekezne a virológus
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
 
@@ -21,6 +22,8 @@ public class AmniCode extends Code {
 			v.removeNucleotide(nCost);
 			v.removeAminoAcid(aCost);
 			v.addCraftedAgent(a);
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 }

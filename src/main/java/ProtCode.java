@@ -14,14 +14,17 @@ public class ProtCode extends Code {
 	 * @param v - craftoló virológus
 	 * @param nCost - szükséges nukleotid
 	 * @param aCost - szükséges aminosav
+	 * @throws IllegalArgumentException - ha túlköltekezne a virológus
 	 */
-	public void craftAgent(Virologist v, int nCost, int aCost) {
+	public void craftAgent(Virologist v, int nCost, int aCost) throws IllegalArgumentException{
 
 		if (v.getAminoAcid() >= aCost && v.getNucleotide() >= nCost) {
 			ProtVaccine p = new ProtVaccine();
 			v.removeNucleotide(nCost);
 			v.removeAminoAcid(aCost);
 			v.addCraftedAgent(p);
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 }

@@ -266,8 +266,9 @@ public class Virologist implements Steppable {
 	/**
 	 * A virológus létrehoz egy ágenst, ehhez megfelelő mennyiségű nukleotiddal és aminosavval kell rendelkeznie.
 	 * @param c - a létrehozandó ágens kódja
+	 * @throws IllegalArgumentException - ha túlköltekezne a virológus
 	 */
-	public void craftAgent(Code c) {
+	public void craftAgent(Code c) throws IllegalArgumentException {
 		if(learntCodes.contains(c)) {
 			c.craftAgent(this, c.nCost, c.aCost);
 		}
