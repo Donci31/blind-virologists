@@ -10,6 +10,11 @@ public class Laboratory extends Field {
 		infected = Math.random() > 0.8;
 	}
 
+	public void setInfected(boolean infected) {
+		this.infected = infected;
+	}
+
+
 	/**
 	 * Visszaadja, hogy fertőzőtt-e a mező
 	 */

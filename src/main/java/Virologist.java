@@ -43,6 +43,12 @@ public class Virologist implements Steppable {
 		addAbsorbStrat(defAbs);
 	}
 
+	//A tesztesetekhez kell, hogy hozzá lehessen adni a virológushoz a geart
+	public void addGear(Gear g1){
+		gears.add(g1);
+		g1.giveStrat(this);
+	}
+
 	/**
 	 * Konstruktor, amiben a virológus a megadott mezőn kezdi a játékot.
 	 * @param f a mező, ahova a virológus meg fog születni

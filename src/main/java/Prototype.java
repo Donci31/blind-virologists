@@ -224,6 +224,138 @@ public class Prototype {
         } else {
             System.out.println("Error in command 'set_deterministic'! Usage: set_deterministic (Y/N)");
         }
+
+        /*Test1
+        Field f1=new Field();
+        Field f2=new Field();
+        Virologist v1=new Virologist();
+        f1.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        */
+
+        /*Test 2
+        Shelter f1=new Shelter();
+        Shelter f2=new Shelter();
+        Virologist v1=new Virologist();
+        f1.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        */
+
+        /*Test 3
+        Warehouse f1=new Warehouse;
+        Warehouse f2=new Warehouse;
+        Virologist v1=new Virologist();
+        f1.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        */
+
+        /*TEst 4
+        Laboratory f1=new Laboratory();
+        Laboratory f2=new Laboratory();
+        f1.setInfected(false);
+        f2.setInfected(false);
+        Virologist v1=new Virologist();
+        f1.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        */
+
+        /*TEst 5
+        Shelter f1=new shelter();
+        RobeGear g1=new RobeGear();
+        Virologist v1=new Virologist();
+        f1.addGear(g1);
+        f1.accept(v1);
+         ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        */
+
+
+        /*Test 6
+        Shelter f1=new shelter();
+        AxeGear g1=new AxeGear();
+        SackGear g2=new SackGear();
+        Virologist v1=new Virologist();
+        f1.addGear(g1);
+        f1.addGear(g2);
+        f1.accept(v1);
+        v1.pickUpGear(g2);
+         ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        */
+
+        /*Test 7
+        Field f1=new Field();
+        Laboratory f2=new Laboratory();
+        f2.setInfected(true);
+        Virologist v1=new Virologist();
+        f1.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        */
+
+
+        /*Test8
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f1.accept(v2);
+        AxeGear g1=new AxeGear();
+        g1.useAxe();
+        v1.pickUpGear(g1);
+        */
+
+        /*Test9
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        f1.accept(v1);
+        f1.accept(v2);
+        AxeGear g1=new AxeGear();
+        f1
+        v1.addGear(g1);
+        */
+
+        /*Test 10
+        Field f1=new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        Virologist v1=new Virologist();
+        Virologist v2=new Virologist();
+        RobeGear g1=new RobeGear();
+        v2.addGear(g1);
+        f1.accept(v1);
+        f1.accept(v2);
+        StunVirus a1=new StunVirus();
+        a1.setSmearedVirologist(v2);
+        a1.smear(v1);
+        */
+
+        //Test 11
+
     }
 
     /**
