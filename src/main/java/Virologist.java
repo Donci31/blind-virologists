@@ -19,28 +19,28 @@ public class Virologist implements Steppable {
 	private Field field;
 	private ArrayList<Code> learntCodes = new ArrayList<>();
 	private Move moveStrat = new DefaultMove();
-	private ArrayList<Hit> hitStrat = new ArrayList<>();
+	private Hit hitStrat = new DefaultHit();
 	private String id;
 	private static int id_counter = 1;
 
 	public Virologist(String name){
+		SteppableController.addSteppable(this);
 		id = "v" + id_counter++;
 		this.name = name;
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
-		hitStrat.add(new DefaultHit());
 	}
 
 	/**
 	 * Default konstruktor.
 	 */
 	public Virologist(){
+		SteppableController.addSteppable(this);
 		id = "v" + id_counter++;
 		//generate random name
 		this.name = "Virologist@" + UUID.randomUUID();
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
-		hitStrat.add(new DefaultHit());
 	}
 
 	/**
@@ -48,10 +48,10 @@ public class Virologist implements Steppable {
 	 * @param f a mező, ahova a virológus meg fog születni
 	 */
 	public Virologist(Field f){
+		SteppableController.addSteppable(this);
 		field = f;
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
-		hitStrat.add(new DefaultHit());
 	}
 
 	/**
@@ -191,6 +191,7 @@ public class Virologist implements Steppable {
 		a.setSmearedVirologist(v);//Beállítja a célvirológust, hogy az absorbok ismerjék kire kell kenni
 		a.setCrafterVirologist(this); //Beállítja a Fromvirologúst ha vissza kell dobni az ágenst
 		v.absorb(a);
+		SteppableController.addAppliedAgent(a);
 	}
 
 	/**
@@ -347,36 +348,33 @@ public class Virologist implements Steppable {
 	 * @param v - a megütött virológus
 	 */
 	public void hit(Virologist v){
-		//v.receiveHit();
-		//TODO: choose hitstrat??
-		hitStrat.get(0).hit(v);
+		hitStrat.hit(v);
 	}
 
 	/**
-	 * A virológusra ütést mérnek
+	 * A virológusra ütést mérnek, ennek hatására meghal és eltűnik a játékból
 	 */
 	public void receiveHit(){
-		//TODO: die
+		SteppableController.removeSteppable(this);
+		field.remove(this);
 	}
 
 	/**
 	 * Ha a virológus felvesz egy fegyvert, akkor meghívódik ez a függvény,
-	 * és hozzáad a virológus ütési viselkedés befolyásoló listájához egy új,
-	 * a fegyverre jellemző - itt paraméterként kapott - viselkedést.
+	 * és beállítja az ütési viselkedést a paraméterként megadottra
 	 * @param h - a felvett ütési viselkedés
 	 */
 	public void addHitStrat(Hit h){
-		hitStrat.add(h);
+		hitStrat = h;
 	}
 
 	/**
 	 * Ha a virológus eldob vagy elhasznál egy fegyvert, akkor meghívódik ez a függvény,
-	 * és kivesz a virológus ütési viselkedés befolyásoló listájából egy,
-	 * a fegyverre jellemző - itt paraméterként kapott - viselkedést.
+	 * és visszaállítja az alapraméretezettre a ütési viselkedése
 	 * @param h - az eltávolított ütési viselkedés
 	 */
 	public void removeHitStrat(Hit h){
-		hitStrat.remove(h);
+		hitStrat = new DefaultHit();
 	}
 
 	/**

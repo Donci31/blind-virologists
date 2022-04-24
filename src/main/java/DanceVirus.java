@@ -23,7 +23,7 @@ public class DanceVirus extends Agent {
 		if (virusTimer <= 0) {
 			DefaultMove def = new DefaultMove(); // <<create>> DefaultMove
 			smearedVirologist.setMoveStrat(def);
-			SteppableController.removeSteppable(this);
+			SteppableController.removeAppliedAgent(this);
 		}
 	}
 }

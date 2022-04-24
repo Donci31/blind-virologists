@@ -6,6 +6,10 @@ public class Warehouse extends Field implements Steppable {
 	private int nProduced = 0;
 	private int aProduced = 0;
 
+	public Warehouse() {
+		SteppableController.addSteppable(this);
+	}
+
 	/**
 	 * Körönként egyszer hívódik meg, a raktárban található anyagok száma random értékkel növekszik.
 	 */
