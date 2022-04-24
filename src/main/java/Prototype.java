@@ -300,8 +300,9 @@ public class Prototype {
         fields.add(f1);
         fields.add(f2);
         */
-    /* Test 4 exp
-    Laboratory f1=new Laboratory();
+
+        /* Test 4 exp
+        Laboratory f1=new Laboratory();
         Laboratory f2=new Laboratory();
         f1.setInfected(false);
         f2.setInfected(false);
@@ -312,7 +313,7 @@ public class Prototype {
         ArrayList<Field> fields=new ArrayList<>();
         fields.add(f1);
         fields.add(f2);
-     */
+          */
 
         /*TEst 5
         Shelter f1=new shelter();
@@ -702,6 +703,10 @@ public class Prototype {
         Field f1 = new Field();
         Field f2 = new Field()
         Field f3 = new Field();
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
         f1.setNeighbor(0, f2);
         f1.setNeighbor(1, f3);
         f2.setNeighbor(0, f1);
@@ -722,6 +727,10 @@ public class Prototype {
         f1.setNeighbor(1, f3);
         f2.setNeighbor(0, f1);
         f3.setNeighbor(0, f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
         BearVirus a1=new BearVirus();
         Virologist v1=new Virologist();
         Virologist v2=new Virologist();
@@ -737,6 +746,9 @@ public class Prototype {
        /* Test 20 exp
         Field f1 = new Field();
         Field f2 = new Field()
+         ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
         Warehouse f3 = new Warehouse();
         f3.setnProduced(0);
         f3.setaProduced(0);
@@ -933,7 +945,7 @@ public class Prototype {
      Field f1=new Field();
         Field f2=new Field();
         Virologist v1=new Virologist();
-        f2.accept(Virologist);
+        f2.accept(v1);
         f1.setNeighbor(0,f2);
         f2.setNeighbor(0,f1);
         ArrayList<Field> fields=new ArrayList<>();
@@ -945,6 +957,71 @@ public class Prototype {
         v1.setNucleotide(100);
 
      */
+
+    /*Teszt 26
+        Laboratory f1=new Laboratory();
+        Virologist v1=new Virologist();
+        f1.accept(v1);
+         ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        AmniCode c1=new AmniCode;
+        f1.placeCode(c1);
+         v1.setAminoAcid(100);
+        v1.setNucleotide(30);
+     */
+
+    /*Teszt 26 exp
+        Laboratory f1=new Laboratory();
+        Virologist v1=new Virologist();
+        f1.accept(v1);
+         ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        AmniCode c1=new AmniCode;
+        f1.placeCode(c1);
+         v1.setAminoAcid(100);
+        v1.setNucleotide(30);
+        v1.learnCode(c1);
+     */
+
+    /*Teszt 27
+        Laboratory f1=new Laboratory();
+        Laboratory f2=new Laboratory();
+        Laboratory f3=new Laboratory();
+        Laboratory f4=new Laboratory();
+        f1.setNeighbor(0,f2);
+        f1.setNeighbor(1,f3);
+        f1.setNeighbor(2,f4);
+        f2.setNeighbor(0,f1);
+        f2.setNeighbor(1,f3);
+        f2.setNeighbor(2,f4);
+        f3.setNeighbor(0,f1);
+        f3.setNeighbor(1,f2);
+        f3.setNeighbor(2,f4);
+        f4.setNeighbor(0,f1);
+        f4.setNeighbor(1,f2);
+        f4.setNeighbor(2,f3);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
+        fields.add(f4);
+        Virologist v1=new Virologist();
+        f1.PlaceCode(c1);
+        f2.PlaceCode(c2);
+        f3.PlaceCode(c3);
+        f4.PlaceCode(c4);
+        v1.learnCode(c1);
+        v1.learnCode(c2);
+        v1.learnCode(c3);
+        F4.accept(v1);
+        v1.setAminoAcid(200);
+        v1.setNucleotide(100);
+     */
+
+    /*Teszt 27 exp
+      The game has ended, v1 won!
+
+    */
 
 
 
