@@ -1,3 +1,5 @@
 load test36/start_state.yml
-
+move v1 f4
+move v2 f3
+move v3 f6
 save test36/out.yml

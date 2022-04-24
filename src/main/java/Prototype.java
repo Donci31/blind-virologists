@@ -1,7 +1,5 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 import java.util.Map;
 
@@ -80,7 +78,7 @@ public class Prototype {
 
         // Lehet, hogy a szomszédtesztet inkább a move()-on belül kellene elintézni
         if (!v.getField().isNeighbor(dest)) {
-            System.out.println("Error! " + args[1] + " can't reach " + args[2] + "!");
+            throw new IllegalArgumentException("Error! " + args[1] + " can't reach " + args[2] + "!");
         } else {
             v.move(dest);
         }
@@ -105,10 +103,18 @@ public class Prototype {
         Agent agent = agents.get(args[2]);
         Virologist victim = virologists.get(args[3]);
 
+        if (attacker.getField() != victim.getField()) {
+            throw new IllegalArgumentException("Error! " + attacker.getName() + " can’t reach " + victim.getName() + "!");
+        }
+
         if (args.length > 4) {
             // Ha van opcionális 4. paraméter, át kell adni a védekezés típusát is
             attacker.smearAgent(agent, victim);
-            victim.chooseAbsorbStrat(Integer.parseInt(args[4]));
+            try {
+                victim.chooseAbsorbStrat(Integer.parseInt(args[4]));
+            } catch (IllegalArgumentException e) {
+                throw new IllegalArgumentException("Error! " + victim.getName() + " doesn't have this many defenses!");
+            }
         } else {
             // Ha nincs, nem kell átadni a védekezés típusát
             attacker.smearAgent(agent, victim);
@@ -130,6 +136,10 @@ public class Prototype {
         if (v.isStunned()) return;
 
         Code code = codes.get(args[2]);
+        if (!v.getLearntCodes().contains(code)) {
+            throw new IllegalArgumentException("Error! " + v.getName() + " can't craft " + code.getId() + "!");
+        }
+
         try {
             v.craftAgent(code);
         } catch (IllegalArgumentException e) {
@@ -220,9 +230,10 @@ public class Prototype {
         if (attacker.isStunned()) return;
 
         Virologist victim = virologists.get(args[2]);
-        if (attacker.getField() == victim.getField()) {
-            attacker.hit(victim);
+        if (attacker.getField() != victim.getField()) {
+            throw new IllegalArgumentException("Error! " + attacker.getName() + " can't reach " + victim.getName() + "!");
         }
+        attacker.hit(victim);
     }
 
     /**
@@ -251,9 +262,9 @@ public class Prototype {
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void setDeterministic(String[] args) {
-        if (args[0].toLowerCase(Locale.ROOT).equals("y") || args[0].toLowerCase(Locale.ROOT).equals("yes")) {
+        if (args[1].toLowerCase(Locale.ROOT).equals("y") || args[1].toLowerCase(Locale.ROOT).equals("yes")) {
             deterministic = true;
-        } else if (args[0].toLowerCase(Locale.ROOT).equals("n") || args[0].toLowerCase(Locale.ROOT).equals("no")) {
+        } else if (args[1].toLowerCase(Locale.ROOT).equals("n") || args[1].toLowerCase(Locale.ROOT).equals("no")) {
             deterministic = false;
         } else {
             System.out.println("Error in command 'set_deterministic'! Usage: set_deterministic (Y/N)");
@@ -285,7 +296,7 @@ public class Prototype {
         commands.put("step", Prototype::step);
 
         Scanner scanner = new Scanner(System.in);
-        deterministic=true;
+        //deterministic=true;
 
         while (true) {
             clearMaps();
@@ -350,7 +361,7 @@ public class Prototype {
                     while (reader.hasNextLine()) {
                         String line = reader.nextLine();
                         System.out.println(line);
-                        expectedFileString += line;
+                        expectedFileString = line;
                     }
                 } catch (FileNotFoundException ex) {
                     e.printStackTrace();

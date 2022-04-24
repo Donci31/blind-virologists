@@ -418,8 +418,12 @@ public class Virologist implements Steppable {
 	/**
 	 * Beállítja, hogy melyik védekezési viselkedés legyen az aktív, hogyha érkezik egy ágens.
 	 * @param idx hanyadik absorb stratégiát használja
+	 * @throws IllegalArgumentException - ha túlcímzi a védekezési lehetőségeket
 	 */
-	public void chooseAbsorbStrat(int idx) {
+	public void chooseAbsorbStrat(int idx) throws IllegalArgumentException {
+		if (idx >= absorbStrats.size()) {
+			throw new IllegalArgumentException();
+		}
 		chosenAbsorbStratIdx = Math.min(absorbStrats.size(), idx);
 	}
 }

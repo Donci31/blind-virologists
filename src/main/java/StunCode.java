@@ -14,13 +14,16 @@ public class StunCode extends Code {
 	 * @param v - craftoló virológus
 	 * @param nCost - szükséges nukleotid
 	 * @param aCost - szükséges aminosav
+	 * @throws IllegalArgumentException - ha túlköltekezne a virológus
 	 */
-	public void craftAgent(Virologist v, int nCost, int aCost) {
+	public void craftAgent(Virologist v, int nCost, int aCost) throws IllegalArgumentException {
 		if (v.getAminoAcid() >= aCost && v.getNucleotide() >= nCost) {
 			StunVirus s = new StunVirus();
 			v.removeNucleotide(nCost);
 			v.removeAminoAcid(aCost);
 			v.addCraftedAgent(s);
+		} else {
+			throw new IllegalArgumentException();
 		}
 	}
 }
