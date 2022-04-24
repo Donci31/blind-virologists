@@ -14,7 +14,9 @@ public class AxeHit implements Hit{
      * @param v - a támadás célpontja, virológus
      */
     public void hit(Virologist v){
-        axe.useAxe();
-        v.receiveHit();
+        if (!axe.isUsed()) {
+            axe.useAxe();
+            v.receiveHit();
+        }
     }
 }
