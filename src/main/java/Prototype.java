@@ -14,7 +14,7 @@ public class Prototype {
     public static Map<String, Code> codes = new HashMap<>();
     public static Map<String, Gear> gears = new HashMap<>();
 
-    public boolean getDeterministic(){return deterministic;}
+    public static boolean getDeterministic(){return deterministic;}
 
     /**
      * A load parancs hatását megvalósító metódus.
