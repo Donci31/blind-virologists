@@ -26,6 +26,50 @@ public class InputReader {
             var mapList = (ArrayList<LinkedHashMap<String, Object>>) obj.get("Fields");
             //a lista hashmapjeiből mezőket épít
             fieldList = buildFields(mapList);
+
+            var effectList = (ArrayList<String>)obj.get("Applied Agents");
+            for(String effect: effectList){
+                String[] splitEffect = effect.split(" ");
+                String agentName = splitEffect[0];
+                String agentId = splitEffect[1];
+                String virologistName = splitEffect[2].split("=")[1];
+                int virusTimer = Integer.parseInt(splitEffect[3].split("=")[1]);
+
+                Agent a;
+                switch (agentName) {
+                    case "AmniVirus":
+                        a = new AmniVirus();
+                        break;
+                    case "DanceVirus":
+                        a = new DanceVirus();
+                        break;
+                    case "ProtVaccine":
+                        a = new ProtVaccine();
+                        break;
+                    case "StunVirus":
+                        a = new StunVirus();
+                        break;
+                    case "BearVirus":
+                        a = new BearVirus();
+                        break;
+                    default:
+                        a = null;
+                }
+                if(a != null){
+                    a.setId(agentId);
+                    a.setVirusTimer(virusTimer);
+                    fields:
+                    for(Field f: fieldList){
+                        for(Virologist v: f.getVirologists()){
+                            if(v.getName().equals(virologistName)){
+                                v.smearAgent(a, v);
+                                break fields;
+                            }
+                        }
+                    }
+                }
+
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,7 +103,32 @@ public class InputReader {
                     break;
                 case "Shelter":
                     created = new Shelter(name);
-                    //TODO load gears
+                    String[] split = (map.get("Gear").toString()).split(" ");
+                    String gearName = split[0];
+                    Gear g;
+                    switch (gearName) {
+                        case "GloveGear":
+                            g = new GloveGear();
+                            ((GloveGear)g).setTimesUsed(Integer.parseInt(split[3]));
+                            break;
+                        case "AxeGear":
+                            g = new AxeGear();
+                            ((AxeGear)g).setUsed(Boolean.parseBoolean(split[3]));
+                            break;
+                        case "RobeGear":
+                            g = new RobeGear();
+                            break;
+                        case "SackGear":
+                            g = new SackGear();
+                            break;
+                        default:
+                            g = null;
+                            break;
+                    }
+                    if(g != null){
+                        g.setID(split[1]);
+                        ((Shelter)created).addGear(g);
+                    }
                     break;
                 default:
                     break;
@@ -175,7 +244,7 @@ public class InputReader {
                 }
             }
         }
-        //betölti a gearek listáját
+        //betölti az ágensek listáját
         ArrayList<String> agentStrings = (ArrayList<String>)map.get("Crafted Agents");
         if(agentStrings != null) {
             for (String s : agentStrings) {
@@ -194,7 +263,6 @@ public class InputReader {
                         v.addAgent(new StunVirus());
                         break;
                 }
-
             }
         }
         return v;

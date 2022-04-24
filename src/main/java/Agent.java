@@ -19,7 +19,8 @@ public abstract class Agent implements Steppable {
 	public String getId() {
 		return id;
 	}
-
+	public void setId(String id){this.id = id;}
+	public void setVirusTimer(int t){virusTimer = t;}
 	/**
 	 * Visszaadja a vírus hátralevő idejét
 	 */
