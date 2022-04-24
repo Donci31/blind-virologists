@@ -5,6 +5,7 @@ import java.util.ArrayList;
  */
 public abstract class SteppableController {
     private static ArrayList<Steppable> steppables = new ArrayList<>();
+    private static ArrayList<Agent> appliedAgents = new ArrayList<>();
 
     /**
      * Ez a metódus minden Steppable interface-t megvalósító objektumra meghívja a step() metódust.
@@ -12,6 +13,9 @@ public abstract class SteppableController {
     public static void step() {
         for (Steppable steppable : steppables) {
             steppable.step();
+        }
+        for (Agent a : appliedAgents) {
+            a.step();
         }
     }
 
@@ -25,9 +29,33 @@ public abstract class SteppableController {
 
     /**
      * A Steppable objektumok listájából kivesz egy korábban hozzáadott Steppable objektumot.
-     * @param s - kivonandó léptethető objektum
+     * @param s - kivevendő léptethető objektum
      */
     public static void removeSteppable(Steppable s) {
         steppables.remove(s);
+    }
+
+    /**
+     * Az aktív ágensek listájához hozzáad egy frissen aktivált ágenst.
+     * @param a - új aktív ágens
+     */
+    public static void addAppliedAgent(Agent a) {
+        appliedAgents.add(a);
+    }
+
+    /**
+     * Az aktív ágensek listájából kivesz egy éppen lejárt ágenst.
+     * @param a - lejárt ágens
+     */
+    public static void removeAppliedAgent(Agent a) {
+        appliedAgents.remove(a);
+    }
+
+    /**
+     * Az aktív ágensek listájának gettere.
+     * @return aktív ágensek listája
+     */
+    public static ArrayList<Agent> getAppliedAgents() {
+        return appliedAgents;
     }
 }

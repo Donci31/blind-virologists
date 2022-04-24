@@ -9,11 +9,11 @@ import java.util.Map;
 public class Prototype {
     private static boolean deterministic = false;
     // A prototípus számon tartja a különböző fajta objektumpéldányok azonosítóit, és hozzárendeli a valódi objektumok referenciáihoz
-    private static Map<String, Virologist> virologists = new HashMap<>();
-    private static Map<String, Field> fields = new HashMap<>();
-    private static Map<String, Agent> agents = new HashMap<>();
-    private static Map<String, Code> codes = new HashMap<>();
-    private static Map<String, Gear> gears = new HashMap<>();
+    public static Map<String, Virologist> virologists = new HashMap<>();
+    public static Map<String, Field> fields = new HashMap<>();
+    public static Map<String, Agent> agents = new HashMap<>();
+    public static Map<String, Code> codes = new HashMap<>();
+    public static Map<String, Gear> gears = new HashMap<>();
 
     /**
      * A load parancs hatását megvalósító metódus.
