@@ -5,6 +5,11 @@
 public class DanceVirus extends Agent {
 	private DanceMove strat = new DanceMove();
 
+	DanceVirus(){
+		virusTimer=4;
+
+	}
+
 	/**
 	 * A paraméterként kapott virológusra kenődik az ágens, az ágensnek megfelelő hatás aktiválódik a virológuson és az ágens időzítője elkezd visszaszámolni.
 	 * A virológus mozgási viselkedése default move-ról dance move-ra állítódik át, aminek hatására kontrollálatlanul fog mozogni, amíg az ágens hatása le nem jár.

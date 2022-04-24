@@ -3,6 +3,13 @@
  * Felelős az ilyen vírusok létrehozásáért.
  */
 public class DanceCode extends Code {
+
+	DanceCode(){
+		nCost=50;
+		aCost=50;
+
+	}
+
 	/**
 	 * Létrehozza az ágenst, és elveszi a virológustól a kódoláshoz szükséges anyagokat.
 	 * @param v - craftoló virológus

@@ -3,6 +3,12 @@
  * Felelős az ilyen vírusok létrehozásáért.
  */
 public class AmniCode extends Code {
+	AmniCode(){
+		nCost=100;
+		aCost=100;
+
+	}
+
 	/**
 	 * Létrehozza az ágenst, és elveszi a virológustól a kódoláshoz szükséges anyagokat.
 	 * @param v - craftoló virológus

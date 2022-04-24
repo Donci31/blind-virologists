@@ -3,6 +3,12 @@
  * Felelős az ilyen vírusok létrehozásáért.
  */
 public class ProtCode extends Code {
+
+	ProtCode(){
+		nCost=100;
+		aCost=70;
+
+	}
 	/**
 	 * Létrehozza az ágenst, és elveszi a virológustól a kódoláshoz szükséges anyagokat.
 	 * @param v - craftoló virológus

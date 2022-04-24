@@ -4,6 +4,12 @@
  * A bénulás ideje alatt más virológusok elvehetnek tőle védőfelszereléseket.
  */
 public class StunVirus extends Agent {
+
+	StunVirus(){
+		virusTimer=2;
+
+	}
+
 	/**
 	 * A paraméterként kapott virológusra kenődik az ágens, az ágensnek megfelelő hatás aktiválódik a virológuson és az ágens időzítője elkezd visszaszámolni.
 	 * A virológus stunned attribútuma igazra állítódik át.

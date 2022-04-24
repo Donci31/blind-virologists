@@ -5,6 +5,11 @@
 public class ProtVaccine extends Agent {
 	private ProtVaccineAbsorb strat;
 
+	ProtVaccine(){
+		virusTimer=2;
+
+	}
+
 	/**
 	 * A paraméterként kapott virológusra kenődik az ágens, az ágensnek megfelelő hatás aktiválódik a virológuson és az ágens időzítője elkezd visszaszámolni.
 	 * A virológusra a hatás leteltéig nem lesz hatással semmilyen másik ágens.

@@ -9,6 +9,9 @@ public class AmniVirus extends Agent {
 	 * és az ágens időzítője elkezd visszaszámolni. Az áldozatul esett virológus azonnal elfelejti az összes megtanult genetikai kódot.
 	 * @param v - virológus, akire az ágens rá lesz kenve
 	 */
+	public AmniVirus(){
+		virusTimer=3;
+	}
 	public void smear(Virologist v) {
 		v.forgetCodes();
 		super.smear(v);

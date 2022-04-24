@@ -4,6 +4,11 @@
  */
 public class StunCode extends Code {
 
+	StunCode(){
+		nCost=80;
+		aCost=60;
+
+	}
 	/**
 	 * Létrehozza az ágenst, és elveszi a virológustól a kódoláshoz szükséges anyagokat.
 	 * @param v - craftoló virológus

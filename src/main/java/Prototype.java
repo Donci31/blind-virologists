@@ -363,7 +363,7 @@ public class Prototype {
         Laboratory f2=new Laboratory();
         f2.setInfected(true);
         Virologist v1=new Virologist();
-        f1.accept(Virologist);
+        f1.accept(v1);
         f1.setNeighbor(0,f2);
         f2.setNeighbor(0,f1);
         ArrayList<Field> fields=new ArrayList<>();
@@ -1006,10 +1006,10 @@ public class Prototype {
         fields.add(f3);
         fields.add(f4);
         Virologist v1=new Virologist();
-        f1.PlaceCode(c1);
-        f2.PlaceCode(c2);
-        f3.PlaceCode(c3);
-        f4.PlaceCode(c4);
+        f1.placeCode(c1);
+        f2.placeCode(c2);
+        f3.placeCode(c3);
+        f4.placeCode(c4);
         v1.learnCode(c1);
         v1.learnCode(c2);
         v1.learnCode(c3);
