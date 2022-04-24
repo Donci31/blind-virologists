@@ -46,6 +46,10 @@ public abstract class InputWriter {
         if (getClassName(f).equals("Laboratory")) {
             Laboratory out = (Laboratory) f;
             fieldMap.put("Infected", out.isInfected());
+            if (out.getCode() == null)
+                fieldMap.put("Code", 0);
+            else
+                fieldMap.put("Code", getClassName(out.getCode()) + " " + out.getCode().getId());
         } else if (getClassName(f).equals("Warehouse")) {
             Warehouse out = (Warehouse) f;
             fieldMap.put("nCount", out.getnProduced());
