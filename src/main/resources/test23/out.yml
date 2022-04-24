@@ -1,9 +1,21 @@
 Fields:
--   Type: Shelter
-    Gear: RobeGear g1
+-   Type: Field
     Name: f1
     Neighbors:
     - f2
+    - f3
+    Virologists: [
+        ]
+-   Type: Field
+    Name: f2
+    Neighbors:
+    - f1
+    Virologists: [
+        ]
+-   Type: Field
+    Name: f3
+    Neighbors:
+    - f1
     Virologists:
     -   Name: v1
         nCount: 100
@@ -14,12 +26,5 @@ Fields:
             ]
         Learnt Codes:
         - AmniCode c1
--   Type: Shelter
-    Gear: 0
-    Name: f2
-    Neighbors:
-    - f1
-    Virologists: [
-        ]
-Applied Agents:
-- StunVirus a1 on=v1 remaining=0
+Applied Agents: [
+    ]
