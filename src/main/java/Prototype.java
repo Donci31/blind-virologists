@@ -282,6 +282,32 @@ public class Prototype {
                     String[] command = input.nextLine().split(" ");
                     commands.get(command[0]).execute(command);
                 }
+
+                File outFile = new File("./src/main/resources/test" + testid + "/out.yml");
+                File expectedFile = new File("./src/main/resources/test" + testid + "/expected.yml");
+                Scanner reader = new Scanner(outFile);
+                String outFileString = "";
+                System.out.println("\n--------Actual output--------");
+                while (reader.hasNextLine()) {
+                    String line = reader.nextLine();
+                    System.out.println(line);
+                    outFileString += line + '\n';
+                }
+
+                reader = new Scanner(expectedFile);
+                String expectedFileString = "";
+                System.out.println("\n-------Expected output-------");
+                while (reader.hasNextLine()) {
+                    String line = reader.nextLine();
+                    System.out.println(line);
+                    expectedFileString += line + '\n';
+                }
+
+                if (outFileString.equals(expectedFileString)) {
+                    System.out.println("\nSuccessfully run test" + testid + "!\n\n");
+                } else {
+                    System.out.println("\nTest" + testid + "was unsuccessful!\n\n");
+                }
             } catch (Exception e) {
                 continue;
             }
