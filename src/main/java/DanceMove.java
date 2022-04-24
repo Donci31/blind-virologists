@@ -16,12 +16,14 @@ public class DanceMove implements Move {
 
 		List<Field> neighbours = f1.getNeighbors();
 		if(Prototype.getDeterministic()){
-			int r=0;
+			if(!neighbours.isEmpty()) {
+				Field f2 = neighbours.get(0);
+			}
 		}
 		else {
 			Random r = new Random();
+			Field f2 = neighbours.get(r.nextInt(neighbours.size()));
 		}
-		Field f2 = neighbours.get(r.nextInt(neighbours.size()));
 		f2.accept(v);
 	}
 }
