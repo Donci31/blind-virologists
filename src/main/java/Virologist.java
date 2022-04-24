@@ -230,7 +230,7 @@ public class Virologist implements Steppable {
 		gears.add(g);
 		g.giveStrat(this);
 		if(gears.size() > 3){
-			loseGear(chooseFrom(gears));
+			loseGear(gears.get(0));
 			//loseGear(gears.get((int)(Math.random() * gears.size())));
 		}
 	}

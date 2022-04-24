@@ -83,7 +83,7 @@ public class Prototype {
         Agent agent = agents.get(args[2]);
         Virologist victim = virologists.get(args[3]);
 
-        if (args[4].length() > 1) {
+        if (args.length > 4) {
             // Ha van opcionális 4. paraméter, át kell adni a védekezés típusát is
             attacker.smearAgent(agent, victim);
             victim.chooseAbsorbStrat(Integer.parseInt(args[4]));
@@ -311,7 +311,6 @@ public class Prototype {
             } catch (Exception e) {
                 System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
                 e.printStackTrace();
-                continue;
             }
         }
     }

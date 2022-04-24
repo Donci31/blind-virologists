@@ -18,6 +18,7 @@ public class Shelter extends Field {
 	 */
 	public void interactWithField(Virologist v) {
 		v.pickUpGear(gear);
+		gear = null;
 	}
 
 	/**
