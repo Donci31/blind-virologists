@@ -64,7 +64,7 @@ public abstract class InputWriter {
     private static ArrayList<Object> getNeighborList(List<Field> neighbors) {
         ArrayList<Object> names = new ArrayList<>();
         for (Field neighbor : neighbors) {
-            names.add(neighbor.getId());
+            names.add(neighbor.getName());
         }
         return names;
     }
