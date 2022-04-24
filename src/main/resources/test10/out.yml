@@ -7,8 +7,8 @@ Fields:
     -   Name: v1
         nCount: 0
         aCount: 0
-        Gears: [
-            ]
+        Gears:
+        - RobeGear g1
         Crafted Agents: [
             ]
         Learnt Codes: [
@@ -16,12 +16,11 @@ Fields:
     -   Name: v2
         nCount: 0
         aCount: 0
-        Gears:
-        - RobeGear g1
+        Gears: [
+            ]
         Crafted Agents: [
             ]
         Learnt Codes: [
             ]
 Applied Agents:
-- StunVirus a1 on=v1 remaining=2
-- StunVirus a1 on=v1 remaining=2
+- StunVirus a1 on=v2 remaining=2

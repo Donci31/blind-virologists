@@ -62,7 +62,7 @@ public class InputReader {
                     for(Field f: fieldList){
                         for(Virologist v: f.getVirologists()){
                             if(v.getName().equals(virologistName)){
-                                v.smearAgent(a, v);
+                                a.smear(v);
                                 break fields;
                             }
                         }

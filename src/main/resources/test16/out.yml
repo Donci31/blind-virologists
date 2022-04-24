@@ -9,8 +9,8 @@ Fields:
         aCount: 0
         Gears: [
             ]
-        Crafted Agents: [
-            ]
+        Crafted Agents:
+        - ProtVaccine a7
         Learnt Codes: [
             ]
     -   Name: v2
@@ -23,4 +23,12 @@ Fields:
         Learnt Codes: [
             ]
 Applied Agents:
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- ProtVaccine a2 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
 - StunVirus a1 on=v2 remaining=2

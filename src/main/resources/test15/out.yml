@@ -7,10 +7,10 @@ Fields:
     -   Name: v1
         nCount: 0
         aCount: 0
-        Gears:
-        - RobeGear g1
-        Crafted Agents: [
+        Gears: [
             ]
+        Crafted Agents:
+        - DanceVirus a5
         Learnt Codes: [
             ]
     -   Name: v2
@@ -23,4 +23,11 @@ Fields:
         Learnt Codes: [
             ]
 Applied Agents:
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- StunVirus a1 on=v2 remaining=2
+- ProtVaccine a2 on=v2 remaining=2
 - StunVirus a1 on=v2 remaining=2
