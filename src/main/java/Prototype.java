@@ -1101,6 +1101,9 @@ public void valami() {
     /* Text 30
     Field f1 = new Field();
     Field f2 = new Field();
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
     f1.setNeighbor(0, f2);
     f2.setNeighbor(0, f1);
     AxeGear g1 = new AxeGear();
@@ -1119,7 +1122,11 @@ public void valami() {
     /* Test 31
     Field f1 = new Field();
     Field f2 = new Field();
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
     Virologist v1 = new Virologist();
+    f1.accept(v1);
      */
 
     /* Test 31 exp
@@ -1129,6 +1136,8 @@ public void valami() {
 
     /* Test 32
     Laboratory f1 = new Laboratory();
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
     Virologist v1 = new Virologist();
     Code c1 = new StunCode();
     f1.placeCode(c1);
@@ -1144,6 +1153,10 @@ public void valami() {
     Field f2 = new Field();
     Laboratory f3 = new Laboratory();
     f3.setInfected(true);
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
     Virologist v1 = new Virologist();
     Virologist v2 = new Virologist();
     f1.accept(v1);
@@ -1165,6 +1178,10 @@ public void valami() {
     Field f2 = new Field();
     Laboratory f3 = new Laboratory();
     f3.setInfected(true);
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
     Virologist v1 = new Virologist();
     f3.accept(v1);
     f1.setNeighbor(0, f2);
@@ -1185,6 +1202,10 @@ public void valami() {
     Shelter f1 = new Shelter();
     Field f2 = new Field();
     Laboratory f3 = new Laboratory();
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
     Virologist v1 = new Virologist();
     Virologist v2 = new Virologist();
     v2.setAminoAcid(200);
@@ -1209,6 +1230,10 @@ public void valami() {
     Shelter f1 = new Shelter();
     Field f2 = new Field();
     Laboratory f3 = new Laboratory();
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
     Virologist v1 = new Virologist();
     Virologist v2 = new Virologist();
     f3.accept(v1);
@@ -1237,6 +1262,10 @@ public void valami() {
     f1.setInfected(true);
     Laboratory f2 = new Laboratory();
     Field f3 = new Field();
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
     Virologist v1 = new Virologist();
     Virologist v2 = new Virologist();
     f1.setNeighbor(0, f2);
@@ -1270,6 +1299,10 @@ public void valami() {
     f1.setInfected(true);
     Laboratory f2 = new Laboratory();
     Field f3 = new Field();
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
     Virologist v2 = new Virologist();
     f1.setNeighbor(0, f2);
     f1.setNeighbor(1, f3);
@@ -1307,6 +1340,16 @@ public void valami() {
     Warehouse f7 = new Warehouse();
     Warehouse f8 = new Warehouse();
     Warehouse f9 = new Warehouse();
+    ArrayList<Field> fields=new ArrayList<>();
+    fields.add(f1);
+    fields.add(f2);
+    fields.add(f3);
+    fields.add(f4);
+    fields.add(f5);
+    fields.add(f6);
+    fields.add(f7);
+    fields.add(f8);
+    fields.add(f9);
     f1.setNeighbor(0, f2);
     f2.setNeighbor(0, f3);
     f3.setNeighbor(0, f4);
@@ -1333,6 +1376,16 @@ public void valami() {
     Warehouse f7 = new Warehouse();
     Warehouse f8 = new Warehouse();
     Warehouse f9 = new Warehouse();
+    ArrayList<Field> fields=new ArrayList<>();
+    fields.add(f1);
+    fields.add(f2);
+    fields.add(f3);
+    fields.add(f4);
+    fields.add(f5);
+    fields.add(f6);
+    fields.add(f7);
+    fields.add(f8);
+    fields.add(f9);
     f1.setNeighbor(0, f2);
     f2.setNeighbor(0, f3);
     f3.setNeighbor(0, f4);
@@ -1360,23 +1413,42 @@ public void valami() {
     }
 
     public static void main(String[] args) {
-        Field f1 = new Field();
-        Field f2 = new Field();
+        Laboratory f1 = new Laboratory();
+        f1.setInfected(true);
+        Laboratory f2 = new Laboratory();
         Field f3 = new Field();
         ArrayList<Field> fields=new ArrayList<>();
         fields.add(f1);
         fields.add(f2);
         fields.add(f3);
+        Virologist v1 = new Virologist();
+        Virologist v2 = new Virologist();
         f1.setNeighbor(0, f2);
         f1.setNeighbor(1, f3);
         f2.setNeighbor(0, f1);
+        f2.setNeighbor(1, f3);
         f3.setNeighbor(0, f1);
-        DanceVirus a1=new DanceVirus();
-        Virologist v1=new Virologist();
-        f3.accept(v1);
-        a1.smear(v1);
-        //InputWriter.printFields("test19/start_state.yml", fields);
-        InputWriter.printFields("test19/expected.yml", fields);
+        f3.setNeighbor(1, f2);
+        //BearVirus a1 = new BearVirus();
+        //a1.smear(v1);
+        Code c1 = new AmniCode();
+        c1.setnCost(20);
+        c1.setaCost(30);
+        f1.placeCode(c1);
+        v1.learnCode(c1);
+        AmniVirus a2 = new AmniVirus();
+        v1.addCraftedAgent(a2);
+        Code c2 = new ProtCode();
+        c2.setnCost(50);
+        c2.setaCost(60);
+        AxeGear g1 = new AxeGear();
+        f2.placeCode(c2);
+        v2.learnCode(c2);
+        v2.addGear(g1);
+        f1.accept(v1);
+        f2.accept(v2);
+        InputWriter.printFields("test35/start_state.yml", fields);
+        //InputWriter.printFields("test35/expected.yml", fields);
 
         /*var ir = new InputReader();
         ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");
@@ -1386,20 +1458,6 @@ public void valami() {
                 System.out.println("Virologist: " + v.getName() + "\n");
             }
         }*/
-        Field f1=new Field();
-        Field f2=new Field();
-        ArrayList<Field> fields=new ArrayList<>();
-        fields.add(f1);
-        fields.add(f2);
-        f1.setNeighbor(0,f2);
-        f2.setNeighbor(0,f1);
-        Virologist v1=new Virologist();
-        Virologist v2=new Virologist();
-        f1.accept(v1);
-        f2.accept(v2);
-        AmniVirus a1=new AmniVirus();
-        v1.addCraftedAgent(a1);
-
 
     }
 }

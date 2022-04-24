@@ -208,7 +208,7 @@ public class Virologist implements Steppable {
 	 */
 	public void absorb(Agent a) {
 		//chooseFrom(absorbStrats).absorb(a);
-		chosenAbsorbStratIdx = Math.min(absorbStrats.size(), chosenAbsorbStratIdx);
+		chosenAbsorbStratIdx = Math.min(absorbStrats.size()-1, chosenAbsorbStratIdx);
 		try {
 			absorbStrats.get(chosenAbsorbStratIdx).absorb(a);
 		} catch (IndexOutOfBoundsException e) {
@@ -351,6 +351,7 @@ public class Virologist implements Steppable {
 	 */
 	public void addAbsorbStrat(Absorb a) {
 		absorbStrats.add(a);
+		chosenAbsorbStratIdx = absorbStrats.size()-1;
 	}
 
 	/**
