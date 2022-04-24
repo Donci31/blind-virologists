@@ -731,7 +731,6 @@ public class Prototype {
         */
 
        /* Test 20 exp
-
         Field f1 = new Field();
         Field f2 = new Field()
         Warehouse f3 = new Warehouse();
@@ -749,6 +748,178 @@ public class Prototype {
         a2.smear(v2);
      */
 
+    /*Teszt 21
+    Shelter f1=new shelter();
+    SackGear g1=new RobeGear();
+    Virologist v1=new Virologist();
+        f1.addGear(g1);
+        f1.accept(v1);
+    ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+    */
+
+    /*Teszt 21 exp
+    Shelter f1=new shelter();
+    SackGear g1=new RobeGear();
+    Virologist v1=new Virologist();
+    v1.addGear(g1);
+    f1.accept(v1);
+    ArrayList<Field> fields=new ArrayList<>();
+    fields.add(f1);
+     */
+
+    /*Teszt 22
+        Shelter f1=new Shelter();
+        Field f2=new Shelter();
+        Virologist v1=new Virologist();
+        f1.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        RobeGear g1=new RobeGear();
+        f1.addGear();
+        Stunvirus a1=new StunVirus();
+        AmniCode c1=new AmniCode();
+        v1.learnCode(c1;)
+        a1.smear(v1);
+     */
+
+    /*Teszt 22 exp
+        Shelter f1=new Shelter();
+        Field f2=new Shelter();
+        Virologist v1=new Virologist();
+        f2.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        RobeGear g1=new RobeGear();
+        f1.addGear();
+        Stunvirus a1=new StunVirus();
+        AmniCode c1=new AmniCode();
+        v1.learnCode(c1;)
+        a1.smear(v1);
+     */
+
+    /*Teszt 23
+        Field f1 = new Field();
+        Field f2 = new Field()
+        Field f3 = new Field();
+        f1.setNeighbor(0, f2);
+        f1.setNeighbor(1, f3);
+        f2.setNeighbor(0, f1);
+        f3.setNeighbor(0, f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
+        DanceVirus a1=new DanceVirus();
+        Virologist v1=new Virologist();
+        f1.accept(v1);
+        Amnicode c1=new AmniCode();
+        v1.learnCode(c1);
+        DanceVirus a1=new DanceVirus();
+        a1.smear(v1);
+        for(int i=0;i<a1.getVirusTimer();i++){
+            a1.step();
+        }
+
+     */
+
+    /*Teszt 23 exp
+          Field f1 = new Field();
+        Field f2 = new Field()
+        Field f3 = new Field();
+        f1.setNeighbor(0, f2);
+        f1.setNeighbor(1, f3);
+        f2.setNeighbor(0, f1);
+        f3.setNeighbor(0, f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        fields.add(f3);
+        DanceVirus a1=new DanceVirus();
+        Virologist v1=new Virologist();
+        f3.accpet(v1);
+        Amnicode c1=new AmniCode();
+        v1.learnCode(c1);
+        DanceVirus a1=new DanceVirus();
+     */
+
+    /*Teszt 24
+        Field f1=new Field();
+        Laboratory f2=new Laboratory();
+        f2.setInfected(true);
+        Virologist v1=new Virologist();
+        f1.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        Amnicode c1=new AmniCode();
+        v1.learnCode(c1);
+        Protvaccine a1=new ProtVaccine();
+        a1.smear(v1);
+        for(int i=0;i<a1.getVirusTimer();i++){
+            a1.step();
+        }
+     */
+
+    /*Teszt 24 exp
+        Field f1=new Field();
+        Laboratory f2=new Laboratory();
+        f2.setInfected(true);
+        Virologist v1=new Virologist();
+        f2.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        Amnicode c1=new AmniCode();
+        v1.learnCode(c1);
+        BearVirus a2=new BearVirus();
+        a2.smear(v1);
+     */
+
+    /*Teszt 25
+        Field f1=new Field();
+        Field f2=new Field();
+        Virologist v1=new Virologist();
+        f1.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        Amnicode c1=new AmniCode();
+        v1.learnCode(c1);
+        StunVirus a1=new StunVirus();
+        a2.smear(v1);
+        for(int i=0;i<a1.getVirusTimer();i++){
+            a1.step();
+        }
+     */
+
+    /*Teszt 25 exp
+
+     Field f1=new Field();
+        Field f2=new Field();
+        Virologist v1=new Virologist();
+        f2.accept(Virologist);
+        f1.setNeighbor(0,f2);
+        f2.setNeighbor(0,f1);
+        ArrayList<Field> fields=new ArrayList<>();
+        fields.add(f1);
+        fields.add(f2);
+        Amnicode c1=new AmniCode();
+        v1.learnCode(c1);
+
+     */
 
 
 
