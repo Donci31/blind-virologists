@@ -1,5 +1,7 @@
 Fields:
--   Type: Field
+-   Type: Warehouse
+    nCount: 0
+    aCount: 0
     Name: f1
     Neighbors:
     - f2
@@ -22,10 +24,26 @@ Fields:
             ]
         Learnt Codes: [
             ]
--   Type: Field
+-   Type: Shelter
     Name: f2
     Neighbors:
     - f1
     Virologists: [
         ]
+-   Type: Laboratory
+    Infected: false
+    Name: f3
+    Neighbors:
+    - f1
+    - f2
+    Virologists:
+    -   Name: v3
+        nCount: 0
+        aCount: 0
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
 Applied Agents: Yo

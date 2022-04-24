@@ -236,24 +236,29 @@ public class Prototype {
     }
 
     public static void main(String[] args) {
-        Field f1 = new Field();
-        Field f2 = new Field();
+        Field f1 = new Warehouse();
+        Field f2 = new Shelter();
+        Field f3 = new Laboratory();
         f1.accept(new Virologist());
         f1.accept(new Virologist());
+        f3.accept(new Virologist());
         f1.setNeighbor(0, f2);
         f2.setNeighbor(0, f1);
+        f3.setNeighbor(0, f1);
+        f3.setNeighbor(1, f2);
         ArrayList<Field> fields = new ArrayList<>();
         fields.add(f1);
         fields.add(f2);
+        fields.add(f3);
         InputWriter.printFields(fields);
 
-        var ir = new InputReader();
+        /*var ir = new InputReader();
         ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");
         for(Field f : fieldsLoaded){
             System.out.println("Field: " + f.getName() + "\n");
             for(Virologist v: f.getVirologists()){
                 System.out.println("Virologist: " + v.getName() + "\n");
             }
-        }
+        }*/
     }
 }

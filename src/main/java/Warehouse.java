@@ -11,6 +11,20 @@ public class Warehouse extends Field implements Steppable {
 	}
 
 	/**
+	 * Visszaadja a nukleotidok számát.
+	 */
+	public int getnProduced() {
+		return nProduced;
+	}
+
+	/**
+	 * Visszaadja az aminosavak számát.
+	 */
+	public int getaProduced() {
+		return aProduced;
+	}
+
+	/**
 	 * Körönként egyszer hívódik meg, a raktárban található anyagok száma random értékkel növekszik.
 	 */
 	public void step() {

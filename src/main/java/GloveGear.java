@@ -7,6 +7,13 @@ public class GloveGear extends Gear {
 	private int timesUsed;
 
 	/**
+	 * Visszaadja a kesztyű használati számát
+	 */
+	public int getTimesUsed() {
+		return timesUsed;
+	}
+
+	/**
 	 * Megváltoztatja a paraméterként kapott virológus viselkedési stratégiáját a rákent ágensekkel szemben.
 	 * Az új stratégia a GloveAbsorb lesz.
 	 * @param v - virológus, akire hatni fog

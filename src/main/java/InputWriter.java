@@ -42,6 +42,14 @@ public abstract class InputWriter {
     private static LinkedHashMap<String, Object> getFieldBlock(Field f) {
         LinkedHashMap<String, Object> fieldMap = new LinkedHashMap<>();
         fieldMap.put("Type", getClassName(f));
+        if (getClassName(f).equals("Laboratory")) {
+            Laboratory out = (Laboratory) f;
+            fieldMap.put("Infected", out.isInfected());
+        } else if (getClassName(f).equals("Warehouse")) {
+            Warehouse out = (Warehouse) f;
+            fieldMap.put("nCount", out.getnProduced());
+            fieldMap.put("aCount", out.getaProduced());
+        }
         fieldMap.put("Name", f.getId());
         fieldMap.put("Neighbors", getNeighborList(f.getNeighbors()));
 
@@ -75,7 +83,16 @@ public abstract class InputWriter {
     private static ArrayList<Object> getGearsList(Virologist v) {
         ArrayList<Object> names = new ArrayList<>();
         for (Gear g : v.getGears()) {
-            names.add(getClassName(g) + " " + g.getId());
+            if (getClassName(g).equals("GloveGear")) {
+                GloveGear out = (GloveGear) g;
+                names.add(getClassName(g) + " " + g.getId() + " timesUsed=" + out.getTimesUsed());
+            } else if (getClassName(g).equals("AxeGear")) {
+                AxeGear out = (AxeGear) g;
+                names.add(getClassName(g) + " " + g.getId() + " timesUsed=" + out.isUsed());
+            }
+            else {
+                names.add(getClassName(g) + " " + g.getId());
+            }
         }
         return names;
     }

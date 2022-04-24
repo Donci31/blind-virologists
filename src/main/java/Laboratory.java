@@ -11,6 +11,12 @@ public class Laboratory extends Field {
 	}
 
 	/**
+	 * Visszaadja, hogy fertőzőtt-e a mező
+	 */
+	public boolean isInfected() {
+		return infected;
+	}
+	/**
 	 * A paraméterül kapott virológus megtanulja a laboratóriumban található genetikai kódot.
 	 * @param v - mezővel interaktáló virológus
 	 */
