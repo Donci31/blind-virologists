@@ -50,7 +50,7 @@ public abstract class InputWriter {
             fieldMap.put("nCount", out.getnProduced());
             fieldMap.put("aCount", out.getaProduced());
         }
-        fieldMap.put("Name", f.getId());
+        fieldMap.put("Name", f.getName());
         fieldMap.put("Neighbors", getNeighborList(f.getNeighbors()));
 
         ArrayList<LinkedHashMap<String, Object>> virologists = new ArrayList<>();
@@ -71,7 +71,7 @@ public abstract class InputWriter {
 
     private static LinkedHashMap<String, Object> getVirologistBlock(Virologist v) {
         LinkedHashMap<String, Object> virologistMap = new LinkedHashMap<>();
-        virologistMap.put("Name", v.getId());
+        virologistMap.put("Name", v.getName());
         virologistMap.put("nCount", v.getNucleotide());
         virologistMap.put("aCount", v.getAminoAcid());
         virologistMap.put("Gears", getGearsList(v));

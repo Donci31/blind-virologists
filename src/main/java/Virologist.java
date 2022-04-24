@@ -23,6 +23,10 @@ public class Virologist implements Steppable {
 	private String id;
 	private static int id_counter = 1;
 
+	/**
+	 * Konstruktor ami beállítja a virológus nevét a paraméterének megfelelően
+	 * @param name - a virológus neve
+	 */
 	public Virologist(String name){
 		SteppableController.addSteppable(this);
 		id = "v" + id_counter++;
