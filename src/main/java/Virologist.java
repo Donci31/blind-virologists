@@ -21,6 +21,7 @@ public class Virologist implements Steppable {
 	private Move moveStrat = new DefaultMove();
 	private Hit hitStrat = new DefaultHit();
 	private static int id_counter = 1;
+	private int chosenAbsorbStratIdx = 0;
 
 	public Virologist(String name) {
 		SteppableController.addSteppable(this);
@@ -193,7 +194,13 @@ public class Virologist implements Steppable {
 	 * @param a - virológusra kent ágens
 	 */
 	public void absorb(Agent a) {
-		chooseFrom(absorbStrats).absorb(a);
+		//chooseFrom(absorbStrats).absorb(a);
+		chosenAbsorbStratIdx = Math.min(absorbStrats.size(), chosenAbsorbStratIdx);
+		try {
+			absorbStrats.get(chosenAbsorbStratIdx).absorb(a);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Index out of bounds!");
+		}
 	}
 
 	/**
@@ -397,29 +404,10 @@ public class Virologist implements Steppable {
 	}
 
 	/**
-	 * Az ágens elleni a paraméterként megadott védőfelszerelésével védekezzen.
-	 * @param g a kiválasztott védekező felszerelés
-	 * @throws IllegalArgumentException
+	 * Beállítja, hogy melyik védekezési viselkedés legyen az aktív, hogyha érkezik egy ágens.
+	 * @param idx hanyadik absorb stratégiát használja
 	 */
-	public void absorbWithGear(Gear g) throws IllegalArgumentException {
-		if (!gears.contains(g)) {
-			throw new IllegalArgumentException();
-		}
-
-		// A lista elejére helyezi a kiválasztott felszerelés absorb stratégiáját (prioritási sor elejére kerül így)
-		//absorbStrats.remove()
-	}
-
-	/**
-	 * Az ágens elleni a paraméterként megadott ágensével védekezzen.
-	 * @param a a kiválasztott védekező ágens
-	 * @throws IllegalArgumentException
-	 */
-	public void absorbWithAgent(Agent a) throws IllegalArgumentException {
-		if (!craftedAgents.contains(a)) {
-			throw new IllegalArgumentException();
-		}
-
-		// A lista elejére helyezi a kiválasztott ágens absorb stratégiáját (prioritási sor elejére kerül így)
+	public void chooseAbsorbStrat(int idx) {
+		chosenAbsorbStratIdx = Math.min(absorbStrats.size(), idx);
 	}
 }

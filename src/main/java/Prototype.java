@@ -74,9 +74,10 @@ public class Prototype {
         Agent agent = agents.get(args[2]);
         Virologist victim = virologists.get(args[3]);
 
-        if (args[4].length() > 1 && (gears.containsKey(args[4]) || agents.containsKey(args[4]))) {
+        if (args[4].length() > 1) {
             // Ha van opcionális 4. paraméter, át kell adni a védekezés típusát is
-            //attacker.smearAgent(agent, victim); // TODO új paraméter a függvénybe, try-catch kell még ide
+            attacker.smearAgent(agent, victim);
+            victim.chooseAbsorbStrat(Integer.parseInt(args[4]));
         } else {
             // Ha nincs, nem kell átadni a védekezés típusát
             attacker.smearAgent(agent, victim);
