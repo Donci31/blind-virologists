@@ -5,12 +5,12 @@ Fields:
         ]
     Virologists:
     -   Name: v1
-        nCount: 100
-        aCount: 100
+        nCount: 50
+        aCount: 0
         Gears: [
             ]
-        Crafted Agents: [
-            ]
+        Crafted Agents:
+        - AmniVirus a1
         Learnt Codes:
         - AmniCode c1
 Applied Agents: [

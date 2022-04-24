@@ -6,7 +6,7 @@ Fields:
     Virologists:
     -   Name: v1
         nCount: 50
-        aCount: 50
+        aCount: 0
         Gears: [
             ]
         Crafted Agents:

@@ -7,7 +7,6 @@ public class DanceCode extends Code {
 	DanceCode(){
 		nCost=50;
 		aCost=50;
-
 	}
 
 	/**
@@ -18,7 +17,7 @@ public class DanceCode extends Code {
 	 */
 	public void craftAgent(Virologist v, int nCost, int aCost) {
 
-		if (v.getAminoAcid() > aCost && v.getNucleotide() > nCost) {
+		if (v.getAminoAcid() >= aCost && v.getNucleotide() >= nCost) {
 			DanceVirus d = new DanceVirus();
 			v.removeNucleotide(nCost);
 			v.removeAminoAcid(aCost);
