@@ -2,7 +2,7 @@
  * Ez az osztály azt a védőfelszerelést valósítja meg, amivel a viselőre kent ágensek visszadobhatóak a kenőre.
  */
 public class AxeGear extends Gear {
-    private AxeHit strat = new AxeHit();
+    private AxeHit strat = new AxeHit(this);
     private boolean used;
 
     /**

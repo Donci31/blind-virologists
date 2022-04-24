@@ -4,6 +4,11 @@
  */
 public class AxeHit implements Hit{
     private AxeGear axe;
+
+    public AxeHit(AxeGear axe) {
+        this.axe = axe;
+    }
+
     /**
      * Megüti a paraméterként kapott virológust, elhasználja a baltát.
      * @param v - a támadás célpontja, virológus

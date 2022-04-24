@@ -1,6 +1,5 @@
 Fields:
--   Type: Shelter
-    Gear: 0
+-   Type: Field
     Name: f1
     Neighbors: [
         ]
@@ -9,10 +8,11 @@ Fields:
         nCount: 0
         aCount: 0
         Gears:
-        - AxeGear g1 used=false
+        - AxeGear g1 used=true
         Crafted Agents: [
             ]
         Learnt Codes: [
             ]
-Applied Agents: [
-    ]
+Applied Agents:
+- StunVirus a1 on=v1 remaining=2
+- StunVirus a1 on=v1 remaining=2
