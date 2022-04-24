@@ -55,7 +55,7 @@ public abstract class InputWriter {
             if (out.getGear() == null)
                 fieldMap.put("Gear", 0);
             else
-                fieldMap.put("Gear", out.getGear());
+                fieldMap.put("Gear", out.getGear().getId());
         }
         fieldMap.put("Name", f.getName());
         fieldMap.put("Neighbors", getNeighborList(f.getNeighbors()));
@@ -123,7 +123,7 @@ public abstract class InputWriter {
     private static ArrayList<Object> getAppliedAgentsList() {
         ArrayList<Object> names = new ArrayList<>();
         for (Agent a :SteppableController.getAppliedAgents()) {
-            names.add(getClassName(a) + " " + a.getId() + " " + a.getSmearedVirologist() + " remaining=" + a.getVirusTimer());
+            names.add(getClassName(a) + " " + a.getId() + " on=" + a.getSmearedVirologist().getName() + " remaining=" + a.getVirusTimer());
         }
         return names;
     }
