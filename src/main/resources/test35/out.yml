@@ -1,7 +1,7 @@
 Fields:
 -   Type: Laboratory
     Infected: true
-    Code: AmniCode c1
+    Code: 0
     Name: f1
     Neighbors:
     - f2
@@ -10,7 +10,7 @@ Fields:
         ]
 -   Type: Laboratory
     Infected: false
-    Code: ProtCode c2
+    Code: 0
     Name: f2
     Neighbors:
     - f1
@@ -33,5 +33,5 @@ Fields:
     Virologists: [
         ]
 Applied Agents:
-- BearVirus a3 on=v2 remaining=0
+- BearVirus a4 on=v2 remaining=0
 - AmniVirus a1 on=v2 remaining=3

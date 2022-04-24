@@ -5,9 +5,7 @@ Fields:
     - f2
     Virologists: [
         ]
--   Type: Laboratory
-    Infected: true
-    Code: 0
+-   Type: Field
     Name: f2
     Neighbors:
     - f1
@@ -21,5 +19,5 @@ Fields:
             ]
         Learnt Codes:
         - AmniCode c1
-Applied Agents:
-- BearVirus a2 on=v1 remaining=0
+Applied Agents: [
+    ]
