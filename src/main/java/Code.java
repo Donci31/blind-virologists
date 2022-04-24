@@ -19,6 +19,11 @@ public abstract class Code {
 		return id;
 	}
 
+	public int getnCost(){return nCost;}
+	public int getaCost(){return aCost;}
+	public void setnCost(int k){nCost=k;}
+	public void setaCost(int k){aCost=k;}
+
 	/**
 	 * Létrehozza a kódolt ágenst, és elveszi a virológustól a kódoláshoz szükséges anyagokat.
 	 * @param v - craftoló virológus
