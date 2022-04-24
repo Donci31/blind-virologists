@@ -51,7 +51,7 @@ public class Laboratory extends Field {
 	 * @param v - lépő virológus
 	 */
 	public void accept(Virologist v){
-		virologists.add(v);
+		super.accept(v);
 		if(infected){
 			BearVirus bearVirus = new BearVirus();
 			bearVirus.setSmearedVirologist(v);

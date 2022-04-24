@@ -1,6 +1,6 @@
 Fields:
 -   Type: Shelter
-    Gear: 0
+    Gear: RobeGear g1
     Name: f1
     Neighbors: [
         ]
@@ -8,19 +8,11 @@ Fields:
     -   Name: v1
         nCount: 0
         aCount: 0
-        Gears: [
-            ]
+        Gears:
+        - RobeGear g1
         Crafted Agents: [
             ]
         Learnt Codes: [
             ]
--   Type: Laboratory
-    Infected: false
-    Code: 0
-    Name: f2
-    Neighbors:
-    - f1
-    Virologists: [
-        ]
 Applied Agents: [
     ]

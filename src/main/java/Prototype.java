@@ -150,7 +150,7 @@ public class Prototype {
         // Ha nem óvóhelyen történt a metódushívás, akkor nem történik semmi sem
         if (v.getField() instanceof Shelter) {
             // Ha van opcionális 2. argumentum, azaz eldob a virológus egy felszerelést
-            if (args[2].length() > 1 && gears.containsKey(args[2])) {
+            if (args.length > 2 && gears.containsKey(args[2])) {
                 Gear gearToBeThrown = gears.get(args[2]);
                 v.loseGear(gearToBeThrown);
             }
@@ -306,9 +306,11 @@ public class Prototype {
                 if (outFileString.equals(expectedFileString)) {
                     System.out.println("\nSuccessfully run test" + testid + "!\n\n");
                 } else {
-                    System.out.println("\nTest" + testid + "was unsuccessful!\n\n");
+                    System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
                 }
             } catch (Exception e) {
+                System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
+                e.printStackTrace();
                 continue;
             }
         }
