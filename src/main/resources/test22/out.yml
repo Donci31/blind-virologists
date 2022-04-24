@@ -4,22 +4,22 @@ Fields:
     Name: f1
     Neighbors:
     - f2
-    Virologists:[
-     ]
+    Virologists:
+    -   Name: v1
+        nCount: 100
+        aCount: 100
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes:
+        - AmniCode c1
 -   Type: Shelter
     Gear: 0
     Name: f2
     Neighbors:
     - f1
-    Virologists:
-        - Name: v1
-              nCount: 100
-              aCount: 100
-              Gears: [
-              ]
-              Crafted Agents: [
-              ]
-              Learnt Codes:
-                  - AmniCode c1
+    Virologists: [
+        ]
 Applied Agents:
 - StunVirus a1 on=v1 remaining=0
