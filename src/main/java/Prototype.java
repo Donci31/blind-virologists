@@ -23,7 +23,7 @@ public class Prototype {
     protected static void load(String[] args) {
         var ir = new InputReader();
         //ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");
-        ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");
+        ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/" + args[1]);
     }
 
     /**

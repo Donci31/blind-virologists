@@ -18,12 +18,14 @@ public class Field {
 		this.name = name;
 		virologists = new ArrayList<>();
 		neighbors = new ArrayList<>();
+		Prototype.fields.put(name, this);
 	}
 
 	public Field() {
 		this.name = "f" + id_counter++;
 		virologists = new ArrayList<>();
 		neighbors = new ArrayList<>();
+		Prototype.fields.put(name, this);
 	}
 
 	public List<Virologist> getVirologists() {

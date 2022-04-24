@@ -13,6 +13,7 @@ public abstract class Agent implements Steppable {
 
 	public Agent() {
 		id = "a" + id_counter++;
+		Prototype.agents.put(id, this);
 	}
 
 	public String getId() {

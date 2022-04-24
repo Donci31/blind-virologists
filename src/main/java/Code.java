@@ -11,6 +11,7 @@ public abstract class Code {
 
 	public Code() {
 		id = "c" + id_counter++;
+		Prototype.codes.put(id, this);
 	}
 
 	public void setID(String id){ this.id = id;}

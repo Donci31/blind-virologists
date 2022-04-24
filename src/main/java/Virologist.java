@@ -25,8 +25,8 @@ public class Virologist implements Steppable {
 	private int chosenAbsorbStratIdx = 0;
 
 	/**
-	 * Konstruktor ami beállítja a virológus nevét a paraméterének megfelelően
-	 * @param name - a virológus neve
+	 * Konstruktor, ami a virologist_id-t fogadja paraméterként.
+	 * @param name virologist_id
 	 */
 	public Virologist(String name) {
 		SteppableController.addSteppable(this);
@@ -257,7 +257,12 @@ public class Virologist implements Steppable {
 	 * @param c - megtanulandó genetikai kód
 	 */
 	public void learnCode(Code c) {
-		learntCodes.add(c);
+		if (!learntCodes.contains(c)) {
+			learntCodes.add(c);
+			if (learntCodes.size() >= 4) {
+				Game.endGame(this);
+			}
+		}
 	}
 
 	/**

@@ -5,14 +5,28 @@ public abstract class Gear {
 	private static int id_counter = 1;
 	protected String id;
 
+	/**
+	 * Konstruktor.
+	 */
 	public Gear() {
 		id = "g" + id_counter++;
+		Prototype.gears.put(id, this);
 	}
 
+	/**
+	 * Az id gettere.
+	 * @return id
+	 */
 	public String getId() {
 		return id;
 	}
+
+	/**
+	 * Az id settere
+	 * @param id a beállítandó id
+	 */
 	public void setID(String id){ this.id = id;}
+
 	/**
 	 * Megváltoztatja virológus valamilyen, a védőfelszerelésre jellemző tulajdonságát.
 	 * @param v - virológus, akire hatni fog
