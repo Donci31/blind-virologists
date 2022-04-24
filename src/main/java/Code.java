@@ -6,6 +6,17 @@ public abstract class Code {
 	protected int nCost;
 	protected int aCost;
 
+	private static int id_counter = 1;
+	protected String id;
+
+	public Code() {
+		id = "c" + id_counter++;
+	}
+
+	public String getId() {
+		return id;
+	}
+
 	/**
 	 * Létrehozza a kódolt ágenst, és elveszi a virológustól a kódoláshoz szükséges anyagokat.
 	 * @param v - craftoló virológus

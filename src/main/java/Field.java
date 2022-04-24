@@ -15,17 +15,27 @@ public class Field {
 	protected List<Field> neighbors;
 	private String name;
 
+	private static int id_counter = 1;
+
+	protected String id;
+
 	public Field(String name) {
+		id = "f" + id_counter++;
 		this.name = name;
 		virologists = new ArrayList<>();
 		neighbors = new ArrayList<>();
 	}
 
 	public Field() {
+		id = "f" + id_counter++;
 		//generate random name
 		this.name = "Field@" + UUID.randomUUID();
 		virologists = new ArrayList<>();
 		neighbors = new ArrayList<>();
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public List<Virologist> getVirologists() {

@@ -2,6 +2,16 @@
  * A védőfelszereléseket megvalósító absztrakt osztály, minden védőfelszerelés ennek az osztálynak lesz a leszármazottja.
  */
 public abstract class Gear {
+	private static int id_counter = 1;
+	protected String id;
+
+	public Gear() {
+		id = "g" + id_counter++;
+	}
+
+	public String getId() {
+		return id;
+	}
 	/**
 	 * Megváltoztatja virológus valamilyen, a védőfelszerelésre jellemző tulajdonságát.
 	 * @param v - virológus, akire hatni fog

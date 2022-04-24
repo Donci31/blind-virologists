@@ -8,6 +8,16 @@ public abstract class Agent implements Steppable {
 	protected Virologist smearedVirologist;
 	protected Virologist crafterVirologist=null;
 
+	private static int id_counter = 1;
+	protected String id;
+
+	public Agent() {
+		id = "a" + id_counter++;
+	}
+
+	public String getId() {
+		return id;
+	}
 
 	/**
 	 * A smearedVirologist settere

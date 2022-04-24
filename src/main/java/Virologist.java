@@ -20,9 +20,11 @@ public class Virologist implements Steppable {
 	private ArrayList<Code> learntCodes = new ArrayList<>();
 	private Move moveStrat = new DefaultMove();
 	private ArrayList<Hit> hitStrat = new ArrayList<>();
-
+	private String id;
+	private static int id_counter = 1;
 
 	public Virologist(String name){
+		id = "v" + id_counter++;
 		this.name = name;
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
@@ -33,6 +35,7 @@ public class Virologist implements Steppable {
 	 * Default konstruktor.
 	 */
 	public Virologist(){
+		id = "v" + id_counter++;
 		//generate random name
 		this.name = "Virologist@" + UUID.randomUUID();
 		var defAbs=new DefaultAbsorb();
@@ -49,6 +52,14 @@ public class Virologist implements Steppable {
 		var defAbs=new DefaultAbsorb();
 		addAbsorbStrat(defAbs);
 		hitStrat.add(new DefaultHit());
+	}
+
+	/**
+	 * Az id gettere.
+	 * @return id
+	 */
+	public String getId() {
+		return id;
 	}
 
 	/**

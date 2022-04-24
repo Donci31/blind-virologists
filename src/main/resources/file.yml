@@ -1,10 +1,10 @@
 Fields:
 -   Type: Field
-    Name: Field@ee54d994-30f2-43a0-9338-d7655e8f1ec4
+    Name: f1
     Neighbors:
-    - Field@8acafe08-651e-4e2c-86b6-1ba155cd5d2b
+    - f2
     Virologists:
-    -   Name: Virologist@a8e6fbff-3a2d-4423-b394-06452983ed56
+    -   Name: v1
         nCount: 0
         aCount: 0
         Gears: [
@@ -13,7 +13,7 @@ Fields:
             ]
         Learnt Codes: [
             ]
-    -   Name: Virologist@dc6a04b1-6ce6-4dda-a6ec-9ac7277d457d
+    -   Name: v2
         nCount: 0
         aCount: 0
         Gears: [
@@ -23,9 +23,9 @@ Fields:
         Learnt Codes: [
             ]
 -   Type: Field
-    Name: Field@8acafe08-651e-4e2c-86b6-1ba155cd5d2b
+    Name: f2
     Neighbors:
-    - Field@ee54d994-30f2-43a0-9338-d7655e8f1ec4
+    - f1
     Virologists: [
         ]
 Applied Agents: Yo

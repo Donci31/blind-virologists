@@ -42,7 +42,7 @@ public abstract class InputWriter {
     private static LinkedHashMap<String, Object> getFieldBlock(Field f) {
         LinkedHashMap<String, Object> fieldMap = new LinkedHashMap<>();
         fieldMap.put("Type", getClassName(f));
-        fieldMap.put("Name", f.getName());
+        fieldMap.put("Name", f.getId());
         fieldMap.put("Neighbors", getNeighborList(f.getNeighbors()));
 
         ArrayList<LinkedHashMap<String, Object>> virologists = new ArrayList<>();
@@ -56,14 +56,14 @@ public abstract class InputWriter {
     private static ArrayList<Object> getNeighborList(List<Field> neighbors) {
         ArrayList<Object> names = new ArrayList<>();
         for (Field neighbor : neighbors) {
-            names.add(neighbor.getName());
+            names.add(neighbor.getId());
         }
         return names;
     }
 
     private static LinkedHashMap<String, Object> getVirologistBlock(Virologist v) {
         LinkedHashMap<String, Object> virologistMap = new LinkedHashMap<>();
-        virologistMap.put("Name", (String)v.getName());
+        virologistMap.put("Name", v.getId());
         virologistMap.put("nCount", v.getNucleotide());
         virologistMap.put("aCount", v.getAminoAcid());
         virologistMap.put("Gears", getGearsList(v));
@@ -75,7 +75,7 @@ public abstract class InputWriter {
     private static ArrayList<Object> getGearsList(Virologist v) {
         ArrayList<Object> names = new ArrayList<>();
         for (Gear g : v.getGears()) {
-            names.add(getClassName(g) + " " + g);
+            names.add(getClassName(g) + " " + g.getId());
         }
         return names;
     }
@@ -83,7 +83,7 @@ public abstract class InputWriter {
     private static ArrayList<Object> getCraftedList(Virologist v) {
         ArrayList<Object> names = new ArrayList<>();
         for (Agent a : v.getCraftedAgents()) {
-            names.add(getClassName(a) + " " + a);
+            names.add(getClassName(a) + " " + a.getId());
         }
         return names;
     }
@@ -91,7 +91,7 @@ public abstract class InputWriter {
     private static ArrayList<Object> getCodesList(Virologist v) {
         ArrayList<Object> names = new ArrayList<>();
         for (Code c : v.getLearntCodes()) {
-            names.add(getClassName(c) + " " + c);
+            names.add(getClassName(c) + " " + c.getId());
         }
         return names;
     }
