@@ -728,8 +728,12 @@ public class Prototype {
         f3.accept(v2);
         f1.accept(v1);
         a1.smear(v1);
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
+        v1.setAminoAcid(30);
+        v1.setNucleotide(40);
         */
-
+        //TODO NCountot és ACountot növelni
        /* Test 20 exp
         Field f1 = new Field();
         Field f2 = new Field()
@@ -746,6 +750,8 @@ public class Prototype {
         a1.smear(v1);
         BearVirus a2=new BearVirus();
         a2.smear(v2);
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
      */
 
     /*Teszt 21
@@ -766,6 +772,8 @@ public class Prototype {
     f1.accept(v1);
     ArrayList<Field> fields=new ArrayList<>();
     fields.add(f1);
+    v1.setAminoAcid(100);
+        v1.setNucleotide(100);
      */
 
     /*Teszt 22
@@ -784,6 +792,8 @@ public class Prototype {
         AmniCode c1=new AmniCode();
         v1.learnCode(c1;)
         a1.smear(v1);
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
      */
 
     /*Teszt 22 exp
@@ -802,6 +812,8 @@ public class Prototype {
         AmniCode c1=new AmniCode();
         v1.learnCode(c1;)
         a1.smear(v1);
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
      */
 
     /*Teszt 23
@@ -823,9 +835,12 @@ public class Prototype {
         v1.learnCode(c1);
         DanceVirus a1=new DanceVirus();
         a1.smear(v1);
-        for(int i=0;i<a1.getVirusTimer();i++){
+        for(int i=0;i<a1.getVirusTimer()-1;i++){
             a1.step();
+            v1.setAminoAcid(100);
+        v1.setNucleotide(100);
         }
+
 
      */
 
@@ -847,6 +862,8 @@ public class Prototype {
         Amnicode c1=new AmniCode();
         v1.learnCode(c1);
         DanceVirus a1=new DanceVirus();
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
      */
 
     /*Teszt 24
@@ -864,9 +881,11 @@ public class Prototype {
         v1.learnCode(c1);
         Protvaccine a1=new ProtVaccine();
         a1.smear(v1);
-        for(int i=0;i<a1.getVirusTimer();i++){
+        for(int i=0;i<a1.getVirusTimer()-1;i++){
             a1.step();
         }
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
      */
 
     /*Teszt 24 exp
@@ -884,6 +903,8 @@ public class Prototype {
         v1.learnCode(c1);
         BearVirus a2=new BearVirus();
         a2.smear(v1);
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
      */
 
     /*Teszt 25
@@ -900,9 +921,11 @@ public class Prototype {
         v1.learnCode(c1);
         StunVirus a1=new StunVirus();
         a2.smear(v1);
-        for(int i=0;i<a1.getVirusTimer();i++){
+        for(int i=0;i<a1.getVirusTimer()-1;i++){
             a1.step();
         }
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
      */
 
     /*Teszt 25 exp
@@ -918,6 +941,8 @@ public class Prototype {
         fields.add(f2);
         Amnicode c1=new AmniCode();
         v1.learnCode(c1);
+        v1.setAminoAcid(100);
+        v1.setNucleotide(100);
 
      */
 
