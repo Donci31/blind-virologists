@@ -5,6 +5,10 @@
 public class AxeHit implements Hit{
     private AxeGear axe;
 
+    /**
+     * Konstruktor, beállítja a balta példányt, amihez ez a viselkedés tartozik.
+     * @param axe balta, amihez a viselkedés tartozik
+     */
     public AxeHit(AxeGear axe) {
         this.axe = axe;
     }

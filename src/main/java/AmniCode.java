@@ -3,6 +3,10 @@
  * Felelős az ilyen vírusok létrehozásáért.
  */
 public class AmniCode extends Code {
+
+	/**
+	 * Konstruktor, ami beállítja, hogy mennyi nyersanyagba kerül egy AmniVirus létrehozása.
+	 */
 	AmniCode(){
 		nCost=50;
 		aCost=100;

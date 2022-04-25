@@ -7,10 +7,12 @@ public abstract class Agent implements Steppable {
 	protected int virusTimer;
 	protected Virologist smearedVirologist;
 	protected Virologist crafterVirologist=null;
-
 	private static int id_counter = 1;
 	protected String id;
 
+	/**
+	 * Konstruktor, ami beállítja az id-t és hozzáadja a prototípus objektumokat dekódoló map-jébe.
+	 */
 	public Agent() {
 		id = "a" + id_counter++;
 		Prototype.agents.put(id, this);
@@ -21,11 +23,26 @@ public abstract class Agent implements Steppable {
 	 */
 	public static void resetID() {id_counter = 1; }
 
+	/**
+	 * Az id gettere.
+	 * @return id
+	 */
 	public String getId() {
 		return id;
 	}
+
+	/**
+	 * Az id settere
+	 * @param id az id új értéke
+	 */
 	public void setId(String id){this.id = id;}
+
+	/**
+	 * A virusTimer settere.
+	 * @param t virusTimer új értéke
+	 */
 	public void setVirusTimer(int t){virusTimer = t;}
+
 	/**
 	 * Visszaadja a vírus hátralevő idejét
 	 */

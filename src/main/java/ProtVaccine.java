@@ -5,9 +5,11 @@
 public class ProtVaccine extends Agent {
 	private ProtVaccineAbsorb strat;
 
+	/**
+	 * Konstruktor, ami beállítja a virusTimer kezdőidejét
+	 */
 	ProtVaccine(){
 		virusTimer=2;
-
 	}
 
 	/**

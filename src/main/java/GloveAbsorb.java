@@ -5,9 +5,14 @@
 public class GloveAbsorb implements Absorb {
 	GloveGear glove;
 
+	/**
+	 * Konstruktor, amely hozzáadja a viselkedéshez azt a kesztű példányt, amihez tartozik.
+	 * @param g kesztyű
+	 */
 	public GloveAbsorb(GloveGear g) {
 		this.glove = g;
 	}
+
 	/**
 	 * Az ágens hatását az ágenst dobó virológusra fejti ki.
 	 * Az így érintett virológust az ágens egyik attribútumából ismeri.

@@ -16,6 +16,10 @@ public class Prototype {
     public static Map<String, Code> codes = new HashMap<>();
     public static Map<String, Gear> gears = new HashMap<>();
 
+    /**
+     * A detereministic attribútum gettere.
+     * @return deterministic
+     */
     public static boolean getDeterministic(){return deterministic;}
 
     /**
@@ -47,7 +51,6 @@ public class Prototype {
      */
     protected static void load(String[] args) {
         var ir = new InputReader();
-        //ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");
         ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/" + args[1]);
     }
 
@@ -104,7 +107,7 @@ public class Prototype {
         Virologist victim = virologists.get(args[3]);
 
         if (attacker.getField() != victim.getField()) {
-            throw new IllegalArgumentException("Error! " + attacker.getName() + " can’t reach " + victim.getName() + "!");
+            throw new IllegalArgumentException("Error! " + attacker.getName() + " can't reach " + victim.getName() + "!");
         }
 
         if (args.length > 4) {
@@ -134,7 +137,6 @@ public class Prototype {
 
         Virologist v = virologists.get(args[1]);
         if (v.isStunned()) return;
-        System.out.println(args[2]);
         Code code = codes.get(args[2]);
         if (!v.getIdList().contains(code.getId())) {
             throw new IllegalArgumentException("Error! " + v.getName() + " can't craft " + code.getId() + "!");
@@ -280,6 +282,10 @@ public class Prototype {
         SteppableController.step();
     }
 
+    /**
+     * A prototípus futásának kezelését megvalósító main().
+     * @param args main argumentumok
+     */
     public static void main(String[] args) {
         Map<String, Command> commands = new HashMap<>();
         commands.put("load", Prototype::load);
@@ -308,6 +314,9 @@ public class Prototype {
             try {
                 String line = scanner.nextLine();
                 testid = Integer.parseInt(line);
+                if (testid == 0) {
+                    return;
+                }
                 if (testid > 38 || testid < 1)
                     continue;
             } catch (Exception e) {

@@ -24,10 +24,18 @@ public class Virologist implements Steppable {
 	private int chosenAbsorbStratIdx = 0;
 	private boolean isBear=false;
 
-
+	/**
+	 * Az isBear gettere.
+	 * @return isBear
+	 */
 	public boolean getBear(){return isBear;}
 
+	/**
+	 * Az isBear settere.
+	 * @param f új isBear érték
+	 */
 	public void setBear(boolean f){isBear=f;}
+
 	/**
 	 * Konstruktor, ami a virologist_id-t fogadja paraméterként.
 	 * @param name virologist_id
@@ -277,8 +285,6 @@ public class Virologist implements Steppable {
 		for(Code learnt: learntCodes){
 			if(learnt.getId().equals(c.getId())){
 				c.craftAgent(this, c.nCost, c.aCost);
-				System.out.println(c.getClass().toString());
-				System.out.println(craftedAgents.get(0).getId() + " " + craftedAgents.get(0).getClass().toString());
 			}
 		}
 	}
@@ -436,6 +442,6 @@ public class Virologist implements Steppable {
 		if (idx >= absorbStrats.size()) {
 			throw new IllegalArgumentException();
 		}
-		chosenAbsorbStratIdx = Math.min(absorbStrats.size(), idx);
+		chosenAbsorbStratIdx = Math.min(absorbStrats.size() - 1, idx);
 	}
 }

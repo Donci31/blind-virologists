@@ -6,11 +6,18 @@ public class Warehouse extends Field implements Steppable {
 	private int nProduced = 0;
 	private int aProduced = 0;
 
+	/**
+	 * Konstruktor, ami beteszi a raktárat a léptethető mezők listájába.
+	 */
 	public Warehouse() {
 		super();
 		SteppableController.addSteppable(this);
 	}
 
+	/**
+	 * Konstruktor, ami beállítja a nevet a megadottra, és beteszi a raktárat a léptethető mezők listájába.
+	 * @param name megadott név
+	 */
 	public Warehouse(String name) {
 		super(name);
 		SteppableController.addSteppable(this);

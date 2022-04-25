@@ -5,10 +5,12 @@
 public abstract class Code {
 	protected int nCost;
 	protected int aCost;
-
 	private static int id_counter = 1;
 	protected String id;
 
+	/**
+	 * Konstruktor, amely beállítja az id-t, és hozzáadja az objektumot a Prototype id dekódoló map-jéhez.
+	 */
 	public Code() {
 		id = "c" + id_counter++;
 		Prototype.codes.put(id, this);
@@ -18,15 +20,20 @@ public abstract class Code {
 	 * Az id alapraméretezett állapotba állító függvénye.
 	 */
 	public static void resetID() {id_counter = 1; }
+
+	/**
+	 * Az id settere.
+	 * @param id új id érték
+	 */
 	public void setID(String id){ this.id = id;}
+
+	/**
+	 * Az id gettere.
+	 * @return id
+	 */
 	public String getId() {
 		return id;
 	}
-
-	public int getnCost(){return nCost;}
-	public int getaCost(){return aCost;}
-	public void setnCost(int k){nCost=k;}
-	public void setaCost(int k){aCost=k;}
 
 	/**
 	 * Létrehozza a kódolt ágenst, és elveszi a virológustól a kódoláshoz szükséges anyagokat.
@@ -35,6 +42,4 @@ public abstract class Code {
 	 * @param aCost - szükséges aminosav
 	 */
 	public abstract void craftAgent(Virologist v, int nCost, int aCost);
-
-	public boolean equals(Code c){ return this.id == c.id;}
 }

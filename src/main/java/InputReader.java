@@ -35,35 +35,38 @@ public class InputReader {
                 String virologistName = splitEffect[2].split("=")[1];
                 int virusTimer = Integer.parseInt(splitEffect[3].split("=")[1]);
 
-                Agent a;
-                switch (agentName) {
-                    case "AmniVirus":
-                        a = new AmniVirus();
-                        break;
-                    case "DanceVirus":
-                        a = new DanceVirus();
-                        break;
-                    case "ProtVaccine":
-                        a = new ProtVaccine();
-                        break;
-                    case "StunVirus":
-                        a = new StunVirus();
-                        break;
-                    case "BearVirus":
-                        a = new BearVirus();
-                        break;
-                    default:
-                        a = null;
-                }
-                if(a != null){
-                    a.setId(agentId);
-                    a.setVirusTimer(virusTimer);
-                    fields:
-                    for(Field f: fieldList){
-                        for(Virologist v: f.getVirologists()){
-                            if(v.getName().equals(virologistName)){
-                                a.smear(v);
-                                break fields;
+                if (!Prototype.agents.containsKey(agentId)) {
+                    Agent a;
+                    switch (agentName) {
+                        case "AmniVirus":
+                            a = new AmniVirus();
+                            break;
+                        case "DanceVirus":
+                            a = new DanceVirus();
+                            break;
+                        case "ProtVaccine":
+                            a = new ProtVaccine();
+                            break;
+                        case "StunVirus":
+                            a = new StunVirus();
+                            break;
+                        case "BearVirus":
+                            a = new BearVirus();
+                            break;
+                        default:
+                            a = null;
+                            break;
+                    }
+                    if (a != null) {
+                        a.setId(agentId);
+                        a.setVirusTimer(virusTimer);
+                        fields:
+                        for (Field f : fieldList) {
+                            for (Virologist v : f.getVirologists()) {
+                                if (v.getName().equals(virologistName)) {
+                                    a.smear(v);
+                                    break fields;
+                                }
                             }
                         }
                     }
@@ -93,10 +96,10 @@ public class InputReader {
             Field created = new Field(name);
             switch (type){
                 case "Laboratory":
+                    String codeName = (map.get("Code").toString()).split(" ")[0];
+                    Code c;
                     created = new Laboratory(name);
                     ((Laboratory)created).setInfected((boolean)map.get("Infected"));
-                    String codeName = (map.get("Code").toString()).split(" ")[0];
-                    Code c = new AmniCode();
                     switch (codeName) {
                         case "AmniCode":
                             c = new AmniCode();

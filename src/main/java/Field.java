@@ -11,9 +11,12 @@ public class Field {
 	protected List<Virologist> virologists;
 	protected List<Field> neighbors;
 	private String name;
-
 	private static int id_counter = 1;
 
+	/**
+	 * Konstruktor, amely a megadott névvel hoz létre egy mezőt
+	 * @param name mező neve
+	 */
 	public Field(String name) {
 		this.name = name;
 		virologists = new ArrayList<>();
@@ -21,6 +24,9 @@ public class Field {
 		Prototype.fields.put(name, this);
 	}
 
+	/**
+	 * Konstruktor, ami a inkrementálisan oszt ki nevet a mezőnek
+	 */
 	public Field() {
 		this.name = "f" + id_counter++;
 		virologists = new ArrayList<>();
@@ -33,10 +39,18 @@ public class Field {
 	 */
 	public static void resetID() {id_counter = 1; }
 
+	/**
+	 * A virologists tömb gettere.
+	 * @return virologists tömb
+	 */
 	public List<Virologist> getVirologists() {
 		return virologists;
 	}
 
+	/**
+	 * A neighbors tömb gettere.
+	 * @return neighbors tömb
+	 */
 	public List<Field> getNeighbors() {
 		return neighbors;
 	}
