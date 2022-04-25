@@ -32,8 +32,8 @@ Fields:
         Learnt Codes:
         - StunCode c1
     -   Name: v2
-        nCount: 0
-        aCount: 0
+        nCount: 100
+        aCount: 150
         Gears:
         - SackGear g1
         Crafted Agents: [
