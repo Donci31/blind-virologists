@@ -35,4 +35,6 @@ public abstract class Code {
 	 * @param aCost - szükséges aminosav
 	 */
 	public abstract void craftAgent(Virologist v, int nCost, int aCost);
+
+	public boolean equals(Code c){ return this.id == c.id;}
 }

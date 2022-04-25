@@ -21,7 +21,12 @@ public abstract class InputWriter {
         mainMap.put("Fields", getFieldsList(fields));
         mainMap.put("Applied Agents", getAppliedAgentsList());
         try (FileWriter file = new FileWriter("./src/main/resources/" + filename)) {
-            yaml.dump(mainMap, file);
+            Virologist v = getWinner(fields);
+            if(v != null){
+                yaml.dump("The game has ended, " + v.getName() +" won!", file);
+            } else {
+                yaml.dump(mainMap, file);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -130,5 +135,18 @@ public abstract class InputWriter {
             names.add(getClassName(a) + " " + a.getId() + " on=" + a.getSmearedVirologist().getName() + " remaining=" + a.getVirusTimer());
         }
         return names;
+    }
+
+    //TODO: should be handled in the Game class
+    private static Virologist getWinner(ArrayList<Field> fields){
+        for(Field f: fields){
+            for(Virologist v: f.getVirologists()){
+                //4 is a temp value, dependent on number of learnable codes
+                if(v.getLearntCodes().size() >= 4){
+                    return v;
+                }
+            }
+        }
+        return null;
     }
 }

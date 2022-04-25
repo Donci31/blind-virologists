@@ -95,7 +95,7 @@ public class InputReader {
                 case "Laboratory":
                     created = new Laboratory(name);
                     ((Laboratory)created).setInfected((boolean)map.get("Infected"));
-                    String codeName = ((String)map.get("Code")).split(" ")[0];
+                    String codeName = (map.get("Code").toString()).split(" ")[0];
                     Code c = new AmniCode();
                     switch (codeName) {
                         case "AmniCode":
@@ -110,9 +110,14 @@ public class InputReader {
                         case "StunCode":
                             c = new StunCode();
                             break;
+                        default:
+                            c = null;
+                            break;
                     }
-                    c.setID(((String)map.get("Code")).split(" ")[1]);
-                    ((Laboratory)created).placeCode(c);
+                    if(c != null){
+                        c.setID((map.get("Code").toString()).split(" ")[1]);
+                        ((Laboratory)created).placeCode(c);
+                    }
                     break;
                 case "Warehouse":
                     created = new Warehouse(name);

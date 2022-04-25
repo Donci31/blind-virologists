@@ -1,7 +1,7 @@
 Fields:
 -   Type: Laboratory
     Infected: true
-    Code: 0
+    Code: AmniCode c1
     Name: f1
     Neighbors:
     - f2
@@ -10,7 +10,7 @@ Fields:
         ]
 -   Type: Laboratory
     Infected: false
-    Code: 0
+    Code: ProtCode c2
     Name: f2
     Neighbors:
     - f1

@@ -274,8 +274,12 @@ public class Virologist implements Steppable {
 	 * @throws IllegalArgumentException - ha túlköltekezne a virológus
 	 */
 	public void craftAgent(Code c) throws IllegalArgumentException {
-		if(learntCodes.contains(c)) {
-			c.craftAgent(this, c.nCost, c.aCost);
+		for(Code learnt: learntCodes){
+			if(learnt.getId().equals(c.getId())){
+				c.craftAgent(this, c.nCost, c.aCost);
+				System.out.println(c.getClass().toString());
+				System.out.println(craftedAgents.get(0).getId() + " " + craftedAgents.get(0).getClass().toString());
+			}
 		}
 	}
 
@@ -365,6 +369,14 @@ public class Virologist implements Steppable {
 	 */
 	public void hit(Virologist v){
 		hitStrat.hit(v);
+	}
+
+	public ArrayList<String> getIdList() {
+		ArrayList<String> names = new ArrayList<>();
+		for (Code c : learntCodes) {
+			names.add(c.getId());
+		}
+		return names;
 	}
 
 	/**
