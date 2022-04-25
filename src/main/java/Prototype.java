@@ -306,6 +306,9 @@ public class Prototype {
             try {
                 String line = scanner.nextLine();
                 testid = Integer.parseInt(line);
+                if (testid == 0) {
+                    return;
+                }
                 if (testid > 38 || testid < 1)
                     continue;
             } catch (Exception e) {
