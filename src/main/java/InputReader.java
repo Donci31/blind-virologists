@@ -54,6 +54,7 @@ public class InputReader {
                         break;
                     default:
                         a = null;
+                        break;
                 }
                 if(a != null){
                     a.setId(agentId);
@@ -93,10 +94,10 @@ public class InputReader {
             Field created = new Field(name);
             switch (type){
                 case "Laboratory":
+                    String codeName = (map.get("Code").toString()).split(" ")[0];
+                    Code c;
                     created = new Laboratory(name);
                     ((Laboratory)created).setInfected((boolean)map.get("Infected"));
-                    String codeName = (map.get("Code").toString()).split(" ")[0];
-                    Code c = new AmniCode();
                     switch (codeName) {
                         case "AmniCode":
                             c = new AmniCode();

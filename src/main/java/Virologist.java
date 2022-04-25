@@ -277,8 +277,6 @@ public class Virologist implements Steppable {
 		for(Code learnt: learntCodes){
 			if(learnt.getId().equals(c.getId())){
 				c.craftAgent(this, c.nCost, c.aCost);
-				System.out.println(c.getClass().toString());
-				System.out.println(craftedAgents.get(0).getId() + " " + craftedAgents.get(0).getClass().toString());
 			}
 		}
 	}

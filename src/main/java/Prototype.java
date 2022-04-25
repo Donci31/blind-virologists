@@ -134,7 +134,6 @@ public class Prototype {
 
         Virologist v = virologists.get(args[1]);
         if (v.isStunned()) return;
-        System.out.println(args[2]);
         Code code = codes.get(args[2]);
         if (!v.getIdList().contains(code.getId())) {
             throw new IllegalArgumentException("Error! " + v.getName() + " can't craft " + code.getId() + "!");
