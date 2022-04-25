@@ -4,3 +4,10 @@
 
 # Binary Files
 target/
+*.jar
+
+# Resource output
+out.yml
+
+# Gradle Files
+.gradle/
