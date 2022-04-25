@@ -95,6 +95,24 @@ public class InputReader {
                 case "Laboratory":
                     created = new Laboratory(name);
                     ((Laboratory)created).setInfected((boolean)map.get("Infected"));
+                    String codeName = ((String)map.get("Code")).split(" ")[0];
+                    Code c = new AmniCode();
+                    switch (codeName) {
+                        case "AmniCode":
+                            c = new AmniCode();
+                            break;
+                        case "DanceCode":
+                            c = new DanceCode();
+                            break;
+                        case "ProtCode":
+                            c = new ProtCode();
+                            break;
+                        case "StunCode":
+                            c = new StunCode();
+                            break;
+                    }
+                    c.setID(((String)map.get("Code")).split(" ")[1]);
+                    ((Laboratory)created).placeCode(c);
                     break;
                 case "Warehouse":
                     created = new Warehouse(name);
