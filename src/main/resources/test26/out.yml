@@ -1,0 +1,19 @@
+Fields:
+-   Type: Laboratory
+    Infected: false
+    Code: AmniCode c1
+    Name: f1
+    Neighbors: [
+        ]
+    Virologists:
+    -   Name: v1
+        nCount: 30
+        aCount: 100
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes:
+        - AmniCode c1
+Applied Agents: [
+    ]

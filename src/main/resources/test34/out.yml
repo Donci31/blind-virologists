@@ -1,7 +1,6 @@
 Fields:
--   Type: Laboratory
-    Infected: false
-    Code: 0
+-   Type: Shelter
+    Gear: 0
     Name: f1
     Neighbors:
     - f2
@@ -16,8 +15,8 @@ Fields:
     Virologists: [
         ]
 -   Type: Laboratory
-    Infected: true
-    Code: 0
+    Infected: false
+    Code: StunCode c1
     Name: f3
     Neighbors:
     - f1
@@ -26,12 +25,20 @@ Fields:
     -   Name: v1
         nCount: 0
         aCount: 0
-        Gears:
-        - AxeGear g1 used=true
-        - RobeGear g2
+        Gears: [
+            ]
         Crafted Agents: [
             ]
-        Learnt Codes: [
+        Learnt Codes:
+        - StunCode c1
+    -   Name: v2
+        nCount: 100
+        aCount: 150
+        Gears:
+        - SackGear g1
+        Crafted Agents: [
             ]
-Applied Agents: [
-    ]
+        Learnt Codes:
+        - StunCode c1
+Applied Agents:
+- StunVirus a1 on=v1 remaining=2
