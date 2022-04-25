@@ -47,7 +47,6 @@ public class Prototype {
      */
     protected static void load(String[] args) {
         var ir = new InputReader();
-        //ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/file.yml");
         ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/" + args[1]);
     }
 
@@ -307,6 +306,9 @@ public class Prototype {
             try {
                 String line = scanner.nextLine();
                 testid = Integer.parseInt(line);
+                if (testid == 0) {
+                    return;
+                }
                 if (testid > 38 || testid < 1)
                     continue;
             } catch (Exception e) {

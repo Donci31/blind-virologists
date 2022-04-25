@@ -25,20 +25,20 @@ Fields:
     -   Name: v1
         nCount: 0
         aCount: 0
-        Gears:
-        - SackGear g1
-        Crafted Agents: [
-            ]
-        Learnt Codes: [
-            ]
-    -   Name: v2
-        nCount: 150
-        aCount: 100
         Gears: [
             ]
         Crafted Agents: [
             ]
         Learnt Codes:
         - StunCode c1
+    -   Name: v2
+        nCount: 100
+        aCount: 150
+        Gears:
+        - SackGear g1
+        Crafted Agents: [
+            ]
+        Learnt Codes:
+        - StunCode c1
 Applied Agents:
-- AmniVirus a1 on=v1 remaining=3
+- StunVirus a1 on=v1 remaining=2
