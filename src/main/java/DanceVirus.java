@@ -5,9 +5,11 @@
 public class DanceVirus extends Agent {
 	private DanceMove strat = new DanceMove();
 
+	/**
+	 * Konstruktor, ami beállítja a virusTimer-t
+	 */
 	DanceVirus(){
 		virusTimer=4;
-
 	}
 
 	/**

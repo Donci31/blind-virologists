@@ -24,10 +24,18 @@ public class Virologist implements Steppable {
 	private int chosenAbsorbStratIdx = 0;
 	private boolean isBear=false;
 
-
+	/**
+	 * Az isBear gettere.
+	 * @return isBear
+	 */
 	public boolean getBear(){return isBear;}
 
+	/**
+	 * Az isBear settere.
+	 * @param f új isBear érték
+	 */
 	public void setBear(boolean f){isBear=f;}
+
 	/**
 	 * Konstruktor, ami a virologist_id-t fogadja paraméterként.
 	 * @param name virologist_id

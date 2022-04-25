@@ -4,6 +4,9 @@
  */
 public class StunCode extends Code {
 
+	/**
+	 * Konstruktor, ami beállítja, hogy mennyi nyersanyag szükséges egy StunVirus létrehozására.
+	 */
 	StunCode(){
 		nCost=100;
 		aCost=50;

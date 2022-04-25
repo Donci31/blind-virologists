@@ -6,24 +6,38 @@ public class Laboratory extends Field {
 	private Code code;
 	private boolean infected;
 
-
+	/**
+	 * Konstruktor, amely beállítja a labor fertőzöttségét
+	 */
 	public Laboratory(){
 		super();
 		infected = Math.random() > 0.8&&!Prototype.getDeterministic();
 	}
 
+	/**
+	 * Konstruktor, amely beállítja a labor fertőzöttségét és a nevét
+	 */
 	public Laboratory(String name){
 		super(name);
 		infected = Math.random() > 0.8&&!Prototype.getDeterministic();
 	}
 
+	/**
+	 * A labor kódjának gettere
+	 * @return labor kódja
+	 */
 	public Code getCode() {
 		return code;
 	}
 
+	/**
+	 * A labor fertőzöttségének beállítása
+	 * @param infected legyen-e fertőzött
+	 */
 	public void setInfected(boolean infected) {
 		this.infected = infected;
 	}
+
 	/**
 	 * Visszaadja, hogy fertőzőtt-e a mező
 	 */

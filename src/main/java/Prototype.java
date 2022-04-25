@@ -16,6 +16,10 @@ public class Prototype {
     public static Map<String, Code> codes = new HashMap<>();
     public static Map<String, Gear> gears = new HashMap<>();
 
+    /**
+     * A detereministic attribútum gettere.
+     * @return deterministic
+     */
     public static boolean getDeterministic(){return deterministic;}
 
     /**
@@ -278,6 +282,10 @@ public class Prototype {
         SteppableController.step();
     }
 
+    /**
+     * A prototípus futásának kezelését megvalósító main().
+     * @param args main argumentumok
+     */
     public static void main(String[] args) {
         Map<String, Command> commands = new HashMap<>();
         commands.put("load", Prototype::load);

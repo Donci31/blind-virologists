@@ -4,6 +4,9 @@
  */
 public class ProtCode extends Code {
 
+	/**
+	 * Konstruktor, amely meghatározza a ProtVaccine létrehozásához szükséges alapanyagokat.
+	 */
 	ProtCode(){
 		nCost=100;
 		aCost=100;

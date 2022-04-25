@@ -5,9 +5,11 @@
  */
 public class StunVirus extends Agent {
 
+	/**
+	 * Konstruktor, ami beállítja, hogy mi legyen a virusTimer alapértéke.
+	 */
 	StunVirus(){
 		virusTimer=2;
-
 	}
 
 	/**

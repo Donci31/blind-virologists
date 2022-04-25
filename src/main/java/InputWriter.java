@@ -7,8 +7,16 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+/**
+ * A mentések fájlba írását megvalósító osztály.
+ */
 public abstract class InputWriter {
 
+    /**
+     * A mentések fájlba írását elvégző metódus.
+     * @param filename melyik fájlba mentse
+     * @param fields mely mezőket, és az azokhoz tartozó többi objektumot
+     */
     public static void printFields(String filename, ArrayList<Field> fields) {
         // Szép kiíráshoz szükséges konfiguráció
         DumperOptions options = new DumperOptions();
@@ -32,6 +40,11 @@ public abstract class InputWriter {
         }
     }
 
+    /**
+     * Az osztály nevét visszaadó függvény.
+     * @param o az objektum
+     * @return az objektum neve
+     */
     private static String getClassName(Object o) {
         return o.getClass().toString().split(" ")[1];
     }
@@ -44,6 +57,11 @@ public abstract class InputWriter {
         return  fieldList;
     }
 
+    /**
+     *
+     * @param f
+     * @return
+     */
     private static LinkedHashMap<String, Object> getFieldBlock(Field f) {
         LinkedHashMap<String, Object> fieldMap = new LinkedHashMap<>();
         fieldMap.put("Type", getClassName(f));

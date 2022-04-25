@@ -3,7 +3,9 @@
  * Felelős az ilyen vírusok létrehozásáért.
  */
 public class DanceCode extends Code {
-
+	/**
+	 * Konstruktor, ami beállítja a DanceVirus létrehozásának költségeit
+	 */
 	DanceCode(){
 		nCost=50;
 		aCost=50;
