@@ -434,6 +434,6 @@ public class Virologist implements Steppable {
 		if (idx >= absorbStrats.size()) {
 			throw new IllegalArgumentException();
 		}
-		chosenAbsorbStratIdx = Math.min(absorbStrats.size(), idx);
+		chosenAbsorbStratIdx = Math.min(absorbStrats.size() - 1, idx);
 	}
 }
