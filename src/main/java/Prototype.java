@@ -104,7 +104,7 @@ public class Prototype {
         Virologist victim = virologists.get(args[3]);
 
         if (attacker.getField() != victim.getField()) {
-            throw new IllegalArgumentException("Error! " + attacker.getName() + " can’t reach " + victim.getName() + "!");
+            throw new IllegalArgumentException("Error! " + attacker.getName() + " can't reach " + victim.getName() + "!");
         }
 
         if (args.length > 4) {
