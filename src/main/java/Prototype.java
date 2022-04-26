@@ -322,31 +322,31 @@ public class Prototype {
             } catch (Exception e) {
                 continue;
             }
+            
+            File inputFile = new File("./src/main/resources/test" + testid + "/in.txt");
+            File expectedFile = new File("./src/main/resources/test" + testid + "/expected.yml");
 
-            try {
-                File inputFile = new File("./src/main/resources/test" + testid + "/in.txt");
-                Scanner input = new Scanner(inputFile);
+            try (Scanner input = new Scanner(inputFile);
+                 Scanner expected = new Scanner(expectedFile);
+                ) {
                 while (input.hasNextLine()) {
                     String[] command = input.nextLine().split(" ");
                     commands.get(command[0]).execute(command);
                 }
-
-                File outFile = new File("./src/main/resources/test" + testid + "/out.yml");
-                File expectedFile = new File("./src/main/resources/test" + testid + "/expected.yml");
-                Scanner reader = new Scanner(outFile);
                 String outFileString = "";
                 System.out.println("\n--------Actual output--------");
-                while (reader.hasNextLine()) {
-                    String line = reader.nextLine();
-                    System.out.println(line);
-                    outFileString += line + '\n';
+                File outFile = new File("./src/main/resources/test" + testid + "/out.yml");
+                try (Scanner reader = new Scanner(outFile)) {
+                    while (reader.hasNextLine()) {
+                        String line = reader.nextLine();
+                        System.out.println(line);
+                        outFileString += line + '\n';
+                    }
                 }
-
-                reader = new Scanner(expectedFile);
                 String expectedFileString = "";
                 System.out.println("\n-------Expected output-------");
-                while (reader.hasNextLine()) {
-                    String line = reader.nextLine();
+                while (expected.hasNextLine()) {
+                    String line = expected.nextLine();
                     System.out.println(line);
                     expectedFileString += line + '\n';
                 }
@@ -363,9 +363,7 @@ public class Prototype {
                 System.out.println(e.getMessage());
 
                 String expectedFileString = "";
-                File expectedFile = new File("./src/main/resources/test" + testid + "/expected.yml");
-                try {
-                    Scanner reader = new Scanner(expectedFile);
+                try (Scanner reader = new Scanner(expectedFile)) {
                     System.out.println("\n-------Expected output-------");
                     while (reader.hasNextLine()) {
                         String line = reader.nextLine();
