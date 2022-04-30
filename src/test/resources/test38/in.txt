@@ -1,0 +1,5 @@
+load test38/start_state.yml
+move v1 f4
+hit v2 v1
+move v3 f1
+save test38/out.yml

@@ -1,0 +1,6 @@
+load test35/start_state.yml
+set_deterministic Y
+move v1 f3
+smear v1 a1 v2
+hit v2 v1
+save test35/out.yml

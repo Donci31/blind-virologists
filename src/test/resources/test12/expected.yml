@@ -1,0 +1,19 @@
+Fields:
+-   Type: Warehouse
+    nCount: 4500
+    aCount: 4500
+    Name: f1
+    Neighbors: [
+        ]
+    Virologists:
+    -   Name: v1
+        nCount: 500
+        aCount: 500
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+Applied Agents: [
+    ]

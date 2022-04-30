@@ -1,0 +1,31 @@
+Fields:
+-   Type: Field
+    Name: f1
+    Neighbors:
+    - f2
+    Virologists:
+    -   Name: v1
+        nCount: 0
+        aCount: 0
+        Gears:
+        - AxeGear g1 used=false
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+-   Type: Field
+    Name: f2
+    Neighbors:
+    - f1
+    Virologists:
+    -   Name: v2
+        nCount: 0
+        aCount: 0
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+Applied Agents: [
+    ]

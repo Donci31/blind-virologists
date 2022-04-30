@@ -1,0 +1,18 @@
+Fields:
+-   Type: Shelter
+    Gear: SackGear g1
+    Name: f1
+    Neighbors: [
+        ]
+    Virologists:
+    -   Name: v1
+        nCount: 100
+        aCount: 100
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+Applied Agents: [
+    ]

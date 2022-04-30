@@ -1,0 +1,32 @@
+Fields:
+-   Type: Field
+    Name: f1
+    Neighbors:
+    - f2
+    - f3
+    Virologists: [
+        ]
+-   Type: Field
+    Name: f2
+    Neighbors:
+    - f3
+    - f1
+    Virologists:
+    -   Name: v1
+        nCount: 0
+        aCount: 0
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+-   Type: Field
+    Name: f3
+    Neighbors:
+    - f1
+    - f2
+    Virologists: [
+        ]
+Applied Agents:
+- DanceVirus a1 on=v1 remaining=4

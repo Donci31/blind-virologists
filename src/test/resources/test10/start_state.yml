@@ -1,0 +1,26 @@
+Fields:
+-   Type: Field
+    Name: f1
+    Neighbors: [
+        ]
+    Virologists:
+    -   Name: v1
+        nCount: 0
+        aCount: 0
+        Gears: [
+            ]
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+    -   Name: v2
+        nCount: 0
+        aCount: 0
+        Gears:
+        - RobeGear g1
+        Crafted Agents: [
+            ]
+        Learnt Codes: [
+            ]
+Applied Agents:
+- StunVirus a1 on=v2 remaining=2

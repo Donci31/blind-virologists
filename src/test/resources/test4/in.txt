@@ -1,0 +1,4 @@
+load test4/start_state.yml
+set_deterministic Y
+move v1 f2
+save test4/out.yml

@@ -1,0 +1,3 @@
+load test18/start_state.yml
+craft_agent v1 c1
+save test18/out.yml
