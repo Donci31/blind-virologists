@@ -1,4 +1,0 @@
-load test24/start_state.yml
-step
-move v1 f2
-save test24/out.yml

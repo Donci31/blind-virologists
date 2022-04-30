@@ -1,3 +1,0 @@
-load test5/start_state.yml
-get_gear v1
-save test5/out.yml

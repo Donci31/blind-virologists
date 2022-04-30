@@ -1,9 +1,0 @@
-load test34/start_state.yml
-move v1 f3
-learn_code v1
-move v2 f3
-learn_code v2
-craft_agent v2 c1
-smear v2 a1 v1 0
-loot v2 v1 g1
-save test34/out.yml

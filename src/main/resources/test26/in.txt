@@ -1,3 +1,0 @@
-load test26/start_state.yml
-learn_code v1
-save test26/out.yml

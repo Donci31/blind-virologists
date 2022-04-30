@@ -1,4 +1,0 @@
-load test19/start_state.yml
-set_deterministic Y
-move v1 f3
-save test19/out.yml

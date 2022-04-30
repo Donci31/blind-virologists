@@ -1,3 +1,0 @@
-load test12/start_state.yml
-gather_resources v1
-save test12/out.yml

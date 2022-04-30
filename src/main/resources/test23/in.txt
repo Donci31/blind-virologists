@@ -1,4 +1,0 @@
-load test23/start_state.yml
-step
-move v1 f3
-save test23/out.yml

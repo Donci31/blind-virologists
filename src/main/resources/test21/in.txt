@@ -1,3 +1,0 @@
-load test21/start_state.yml
-get_gear v1 g1
-save test21/out.yml

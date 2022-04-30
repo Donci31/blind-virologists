@@ -1,7 +1,0 @@
-load test33/start_state.yml
-set_deterministic Y
-move v1 f2
-move v2 f3
-move v1 f3
-hit v1 v2
-save test33/out.yml

@@ -1,3 +1,0 @@
-load test1/start_state.yml
-move v1 f2
-save test1/out.yml

@@ -1,4 +1,0 @@
-load test28/start_state.yml
-smear v2 a1 v1 1
-smear v2 a2 v1 1
-save test28/out.yml

@@ -1,3 +1,0 @@
-load test32/start_state.yml
-craft_agent v1 c1
-save test32/out.yml

@@ -1,5 +1,0 @@
-load test37/start_state.yml
-move v1 f9
-get_gear v2
-move v3 f8
-save test37/out.yml

@@ -1,3 +1,0 @@
-load test8/start_state.yml
-hit v1 v2
-save test8/out.yml
