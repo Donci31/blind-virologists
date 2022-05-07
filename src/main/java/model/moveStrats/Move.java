@@ -1,5 +1,6 @@
-package model;
+package model.moveStrats;
 
+import model.Virologist;
 import model.fields.Field;
 
 /**

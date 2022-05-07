@@ -1,6 +1,5 @@
 package model.moveStrats;
 
-import model.Move;
 import model.Virologist;
 import model.fields.Field;
 

@@ -9,6 +9,7 @@ import model.gears.Gear;
 import model.hitStrats.DefaultHit;
 import model.hitStrats.Hit;
 import model.moveStrats.DefaultMove;
+import model.moveStrats.Move;
 
 import java.util.*;
 
