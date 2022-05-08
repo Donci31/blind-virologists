@@ -47,19 +47,19 @@ public class InputReader {
                 if (!Prototype.agents.containsKey(agentId)) {
                     Agent a;
                     switch (agentName) {
-                        case "model.agents.AmniVirus":
+                        case "AmniVirus":
                             a = new AmniVirus();
                             break;
-                        case "model.agents.DanceVirus":
+                        case "DanceVirus":
                             a = new DanceVirus();
                             break;
-                        case "model.agents.ProtVaccine":
+                        case "ProtVaccine":
                             a = new ProtVaccine();
                             break;
-                        case "model.agents.StunVirus":
+                        case "StunVirus":
                             a = new StunVirus();
                             break;
-                        case "model.agents.BearVirus":
+                        case "BearVirus":
                             a = new BearVirus();
                             break;
                         default:
@@ -104,22 +104,22 @@ public class InputReader {
             String type = map.get("Type").toString();
             Field created = new Field(name);
             switch (type){
-                case "model.fields.Laboratory":
-                    String codeName = (map.get("model.codes.Code").toString()).split(" ")[0];
+                case "Laboratory":
+                    String codeName = (map.get("Code").toString()).split(" ")[0];
                     Code c;
                     created = new Laboratory(name);
                     ((Laboratory)created).setInfected((boolean)map.get("Infected"));
                     switch (codeName) {
-                        case "model.codes.AmniCode":
+                        case "AmniCode":
                             c = new AmniCode();
                             break;
-                        case "model.codes.DanceCode":
+                        case "DanceCode":
                             c = new DanceCode();
                             break;
-                        case "model.codes.ProtCode":
+                        case "ProtCode":
                             c = new ProtCode();
                             break;
-                        case "model.codes.StunCode":
+                        case "StunCode":
                             c = new StunCode();
                             break;
                         default:
@@ -127,31 +127,31 @@ public class InputReader {
                             break;
                     }
                     if(c != null){
-                        c.setID((map.get("model.codes.Code").toString()).split(" ")[1]);
+                        c.setID((map.get("Code").toString()).split(" ")[1]);
                         ((Laboratory)created).placeCode(c);
                     }
                     break;
-                case "model.fields.Warehouse":
+                case "Warehouse":
                     created = new Warehouse(name);
                     ((Warehouse)created).setnProduced((int)map.get("nCount"));
                     ((Warehouse)created).setaProduced((int)map.get("aCount"));
                     break;
-                case "model.fields.Shelter":
+                case "Shelter":
                     created = new Shelter(name);
-                    String[] split = (map.get("model.gears.Gear").toString()).split(" ");
+                    String[] split = (map.get("Gear").toString()).split(" ");
                     String gearName = split[0];
                     Gear g;
                     switch (gearName) {
-                        case "model.gears.GloveGear":
+                        case "GloveGear":
                             g = new GloveGear();
                             break;
-                        case "model.gears.AxeGear":
+                        case "AxeGear":
                             g = new AxeGear();
                             break;
-                        case "model.gears.RobeGear":
+                        case "RobeGear":
                             g = new RobeGear();
                             break;
-                        case "model.gears.SackGear":
+                        case "SackGear":
                             g = new SackGear();
                             break;
                         default:
@@ -223,18 +223,18 @@ public class InputReader {
                 String gearName = split[0];
                 Gear g;
                 switch (gearName) {
-                    case "model.gears.GloveGear":
+                    case "GloveGear":
                         g = new GloveGear();
                         ((GloveGear)g).setTimesUsed(Integer.parseInt(split[2].split("=")[1]));
                         break;
-                    case "model.gears.AxeGear":
+                    case "AxeGear":
                         g = new AxeGear();
                         ((AxeGear)g).setUsed(Boolean.parseBoolean(split[2].split("=")[1]));
                         break;
-                    case "model.gears.RobeGear":
+                    case "RobeGear":
                         g = new RobeGear();
                         break;
-                    case "model.gears.SackGear":
+                    case "SackGear":
                         g = new SackGear();
                         break;
                     default:
@@ -255,16 +255,16 @@ public class InputReader {
                 String codeName = split[0];
                 Code c;
                 switch (codeName) {
-                    case "model.codes.AmniCode":
+                    case "AmniCode":
                         c = new AmniCode();
                         break;
-                    case "model.codes.DanceCode":
+                    case "DanceCode":
                         c = new DanceCode();
                         break;
-                    case "model.codes.ProtCode":
+                    case "ProtCode":
                         c = new ProtCode();
                         break;
-                    case "model.codes.StunCode":
+                    case "StunCode":
                         c = new StunCode();
                         break;
                     default:
@@ -283,16 +283,16 @@ public class InputReader {
             for (String s : agentStrings) {
                 String agentName = s.split(" ")[0];
                 switch (agentName) {
-                    case "model.agents.AmniVirus":
+                    case "AmniVirus":
                         v.addAgent(new AmniVirus());
                         break;
-                    case "model.agents.DanceVirus":
+                    case "DanceVirus":
                         v.addAgent(new DanceVirus());
                         break;
-                    case "model.agents.ProtVaccine":
+                    case "ProtVaccine":
                         v.addAgent(new ProtVaccine());
                         break;
-                    case "model.agents.StunVirus":
+                    case "StunVirus":
                         v.addAgent(new StunVirus());
                         break;
                 }
