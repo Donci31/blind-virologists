@@ -296,7 +296,7 @@ public class Prototype {
      * A prototípus futásának kezelését megvalósító main().
      * @param args main argumentumok
      */
-    public static void main(String[] args) {
+    public static void runTest(String[] args) {
         Map<String, Command> commands = new HashMap<>();
         commands.put("load", Prototype::load);
         commands.put("save", Prototype::save);
