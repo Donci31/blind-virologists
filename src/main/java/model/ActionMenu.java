@@ -4,18 +4,13 @@ import view.Canvas;
 import view.FieldView;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.io.Serial;
 
 /**
  * A virológus egy körben lehetséges tevékenységeinek megjelenítéséért és a kiválasztott tevékenység végrehajtásáért felelős osztály.
  */
 public class ActionMenu extends JPanel{
     class MenuButton extends JButton{
-        @Serial
-        private static final long serialVersionUID = 1L;
-
         MenuButton(String s){
             super(s);
             setFocusPainted(false);
@@ -47,36 +42,81 @@ public class ActionMenu extends JPanel{
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
         c.insets = new Insets(0,20,0,20);
-
-        move = new MenuButton("Move");
         c.gridx = 0;
         c.gridy = 0;
+
+        move = new MenuButton("Move");
         buttonPanel.add(move, c);
+        move.addActionListener(e -> {
+            String[] fields = { "Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6" };
+            JComboBox fieldSelector = new JComboBox(fields);
+            String s = JOptionPane.showInputDialog(this.getParent(),
+                    "Choose a field to move to! \n\n",
+                    "Move!",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    fields,
+                    fields[0]).toString();
+            System.out.println(s);
+            //TODO cast s to field and handle movement
+        });
 
         c.insets = new Insets(10,20,0,20);
 
-        smear = new MenuButton("Smear");
         c.gridy++;
+        smear = new MenuButton("Smear");
+        smear.addActionListener(e -> {
+            String[] virologists = { "virologist 1", "virologist 2", "virologist 3" };
+            JComboBox cbox1 = new JComboBox(virologists);
+            String[] agents = { "agent 1", "agent 2" };
+            JComboBox cbox2 = new JComboBox(agents);
+
+            JPanel selectPanel = new JPanel();
+            selectPanel.setLayout(new GridBagLayout());
+            GridBagConstraints cons = new GridBagConstraints();
+            cons.fill = GridBagConstraints.HORIZONTAL;
+            cons.insets = new Insets(00,20,30,20);
+            cons.gridx = 0;
+            cons.gridy = 0;
+            selectPanel.add(new JLabel("Which virologist to target:"), cons);
+            cons.gridx = 1;
+            cons.gridy = 0;
+            selectPanel.add(cbox1, cons);
+            cons.gridx = 0;
+            cons.gridy = 1;
+            selectPanel.add(new JLabel("Which agent to use:"), cons);
+            cons.gridx = 1;
+            cons.gridy = 1;
+            selectPanel.add(cbox2, cons);
+
+            int result = JOptionPane.showConfirmDialog(this.getParent(),
+                    selectPanel,
+                    "Select a target and an agent!",
+                    JOptionPane.OK_CANCEL_OPTION);
+            if(result == JOptionPane.OK_OPTION){
+                //TODO action
+            }
+        });
         buttonPanel.add(smear, c);
 
-        interactWithField = new MenuButton("Interact with field");
         c.gridy++;
+        interactWithField = new MenuButton("Interact with field");
         buttonPanel.add(interactWithField, c);
 
-        loot = new MenuButton("Loot");
         c.gridy++;
+        loot = new MenuButton("Loot");
         buttonPanel.add(loot, c);
 
-        craft = new MenuButton("Craft");
         c.gridy++;
+        craft = new MenuButton("Craft");
         buttonPanel.add(craft, c);
 
-        hit = new MenuButton("Hit");
         c.gridy++;
+        hit = new MenuButton("Hit");
         buttonPanel.add(hit, c);
 
-        endTurn = new MenuButton("End turn");
         c.gridy++;
+        endTurn = new MenuButton("End turn");
         buttonPanel.add(endTurn, c);
 
         buttonPanel.setBorder(BorderFactory.createMatteBorder(4, 0, 0, 0, Color.black));
