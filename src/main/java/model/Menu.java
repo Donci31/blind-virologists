@@ -1,6 +1,7 @@
 package model;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * A menüt megvalósító osztály. Játék állapotáról ad információkat, és irányítani lehet vele a játékot (újraindít, kilép, stb.).
@@ -15,5 +16,7 @@ public class Menu extends JMenuBar {
         this.add(game);
         this.add(inventory);
         this.add(field);
+
+
     }
 }

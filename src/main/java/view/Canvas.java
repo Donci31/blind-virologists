@@ -24,6 +24,9 @@ public class Canvas extends JPanel {
         this.height = height;
         this.listeningForClick = false;
         drawables = new ArrayList<>();
+
+
+        this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 0, Color.black));
     }
 
     /**
