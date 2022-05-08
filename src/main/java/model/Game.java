@@ -52,6 +52,7 @@ public class Game {
 		frame.setPreferredSize(new Dimension(1000,600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
+
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
