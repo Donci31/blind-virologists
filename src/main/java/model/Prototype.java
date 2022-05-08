@@ -61,7 +61,7 @@ public class Prototype {
      */
     protected static void load(String[] args) {
         var ir = new InputReader();
-        ArrayList<Field> fieldsLoaded = ir.readFields("./src/main/resources/" + args[1]);
+        ArrayList<Field> fieldsLoaded = ir.readFields("./src/test/resources/" + args[1]);
     }
 
     /**
@@ -294,9 +294,9 @@ public class Prototype {
 
     /**
      * A prototípus futásának kezelését megvalósító main().
-     * @param args main argumentumok
+     * @param testid teszt futtatása
      */
-    public static void runTest(String[] args) {
+    public static void runTest(int testid) {
         Map<String, Command> commands = new HashMap<>();
         commands.put("load", Prototype::load);
         commands.put("save", Prototype::save);
@@ -311,89 +311,20 @@ public class Prototype {
         commands.put("set_deterministic", Prototype::setDeterministic);
         commands.put("step", Prototype::step);
 
-        Scanner scanner = new Scanner(System.in);
-        //deterministic=true;
+        clearMaps();
+        resetAllID();
+        SteppableController.clearSteppables();
 
-        while (true) {
-            clearMaps();
-            resetAllID();
-            SteppableController.clearSteppables();
-            System.out.print("Select test to run (1-38): ");
-            int testid;
+        File inputFile = new File("./src/test/resources/test" + testid + "/in.txt");
 
-            try {
-                String line = scanner.nextLine();
-                testid = Integer.parseInt(line);
-                if (testid == 0) {
-                    return;
-                }
-                if (testid > 38 || testid < 1)
-                    continue;
-            } catch (Exception e) {
-                continue;
+        try (Scanner input = new Scanner(inputFile)) {
+            while (input.hasNextLine()) {
+                String[] command = input.nextLine().split(" ");
+                commands.get(command[0]).execute(command);
             }
-            
-            File inputFile = new File("./src/main/resources/test" + testid + "/in.txt");
-            File expectedFile = new File("./src/main/resources/test" + testid + "/expected.yml");
-
-            try (Scanner input = new Scanner(inputFile);
-                 Scanner expected = new Scanner(expectedFile);
-                ) {
-                while (input.hasNextLine()) {
-                    String[] command = input.nextLine().split(" ");
-                    commands.get(command[0]).execute(command);
-                }
-                String outFileString = "";
-                System.out.println("\n--------Actual output--------");
-                File outFile = new File("./src/main/resources/test" + testid + "/out.yml");
-                try (Scanner reader = new Scanner(outFile)) {
-                    while (reader.hasNextLine()) {
-                        String line = reader.nextLine();
-                        System.out.println(line);
-                        outFileString += line + '\n';
-                    }
-                }
-                String expectedFileString = "";
-                System.out.println("\n-------Expected output-------");
-                while (expected.hasNextLine()) {
-                    String line = expected.nextLine();
-                    System.out.println(line);
-                    expectedFileString += line + '\n';
-                }
-
-                if (outFileString.equals(expectedFileString)) {
-                    System.out.println("\nSuccessfully run test" + testid + "!\n\n");
-                } else {
-                    System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
-                }
-
-            } catch (IllegalArgumentException e) {
-                System.out.println("\n--------Actual output--------");
-                String outFileString = e.getMessage();
-                System.out.println(e.getMessage());
-
-                String expectedFileString = "";
-                try (Scanner reader = new Scanner(expectedFile)) {
-                    System.out.println("\n-------Expected output-------");
-                    while (reader.hasNextLine()) {
-                        String line = reader.nextLine();
-                        System.out.println(line);
-                        expectedFileString = line;
-                    }
-                } catch (FileNotFoundException ex) {
-                    e.printStackTrace();
-                }
-
-                if (outFileString.equals(expectedFileString)) {
-                    System.out.println("\nSuccessfully run test" + testid + "!\n\n");
-                } else {
-                    System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
-                }
-
-            } catch (Exception e) {
-                System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            System.out.println("\nTest" + testid + " was unsuccessful!\n\n");
+            e.printStackTrace();
         }
     }
 }

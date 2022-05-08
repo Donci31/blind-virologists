@@ -39,7 +39,7 @@ public abstract class InputWriter {
         LinkedHashMap<String, Object> mainMap = new LinkedHashMap<>();
         mainMap.put("Fields", getFieldsList(fields));
         mainMap.put("Applied Agents", getAppliedAgentsList());
-        try (FileWriter file = new FileWriter("./src/main/resources/" + filename)) {
+        try (FileWriter file = new FileWriter("./src/test/resources/" + filename)) {
             Virologist v = getWinner(fields);
             if(v != null){
                 yaml.dump("The game has ended, " + v.getName() +" won!", file);
@@ -57,7 +57,7 @@ public abstract class InputWriter {
      * @return az objektum neve
      */
     private static String getClassName(Object o) {
-        return o.getClass().toString().split(" ")[1];
+        return o.getClass().toString().split(" ")[1].split("\\.")[2];
     }
 
     private static ArrayList<Object> getFieldsList(ArrayList<Field> fields) {
@@ -77,23 +77,23 @@ public abstract class InputWriter {
         LinkedHashMap<String, Object> fieldMap = new LinkedHashMap<>();
         fieldMap.put("Type", getClassName(f));
 
-        if (getClassName(f).equals("model.fields.Laboratory")) {
+        if (getClassName(f).equals("Laboratory")) {
             Laboratory out = (Laboratory) f;
             fieldMap.put("Infected", out.isInfected());
             if (out.getCode() == null)
-                fieldMap.put("model.codes.Code", 0);
+                fieldMap.put("Code", 0);
             else
-                fieldMap.put("model.codes.Code", getClassName(out.getCode()) + " " + out.getCode().getId());
-        } else if (getClassName(f).equals("model.fields.Warehouse")) {
+                fieldMap.put("Code", getClassName(out.getCode()) + " " + out.getCode().getId());
+        } else if (getClassName(f).equals("Warehouse")) {
             Warehouse out = (Warehouse) f;
             fieldMap.put("nCount", out.getnProduced());
             fieldMap.put("aCount", out.getaProduced());
-        } else if (getClassName(f).equals("model.fields.Shelter")) {
+        } else if (getClassName(f).equals("Shelter")) {
             Shelter out = (Shelter) f;
             if (out.getGear() == null)
-                fieldMap.put("model.gears.Gear", 0);
+                fieldMap.put("Gear", 0);
             else
-                fieldMap.put("model.gears.Gear", getClassName(out.getGear()) + " " + out.getGear().getId());
+                fieldMap.put("Gear", getClassName(out.getGear()) + " " + out.getGear().getId());
         }
         fieldMap.put("Name", f.getName());
         fieldMap.put("Neighbors", getNeighborList(f.getNeighbors()));
@@ -128,10 +128,10 @@ public abstract class InputWriter {
     private static ArrayList<Object> getGearsList(Virologist v) {
         ArrayList<Object> names = new ArrayList<>();
         for (Gear g : v.getGears()) {
-            if (getClassName(g).equals("model.gears.GloveGear")) {
+            if (getClassName(g).equals("GloveGear")) {
                 GloveGear out = (GloveGear) g;
                 names.add(getClassName(g) + " " + g.getId() + " timesUsed=" + out.getTimesUsed());
-            } else if (getClassName(g).equals("model.gears.AxeGear")) {
+            } else if (getClassName(g).equals("AxeGear")) {
                 AxeGear out = (AxeGear) g;
                 names.add(getClassName(g) + " " + g.getId() + " used=" + out.isUsed());
             }
