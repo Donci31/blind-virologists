@@ -3,6 +3,7 @@ package model;
 import view.Canvas;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * A játék elindításáért és megállításáért felelős osztály.
@@ -43,6 +44,20 @@ public class Game {
 	}
 
 	/**
+	 * Beállítja a frame tulajdonságait.
+	 */
+	public static void init() {
+		frame.setTitle("Szofti");
+		frame.setJMenuBar(menu);
+		frame.setPreferredSize(new Dimension(1000,600));
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setResizable(false);
+		frame.pack();
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+	}
+
+	/**
 	 * A játékot futását magába foglaló main() metódus.
 	 * @param args main argumentumok
 	 */
@@ -52,6 +67,7 @@ public class Game {
 		canvas = new Canvas(600, 600);
 		frame.add(canvas);
 		startGame(2);
+		init();
 
 		while (true) {
 			SteppableController.step();

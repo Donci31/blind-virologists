@@ -7,4 +7,13 @@ import javax.swing.*;
  */
 public class Menu extends JMenuBar {
     JMenu game, inventory, field;
+
+    public Menu() {
+        game = new JMenu("Game");
+        inventory = new JMenu("Inventory");
+        field = new JMenu("Field");
+        this.add(game);
+        this.add(inventory);
+        this.add(field);
+    }
 }
