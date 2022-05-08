@@ -49,16 +49,27 @@ public class ActionMenu extends JPanel{
         buttonPanel.add(move, c);
         move.addActionListener(e -> {
             String[] fields = { "Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6" };
-            JComboBox fieldSelector = new JComboBox(fields);
-            String s = JOptionPane.showInputDialog(this.getParent(),
-                    "Choose a field to move to! \n\n",
-                    "Move!",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    fields,
-                    fields[0]).toString();
-            System.out.println(s);
-            //TODO cast s to field and handle movement
+            JComboBox cbox1 = new JComboBox(fields);
+
+            JPanel selectPanel = new JPanel();
+            selectPanel.setLayout(new GridBagLayout());
+            GridBagConstraints cons = new GridBagConstraints();
+            cons.fill = GridBagConstraints.HORIZONTAL;
+            cons.insets = new Insets(00,20,30,20);
+            cons.gridx = 0;
+            cons.gridy = 0;
+            selectPanel.add(new JLabel("Which field to move to:"), cons);
+            cons.gridx = 1;
+            cons.gridy = 0;
+            selectPanel.add(cbox1, cons);
+
+            int result = JOptionPane.showConfirmDialog(this.getParent(),
+                    selectPanel,
+                    "Select a field!",
+                    JOptionPane.OK_CANCEL_OPTION);
+            if(result == JOptionPane.OK_OPTION){
+                //TODO action
+            }
         });
 
         c.insets = new Insets(10,20,0,20);
@@ -105,14 +116,86 @@ public class ActionMenu extends JPanel{
 
         c.gridy++;
         loot = new MenuButton("Loot");
+        loot.addActionListener(e -> {
+            String[] gears = { "Gear 1", "Gear 2", "Gear 3", "Gear 4" };
+            JComboBox cbox = new JComboBox(gears);
+
+            JPanel selectPanel = new JPanel();
+            selectPanel.setLayout(new GridBagLayout());
+            GridBagConstraints cons = new GridBagConstraints();
+            cons.fill = GridBagConstraints.HORIZONTAL;
+            cons.insets = new Insets(00,20,30,20);
+            cons.gridx = 0;
+            cons.gridy = 0;
+            selectPanel.add(new JLabel("Which gear to loot:"), cons);
+            cons.gridx = 1;
+            cons.gridy = 0;
+            selectPanel.add(cbox, cons);
+
+            int result = JOptionPane.showConfirmDialog(this.getParent(),
+                    selectPanel,
+                    "Select a gear!",
+                    JOptionPane.OK_CANCEL_OPTION);
+            if(result == JOptionPane.OK_OPTION){
+                //TODO action
+            }
+        });
         buttonPanel.add(loot, c);
 
         c.gridy++;
         craft = new MenuButton("Craft");
+        craft.addActionListener(e -> {
+            String[] codes = { "Code 1", "Code 2", "Code 3" };
+            JComboBox cbox = new JComboBox(codes);
+
+            JPanel selectPanel = new JPanel();
+            selectPanel.setLayout(new GridBagLayout());
+            GridBagConstraints cons = new GridBagConstraints();
+            cons.fill = GridBagConstraints.HORIZONTAL;
+            cons.insets = new Insets(00,20,30,20);
+            cons.gridx = 0;
+            cons.gridy = 0;
+            selectPanel.add(new JLabel("Which code to use:"), cons);
+            cons.gridx = 1;
+            cons.gridy = 0;
+            selectPanel.add(cbox, cons);
+
+            int result = JOptionPane.showConfirmDialog(this.getParent(),
+                    selectPanel,
+                    "Select a code!",
+                    JOptionPane.OK_CANCEL_OPTION);
+            if(result == JOptionPane.OK_OPTION){
+                //TODO action
+            }
+        });
         buttonPanel.add(craft, c);
 
         c.gridy++;
         hit = new MenuButton("Hit");
+        hit.addActionListener(e -> {
+            String[] virologists = { "Virologist 1", "Virologist 2" };
+            JComboBox cbox = new JComboBox(virologists);
+
+            JPanel selectPanel = new JPanel();
+            selectPanel.setLayout(new GridBagLayout());
+            GridBagConstraints cons = new GridBagConstraints();
+            cons.fill = GridBagConstraints.HORIZONTAL;
+            cons.insets = new Insets(00,20,30,20);
+            cons.gridx = 0;
+            cons.gridy = 0;
+            selectPanel.add(new JLabel("Which virologist to hit:"), cons);
+            cons.gridx = 1;
+            cons.gridy = 0;
+            selectPanel.add(cbox, cons);
+
+            int result = JOptionPane.showConfirmDialog(this.getParent(),
+                    selectPanel,
+                    "Select a virologist!",
+                    JOptionPane.OK_CANCEL_OPTION);
+            if(result == JOptionPane.OK_OPTION){
+                //TODO action
+            }
+        });
         buttonPanel.add(hit, c);
 
         c.gridy++;
