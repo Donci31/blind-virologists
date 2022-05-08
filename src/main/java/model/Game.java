@@ -1,19 +1,27 @@
 package model;
 
+import view.Canvas;
+
+import javax.swing.*;
+
 /**
  * A játék elindításáért és megállításáért felelős osztály.
  */
 public class Game {
-	private Map map;
+	private static Map map;
 	private static Virologist winner;
+	private static JFrame frame;
+	private static Menu menu;
+	private static Canvas canvas;
 
 	/**
 	 * Elindítja a játékot.
+	 * @param vCount - hány virológussal indítsa a játékot
 	 */
-	public static void startGame() {
+	public static void startGame(int vCount) {
 		winner = null;
-		var m = new Map();
-		m.generateMap();
+		var map = new Map();
+		map.generateMap();
 		// TODO controller starts handling virologist turns
 	}
 
@@ -34,4 +42,19 @@ public class Game {
 		return winner;
 	}
 
+	/**
+	 * A játékot futását magába foglaló main() metódus.
+	 * @param args main argumentumok
+	 */
+	public static void main(String[] args) {
+		frame = new JFrame();
+		menu = new Menu();
+		canvas = new Canvas(600, 600);
+		frame.add(canvas);
+		startGame(2);
+
+		while (true) {
+			SteppableController.step();
+		}
+	}
 }

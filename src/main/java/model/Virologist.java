@@ -344,6 +344,10 @@ public class Virologist implements Steppable {
 	 * Ez a függvény minden kör végén meghívódik, és törli a virológus felhasználatlan ágenseit (az ágensek csak egy körig használhatóak).
 	 */
 	public void step() {
+		boolean moreAction = true;
+		while (moreAction) {
+			moreAction = ActionMenu.waitForAction(this);
+		}
 		craftedAgents.clear();
 	}
 
