@@ -14,6 +14,7 @@ public class Game {
 	private static JFrame frame;
 	private static Menu menu;
 	private static Canvas canvas;
+	private static ActionMenu actionMenu;
 
 	/**
 	 * Elindítja a játékot.
@@ -66,7 +67,11 @@ public class Game {
 		frame = new JFrame();
 		menu = new Menu();
 		canvas = new Canvas(600, 600);
-		frame.add(canvas);
+		actionMenu = new ActionMenu();
+		//BorderLayout layout = new BorderLayout();
+		//frame.setLayout(layout);
+		frame.add(canvas, BorderLayout.CENTER);
+		frame.add(actionMenu, BorderLayout.LINE_END);
 		startGame(2);
 		init();
 
