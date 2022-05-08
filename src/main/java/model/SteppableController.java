@@ -75,7 +75,7 @@ public abstract class SteppableController {
      */
     public static void removeVirologistsAgents(Virologist v) {
         for (int i = 0; i < appliedAgents.size(); ) {
-            if (appliedAgents.get(i).smearedVirologist == v) {
+            if (appliedAgents.get(i).getSmearedVirologist() == v) {
                 appliedAgents.remove(i);
             } else {
                 i++;
