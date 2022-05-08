@@ -49,16 +49,27 @@ public class ActionMenu extends JPanel{
         buttonPanel.add(move, c);
         move.addActionListener(e -> {
             String[] fields = { "Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6" };
-            JComboBox fieldSelector = new JComboBox(fields);
-            String s = JOptionPane.showInputDialog(this.getParent(),
-                    "Choose a field to move to! \n\n",
-                    "Move!",
-                    JOptionPane.PLAIN_MESSAGE,
-                    null,
-                    fields,
-                    fields[0]).toString();
-            System.out.println(s);
-            //TODO cast s to field and handle movement
+            JComboBox cbox1 = new JComboBox(fields);
+
+            JPanel selectPanel = new JPanel();
+            selectPanel.setLayout(new GridBagLayout());
+            GridBagConstraints cons = new GridBagConstraints();
+            cons.fill = GridBagConstraints.HORIZONTAL;
+            cons.insets = new Insets(00,20,30,20);
+            cons.gridx = 0;
+            cons.gridy = 0;
+            selectPanel.add(new JLabel("Which field to move to:"), cons);
+            cons.gridx = 1;
+            cons.gridy = 0;
+            selectPanel.add(cbox1, cons);
+
+            int result = JOptionPane.showConfirmDialog(this.getParent(),
+                    selectPanel,
+                    "Select a field!",
+                    JOptionPane.OK_CANCEL_OPTION);
+            if(result == JOptionPane.OK_OPTION){
+                //TODO action
+            }
         });
 
         c.insets = new Insets(10,20,0,20);
