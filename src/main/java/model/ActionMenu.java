@@ -4,18 +4,13 @@ import view.Canvas;
 import view.FieldView;
 
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
-import java.io.Serial;
 
 /**
  * A virológus egy körben lehetséges tevékenységeinek megjelenítéséért és a kiválasztott tevékenység végrehajtásáért felelős osztály.
  */
 public class ActionMenu extends JPanel{
     class MenuButton extends JButton{
-        @Serial
-        private static final long serialVersionUID = 1L;
-
         MenuButton(String s){
             super(s);
             setFocusPainted(false);
