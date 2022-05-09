@@ -26,6 +26,7 @@ public class WarehouseView extends FieldView implements Drawable {
      */
     @Override
     public void draw(Graphics g) {
-        // TODO
+        this.drawBorder(g);
+        this.drawHexagon(g, new Color(240,228,13), radius);
     }
 }

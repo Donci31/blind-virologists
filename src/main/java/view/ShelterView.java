@@ -26,6 +26,12 @@ public class ShelterView extends FieldView implements Drawable  {
      */
     @Override
     public void draw(Graphics g) {
-        // TODO
+        this.drawBorder(g);
+        this.drawHexagon(g, new Color(255,40,40), radius);
+        if (shelter.getGear() != null) {
+            g.setColor(Color.WHITE);
+            int cicrcleRadius = radius / 2;
+            g.fillOval((int) (pos.x - cicrcleRadius/2), (int) (pos.y - (radius * 0.8)), cicrcleRadius, cicrcleRadius);
+        }
     }
 }

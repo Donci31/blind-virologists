@@ -43,8 +43,15 @@ public class Canvas extends JPanel {
      * Hozzáad egy Drawable objektumot a Drawable objektumokat tartalmazó tömbhöz.
      * @param d a hozzáadandó Drawable objektum
      */
-    void addDrawable(Drawable d) {
+    public void addDrawable(Drawable d) {
         drawables.add(d);
+    }
+
+    public void paintComponent(Graphics _g) {   
+        Graphics2D g = (Graphics2D) _g;
+        g.setBackground(new Color(153, 217, 234));
+        g.clearRect(0, 0, getWidth(), getHeight());
+        drawAll(g);
     }
 
     class ClickListener extends MouseAdapter {

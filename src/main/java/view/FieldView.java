@@ -12,6 +12,8 @@ public class FieldView implements Drawable {
     protected Point pos;
     private Field field;
 
+    protected final int radius = 50;
+
     /**
      * Konstruktor, ami beállítja a mező koordinátáit, és azt, hogy melyik szabad területhez tartozik a modellből.
      * @param pos mező koordinátái
@@ -29,7 +31,22 @@ public class FieldView implements Drawable {
      */
     @Override
     public void draw(Graphics g) {
-        // TODO
+        this.drawBorder(g);
+        this.drawHexagon(g, new Color(105,159,4), radius);
+    }
+
+    protected void drawBorder(Graphics g) {
+        this.drawHexagon(g, Color.BLACK, radius + 5);
+    }
+
+    protected void drawHexagon(Graphics g, Color color, int radius) {
+        Polygon p = new Polygon();
+        for (int i = 0; i < 6; i++) {
+            double phase = ((2 * i + 1) * Math.PI / 6);
+            p.addPoint((int) (pos.x + radius * Math.cos(phase)), (int) (pos.y + radius * Math.sin(phase)));
+        }
+        g.setColor(color);
+        g.fillPolygon(p);
     }
 
     /**
