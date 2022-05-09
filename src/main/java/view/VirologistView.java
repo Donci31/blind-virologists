@@ -3,7 +3,6 @@ package view;
 import model.Virologist;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -46,10 +45,6 @@ public class VirologistView implements Drawable {
      */
     @Override
     public void draw(Graphics g) {
-        //g.setColor(Color.RED);
-        //g.fillOval(pos.x, pos.y, 100, 100);
-        //g.drawImage(bearImg, pos.x, pos.y, 50, 50, null);
-        
         boolean bear = virologist.getBear();
         boolean stunned = virologist.isStunned();
 
