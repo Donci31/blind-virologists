@@ -60,7 +60,7 @@ public class Prototype {
      */
     protected static void load(String[] args) {
         var ir = new InputReader();
-        ArrayList<Field> fieldsLoaded = ir.readFields("./src/test/resources/" + args[1]);
+        ir.readFields("./src/test/resources/" + args[1]);
         for (Virologist virologist : virologists.values()) {
             virologist.signalEndTurn();
         }

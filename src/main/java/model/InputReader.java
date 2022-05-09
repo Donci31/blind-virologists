@@ -24,7 +24,7 @@ public class InputReader {
      * @param path - a betölteni kívánt fájl elérési útja
      * @return - a létrehozott mezők listája
      */
-    public ArrayList<Field> readFields(String path) {
+    public void readFields(String path) {
         Yaml yaml = new Yaml();
         //a mezők listája amivel vissza fog térni
         var fieldList = new ArrayList<Field>();
@@ -85,7 +85,6 @@ public class InputReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return fieldList;
     }
 
     /**
