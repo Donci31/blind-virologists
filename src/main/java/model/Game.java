@@ -1,6 +1,7 @@
 package model;
 
 import view.Canvas;
+import view.Drawable;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -30,6 +31,8 @@ public class Game {
 		map.generateMap();
 		// TODO controller starts handling virologist turns
 	}
+
+	public static void addDrawable(Drawable d){canvas.addDrawable(d);}
 
 	/**
 	 * Megállítja a játékot

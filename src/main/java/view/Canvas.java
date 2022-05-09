@@ -43,7 +43,7 @@ public class Canvas extends JPanel {
      * Hozzáad egy Drawable objektumot a Drawable objektumokat tartalmazó tömbhöz.
      * @param d a hozzáadandó Drawable objektum
      */
-    void addDrawable(Drawable d) {
+    public void addDrawable(Drawable d) {
         drawables.add(d);
     }
 
