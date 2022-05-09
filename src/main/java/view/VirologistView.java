@@ -3,6 +3,10 @@ package view;
 import model.Virologist;
 
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 /**
  * A modell Virologist (virológus) osztályának grafikus megjelenítéséért felelős osztály.
@@ -10,7 +14,18 @@ import java.awt.*;
 public class VirologistView implements Drawable {
     Virologist virologist;
     private Point pos;
-    private Image virImg, bearImg;
+    private static Image virImg, bearImg;
+
+    private final int size = 50;
+
+    static {
+        try {
+            bearImg =  ImageIO.read(new File("./src/main/resources/brown_bear.png"));
+            virImg =  ImageIO.read(new File("./src/main/resources/mask.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Konstruktor, amely beállítja a nézethez tartozó attribútumokat.
@@ -19,11 +34,9 @@ public class VirologistView implements Drawable {
      * @param virImg a virológus alapállapotú képe
      * @param bearImg a virológus medveállapotú képe
      */
-    public VirologistView(Virologist virologist, Point pos, Image virImg, Image bearImg) {
+    public VirologistView(Point pos, Virologist virologist) {
         this.virologist = virologist;
-        this.pos = pos;
-        this.virImg = virImg;
-        this.bearImg = bearImg;
+        this.pos = pos;       
     }
 
     /**
@@ -37,14 +50,14 @@ public class VirologistView implements Drawable {
 
         // TODO lehet, hogy itt a pos-t a Field-től kéne megkérdezni, hogy a mező melyik részére rakja magát
         if (bear) {
-            g.drawImage(bearImg, pos.x, pos.y, null);
+            g.drawImage(bearImg, pos.x - (size/2), pos.y - (size/2), size, size, null);
         } else {
-            g.drawImage(virImg, pos.x, pos.y, null);
+            g.drawImage(virImg, pos.x - (size/2), pos.y - (size/2), size, size, null);
         }
 
         if (stunned) {
-            g.setColor(Color.RED);
-            g.fillOval(pos.x + 5, pos.y + 5, 10, 10);
+            g.setColor(new Color(136, 0, 21));
+            g.fillOval(pos.x + size/3, pos.y - size/2, size/2, size/2);
         }
     }
 }

@@ -26,6 +26,7 @@ public class LaboratoryView extends FieldView implements Drawable {
      */
     @Override
     public void draw(Graphics g) {
-        // TODO
+        this.drawBorder(g);
+        this.drawHexagon(g, new Color(12,88,124), radius);
     }
 }
