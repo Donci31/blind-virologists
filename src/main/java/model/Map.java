@@ -22,6 +22,7 @@ public class Map {
 	 */
 	public void generateMap() {
 		// TODO
+		int r=100;
 		int k = 20;
 		int labor = 0;
 		ArrayList<FieldView> fviewlist = new ArrayList<FieldView>();
