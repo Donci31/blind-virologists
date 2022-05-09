@@ -1,15 +1,29 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 repositories {
     mavenLocal()
 }
 
-group = 'hu.progchamps'
-version = '1.0.0-SNAPSHOT'
-description = 'ProgChamps'
+java {
+    sourceCompatibility = "11"
+    targetCompatibility = "11"
+}
+
+test {
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+application {
+    mainClass = 'model.Game'
+}
 
 dependencies {
     implementation 'org.yaml:snakeyaml:1.30'
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'commons-io:commons-io:2.11.0'
 }
