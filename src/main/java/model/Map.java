@@ -24,25 +24,31 @@ public class Map {
 				fields.get(h).getNeighbors().add(null);
 			}
 		}
+		int i=1;
+		int currfield=0;
+		while(i<k){   //i=1-től mert a base is field
+			currfield+=1;
+			Field prevfield=fields.get(currfield);
+			int ieleje=i;
+			for(int j=0;j<6;j++) {
+				if (i < k) {
+					if (prevfield.getNeighbors().get(j) == null) {
+						prevfield.getNeighbors().set(j, fields.get(i));//hozzáadni a j-edik szomszédhoz órajárásával megegyező irány
+						prevfield.getNeighbors().get(j).getNeighbors().set((j +3) % 6, prevfield);//kölcsönösen hozzáadja
+						i++;
+						if (prevfield.getNeighbors().get((j - 1+6) % 6) != null) { //balra levő mezővel összeköti, ha van
+							int g = (j - 1+6) % 6;
+							prevfield.getNeighbors().get(j).getNeighbors().set((5 + g) % 6, prevfield.getNeighbors().get(g));
+							prevfield.getNeighbors().get(g).getNeighbors().set((1 + j) % 6, prevfield.getNeighbors().get(j));
+						}
+						if ((prevfield.getNeighbors().get((j + 1) % 6) != null)) {   //A jobbra levő mezővel összeköti ha van
+							int u = (j + 1) % 6;
+							prevfield.getNeighbors().get(u).getNeighbors().set((5 + j) % 6, prevfield.getNeighbors().get(j));
+							prevfield.getNeighbors().get(j).getNeighbors().set((1 + u) % 6, prevfield.getNeighbors().get(u));
+						}
+					}
 
-		for(int i=1;i<k;i++){   //i=1-től mert a base is field
-			Field prevfield=fields.get(i-1);
-			for(int j=0;j<6;j++){
-				if(prevfield.getNeighbors().get(j)==null){
-					prevfield.getNeighbors().set(j,fields.get(i));//hozzáadni a j-edik szomszédhoz órajárásával megegyező irány
-					prevfield.getNeighbors().get(j).getNeighbors().set((j-3)%6,prevfield); //kölcsönösen hozzáadja
-					if(prevfield.getNeighbors().get((j-1)%6)!=null){ //balra levő mezővel összeköti, ha van
-						int g=(j-1)%6;
-						prevfield.getNeighbors().get(j).getNeighbors().set((5+g)%6,prevfield.getNeighbors().get(g));
-						prevfield.getNeighbors().get(g).getNeighbors().set((1+j)%6,prevfield.getNeighbors().get(j));
-					}
-					if((prevfield.getNeighbors().get((j+1)%6)!=null)){   //A jobbra levő mezővel összeköti ha van
-						int u=(j+1)%6;
-						prevfield.getNeighbors().get(u).getNeighbors().set((5+j)%6,prevfield.getNeighbors().get(j));
-						prevfield.getNeighbors().get(j).getNeighbors().set((1+u)%6,prevfield.getNeighbors().get(u));
-					}
 				}
-
 			}
 		}
 	}
