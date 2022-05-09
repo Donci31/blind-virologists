@@ -27,29 +27,34 @@ public class Map {
 		for(int h=0;h<k;h++) {
 			double n=Math.random();
 			if(n<0.2){
+
 				fields.add(new Field());
 				fviewlist.add(new FieldView(new Point(0,0),fields.get(h)));
 			}
 			else if(n<0.53){
-				fields.add(new Laboratory());
-				fviewlist.add(new LaboratoryView(new Point(0,0), (Laboratory) fields.get(h)));
+				Laboratory m=new Laboratory();
+				fields.add(m);
+				fviewlist.add(new LaboratoryView(new Point(0,0), m));
 				labor+=1;
 			}   //itt majd lehet kell hogy az összes kódot lerakja ha az kritérium
 			else if(n<0.6){
-				fields.add(new Shelter());
-				fviewlist.add(new ShelterView(new Point(0,0), (Shelter) fields.get(h)));
+				Shelter s=new Shelter();
+				fields.add(s);
+				fviewlist.add(new ShelterView(new Point(0,0),s));
 			}
 			else{
-				fields.add(new Warehouse());
-				fviewlist.add(new WarehouseView(new Point(0,0), (Warehouse) fields.get(h)));
+				Warehouse l=new Warehouse();
+				fields.add(l);
+				fviewlist.add(new WarehouseView(new Point(0,0), l));
 			}
 			fields.add(new Field());
 
 		}
 		if(labor==0){				//Ha nincs benne labor akkor tesz bele egyet
 			int hany=(int)Math.random()*k;
-			fields.set(hany,new Laboratory());
-			fviewlist.set(hany,new LaboratoryView(new Point(0,0), (Laboratory) fields.get(hany)));
+			Laboratory j=new Laboratory();
+			fields.set(hany,j);
+			fviewlist.set(hany,new LaboratoryView(new Point(0,0), j));
 		}
 		for(Field i:fields){
 			for (int cs = 0; cs < 6; cs++) {
