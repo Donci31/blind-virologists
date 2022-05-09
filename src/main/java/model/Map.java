@@ -23,7 +23,7 @@ public class Map {
 	public void generateMap() {
 		// TODO
 		int r=45;
-		int k = 20;
+		int k = 60;
 		int labor = 0;
 		ArrayList<FieldView> fviewlist = new ArrayList<FieldView>();
 		for (int h = 0; h < k; h++) {
@@ -74,7 +74,6 @@ public class Map {
 			for (int j = 0; j < 6; j++) {
 				if (i < k) {
 					if (prevfield.getNeighbors().get(j) == null) {
-						System.out.println(fields.indexOf(prevfield)+" "+j);
 						prevfield.getNeighbors().set(j, fields.get(i));// hozzáadni a j-edik szomszédhoz órajárásával
 																		// megegyező irány
 						prevfield.getNeighbors().get(j).getNeighbors().set((j + 3) % 6, prevfield);// kölcsönösen
@@ -109,7 +108,6 @@ public class Map {
 		}
 		for (Drawable d : fviewlist) {
 			Game.addDrawable(d);
-			System.out.println(((FieldView)d).Getpos().x+" "+((FieldView)d).Getpos().y);
 		}
 	}
 
