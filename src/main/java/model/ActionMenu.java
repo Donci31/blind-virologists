@@ -6,6 +6,8 @@ import model.agents.Agent;
 import model.agents.AmniVirus;
 import model.agents.StunVirus;
 import model.fields.Field;
+import model.gears.AxeGear;
+import model.gears.Gear;
 import model.gears.GloveGear;
 import model.gears.RobeGear;
 import view.Canvas;
@@ -43,6 +45,7 @@ public class ActionMenu extends JPanel{
      * Konstruktor, amely inicializálja az ActionMenu-ben szereplő gombokat és beállítja az ActionListener-jeiket.
      */
     public ActionMenu(){
+
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
         JPanel labelPanel = new JPanel();
@@ -64,6 +67,13 @@ public class ActionMenu extends JPanel{
         move = new MenuButton("Move");
         buttonPanel.add(move, c);
         move.addActionListener(e -> {
+            Virologist activeVirologist = Game.getActiveVirologist();
+            if (activeVirologist.isStunned()) {
+                return;
+            }
+
+            Field field = activeVirologist.getField();
+
             String[] fields = { "Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6" };
             JComboBox cbox1 = new JComboBox(fields);
 
@@ -86,8 +96,6 @@ public class ActionMenu extends JPanel{
                     JOptionPane.PLAIN_MESSAGE);
 
             if(result == JOptionPane.OK_OPTION){
-                Virologist activeVirologist = Game.getActiveVirologist();
-                Field field = activeVirologist.getField();
                 int neighborIndex = cbox1.getSelectedIndex();
                 activeVirologist.move(field.getNeighbors().get(neighborIndex));
             }
@@ -98,7 +106,11 @@ public class ActionMenu extends JPanel{
         c.insets = new Insets(10,20,0,20);
         smear = new MenuButton("Smear");
         smear.addActionListener(e -> {
+
 //            Virologist activeVirologist = Game.getActiveVirologist();
+//            if (activeVirologist.isStunned()) {
+//                return;
+//            }
 //            Field field = activeVirologist.getField();
 
             Virologist activeVirologist = new Virologist();
@@ -177,7 +189,7 @@ public class ActionMenu extends JPanel{
                 JOptionPane.showConfirmDialog(this.getParent(),
                         absorbPanel,
                         "Select a defensive mechanism!",
-                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.DEFAULT_OPTION,
                         JOptionPane.PLAIN_MESSAGE);
 
                 String absorbString = (String)absorbComboBox.getSelectedItem();
@@ -202,17 +214,26 @@ public class ActionMenu extends JPanel{
         c.gridy++;
         loot = new MenuButton("Loot");
         loot.addActionListener(e -> {
-            Virologist activeVirologist = Game.getActiveVirologist();
-            Field field = activeVirologist.getField();
+            //Virologist activeVirologist = Game.getActiveVirologist();
+            //Field field = activeVirologist.getField();
+
+            Virologist activeVirologist = new Virologist();
+            Field field = new Field();
+            Virologist vir = new Virologist();
+            vir.setStunned(true);
+            field.accept(activeVirologist);
+            field.accept(vir);
+            vir.pickUpGear(new AxeGear());
+            vir.pickUpGear(new RobeGear());
+
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
-                if (!activeVirologist.getName().equals(v.getName())) {
+                if (!activeVirologist.getName().equals(v.getName()) && v.isStunned()) {
                     virologistMap.put(v.getName(), v);
                 }
             }
 
-            String[] gears = { "Gear 1", "Gear 2", "Gear 3", "Gear 4" };
-            JComboBox cbox = new JComboBox(gears);
+            JComboBox cbox = new JComboBox(virologistMap.keySet().toArray(new String[0]));
 
             JPanel selectPanel = new JPanel();
             selectPanel.setLayout(new GridBagLayout());
@@ -221,17 +242,43 @@ public class ActionMenu extends JPanel{
             cons.insets = new Insets(0,20,30,20);
             cons.gridx = 0;
             cons.gridy = 0;
-            selectPanel.add(new JLabel("Which gear to loot:"), cons);
+            selectPanel.add(new JLabel("Which virologist to loot:"), cons);
             cons.gridx = 1;
             cons.gridy = 0;
             selectPanel.add(cbox, cons);
 
+            // Virológus kiválasztása kifosztásra
             int result = JOptionPane.showConfirmDialog(this.getParent(),
                     selectPanel,
-                    "Select a gear!",
-                    JOptionPane.OK_CANCEL_OPTION);
+                    "Select a virologist to loot!",
+                    JOptionPane.OK_CANCEL_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+
+            // A kiválasztott virológus egy felszerelésének kiválasztása elcsenésre
             if(result == JOptionPane.OK_OPTION){
-                //TODO action
+                JPanel selectGearPanel = new JPanel();
+                String victimString = (String)cbox.getSelectedItem();
+                Virologist victim = virologistMap.get(victimString);
+
+                HashMap<String, Gear> gearsMap = new HashMap<>();
+                for (Gear g : victim.getGears()) {
+                    gearsMap.put(g.getClass().getSimpleName(), g);
+                }
+                JComboBox cbox2 = new JComboBox(gearsMap.keySet().toArray(new String[0]));
+                selectGearPanel.add(new JLabel("Which gear to loot:"));
+                selectGearPanel.add(cbox2);
+
+                int selectGearResult = JOptionPane.showConfirmDialog(this.getParent(),
+                        selectGearPanel,
+                        "Select a gear!",
+                        JOptionPane.DEFAULT_OPTION,
+                        JOptionPane.PLAIN_MESSAGE);
+
+                if (selectGearResult == JOptionPane.OK_OPTION) {
+                    String gearString = (String)cbox2.getSelectedItem();
+                    Gear gear = gearsMap.get(gearString);
+                    activeVirologist.loot(victim, gear);
+                }
             }
         });
         buttonPanel.add(loot, c);
