@@ -5,6 +5,9 @@ import model.absorbStrats.ProtVaccineAbsorb;
 import model.agents.Agent;
 import model.agents.AmniVirus;
 import model.agents.StunVirus;
+import model.codes.AmniCode;
+import model.codes.Code;
+import model.codes.ProtCode;
 import model.fields.Field;
 import model.gears.AxeGear;
 import model.gears.Gear;
@@ -206,6 +209,9 @@ public class ActionMenu extends JPanel{
         interactWithField = new MenuButton("Interact with field");
         interactWithField.addActionListener(e -> {
             Virologist activeVirologist = Game.getActiveVirologist();
+            if (activeVirologist.isStunned()) {
+                return;
+            }
             activeVirologist.touch();
         });
         buttonPanel.add(interactWithField, c);
@@ -214,17 +220,20 @@ public class ActionMenu extends JPanel{
         c.gridy++;
         loot = new MenuButton("Loot");
         loot.addActionListener(e -> {
-            //Virologist activeVirologist = Game.getActiveVirologist();
-            //Field field = activeVirologist.getField();
+            Virologist activeVirologist = Game.getActiveVirologist();
+            if (activeVirologist.isStunned()) {
+                return;
+            }
+            Field field = activeVirologist.getField();
 
-            Virologist activeVirologist = new Virologist();
-            Field field = new Field();
-            Virologist vir = new Virologist();
-            vir.setStunned(true);
-            field.accept(activeVirologist);
-            field.accept(vir);
-            vir.pickUpGear(new AxeGear());
-            vir.pickUpGear(new RobeGear());
+//            Virologist activeVirologist = new Virologist();
+//            Field field = new Field();
+//            Virologist vir = new Virologist();
+//            vir.setStunned(true);
+//            field.accept(activeVirologist);
+//            field.accept(vir);
+//            vir.pickUpGear(new AxeGear());
+//            vir.pickUpGear(new RobeGear());
 
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
@@ -287,8 +296,20 @@ public class ActionMenu extends JPanel{
         c.gridy++;
         craft = new MenuButton("Craft agent");
         craft.addActionListener(e -> {
-            String[] codes = { "Code 1", "Code 2", "Code 3" };
-            JComboBox cbox = new JComboBox(codes);
+            Virologist activeVirologist = Game.getActiveVirologist();
+            if (activeVirologist.isStunned()) {
+                return;
+            }
+
+//            Virologist activeVirologist = new Virologist();
+//            activeVirologist.learnCode(new AmniCode());
+//            activeVirologist.learnCode(new ProtCode());
+
+            HashMap<String, Code> codeMap = new HashMap<>();
+            for (Code code : activeVirologist.getLearntCodes()) {
+                codeMap.put(code.getClass().getSimpleName(), code);
+            }
+            JComboBox cbox = new JComboBox(codeMap.keySet().toArray(new String[0]));
 
             JPanel selectPanel = new JPanel();
             selectPanel.setLayout(new GridBagLayout());
@@ -305,9 +326,13 @@ public class ActionMenu extends JPanel{
             int result = JOptionPane.showConfirmDialog(this.getParent(),
                     selectPanel,
                     "Select a code!",
-                    JOptionPane.OK_CANCEL_OPTION);
+                    JOptionPane.OK_CANCEL_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+
             if(result == JOptionPane.OK_OPTION){
-                //TODO action
+                String codeString = (String)cbox.getSelectedItem();
+                Code selectedCode = codeMap.get(codeString);
+                activeVirologist.craftAgent(selectedCode);
             }
         });
         buttonPanel.add(craft, c);
