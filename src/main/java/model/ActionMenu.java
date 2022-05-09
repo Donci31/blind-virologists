@@ -1,25 +1,16 @@
 package model;
 
 import model.absorbStrats.Absorb;
-import model.absorbStrats.ProtVaccineAbsorb;
 import model.agents.Agent;
-import model.agents.AmniVirus;
-import model.agents.StunVirus;
-import model.codes.AmniCode;
 import model.codes.Code;
-import model.codes.ProtCode;
 import model.fields.Field;
-import model.gears.AxeGear;
 import model.gears.Gear;
-import model.gears.GloveGear;
-import model.gears.RobeGear;
 import view.Canvas;
 import view.FieldView;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * A virológus egy körben lehetséges tevékenységeinek megjelenítéséért és a kiválasztott tevékenység végrehajtásáért felelős osztály.
@@ -74,7 +65,6 @@ public class ActionMenu extends JPanel{
             if (activeVirologist.isStunned()) {
                 return;
             }
-
             Field field = activeVirologist.getField();
 
             String[] fields = { "Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6" };
@@ -110,23 +100,23 @@ public class ActionMenu extends JPanel{
         smear = new MenuButton("Smear");
         smear.addActionListener(e -> {
 
-//            Virologist activeVirologist = Game.getActiveVirologist();
-//            if (activeVirologist.isStunned()) {
-//                return;
-//            }
-//            Field field = activeVirologist.getField();
+            Virologist activeVirologist = Game.getActiveVirologist();
+            if (activeVirologist.isStunned()) {
+                return;
+            }
+            Field field = activeVirologist.getField();
 
-            Virologist activeVirologist = new Virologist();
-            Field field = new Field();
-            Virologist vir1 = new Virologist();
-            vir1.addAbsorbStrat(new ProtVaccineAbsorb());
-            vir1.pickUpGear(new GloveGear());
-            vir1.pickUpGear(new RobeGear());
-            field.accept(vir1);
-            field.accept(activeVirologist);
-            activeVirologist.addCraftedAgent(new AmniVirus());
-            activeVirologist.addCraftedAgent(new StunVirus());
-            activeVirologist.addCraftedAgent(new StunVirus());
+//            Virologist activeVirologist = new Virologist();
+//            Field field = new Field();
+//            Virologist vir1 = new Virologist();
+//            vir1.addAbsorbStrat(new ProtVaccineAbsorb());
+//            vir1.pickUpGear(new GloveGear());
+//            vir1.pickUpGear(new RobeGear());
+//            field.accept(vir1);
+//            field.accept(activeVirologist);
+//            activeVirologist.addCraftedAgent(new AmniVirus());
+//            activeVirologist.addCraftedAgent(new StunVirus());
+//            activeVirologist.addCraftedAgent(new StunVirus());
 
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
@@ -341,8 +331,24 @@ public class ActionMenu extends JPanel{
         c.gridy++;
         hit = new MenuButton("Hit");
         hit.addActionListener(e -> {
-            String[] virologists = { "Virologist 1", "Virologist 2" };
-            JComboBox cbox = new JComboBox(virologists);
+            Virologist activeVirologist = Game.getActiveVirologist();
+            if (activeVirologist.isStunned()) {
+                return;
+            }
+            Field field = activeVirologist.getField();
+
+//            Virologist activeVirologist = new Virologist();
+//            Field field = new Field();
+//            field.accept(new Virologist());
+//            field.accept(new Virologist());
+
+            HashMap<String, Virologist> virologistMap = new HashMap<>();
+            for (Virologist v : field.getVirologists()) {
+                if (!activeVirologist.getName().equals(v.getName())) {
+                    virologistMap.put(v.getName(), v);
+                }
+            }
+            JComboBox cbox = new JComboBox(virologistMap.keySet().toArray(new String[0]));
 
             JPanel selectPanel = new JPanel();
             selectPanel.setLayout(new GridBagLayout());
@@ -359,9 +365,13 @@ public class ActionMenu extends JPanel{
             int result = JOptionPane.showConfirmDialog(this.getParent(),
                     selectPanel,
                     "Select a virologist!",
-                    JOptionPane.OK_CANCEL_OPTION);
+                    JOptionPane.OK_CANCEL_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
+
             if(result == JOptionPane.OK_OPTION){
-                //TODO action
+                String victimString = (String)cbox.getSelectedItem();
+                Virologist victim = virologistMap.get(victimString);
+                activeVirologist.hit(victim);
             }
         });
         buttonPanel.add(hit, c);
@@ -369,13 +379,16 @@ public class ActionMenu extends JPanel{
         // End turn gomb inicializálása, ActionListener beállítása
         c.gridy++;
         endTurn = new MenuButton("End turn");
+        endTurn.addActionListener(e -> {
+            Virologist activeVirologist = Game.getActiveVirologist();
+            activeVirologist.signalEndTurn();
+        });
         buttonPanel.add(endTurn, c);
 
         buttonPanel.setBorder(BorderFactory.createMatteBorder(4, 0, 0, 0, Color.black));
         this.add(buttonPanel);
         this.setBorder(BorderFactory.createLineBorder(Color.black, 4));
     }
-
 
     /**
      * A v virológus hívja meg a saját step() metódusából, ezzel jelezvén, hogy várja a rá vonatkozó akciót, amit az ActionMenu gombjaival tud a felhasználó jelezni neki.

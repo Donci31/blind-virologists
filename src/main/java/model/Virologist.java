@@ -36,6 +36,7 @@ public class Virologist implements Steppable {
 	private static int id_counter = 1;
 	private int chosenAbsorbStratIdx = 0;
 	private boolean isBear=false;
+	private boolean endTurn = false;
 
 	/**
 	 * Az isBear gettere.
@@ -344,11 +345,16 @@ public class Virologist implements Steppable {
 	 * Ez a függvény minden kör végén meghívódik, és törli a virológus felhasználatlan ágenseit (az ágensek csak egy körig használhatóak).
 	 */
 	public void step() {
-		boolean moreAction = true;
-		while (moreAction) {
-			moreAction = ActionMenu.waitForAction(this);
+		while (!endTurn) {
+			//moreAction = ActionMenu.waitForAction(this);
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 		craftedAgents.clear();
+		endTurn = false;
 	}
 
 	/**
@@ -479,5 +485,12 @@ public class Virologist implements Steppable {
 			throw new IllegalArgumentException();
 		}
 		chosenAbsorbStratIdx = Math.min(absorbStrats.size() - 1, idx);
+	}
+
+	/**
+	 * Jelzik a virológusnak, hogy vége a körének.
+	 */
+	public void signalEndTurn() {
+		endTurn = true;
 	}
 }
