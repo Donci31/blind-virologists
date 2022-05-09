@@ -34,10 +34,10 @@ public class Map {
 				if (i < k) {
 					if (prevfield.getNeighbors().get(j) == null) {
 						prevfield.getNeighbors().set(j, fields.get(i));//hozzáadni a j-edik szomszédhoz órajárásával megegyező irány
-						prevfield.getNeighbors().get(j).getNeighbors().set((j - 3) % 6, prevfield);//kölcsönösen hozzáadja
+						prevfield.getNeighbors().get(j).getNeighbors().set((j +3) % 6, prevfield);//kölcsönösen hozzáadja
 						i++;
-						if (prevfield.getNeighbors().get((j - 1) % 6) != null) { //balra levő mezővel összeköti, ha van
-							int g = (j - 1) % 6;
+						if (prevfield.getNeighbors().get((j - 1+6) % 6) != null) { //balra levő mezővel összeköti, ha van
+							int g = (j - 1+6) % 6;
 							prevfield.getNeighbors().get(j).getNeighbors().set((5 + g) % 6, prevfield.getNeighbors().get(g));
 							prevfield.getNeighbors().get(g).getNeighbors().set((1 + j) % 6, prevfield.getNeighbors().get(j));
 						}
