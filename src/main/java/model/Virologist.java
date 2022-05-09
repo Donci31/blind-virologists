@@ -223,10 +223,10 @@ public class Virologist implements Steppable {
 	 * @param a - virológusra kent ágens
 	 */
 	public void absorb(Agent a) {
-		//chooseFrom(absorbStrats).absorb(a);
-		chosenAbsorbStratIdx = Math.min(absorbStrats.size()-1, chosenAbsorbStratIdx);
+		//chosenAbsorbStratIdx = Math.min(absorbStrats.size()-1, chosenAbsorbStratIdx);
 		try {
-			absorbStrats.get(chosenAbsorbStratIdx).absorb(a);
+			//absorbStrats.get(chosenAbsorbStratIdx).absorb(a);
+			absorbStrats.get(0).absorb(a);
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Index out of bounds!");
 		}
@@ -428,6 +428,25 @@ public class Virologist implements Steppable {
 	 */
 	public void removeHitStrat(Hit h){
 		hitStrat = new DefaultHit();
+	}
+
+	/**
+	 * Az absorbStrats gettere.
+	 * @return absorb viselkedések listája
+	 */
+	public ArrayList<Absorb> getAbsorbStrats() { return absorbStrats; }
+
+	/**
+	 * Kiválasztja az elsődleges védekezési mechanizmust, azt behelyezi az absorb viselkedések listájának első helyére.
+	 * @param absorb
+	 */
+	public void choosePrimaryAbsorbStrat(Absorb absorb) {
+		if (!absorbStrats.contains(absorb)) {
+			return;
+		}
+
+		absorbStrats.remove(absorb);
+		absorbStrats.add(0, absorb);
 	}
 
 	/**

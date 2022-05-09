@@ -52,7 +52,7 @@ public class Game {
 	 * Beállítja a frame tulajdonságait.
 	 */
 	public static void init() {
-		frame.setTitle("Szofti");
+		frame.setTitle("Blind Virologists");
 		frame.setJMenuBar(menu);
 		frame.setPreferredSize(new Dimension(1000,600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

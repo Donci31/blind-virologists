@@ -1,15 +1,25 @@
 package model;
 
+import model.absorbStrats.Absorb;
+import model.agents.Agent;
+import model.agents.AmniVirus;
+import model.agents.StunVirus;
+import model.fields.Field;
 import view.Canvas;
 import view.FieldView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * A virológus egy körben lehetséges tevékenységeinek megjelenítéséért és a kiválasztott tevékenység végrehajtásáért felelős osztály.
  */
 public class ActionMenu extends JPanel{
+    /**
+     * Segédosztály, amely saját stílust ad a JButton-nek.
+     */
     class MenuButton extends JButton{
         MenuButton(String s){
             super(s);
@@ -26,7 +36,9 @@ public class ActionMenu extends JPanel{
     private Canvas canvas;
     private static FieldView selectedField;
 
-    // TODO ha tényleg a Singleton mintát szeretnénk, akkor kellene egy getInstance() és egyebek is
+    /**
+     * Konstruktor, amely inicializálja az ActionMenu-ben szereplő gombokat és beállítja az ActionListener-jeiket.
+     */
     public ActionMenu(){
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
@@ -45,6 +57,7 @@ public class ActionMenu extends JPanel{
         c.gridx = 0;
         c.gridy = 0;
 
+        // Move gomb inicializálása, ActionListener beállítása
         move = new MenuButton("Move");
         buttonPanel.add(move, c);
         move.addActionListener(e -> {
@@ -68,26 +81,49 @@ public class ActionMenu extends JPanel{
                     "Select a field!",
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
+
             if(result == JOptionPane.OK_OPTION){
-                //TODO action
+                Virologist activeVirologist = Game.getActiveVirologist();
+                Field field = activeVirologist.getField();
+                int neighborIndex = cbox1.getSelectedIndex();
+                activeVirologist.move(field.getNeighbors().get(neighborIndex));
             }
         });
 
-        c.insets = new Insets(10,20,0,20);
-
+        // Smear gomb inicializálása, ActionListener beállítása
         c.gridy++;
+        c.insets = new Insets(10,20,0,20);
         smear = new MenuButton("Smear");
         smear.addActionListener(e -> {
-            String[] virologists = { "virologist 1", "virologist 2", "virologist 3" };
-            JComboBox cbox1 = new JComboBox(virologists);
-            String[] agents = { "agent 1", "agent 2" };
-            JComboBox cbox2 = new JComboBox(agents);
+            // TODO az ez alatti két sort kikommentezni
+            //Virologist activeVirologist = Game.getActiveVirologist();
+            //Field field = activeVirologist.getField();
+
+            Virologist activeVirologist = new Virologist();
+            Field field = new Field();
+            field.accept(new Virologist());
+            field.accept(new Virologist());
+            activeVirologist.addCraftedAgent(new AmniVirus());
+            activeVirologist.addCraftedAgent(new StunVirus());
+            activeVirologist.addCraftedAgent(new StunVirus());
+
+            HashMap<String, Virologist> virologistMap = new HashMap<>();
+            for (Virologist v : field.getVirologists()) {
+                virologistMap.put(v.getName(), v);
+            }
+            JComboBox cbox1 = new JComboBox(virologistMap.keySet().toArray(new String[0]));
+
+            HashMap<String, Agent> agentMap = new HashMap<>();
+            for (Agent a : activeVirologist.getCraftedAgents()) {
+                agentMap.put(a.getClass().getSimpleName(), a);
+            }
+            JComboBox cbox2 = new JComboBox(agentMap.keySet().toArray(new String[0]));
 
             JPanel selectPanel = new JPanel();
             selectPanel.setLayout(new GridBagLayout());
             GridBagConstraints cons = new GridBagConstraints();
             cons.fill = GridBagConstraints.HORIZONTAL;
-            cons.insets = new Insets(00,20,30,20);
+            cons.insets = new Insets(0,20,30,20);
             cons.gridx = 0;
             cons.gridy = 0;
             selectPanel.add(new JLabel("Which virologist to target:"), cons);
@@ -106,16 +142,34 @@ public class ActionMenu extends JPanel{
                     "Select a target and an agent!",
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
+
             if(result == JOptionPane.OK_OPTION){
-                //TODO action
+                Virologist victim = (Virologist)cbox1.getSelectedItem();
+                Agent agent = (Agent)cbox2.getSelectedItem();
+                activeVirologist.smearAgent(agent, victim);
+
+                //TODO védekezési viselkedés kiválasztása
+                JPanel absorbPanel = new JPanel();
+                JLabel absorbLabel = new JLabel("Which defense mechanism to use:");
+                HashMap<String, Absorb> absorbMap = new HashMap<>();
+                for (Absorb a : victim.getAbsorbStrats()) {
+
+                }
+                JComboBox absorbComboBox = new JComboBox();
             }
         });
         buttonPanel.add(smear, c);
 
+        // Interact with field gomb inicializálása, ActionListener beállítása
         c.gridy++;
         interactWithField = new MenuButton("Interact with field");
+        interactWithField.addActionListener(e -> {
+            Virologist activeVirologist = Game.getActiveVirologist();
+            activeVirologist.touch();
+        });
         buttonPanel.add(interactWithField, c);
 
+        // Loot gomb inicializálása, ActionListener beállítása
         c.gridy++;
         loot = new MenuButton("Loot");
         loot.addActionListener(e -> {
@@ -126,7 +180,7 @@ public class ActionMenu extends JPanel{
             selectPanel.setLayout(new GridBagLayout());
             GridBagConstraints cons = new GridBagConstraints();
             cons.fill = GridBagConstraints.HORIZONTAL;
-            cons.insets = new Insets(00,20,30,20);
+            cons.insets = new Insets(0,20,30,20);
             cons.gridx = 0;
             cons.gridy = 0;
             selectPanel.add(new JLabel("Which gear to loot:"), cons);
@@ -144,8 +198,9 @@ public class ActionMenu extends JPanel{
         });
         buttonPanel.add(loot, c);
 
+        // Craft agent gomb inicializálása, ActionListener beállítása
         c.gridy++;
-        craft = new MenuButton("Craft");
+        craft = new MenuButton("Craft agent");
         craft.addActionListener(e -> {
             String[] codes = { "Code 1", "Code 2", "Code 3" };
             JComboBox cbox = new JComboBox(codes);
@@ -154,7 +209,7 @@ public class ActionMenu extends JPanel{
             selectPanel.setLayout(new GridBagLayout());
             GridBagConstraints cons = new GridBagConstraints();
             cons.fill = GridBagConstraints.HORIZONTAL;
-            cons.insets = new Insets(00,20,30,20);
+            cons.insets = new Insets(0,20,30,20);
             cons.gridx = 0;
             cons.gridy = 0;
             selectPanel.add(new JLabel("Which code to use:"), cons);
@@ -172,6 +227,7 @@ public class ActionMenu extends JPanel{
         });
         buttonPanel.add(craft, c);
 
+        // Hit gomb inicializálása, ActionListener beállítása
         c.gridy++;
         hit = new MenuButton("Hit");
         hit.addActionListener(e -> {
@@ -182,7 +238,7 @@ public class ActionMenu extends JPanel{
             selectPanel.setLayout(new GridBagLayout());
             GridBagConstraints cons = new GridBagConstraints();
             cons.fill = GridBagConstraints.HORIZONTAL;
-            cons.insets = new Insets(00,20,30,20);
+            cons.insets = new Insets(0,20,30,20);
             cons.gridx = 0;
             cons.gridy = 0;
             selectPanel.add(new JLabel("Which virologist to hit:"), cons);
@@ -200,6 +256,7 @@ public class ActionMenu extends JPanel{
         });
         buttonPanel.add(hit, c);
 
+        // End turn gomb inicializálása, ActionListener beállítása
         c.gridy++;
         endTurn = new MenuButton("End turn");
         buttonPanel.add(endTurn, c);
