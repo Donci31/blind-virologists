@@ -3,6 +3,7 @@ package view;
 import model.fields.Field;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 /**
  * A modell Field (szabad terület) típusú mezőjének grafikus megjelenítéséért felelős osztály.
@@ -34,8 +35,16 @@ public class FieldView implements Drawable {
      */
     @Override
     public void draw(Graphics g) {
+
+        Graphics2D g2 = (Graphics2D) g;
+        AffineTransform old=g2.getTransform();
+        AffineTransform tx = new AffineTransform();
+        tx.translate(pos.x, pos.y);
+        g2.setTransform(tx);
         this.drawBorder(g);
         this.drawHexagon(g, new Color(105,159,4), radius);
+        g2.setTransform(old);
+
     }
 
     protected void drawBorder(Graphics g) {
@@ -45,7 +54,7 @@ public class FieldView implements Drawable {
     protected void drawHexagon(Graphics g, Color color, int radius) {
         Polygon p = new Polygon();
         for (int i = 0; i < 6; i++) {
-            double phase = ((2 * i + 1) * Math.PI / 6);
+            double phase = ((2 * i ) * Math.PI / 6);
             p.addPoint((int) (pos.x + radius * Math.cos(phase)), (int) (pos.y + radius * Math.sin(phase)));
         }
         g.setColor(color);

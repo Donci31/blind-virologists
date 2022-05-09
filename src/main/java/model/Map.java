@@ -22,8 +22,8 @@ public class Map {
 	 */
 	public void generateMap() {
 		// TODO
-		int r=100;
-		int k = 20;
+		int r=45;
+		int k = 3;
 		int labor = 0;
 		ArrayList<FieldView> fviewlist = new ArrayList<FieldView>();
 		for (int h = 0; h < k; h++) {
@@ -57,20 +57,24 @@ public class Map {
 			fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
 		}
 		for (Field i : fields) {
+			i.getNeighbors().clear();
 			for (int cs = 0; cs < 6; cs++) {
+
 				i.getNeighbors().add(null);
 			}
 		}
 
 		int i = 1;
 		int currfield = 0;
+		fviewlist.get(0).Getpos().setLocation(200,200);
 		while (i < k) { // i=1-től mert a base is field
-			currfield += 1;
+
 			Field prevfield = fields.get(currfield);
 			int ieleje = i;
 			for (int j = 0; j < 6; j++) {
 				if (i < k) {
 					if (prevfield.getNeighbors().get(j) == null) {
+						System.out.println(fields.indexOf(prevfield)+" "+j);
 						prevfield.getNeighbors().set(j, fields.get(i));// hozzáadni a j-edik szomszédhoz órajárásával
 																		// megegyező irány
 						prevfield.getNeighbors().get(j).getNeighbors().set((j + 3) % 6, prevfield);// kölcsönösen
@@ -79,8 +83,9 @@ public class Map {
 						fviewlist.get(i).Getpos().setLocation(prev.x + r * Math.sin(-j * Math.PI / 6.0),
 								prev.y + r * Math.cos(-j * Math.PI / 6.0));// TODO kipróbálni hogy jó-e a helye
 						i++;
+
 						if (prevfield.getNeighbors().get((j - 1 + 6) % 6) != null) { // balra levő mezővel összeköti, ha
-																						// van
+																				// van
 							int g = (j - 1 + 6) % 6;
 							prevfield.getNeighbors().get(j).getNeighbors().set((5 + g) % 6,
 									prevfield.getNeighbors().get(g));
@@ -88,20 +93,23 @@ public class Map {
 									prevfield.getNeighbors().get(j));
 						}
 						if ((prevfield.getNeighbors().get((j + 1) % 6) != null)) { // A jobbra levő mezővel összeköti ha
-																					// van
+							// van
 							int u = (j + 1) % 6;
 							prevfield.getNeighbors().get(u).getNeighbors().set((5 + j) % 6,
 									prevfield.getNeighbors().get(j));
 							prevfield.getNeighbors().get(j).getNeighbors().set((1 + u) % 6,
 									prevfield.getNeighbors().get(u));
 						}
+
 					}
 
 				}
 			}
+			currfield += 1;
 		}
 		for (Drawable d : fviewlist) {
 			Game.addDrawable(d);
+			System.out.println(((FieldView)d).Getpos().x+" "+((FieldView)d).Getpos().y);
 		}
 	}
 

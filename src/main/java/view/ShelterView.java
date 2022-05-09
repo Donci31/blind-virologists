@@ -3,6 +3,7 @@ package view;
 import model.fields.Shelter;
 
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 /**
  * A modell Shelter (óvóhely) típusú mezőjének grafikus megjelenítéséért felelős osztály.
@@ -26,6 +27,11 @@ public class ShelterView extends FieldView implements Drawable  {
      */
     @Override
     public void draw(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g;
+        AffineTransform old=g2.getTransform();
+        AffineTransform tx = new AffineTransform();
+        tx.translate(pos.x, pos.y);
+        g2.setTransform(tx);
         this.drawBorder(g);
         this.drawHexagon(g, new Color(255,40,40), radius);
         if (shelter.getGear() != null) {
@@ -33,5 +39,6 @@ public class ShelterView extends FieldView implements Drawable  {
             int cicrcleRadius = radius / 2;
             g.fillOval((int) (pos.x - cicrcleRadius/2), (int) (pos.y - (radius * 0.8)), cicrcleRadius, cicrcleRadius);
         }
+        g2.setTransform(old);
     }
 }
