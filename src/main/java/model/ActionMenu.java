@@ -66,7 +66,8 @@ public class ActionMenu extends JPanel{
             int result = JOptionPane.showConfirmDialog(this.getParent(),
                     selectPanel,
                     "Select a field!",
-                    JOptionPane.OK_CANCEL_OPTION);
+                    JOptionPane.OK_CANCEL_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
             if(result == JOptionPane.OK_OPTION){
                 //TODO action
             }
@@ -103,7 +104,8 @@ public class ActionMenu extends JPanel{
             int result = JOptionPane.showConfirmDialog(this.getParent(),
                     selectPanel,
                     "Select a target and an agent!",
-                    JOptionPane.OK_CANCEL_OPTION);
+                    JOptionPane.OK_CANCEL_OPTION,
+                    JOptionPane.PLAIN_MESSAGE);
             if(result == JOptionPane.OK_OPTION){
                 //TODO action
             }

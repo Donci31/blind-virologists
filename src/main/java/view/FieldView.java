@@ -24,6 +24,9 @@ public class FieldView implements Drawable {
         this.field = field;
     }
 
+    public void Changepos(Point newpos){pos=newpos;}
+
+    public Point Getpos(){return pos;}
     /**
      * Kirajzolja a szabad terület mezőt a megadott grafikus kontextusra.
      * A leszármazottai felüldefiniálják.

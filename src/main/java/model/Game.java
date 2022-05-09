@@ -1,9 +1,13 @@
 package model;
 
 import view.Canvas;
+import view.Drawable;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * A játék elindításáért és megállításáért felelős osztály.
@@ -14,6 +18,7 @@ public class Game {
 	private static JFrame frame;
 	private static Menu menu;
 	private static Canvas canvas;
+	private static Virologist activeVirologist;
 	private static ActionMenu actionMenu;
 
 	/**
@@ -26,6 +31,8 @@ public class Game {
 		map.generateMap();
 		// TODO controller starts handling virologist turns
 	}
+
+	public static void addDrawable(Drawable d){canvas.addDrawable(d);}
 
 	/**
 	 * Megállítja a játékot
@@ -53,9 +60,27 @@ public class Game {
 		frame.setPreferredSize(new Dimension(1000,600));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
+
+		BufferedImage gameImage = null;
+		try {
+			gameImage = ImageIO.read(Game.class.getClassLoader().getResource("brown_bear.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		ImageIcon gameIcon = new ImageIcon(gameImage);
+		frame.setIconImage(gameIcon.getImage());
+
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
+	}
+
+	/**
+	 * Az activeVirologist gettere.
+	 * @return az aktív virológus
+	 */
+	public static Virologist getActiveVirologist() {
+		return activeVirologist;
 	}
 
 	/**
