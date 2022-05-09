@@ -34,6 +34,7 @@ public class ActionMenu extends JPanel{
     private MenuButton move, smear, interactWithField, loot, craft, hit, endTurn;
     private Canvas canvas;
     private static FieldView selectedField;
+    private Virologist activeVirologist = null;
 
     /**
      * Konstruktor, amely inicializálja az ActionMenu-ben szereplő gombokat és beállítja az ActionListener-jeiket.
@@ -62,7 +63,7 @@ public class ActionMenu extends JPanel{
         buttonPanel.add(move, c);
         move.addActionListener(e -> {
             Virologist activeVirologist = Game.getActiveVirologist();
-            if (activeVirologist.isStunned()) {
+            if (activeVirologist == null || activeVirologist.isStunned()) {
                 return;
             }
             Field field = activeVirologist.getField();
@@ -101,7 +102,7 @@ public class ActionMenu extends JPanel{
         smear.addActionListener(e -> {
 
             Virologist activeVirologist = Game.getActiveVirologist();
-            if (activeVirologist.isStunned()) {
+            if (activeVirologist == null || activeVirologist.isStunned()) {
                 return;
             }
             Field field = activeVirologist.getField();
@@ -199,7 +200,7 @@ public class ActionMenu extends JPanel{
         interactWithField = new MenuButton("Interact with field");
         interactWithField.addActionListener(e -> {
             Virologist activeVirologist = Game.getActiveVirologist();
-            if (activeVirologist.isStunned()) {
+            if (activeVirologist == null || activeVirologist.isStunned()) {
                 return;
             }
             activeVirologist.touch();
@@ -211,7 +212,7 @@ public class ActionMenu extends JPanel{
         loot = new MenuButton("Loot");
         loot.addActionListener(e -> {
             Virologist activeVirologist = Game.getActiveVirologist();
-            if (activeVirologist.isStunned()) {
+            if (activeVirologist == null || activeVirologist.isStunned()) {
                 return;
             }
             Field field = activeVirologist.getField();
@@ -287,7 +288,7 @@ public class ActionMenu extends JPanel{
         craft = new MenuButton("Craft agent");
         craft.addActionListener(e -> {
             Virologist activeVirologist = Game.getActiveVirologist();
-            if (activeVirologist.isStunned()) {
+            if (activeVirologist == null || activeVirologist.isStunned()) {
                 return;
             }
 
@@ -332,7 +333,7 @@ public class ActionMenu extends JPanel{
         hit = new MenuButton("Hit");
         hit.addActionListener(e -> {
             Virologist activeVirologist = Game.getActiveVirologist();
-            if (activeVirologist.isStunned()) {
+            if (activeVirologist == null || activeVirologist.isStunned()) {
                 return;
             }
             Field field = activeVirologist.getField();
@@ -387,7 +388,7 @@ public class ActionMenu extends JPanel{
 
         buttonPanel.setBorder(BorderFactory.createMatteBorder(4, 0, 0, 0, Color.black));
         this.add(buttonPanel);
-        this.setBorder(BorderFactory.createLineBorder(Color.black, 4));
+        this.setBorder(BorderFactory.createMatteBorder(0, 4, 0, 0, Color.black));
     }
 
     /**
@@ -396,7 +397,7 @@ public class ActionMenu extends JPanel{
      * @param v az aktív virológus
      */
     public static boolean waitForAction(Virologist v) {
-        // TODO
+        // TODO - remove?
         return false;
     }
 
