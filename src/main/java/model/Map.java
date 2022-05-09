@@ -23,7 +23,7 @@ public class Map {
 	public void generateMap() {
 		// TODO
 		int r=45;
-		int k = 3;
+		int k = 20;
 		int labor = 0;
 		ArrayList<FieldView> fviewlist = new ArrayList<FieldView>();
 		for (int h = 0; h < k; h++) {
@@ -80,8 +80,8 @@ public class Map {
 						prevfield.getNeighbors().get(j).getNeighbors().set((j + 3) % 6, prevfield);// kölcsönösen
 																									// hozzáadja
 						Point prev = fviewlist.get(fields.indexOf(prevfield)).Getpos();
-						fviewlist.get(i).Getpos().setLocation(prev.x + r * Math.sin(-j * Math.PI / 6.0),
-								prev.y + r * Math.cos(-j * Math.PI / 6.0));// TODO kipróbálni hogy jó-e a helye
+						fviewlist.get(i).Getpos().setLocation(prev.x + r * Math.sin(-j * Math.PI / 3.0),
+								prev.y + r * Math.cos(-j * Math.PI / 3.0));// TODO kipróbálni hogy jó-e a helye
 						i++;
 
 						if (prevfield.getNeighbors().get((j - 1 + 6) % 6) != null) { // balra levő mezővel összeköti, ha
