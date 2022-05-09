@@ -2,6 +2,10 @@ package model;
 
 import model.agents.*;
 import model.codes.*;
+import model.fields.Field;
+import model.fields.Laboratory;
+import model.fields.Shelter;
+import model.fields.Warehouse;
 import model.gears.*;
 
 import javax.swing.*;
@@ -9,6 +13,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A menüt megvalósító osztály. Játék állapotáról ad információkat, és irányítani lehet vele a játékot (újraindít, kilép, stb.).
@@ -229,22 +234,95 @@ public class Menu extends JMenuBar {
             GridBagConstraints con = new GridBagConstraints();
 
             Virologist activeVirologist = Game.getActiveVirologist();
-            String name = activeVirologist.getClass().getSimpleName();
+            Field field = activeVirologist.getField();
+            String fieldName = field.getClass().getSimpleName();
 
-            switch (name) {
+            JLabel fieldLabel = new JLabel("Type of field:");
+            con.gridx = 0;
+            con.gridy = 0;
+            panel.add(fieldLabel, con);
+
+            JLabel fieldNameLabel = new JLabel(fieldName);
+            con.gridx = 1;
+            con.gridy = 0;
+            panel.add(fieldNameLabel, con);
+
+            JLabel virologistsLabel = new JLabel("Other virologists located here:");
+            con.gridx = 0;
+            con.gridy = 1;
+            panel.add(virologistsLabel, con);
+
+            List<Virologist> virologists = field.getVirologists();
+            JLabel label = new JLabel(String.valueOf(virologists.size() - 1));
+            con.gridx = 1;
+            panel.add(label, con);
+
+            switch (fieldName) {
                 case "Field":
+                    fieldNameLabel.setText("Empty Field");
                     break;
                 case "Shelter":
+                    JLabel gearOnFieldLabel = new JLabel("Gear in Shelter:");
+                    con.gridx = 0;
+                    con.gridy++;
+                    panel.add(gearOnFieldLabel, con);
+
+                    Gear gear = ((Shelter)field).getGear();
+                    JLabel gearNameLabel = new JLabel();
+                    if (gear == null) {
+                        gearNameLabel.setText("-");
+                    } else {
+                        gearNameLabel.setText(gear.getClass().getSimpleName());
+                    }
+                    con.gridx = 1;
+                    panel.add(gearNameLabel, con);
                     break;
                 case "Laboratory":
+                    boolean infected = ((Laboratory)field).isInfected();
+                    fieldName += (infected) ? " (infected)" : " (not infected)";
+                    fieldNameLabel.setText(fieldName);
+
+                    JLabel codeOnLabLabel = new JLabel("Code in Laboratory:");
+                    con.gridx = 0;
+                    con.gridy++;
+                    panel.add(codeOnLabLabel, con);
+
+                    Code code = ((Laboratory)field).getCode();
+                    JLabel codeLabel = new JLabel();
+                    if (code == null) {
+                        codeLabel.setText("-");
+                    } else {
+                        codeLabel.setText(code.getClass().getSimpleName());
+                    }
+                    con.gridx = 1;
+                    panel.add(codeLabel, con);
                     break;
                 case "Warehouse":
+                    int nCount = ((Warehouse)field).getnProduced();
+                    JLabel nLabel = new JLabel("Nucleotide in Warehouse:");
+                    con.gridx = 0;
+                    con.gridy++;
+                    panel.add(nLabel, con);
+
+                    JLabel nCountLabel = new JLabel(String.valueOf(nCount));
+                    con.gridx = 1;
+                    panel.add(nCountLabel, con);
+
+                    int aCount = ((Warehouse)field).getaProduced();
+                    JLabel aLabel = new JLabel("Amino acid in Warehouse:");
+                    con.gridx = 0;
+                    con.gridy++;
+                    panel.add(aLabel, con);
+
+                    JLabel aCountLabel = new JLabel(String.valueOf(aCount));
+                    con.gridx = 1;
+                    panel.add(aCountLabel, con);
                     break;
             }
 
             JOptionPane.showConfirmDialog(
                     frame, panel,
-                    "Inventory",
+                    "Field Info",
                     JOptionPane.DEFAULT_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
         }
