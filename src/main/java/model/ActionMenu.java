@@ -1,10 +1,13 @@
 package model;
 
 import model.absorbStrats.Absorb;
+import model.absorbStrats.ProtVaccineAbsorb;
 import model.agents.Agent;
 import model.agents.AmniVirus;
 import model.agents.StunVirus;
 import model.fields.Field;
+import model.gears.GloveGear;
+import model.gears.RobeGear;
 import view.Canvas;
 import view.FieldView;
 
@@ -95,21 +98,28 @@ public class ActionMenu extends JPanel{
         c.insets = new Insets(10,20,0,20);
         smear = new MenuButton("Smear");
         smear.addActionListener(e -> {
-            // TODO az ez alatti két sort kikommentezni
-            //Virologist activeVirologist = Game.getActiveVirologist();
-            //Field field = activeVirologist.getField();
+//            Virologist activeVirologist = Game.getActiveVirologist();
+//            Field field = activeVirologist.getField();
 
             Virologist activeVirologist = new Virologist();
             Field field = new Field();
-            field.accept(new Virologist());
-            field.accept(new Virologist());
+            Virologist vir1 = new Virologist();
+            vir1.addAbsorbStrat(new ProtVaccineAbsorb());
+            vir1.pickUpGear(new GloveGear());
+            vir1.pickUpGear(new RobeGear());
+            field.accept(vir1);
+            field.accept(activeVirologist);
             activeVirologist.addCraftedAgent(new AmniVirus());
             activeVirologist.addCraftedAgent(new StunVirus());
             activeVirologist.addCraftedAgent(new StunVirus());
 
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
-                virologistMap.put(v.getName(), v);
+                if (activeVirologist.getName().equals(v.getName())) {
+                    virologistMap.put(v.getName() + " (yourself)", v);
+                } else {
+                    virologistMap.put(v.getName(), v);
+                }
             }
             JComboBox cbox1 = new JComboBox(virologistMap.keySet().toArray(new String[0]));
 
@@ -144,18 +154,37 @@ public class ActionMenu extends JPanel{
                     JOptionPane.PLAIN_MESSAGE);
 
             if(result == JOptionPane.OK_OPTION){
-                Virologist victim = (Virologist)cbox1.getSelectedItem();
-                Agent agent = (Agent)cbox2.getSelectedItem();
-                activeVirologist.smearAgent(agent, victim);
+                String victimString = (String)cbox1.getSelectedItem();
+                String agentString = (String)cbox2.getSelectedItem();
+                Virologist victim = virologistMap.get(victimString);
+                Agent agent = agentMap.get(agentString);
 
-                //TODO védekezési viselkedés kiválasztása
+                // Victim védekezési viselkedésének kiválasztása
                 JPanel absorbPanel = new JPanel();
                 JLabel absorbLabel = new JLabel("Which defense mechanism to use:");
                 HashMap<String, Absorb> absorbMap = new HashMap<>();
                 for (Absorb a : victim.getAbsorbStrats()) {
-
+                    String absorbName = a.getClass().getSimpleName().replace("Absorb", "");
+                    absorbMap.put(absorbName, a);
                 }
-                JComboBox absorbComboBox = new JComboBox();
+
+                String[] stringAbsorbs = absorbMap.keySet().toArray(new String[0]);
+                JComboBox absorbComboBox = new JComboBox(stringAbsorbs);
+                absorbComboBox.setSelectedItem(stringAbsorbs[0]);
+                absorbPanel.add(absorbLabel);
+                absorbPanel.add(absorbComboBox);
+
+                JOptionPane.showConfirmDialog(this.getParent(),
+                        absorbPanel,
+                        "Select a defensive mechanism!",
+                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.PLAIN_MESSAGE);
+
+                String absorbString = (String)absorbComboBox.getSelectedItem();
+                Absorb selectedAbsorb = absorbMap.get(absorbString);
+
+                victim.choosePrimaryAbsorbStrat(selectedAbsorb);
+                activeVirologist.smearAgent(agent, victim);
             }
         });
         buttonPanel.add(smear, c);
@@ -173,6 +202,15 @@ public class ActionMenu extends JPanel{
         c.gridy++;
         loot = new MenuButton("Loot");
         loot.addActionListener(e -> {
+            Virologist activeVirologist = Game.getActiveVirologist();
+            Field field = activeVirologist.getField();
+            HashMap<String, Virologist> virologistMap = new HashMap<>();
+            for (Virologist v : field.getVirologists()) {
+                if (!activeVirologist.getName().equals(v.getName())) {
+                    virologistMap.put(v.getName(), v);
+                }
+            }
+
             String[] gears = { "Gear 1", "Gear 2", "Gear 3", "Gear 4" };
             JComboBox cbox = new JComboBox(gears);
 
