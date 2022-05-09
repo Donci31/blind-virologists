@@ -14,7 +14,7 @@ $ mvn exec:java
 ### Gradle
 If you don't have maven use gradle to build
 ```
-$ ./gradlew build
+$ ./gradlew assemble
 ```
 And to run execute
 ```
