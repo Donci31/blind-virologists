@@ -21,6 +21,7 @@ public class Map {
 	 */
 	public void generateMap() {
 		//TODO
+		int r=100;     //Távolságuk ezt kell változtatni
 		int k=20;
 		int labor=0;
 		ArrayList<FieldView> fviewlist=new ArrayList<FieldView>();
@@ -74,7 +75,7 @@ public class Map {
 						prevfield.getNeighbors().set(j, fields.get(i));//hozzáadni a j-edik szomszédhoz órajárásával megegyező irány
 						prevfield.getNeighbors().get(j).getNeighbors().set((j +3) % 6, prevfield);//kölcsönösen hozzáadja
 						Point prev=fviewlist.get(fields.indexOf(prevfield)).Getpos();
-						fviewlist.get(i).Getpos().setLocation(prev.x+Math.sin(-i*Math.PI/6.0),prev.y+Math.cos(-i*Math.PI/6.0));//TODO kipróbálni hogy jó-e a helye
+						fviewlist.get(i).Getpos().setLocation(prev.x+r*Math.sin(-i*Math.PI/6.0),prev.y+r*Math.cos(-i*Math.PI/6.0));//TODO kipróbálni hogy jó-e a helye
 						i++;
 						if (prevfield.getNeighbors().get((j - 1+6) % 6) != null) { //balra levő mezővel összeköti, ha van
 							int g = (j - 1+6) % 6;
