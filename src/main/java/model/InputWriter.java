@@ -59,7 +59,7 @@ public abstract class InputWriter {
      * @return az objektum neve
      */
     private static String getClassName(Object o) {
-        return o.getClass().toString().split(" ")[1].split("\\.")[2];
+        return o.getClass().getSimpleName();
     }
 
     private static ArrayList<Object> getFieldsList(ArrayList<Field> fields) {
