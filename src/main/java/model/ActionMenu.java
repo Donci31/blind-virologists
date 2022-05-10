@@ -6,7 +6,6 @@ import model.codes.Code;
 import model.fields.Field;
 import model.gears.Gear;
 import view.Canvas;
-import view.FieldView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -34,8 +33,6 @@ public class ActionMenu extends JPanel {
 
     private MenuButton move, smear, interactWithField, loot, craft, hit, endTurn;
     private Canvas canvas;
-    private static FieldView selectedField;
-    private Virologist activeVirologist = null;
 
     /**
      * Konstruktor, amely inicializálja az ActionMenu-ben szereplő gombokat és beállítja az ActionListener-jeiket.
@@ -69,6 +66,7 @@ public class ActionMenu extends JPanel {
             }
             Field field = activeVirologist.getField();
 
+            // TODO Lefele 0, ha valamelyik szomszéd nem létezik, akkor ott null van
             String[] fields = {"Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6"};
             JComboBox cbox1 = new JComboBox(fields);
 
@@ -94,6 +92,7 @@ public class ActionMenu extends JPanel {
                 int neighborIndex = cbox1.getSelectedIndex();
                 activeVirologist.move(field.getNeighbors().get(neighborIndex));
             }
+            Game.getCanvas().invalidate();
         });
 
         // Smear gomb inicializálása, ActionListener beállítása
@@ -387,25 +386,5 @@ public class ActionMenu extends JPanel {
         buttonPanel.setBorder(BorderFactory.createMatteBorder(4, 0, 0, 0, Color.black));
         this.add(buttonPanel);
         this.setBorder(BorderFactory.createMatteBorder(0, 4, 0, 0, Color.black));
-    }
-
-    /**
-     * A v virológus hívja meg a saját step() metódusából, ezzel jelezvén, hogy várja a rá vonatkozó akciót, amit az ActionMenu gombjaival tud a felhasználó jelezni neki.
-     * Ez a metódus azzal jelzi, hogy a felhasználó az "End Turn" opciót választotta, hogy hamissal tér vissza az igaz helyett, így a virológus nem hívja meg újra, hanem befejezi a körét.
-     *
-     * @param v az aktív virológus
-     */
-    public static boolean waitForAction(Virologist v) {
-        // TODO - remove?
-        return false;
-    }
-
-    /**
-     * A selectedField settere.
-     *
-     * @param _selectedField az attribútum új értéke
-     */
-    public static void setSelectedField(FieldView _selectedField) {
-        selectedField = _selectedField;
     }
 }

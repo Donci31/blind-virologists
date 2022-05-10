@@ -120,6 +120,15 @@ public class Game {
     }
 
     /**
+     * A rajzoló vászon gettere.
+     *
+     * @return a vászon
+     */
+    public static Canvas getCanvas() {
+        return canvas;
+    }
+
+    /**
      * A játékot futását magába foglaló main() metódus.
      *
      * @param args main argumentumok
