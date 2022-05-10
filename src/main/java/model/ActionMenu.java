@@ -5,7 +5,6 @@ import model.agents.Agent;
 import model.codes.Code;
 import model.fields.Field;
 import model.gears.Gear;
-import view.Canvas;
 
 import javax.swing.*;
 import java.awt.*;
@@ -33,7 +32,6 @@ public class ActionMenu extends JPanel {
     }
 
     private MenuButton move, smear, interactWithField, loot, craft, hit, endTurn;
-    private Canvas canvas;
     private boolean hasMoved = false;
     private boolean hasInteractedWithField = false;
 
@@ -72,7 +70,7 @@ public class ActionMenu extends JPanel {
             HashMap<String, Field> fieldMap = new HashMap<>();
             List<Field> fieldList = field.getNeighbors();
             for (int i = 0; i < fieldList.size(); i++) {
-                if (fieldList.get((i+3) % fieldList.size()) != null) {
+                if (fieldList.get((i + 3) % fieldList.size()) != null) {
                     fieldMap.put(String.valueOf(i + 1), fieldList.get((i + 3) % fieldList.size()));
                 }
             }
@@ -100,7 +98,7 @@ public class ActionMenu extends JPanel {
                     JOptionPane.PLAIN_MESSAGE);
 
             if (result == JOptionPane.OK_OPTION) {
-                String neighborString = (String)cbox1.getSelectedItem();
+                String neighborString = (String) cbox1.getSelectedItem();
                 activeVirologist.move(fieldMap.get(neighborString));
             }
             Game.getCanvas().repaint();

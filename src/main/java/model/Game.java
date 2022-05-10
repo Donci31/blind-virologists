@@ -79,8 +79,8 @@ public class Game {
 
     public static void endTurn() {
         ++round;
-        activeVirologist = virologists.get(round % 2);
-        if (round % 2 == 0) {
+        activeVirologist = virologists.get(round % virologists.size());
+        if (round % virologists.size() == 0) {
             SteppableController.step();
         }
     }
@@ -135,14 +135,13 @@ public class Game {
     public static void main(String[] args) {
         frame = new JFrame();
         menu = new Menu();
-        canvas = new Canvas(600, 600);
+        canvas = new Canvas();
         actionMenu = new ActionMenu();
         //BorderLayout layout = new BorderLayout();
         //frame.setLayout(layout);
         frame.add(canvas, BorderLayout.CENTER);
         frame.add(actionMenu, BorderLayout.LINE_END);
-        startGame(2);
+        startGame(3);
         init();
-        canvas.repaint();
     }
 }
