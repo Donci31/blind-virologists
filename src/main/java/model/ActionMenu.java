@@ -92,7 +92,7 @@ public class ActionMenu extends JPanel {
                 int neighborIndex = cbox1.getSelectedIndex();
                 activeVirologist.move(field.getNeighbors().get(neighborIndex));
             }
-            Game.getCanvas().invalidate();
+            Game.getCanvas().repaint();
         });
 
         // Smear gomb inicializálása, ActionListener beállítása
@@ -204,6 +204,7 @@ public class ActionMenu extends JPanel {
                 return;
             }
             activeVirologist.touch();
+            Game.getCanvas().repaint();
         });
         buttonPanel.add(interactWithField, c);
 

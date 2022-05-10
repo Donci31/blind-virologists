@@ -149,7 +149,7 @@ public class Map {
 
         int i = 1;
         int currfield = 0;
-        fviewlist.get(0).Getpos().setLocation(350, 300);
+        fviewlist.get(0).Getpos().setLocation(350, 290);
         while (i < k) { // i=1-től mert a base is field
 
             Field prevfield = fields.get(currfield);
