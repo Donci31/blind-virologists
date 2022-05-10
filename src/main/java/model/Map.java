@@ -112,6 +112,7 @@ public class Map {
                 Laboratory j = new Laboratory();
                 j.placeCode(amnic);
                 fields.set(hany, j);
+                vanamni=hany;
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
             if(vanstun==-1){
@@ -122,6 +123,7 @@ public class Map {
                 Laboratory j = new Laboratory();
                 j.placeCode(stunc);
                 fields.set(hany, j);
+                vanstun=hany;
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
             if(vandance==-1){
@@ -132,6 +134,7 @@ public class Map {
                 Laboratory j = new Laboratory();
                 j.placeCode(dancec);
                 fields.set(hany, j);
+                vandance=hany;
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
             if(vanprot==-1){
@@ -142,6 +145,7 @@ public class Map {
                 Laboratory j = new Laboratory();
                 j.placeCode(protc);
                 fields.set(hany, j);
+                vanprot=hany;
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
         }
