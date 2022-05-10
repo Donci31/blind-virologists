@@ -10,6 +10,7 @@ import view.Canvas;
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * A virológus egy körben lehetséges tevékenységeinek megjelenítéséért és a kiválasztott tevékenység végrehajtásáért felelős osztály.
@@ -33,6 +34,8 @@ public class ActionMenu extends JPanel {
 
     private MenuButton move, smear, interactWithField, loot, craft, hit, endTurn;
     private Canvas canvas;
+    private boolean hasMoved = false;
+    private boolean hasInteractedWithField = false;
 
     /**
      * Konstruktor, amely inicializálja az ActionMenu-ben szereplő gombokat és beállítja az ActionListener-jeiket.
@@ -61,14 +64,22 @@ public class ActionMenu extends JPanel {
         buttonPanel.add(move, c);
         move.addActionListener(e -> {
             Virologist activeVirologist = Game.getActiveVirologist();
-            if (activeVirologist == null || activeVirologist.isStunned()) {
+            if (activeVirologist == null || activeVirologist.isStunned() || hasMoved) {
                 return;
             }
             Field field = activeVirologist.getField();
 
-            // TODO Lefele 0, ha valamelyik szomszéd nem létezik, akkor ott null van
-            String[] fields = {"Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6"};
-            JComboBox cbox1 = new JComboBox(fields);
+            HashMap<String, Field> fieldMap = new HashMap<>();
+            List<Field> fieldList = field.getNeighbors();
+            for (int i = 0; i < fieldList.size(); i++) {
+                if (fieldList.get((i+3) % fieldList.size()) != null) {
+                    fieldMap.put(String.valueOf(i + 1), fieldList.get((i + 3) % fieldList.size()));
+                }
+            }
+
+            hasMoved = true;
+            hasInteractedWithField = false;
+            JComboBox cbox1 = new JComboBox(fieldMap.keySet().toArray(new String[0]));
 
             JPanel selectPanel = new JPanel();
             selectPanel.setLayout(new GridBagLayout());
@@ -89,8 +100,8 @@ public class ActionMenu extends JPanel {
                     JOptionPane.PLAIN_MESSAGE);
 
             if (result == JOptionPane.OK_OPTION) {
-                int neighborIndex = cbox1.getSelectedIndex();
-                activeVirologist.move(field.getNeighbors().get(neighborIndex));
+                String neighborString = (String)cbox1.getSelectedItem();
+                activeVirologist.move(fieldMap.get(neighborString));
             }
             Game.getCanvas().repaint();
         });
@@ -106,18 +117,6 @@ public class ActionMenu extends JPanel {
                 return;
             }
             Field field = activeVirologist.getField();
-
-//            Virologist activeVirologist = new Virologist();
-//            Field field = new Field();
-//            Virologist vir1 = new Virologist();
-//            vir1.addAbsorbStrat(new ProtVaccineAbsorb());
-//            vir1.pickUpGear(new GloveGear());
-//            vir1.pickUpGear(new RobeGear());
-//            field.accept(vir1);
-//            field.accept(activeVirologist);
-//            activeVirologist.addCraftedAgent(new AmniVirus());
-//            activeVirologist.addCraftedAgent(new StunVirus());
-//            activeVirologist.addCraftedAgent(new StunVirus());
 
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
@@ -159,7 +158,7 @@ public class ActionMenu extends JPanel {
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
 
-            if (result == JOptionPane.OK_OPTION) {
+            if (result == JOptionPane.OK_OPTION && cbox1.getSelectedItem() != null && cbox2.getSelectedItem() != null) {
                 String victimString = (String) cbox1.getSelectedItem();
                 String agentString = (String) cbox2.getSelectedItem();
                 Virologist victim = virologistMap.get(victimString);
@@ -200,11 +199,12 @@ public class ActionMenu extends JPanel {
         interactWithField = new MenuButton("Interact with field");
         interactWithField.addActionListener(e -> {
             Virologist activeVirologist = Game.getActiveVirologist();
-            if (activeVirologist == null || activeVirologist.isStunned()) {
+            if (activeVirologist == null || activeVirologist.isStunned() || hasInteractedWithField) {
                 return;
             }
             activeVirologist.touch();
             Game.getCanvas().repaint();
+            hasInteractedWithField = true;
         });
         buttonPanel.add(interactWithField, c);
 
@@ -217,15 +217,6 @@ public class ActionMenu extends JPanel {
                 return;
             }
             Field field = activeVirologist.getField();
-
-//            Virologist activeVirologist = new Virologist();
-//            Field field = new Field();
-//            Virologist vir = new Virologist();
-//            vir.setStunned(true);
-//            field.accept(activeVirologist);
-//            field.accept(vir);
-//            vir.pickUpGear(new AxeGear());
-//            vir.pickUpGear(new RobeGear());
 
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
@@ -256,7 +247,7 @@ public class ActionMenu extends JPanel {
                     JOptionPane.PLAIN_MESSAGE);
 
             // A kiválasztott virológus egy felszerelésének kiválasztása elcsenésre
-            if (result == JOptionPane.OK_OPTION) {
+            if (result == JOptionPane.OK_OPTION && cbox.getSelectedItem() != null) {
                 JPanel selectGearPanel = new JPanel();
                 String victimString = (String) cbox.getSelectedItem();
                 Virologist victim = virologistMap.get(victimString);
@@ -275,7 +266,7 @@ public class ActionMenu extends JPanel {
                         JOptionPane.DEFAULT_OPTION,
                         JOptionPane.PLAIN_MESSAGE);
 
-                if (selectGearResult == JOptionPane.OK_OPTION) {
+                if (selectGearResult == JOptionPane.OK_OPTION && cbox2.getSelectedItem() != null) {
                     String gearString = (String) cbox2.getSelectedItem();
                     Gear gear = gearsMap.get(gearString);
                     activeVirologist.loot(victim, gear);
@@ -292,10 +283,6 @@ public class ActionMenu extends JPanel {
             if (activeVirologist == null || activeVirologist.isStunned()) {
                 return;
             }
-
-//            Virologist activeVirologist = new Virologist();
-//            activeVirologist.learnCode(new AmniCode());
-//            activeVirologist.learnCode(new ProtCode());
 
             HashMap<String, Code> codeMap = new HashMap<>();
             for (Code code : activeVirologist.getLearntCodes()) {
@@ -321,7 +308,7 @@ public class ActionMenu extends JPanel {
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
 
-            if (result == JOptionPane.OK_OPTION) {
+            if (result == JOptionPane.OK_OPTION && cbox.getSelectedItem() != null) {
                 String codeString = (String) cbox.getSelectedItem();
                 Code selectedCode = codeMap.get(codeString);
                 activeVirologist.craftAgent(selectedCode);
@@ -338,11 +325,6 @@ public class ActionMenu extends JPanel {
                 return;
             }
             Field field = activeVirologist.getField();
-
-//            Virologist activeVirologist = new Virologist();
-//            Field field = new Field();
-//            field.accept(new Virologist());
-//            field.accept(new Virologist());
 
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
@@ -370,7 +352,7 @@ public class ActionMenu extends JPanel {
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
 
-            if (result == JOptionPane.OK_OPTION) {
+            if (result == JOptionPane.OK_OPTION && cbox.getSelectedItem() != null) {
                 String victimString = (String) cbox.getSelectedItem();
                 Virologist victim = virologistMap.get(victimString);
                 activeVirologist.hit(victim);
@@ -381,7 +363,11 @@ public class ActionMenu extends JPanel {
         // End turn gomb inicializálása, ActionListener beállítása
         c.gridy++;
         endTurn = new MenuButton("End turn");
-        endTurn.addActionListener(e -> Game.endTurn());
+        endTurn.addActionListener(e -> {
+            hasMoved = false;
+            hasInteractedWithField = false;
+            Game.endTurn();
+        });
         buttonPanel.add(endTurn, c);
 
         buttonPanel.setBorder(BorderFactory.createMatteBorder(4, 0, 0, 0, Color.black));

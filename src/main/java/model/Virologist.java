@@ -21,8 +21,8 @@ import java.util.*;
  * Ez az osztály felelős a karakterek mozgásáért, és világgal valamint egymással való interakcióik kezeléséért.
  */
 public class Virologist implements Steppable {
-    private int nucleotide = 0;
-    private int aminoAcid = 0;
+    private int nucleotide = 100;
+    private int aminoAcid = 100;
     private int resourceLimit = 500;
     private boolean stunned = false;
     private String name;

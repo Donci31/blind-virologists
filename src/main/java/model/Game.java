@@ -66,7 +66,6 @@ public class Game {
     public static void endGame(Virologist virologist) {
         //TODO controller should be calling this, for now it has a model.Virologist parameter
         winner = virologist;
-        //when winner is not null, model.InputWriter knows the game has ended
     }
 
     /**
@@ -144,5 +143,6 @@ public class Game {
         frame.add(actionMenu, BorderLayout.LINE_END);
         startGame(2);
         init();
+        canvas.repaint();
     }
 }
