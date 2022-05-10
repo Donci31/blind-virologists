@@ -96,7 +96,7 @@ public class Map {
         while (vanamni == -1 || vandance == -1 || vanprot == -1 || vanstun == -1) {
             if (vanamni == -1) {
                 int hany = (int) (Math.random() * k);
-                while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
+                while (hany != vanamni && hany != vanprot && hany != vandance && hany != vanstun) {
                     hany = (int) (Math.random() * k);
                 }
                 Laboratory j = new Laboratory();
@@ -107,7 +107,7 @@ public class Map {
             }
             if (vanstun == -1) {
                 int hany = (int) (Math.random() * k);
-                while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
+                while (hany != vanamni && hany != vanprot && hany != vandance && hany != vanstun) {
                     hany = (int) (Math.random() * k);
                 }
                 Laboratory j = new Laboratory();
@@ -118,7 +118,7 @@ public class Map {
             }
             if (vandance == -1) {
                 int hany = (int) (Math.random() * k);
-                while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
+                while (hany != vanamni && hany != vanprot && hany != vandance && hany != vanstun) {
                     hany = (int) (Math.random() * k);
                 }
                 Laboratory j = new Laboratory();
@@ -129,7 +129,7 @@ public class Map {
             }
             if (vanprot == -1) {
                 int hany = (int) (Math.random() * k);
-                while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
+                while (hany != vanamni && hany != vanprot && hany != vandance && hany != vanstun) {
                     hany = (int) (Math.random() * k);
                 }
                 Laboratory j = new Laboratory();
