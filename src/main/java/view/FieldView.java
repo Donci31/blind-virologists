@@ -41,14 +41,8 @@ public class FieldView implements Drawable {
      */
     @Override
     public void draw(Graphics g) {
-
-        Graphics2D g2 = (Graphics2D) g;
-        AffineTransform old = AffineTransform.getTranslateInstance(0, 0);
-        AffineTransform tx = AffineTransform.getTranslateInstance(pos.x, pos.y);
-        g2.setTransform(tx);
         this.drawBorder(g);
         this.drawHexagon(g, new Color(105, 159, 4), radius);
-        g2.setTransform(old);
     }
 
     protected void drawBorder(Graphics g) {
@@ -59,7 +53,7 @@ public class FieldView implements Drawable {
         Polygon p = new Polygon();
         for (int i = 0; i < 6; i++) {
             double phase = ((2 * i) * Math.PI / 6);
-            p.addPoint((int) (radius * Math.cos(phase)), (int) (radius * Math.sin(phase)));
+            p.addPoint((int) (radius * Math.cos(phase)) + pos.x, (int) (radius * Math.sin(phase)) + pos.y);
         }
         g.setColor(color);
         g.fillPolygon(p);

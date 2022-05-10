@@ -85,8 +85,8 @@ public class Game {
 
     public static void endTurn() {
         ++round;
-        activeVirologist = virologists.get(round % 2);
-        if (round % 2 == 0) {
+        activeVirologist = virologists.get(round % virologists.size());
+        if (round % virologists.size() == 0) {
             SteppableController.step();
         }
     }
