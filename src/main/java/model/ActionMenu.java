@@ -15,12 +15,12 @@ import java.util.HashMap;
 /**
  * A virológus egy körben lehetséges tevékenységeinek megjelenítéséért és a kiválasztott tevékenység végrehajtásáért felelős osztály.
  */
-public class ActionMenu extends JPanel{
+public class ActionMenu extends JPanel {
     /**
      * Segédosztály, amely saját stílust ad a JButton-nek.
      */
-    class MenuButton extends JButton{
-        MenuButton(String s){
+    class MenuButton extends JButton {
+        MenuButton(String s) {
             super(s);
             setFocusPainted(false);
             Dimension menuButtonSize = new Dimension(200, 50);
@@ -31,6 +31,7 @@ public class ActionMenu extends JPanel{
             setBackground(Color.LIGHT_GRAY);
         }
     }
+
     private MenuButton move, smear, interactWithField, loot, craft, hit, endTurn;
     private Canvas canvas;
     private static FieldView selectedField;
@@ -39,7 +40,7 @@ public class ActionMenu extends JPanel{
     /**
      * Konstruktor, amely inicializálja az ActionMenu-ben szereplő gombokat és beállítja az ActionListener-jeiket.
      */
-    public ActionMenu(){
+    public ActionMenu() {
 
         this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 
@@ -54,7 +55,7 @@ public class ActionMenu extends JPanel{
         buttonPanel.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(0,20,0,20);
+        c.insets = new Insets(0, 20, 0, 20);
         c.gridx = 0;
         c.gridy = 0;
 
@@ -68,14 +69,14 @@ public class ActionMenu extends JPanel{
             }
             Field field = activeVirologist.getField();
 
-            String[] fields = { "Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6" };
+            String[] fields = {"Field 1", "Field 2", "Field 3", "Field 4", "Field 5", "Field 6"};
             JComboBox cbox1 = new JComboBox(fields);
 
             JPanel selectPanel = new JPanel();
             selectPanel.setLayout(new GridBagLayout());
             GridBagConstraints cons = new GridBagConstraints();
             cons.fill = GridBagConstraints.HORIZONTAL;
-            cons.insets = new Insets(00,20,30,20);
+            cons.insets = new Insets(00, 20, 30, 20);
             cons.gridx = 0;
             cons.gridy = 0;
             selectPanel.add(new JLabel("Which field to move to:"), cons);
@@ -89,7 +90,7 @@ public class ActionMenu extends JPanel{
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
 
-            if(result == JOptionPane.OK_OPTION){
+            if (result == JOptionPane.OK_OPTION) {
                 int neighborIndex = cbox1.getSelectedIndex();
                 activeVirologist.move(field.getNeighbors().get(neighborIndex));
             }
@@ -97,7 +98,7 @@ public class ActionMenu extends JPanel{
 
         // Smear gomb inicializálása, ActionListener beállítása
         c.gridy++;
-        c.insets = new Insets(10,20,0,20);
+        c.insets = new Insets(10, 20, 0, 20);
         smear = new MenuButton("Smear");
         smear.addActionListener(e -> {
 
@@ -139,7 +140,7 @@ public class ActionMenu extends JPanel{
             selectPanel.setLayout(new GridBagLayout());
             GridBagConstraints cons = new GridBagConstraints();
             cons.fill = GridBagConstraints.HORIZONTAL;
-            cons.insets = new Insets(0,20,30,20);
+            cons.insets = new Insets(0, 20, 30, 20);
             cons.gridx = 0;
             cons.gridy = 0;
             selectPanel.add(new JLabel("Which virologist to target:"), cons);
@@ -159,9 +160,9 @@ public class ActionMenu extends JPanel{
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
 
-            if(result == JOptionPane.OK_OPTION){
-                String victimString = (String)cbox1.getSelectedItem();
-                String agentString = (String)cbox2.getSelectedItem();
+            if (result == JOptionPane.OK_OPTION) {
+                String victimString = (String) cbox1.getSelectedItem();
+                String agentString = (String) cbox2.getSelectedItem();
                 Virologist victim = virologistMap.get(victimString);
                 Agent agent = agentMap.get(agentString);
 
@@ -186,7 +187,7 @@ public class ActionMenu extends JPanel{
                         JOptionPane.DEFAULT_OPTION,
                         JOptionPane.PLAIN_MESSAGE);
 
-                String absorbString = (String)absorbComboBox.getSelectedItem();
+                String absorbString = (String) absorbComboBox.getSelectedItem();
                 Absorb selectedAbsorb = absorbMap.get(absorbString);
 
                 victim.choosePrimaryAbsorbStrat(selectedAbsorb);
@@ -239,7 +240,7 @@ public class ActionMenu extends JPanel{
             selectPanel.setLayout(new GridBagLayout());
             GridBagConstraints cons = new GridBagConstraints();
             cons.fill = GridBagConstraints.HORIZONTAL;
-            cons.insets = new Insets(0,20,30,20);
+            cons.insets = new Insets(0, 20, 30, 20);
             cons.gridx = 0;
             cons.gridy = 0;
             selectPanel.add(new JLabel("Which virologist to loot:"), cons);
@@ -255,9 +256,9 @@ public class ActionMenu extends JPanel{
                     JOptionPane.PLAIN_MESSAGE);
 
             // A kiválasztott virológus egy felszerelésének kiválasztása elcsenésre
-            if(result == JOptionPane.OK_OPTION){
+            if (result == JOptionPane.OK_OPTION) {
                 JPanel selectGearPanel = new JPanel();
-                String victimString = (String)cbox.getSelectedItem();
+                String victimString = (String) cbox.getSelectedItem();
                 Virologist victim = virologistMap.get(victimString);
 
                 HashMap<String, Gear> gearsMap = new HashMap<>();
@@ -275,7 +276,7 @@ public class ActionMenu extends JPanel{
                         JOptionPane.PLAIN_MESSAGE);
 
                 if (selectGearResult == JOptionPane.OK_OPTION) {
-                    String gearString = (String)cbox2.getSelectedItem();
+                    String gearString = (String) cbox2.getSelectedItem();
                     Gear gear = gearsMap.get(gearString);
                     activeVirologist.loot(victim, gear);
                 }
@@ -306,7 +307,7 @@ public class ActionMenu extends JPanel{
             selectPanel.setLayout(new GridBagLayout());
             GridBagConstraints cons = new GridBagConstraints();
             cons.fill = GridBagConstraints.HORIZONTAL;
-            cons.insets = new Insets(0,20,30,20);
+            cons.insets = new Insets(0, 20, 30, 20);
             cons.gridx = 0;
             cons.gridy = 0;
             selectPanel.add(new JLabel("Which code to use:"), cons);
@@ -320,8 +321,8 @@ public class ActionMenu extends JPanel{
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
 
-            if(result == JOptionPane.OK_OPTION){
-                String codeString = (String)cbox.getSelectedItem();
+            if (result == JOptionPane.OK_OPTION) {
+                String codeString = (String) cbox.getSelectedItem();
                 Code selectedCode = codeMap.get(codeString);
                 activeVirologist.craftAgent(selectedCode);
             }
@@ -355,7 +356,7 @@ public class ActionMenu extends JPanel{
             selectPanel.setLayout(new GridBagLayout());
             GridBagConstraints cons = new GridBagConstraints();
             cons.fill = GridBagConstraints.HORIZONTAL;
-            cons.insets = new Insets(0,20,30,20);
+            cons.insets = new Insets(0, 20, 30, 20);
             cons.gridx = 0;
             cons.gridy = 0;
             selectPanel.add(new JLabel("Which virologist to hit:"), cons);
@@ -369,8 +370,8 @@ public class ActionMenu extends JPanel{
                     JOptionPane.OK_CANCEL_OPTION,
                     JOptionPane.PLAIN_MESSAGE);
 
-            if(result == JOptionPane.OK_OPTION){
-                String victimString = (String)cbox.getSelectedItem();
+            if (result == JOptionPane.OK_OPTION) {
+                String victimString = (String) cbox.getSelectedItem();
                 Virologist victim = virologistMap.get(victimString);
                 activeVirologist.hit(victim);
             }
@@ -394,6 +395,7 @@ public class ActionMenu extends JPanel{
     /**
      * A v virológus hívja meg a saját step() metódusából, ezzel jelezvén, hogy várja a rá vonatkozó akciót, amit az ActionMenu gombjaival tud a felhasználó jelezni neki.
      * Ez a metódus azzal jelzi, hogy a felhasználó az "End Turn" opciót választotta, hogy hamissal tér vissza az igaz helyett, így a virológus nem hívja meg újra, hanem befejezi a körét.
+     *
      * @param v az aktív virológus
      */
     public static boolean waitForAction(Virologist v) {
@@ -403,6 +405,7 @@ public class ActionMenu extends JPanel{
 
     /**
      * A selectedField settere.
+     *
      * @param _selectedField az attribútum új értéke
      */
     public static void setSelectedField(FieldView _selectedField) {

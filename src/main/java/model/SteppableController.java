@@ -10,9 +10,11 @@ import java.util.ArrayList;
 public abstract class SteppableController {
     private static ArrayList<Steppable> steppables = new ArrayList<>();
     private static ArrayList<Agent> appliedAgents = new ArrayList<>();
-    private static ArrayList<Agent> kidobott=new ArrayList<>();
+    private static ArrayList<Agent> kidobott = new ArrayList<>();
 
-    public static void kidob(Agent a){SteppableController.kidobott.add(a);}
+    public static void kidob(Agent a) {
+        SteppableController.kidobott.add(a);
+    }
 
     /**
      * Ez a metódus minden model.Steppable interface-t megvalósító objektumra meghívja a step() metódust.
@@ -24,13 +26,14 @@ public abstract class SteppableController {
         for (Agent a : appliedAgents) {
             a.step();
         }
-        for(Agent a: kidobott){
+        for (Agent a : kidobott) {
             appliedAgents.remove(a);
         }
     }
 
     /**
      * A model.Steppable objektumok listájához hozzáad egy új model.Steppable objektumot.
+     *
      * @param s - hozzáadandó léptethető objektum
      */
     public static void addSteppable(Steppable s) {
@@ -39,6 +42,7 @@ public abstract class SteppableController {
 
     /**
      * A model.Steppable objektumok listájából kivesz egy korábban hozzáadott model.Steppable objektumot.
+     *
      * @param s - kivevendő léptethető objektum
      */
     public static void removeSteppable(Steppable s) {
@@ -47,6 +51,7 @@ public abstract class SteppableController {
 
     /**
      * Az aktív ágensek listájához hozzáad egy frissen aktivált ágenst.
+     *
      * @param a - új aktív ágens
      */
     public static void addAppliedAgent(Agent a) {
@@ -55,6 +60,7 @@ public abstract class SteppableController {
 
     /**
      * Az aktív ágensek listájából kivesz egy éppen lejárt ágenst.
+     *
      * @param a - lejárt ágens
      */
     public static void removeAppliedAgent(Agent a) {
@@ -63,6 +69,7 @@ public abstract class SteppableController {
 
     /**
      * Az aktív ágensek listájának gettere a kiíratáshoz.
+     *
      * @return aktív ágensek listája
      */
     public static ArrayList<Agent> getAppliedAgents() {
@@ -71,6 +78,7 @@ public abstract class SteppableController {
 
     /**
      * A megadott virológus aktív ágenseit törli a listából. Akkor hívódik, ha a virológus meghalt.
+     *
      * @param v eltűnő virológus
      */
     public static void removeVirologistsAgents(Virologist v) {

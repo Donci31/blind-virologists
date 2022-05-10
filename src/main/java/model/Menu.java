@@ -56,12 +56,13 @@ public class Menu extends JMenuBar {
 
         /**
          * Új játék elindítása a kiválasztott számú virológussal.
+         *
          * @param e esemény
          */
         @Override
         public void actionPerformed(ActionEvent e) {
-            Object[] possibleVirologistCounts = { 2, 3, 4 };
-            Object[] buttonOptions = { "Start!", "Cancel" };
+            Object[] possibleVirologistCounts = {2, 3, 4};
+            Object[] buttonOptions = {"Start!", "Cancel"};
 
             JFrame frame = new JFrame();
             JPanel panel = new JPanel();
@@ -83,7 +84,7 @@ public class Menu extends JMenuBar {
             );
 
             if (result == JOptionPane.OK_OPTION) {
-                Game.startGame((int)comboBox.getSelectedItem());
+                Game.startGame((int) comboBox.getSelectedItem());
             }
         }
     }
@@ -95,6 +96,7 @@ public class Menu extends JMenuBar {
 
         /**
          * Kilép a játékból.
+         *
          * @param e esemény
          */
         @Override
@@ -110,6 +112,7 @@ public class Menu extends JMenuBar {
 
         /**
          * Az aktív játékos inventory-jának megnyitása, a virológus állapotának megjelenítése.
+         *
          * @param e esemény
          */
         @Override
@@ -161,7 +164,7 @@ public class Menu extends JMenuBar {
                 JLabel label = new JLabel();
                 String name = gear.getClass().getSimpleName();
                 if (name.equals("AxeGear")) {
-                    name += ((AxeGear)gear).isUsed() ? " (used)" : " (not used)";
+                    name += ((AxeGear) gear).isUsed() ? " (used)" : " (not used)";
                 } else if (name.equals("GloveGear")) {
                     name += " (" + ((GloveGear) gear).getTimesUsed() + " times used)";
                 }
@@ -223,6 +226,7 @@ public class Menu extends JMenuBar {
     class FieldInfoActionListener implements ActionListener {
         /**
          * Arról a mezőről jelenít meg információt, amelyiken a virológus áll.
+         *
          * @param e esemény
          */
         @Override
@@ -267,7 +271,7 @@ public class Menu extends JMenuBar {
                     con.gridy++;
                     panel.add(gearOnFieldLabel, con);
 
-                    Gear gear = ((Shelter)field).getGear();
+                    Gear gear = ((Shelter) field).getGear();
                     JLabel gearNameLabel = new JLabel();
                     if (gear == null) {
                         gearNameLabel.setText("-");
@@ -278,7 +282,7 @@ public class Menu extends JMenuBar {
                     panel.add(gearNameLabel, con);
                     break;
                 case "Laboratory":
-                    boolean infected = ((Laboratory)field).isInfected();
+                    boolean infected = ((Laboratory) field).isInfected();
                     fieldName += (infected) ? " (infected)" : " (not infected)";
                     fieldNameLabel.setText(fieldName);
 
@@ -287,7 +291,7 @@ public class Menu extends JMenuBar {
                     con.gridy++;
                     panel.add(codeOnLabLabel, con);
 
-                    Code code = ((Laboratory)field).getCode();
+                    Code code = ((Laboratory) field).getCode();
                     JLabel codeLabel = new JLabel();
                     if (code == null) {
                         codeLabel.setText("-");
@@ -298,7 +302,7 @@ public class Menu extends JMenuBar {
                     panel.add(codeLabel, con);
                     break;
                 case "Warehouse":
-                    int nCount = ((Warehouse)field).getnProduced();
+                    int nCount = ((Warehouse) field).getnProduced();
                     JLabel nLabel = new JLabel("Nucleotide in Warehouse:");
                     con.gridx = 0;
                     con.gridy++;
@@ -308,7 +312,7 @@ public class Menu extends JMenuBar {
                     con.gridx = 1;
                     panel.add(nCountLabel, con);
 
-                    int aCount = ((Warehouse)field).getaProduced();
+                    int aCount = ((Warehouse) field).getaProduced();
                     JLabel aLabel = new JLabel("Amino acid in Warehouse:");
                     con.gridx = 0;
                     con.gridy++;

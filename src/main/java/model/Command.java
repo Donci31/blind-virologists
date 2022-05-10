@@ -6,6 +6,7 @@ package model;
 public interface Command {
     /**
      * A parancsokat tartalmazó model.Map-ben tárolt metódusok mintája.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     void execute(String[] args);

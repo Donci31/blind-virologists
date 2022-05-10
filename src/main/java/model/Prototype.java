@@ -27,9 +27,12 @@ public class Prototype {
 
     /**
      * A detereministic attribútum gettere.
+     *
      * @return deterministic
      */
-    public static boolean getDeterministic(){return deterministic;}
+    public static boolean getDeterministic() {
+        return deterministic;
+    }
 
     /**
      * Kitöröl minden egyes korábbi objektumot az azonsoítókat tartalmazó map-ekből
@@ -56,6 +59,7 @@ public class Prototype {
     /**
      * A load parancs hatását megvalósító metódus.
      * Betölti az első argumentumban megadott fájlból a játék állapotát.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void load(String[] args) {
@@ -69,6 +73,7 @@ public class Prototype {
     /**
      * A save parancs hatását megvalósító metódus.
      * Kiírja az aktuális állapotot az első argumentumban megadott nevű fájlba.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void save(String[] args) {
@@ -78,6 +83,7 @@ public class Prototype {
     /**
      * A move parancs hatását megvalósító metódus.
      * Az első argumentumban kapott virológust a második argumentumban megadott azonosítójú mezőre lépteti.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void move(String[] args) {
@@ -104,6 +110,7 @@ public class Prototype {
      * Az első argumentumban kapott virológust a második argumentumban megadott ágensét
      * a harmadik argumentumban megadott virológusra keni.
      * Opcionálisan az áldozat virológus a negyedik argumentumban jelezheti, hogy melyik védőeszközével védekezik
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void smear(String[] args) {
@@ -139,6 +146,7 @@ public class Prototype {
     /**
      * A craft_agent parancs hatását megvalósító metódus.
      * Az első argumentumban kapott virológus létrehozza a második argumentumban megadott genetikai kódból az ahhoz tartozó ágens egy példányát.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void craftAgent(String[] args) {
@@ -164,6 +172,7 @@ public class Prototype {
     /**
      * A learn_code parancs hatását megvalósító metódus.
      * Az első argumentumban kapott virológus megtanulja a második argumentumban megadott genetikai kódot a laboratóriumban.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void learnCode(String[] args) {
@@ -186,6 +195,7 @@ public class Prototype {
      * Az első argumentumban kapott virológus felveszi a mezőjén levő felszerelést.
      * A második argumentum opcionális. Felvételkor a második argumentumban megjelölt felszerelést eldobja a virológus.
      * Hogyha az új felszerelés felvevésével 3-nál több felszerelése lenne a virológusnak, akkor az először felvett felszerelését automatikusan eldobja.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void getGear(String[] args) {
@@ -211,6 +221,7 @@ public class Prototype {
     /**
      * A loot parancs hatását megvalósító metódus.
      * Az első argumentumban kapott virológus ellopja a második argumentumban jelzett virológustól a harmadik argumentumban megadott felszerelését.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void loot(String[] args) {
@@ -232,6 +243,7 @@ public class Prototype {
     /**
      * A hit parancs hatását megvalósító metódus.
      * Az első argumentumban kapott virológus megüti a második argumentumban jelzett virológust (természetesen csak baltával lesz ennek bármi hatása).
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void hit(String[] args) {
@@ -253,6 +265,7 @@ public class Prototype {
     /**
      * A gather_resources parancs hatását megvalósító metódus.
      * Az első argumentumban kapott virológus begyűjti a raktár mezőjéről a rajta található nyersanyagokat.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void gatherResources(String[] args) {
@@ -273,6 +286,7 @@ public class Prototype {
     /**
      * A set_deterministic parancs hatását megvalósító metódus.
      * Beállítja a determinisztikus futás igazságértékét az első argumentumban megadott Y/N (true/false) értékre.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void setDeterministic(String[] args) {
@@ -288,6 +302,7 @@ public class Prototype {
     /**
      * A step parancs hatását megvalósító metódus.
      * Lépteti a játékot egy körrel.
+     *
      * @param args - a parancs argumentumainak tömbje
      */
     protected static void step(String[] args) {
@@ -296,6 +311,7 @@ public class Prototype {
 
     /**
      * A prototípus futásának kezelését megvalósító main().
+     *
      * @param testid teszt futtatása
      */
     public static void runTest(int testid) {

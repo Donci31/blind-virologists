@@ -34,14 +34,14 @@ public class Map {
         int r = 45;
         int k = 60;
         int labor = 0;
-        AmniCode amnic=new AmniCode();
-        StunCode stunc=new StunCode();
-        DanceCode dancec=new DanceCode();
-        ProtCode protc=new ProtCode();
-        int vanamni=-1;
-        int vanstun=-1;
-        int vandance=-1;
-        int vanprot=-1;
+        AmniCode amnic = new AmniCode();
+        StunCode stunc = new StunCode();
+        DanceCode dancec = new DanceCode();
+        ProtCode protc = new ProtCode();
+        int vanamni = -1;
+        int vanstun = -1;
+        int vandance = -1;
+        int vanprot = -1;
         ArrayList<FieldView> fviewlist = new ArrayList<FieldView>();
         for (int h = 0; h < k; h++) {
             double n = Math.random();
@@ -52,22 +52,19 @@ public class Map {
             } else if (n < 0.63) {
                 Laboratory m = new Laboratory();
                 fields.add(m);
-                double kod=Math.random();
-                if(kod<0.15){
+                double kod = Math.random();
+                if (kod < 0.15) {
                     m.placeCode(amnic);
-                    vanamni=h;
-                }
-                else if(kod<0.30){
+                    vanamni = h;
+                } else if (kod < 0.30) {
                     m.placeCode(stunc);
-                    vanstun=h;
-                }
-                else if(kod<0.45){
+                    vanstun = h;
+                } else if (kod < 0.45) {
                     m.placeCode(dancec);
-                    vandance=h;
-                }
-                else if(kod<0.6){
+                    vandance = h;
+                } else if (kod < 0.6) {
                     m.placeCode(protc);
-                    vanprot=h;
+                    vanprot = h;
                 }
                 fviewlist.add(new LaboratoryView(new Point(0, 0), m));
                 labor += 1;
@@ -75,17 +72,14 @@ public class Map {
             else if (n < 0.8) {
                 Shelter s = new Shelter();
                 fields.add(s);
-                double fel=Math.random();
-                if(fel<0.15){
+                double fel = Math.random();
+                if (fel < 0.15) {
                     s.addGear(new RobeGear());
-                }
-                else if(fel<0.3){
+                } else if (fel < 0.3) {
                     s.addGear(new AxeGear());
-                }
-                else if(fel<0.45){
+                } else if (fel < 0.45) {
                     s.addGear(new GloveGear());
-                }
-                else if(fel<0.6){
+                } else if (fel < 0.6) {
                     s.addGear(new SackGear());
                 }
                 fviewlist.add(new ShelterView(new Point(0, 0), s));
@@ -103,49 +97,49 @@ public class Map {
             fields.set(hany, j);
             fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
         }
-        while(vanamni==-1||vandance==-1||vanprot==-1||vanstun==-1){
-            if(vanamni==-1){
+        while (vanamni == -1 || vandance == -1 || vanprot == -1 || vanstun == -1) {
+            if (vanamni == -1) {
                 int hany = (int) Math.random() * k;
-                while(hany!=vanamni&&hany!=vanprot||hany!=vandance||hany!=vanstun){
-                    hany=(int)Math.random()*k;
+                while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
+                    hany = (int) Math.random() * k;
                 }
                 Laboratory j = new Laboratory();
                 j.placeCode(amnic);
                 fields.set(hany, j);
-                vanamni=hany;
+                vanamni = hany;
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
-            if(vanstun==-1){
+            if (vanstun == -1) {
                 int hany = (int) Math.random() * k;
-                while(hany!=vanamni&&hany!=vanprot||hany!=vandance||hany!=vanstun){
-                    hany=(int)Math.random()*k;
+                while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
+                    hany = (int) Math.random() * k;
                 }
                 Laboratory j = new Laboratory();
                 j.placeCode(stunc);
                 fields.set(hany, j);
-                vanstun=hany;
+                vanstun = hany;
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
-            if(vandance==-1){
+            if (vandance == -1) {
                 int hany = (int) Math.random() * k;
-                while(hany!=vanamni&&hany!=vanprot||hany!=vandance||hany!=vanstun){
-                    hany=(int)Math.random()*k;
+                while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
+                    hany = (int) Math.random() * k;
                 }
                 Laboratory j = new Laboratory();
                 j.placeCode(dancec);
                 fields.set(hany, j);
-                vandance=hany;
+                vandance = hany;
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
-            if(vanprot==-1){
+            if (vanprot == -1) {
                 int hany = (int) Math.random() * k;
-                while(hany!=vanamni&&hany!=vanprot||hany!=vandance||hany!=vanstun){
-                    hany=(int)Math.random()*k;
+                while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
+                    hany = (int) Math.random() * k;
                 }
                 Laboratory j = new Laboratory();
                 j.placeCode(protc);
                 fields.set(hany, j);
-                vanprot=hany;
+                vanprot = hany;
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
         }

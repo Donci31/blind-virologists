@@ -25,8 +25,9 @@ public abstract class InputWriter {
 
     /**
      * A mentések fájlba írását elvégző metódus.
+     *
      * @param filename melyik fájlba mentse
-     * @param fields mely mezőket, és az azokhoz tartozó többi objektumot
+     * @param fields   mely mezőket, és az azokhoz tartozó többi objektumot
      */
     public static void printFields(String filename, ArrayList<Field> fields) {
         // Szép kiíráshoz szükséges konfiguráció
@@ -41,8 +42,8 @@ public abstract class InputWriter {
         mainMap.put("Applied Agents", getAppliedAgentsList());
         try (FileWriter file = new FileWriter("./src/test/resources/" + filename)) {
             Virologist v = getWinner(fields);
-            if(v != null){
-                yaml.dump("The game has ended, " + v.getName() +" won!", file);
+            if (v != null) {
+                yaml.dump("The game has ended, " + v.getName() + " won!", file);
             } else {
                 yaml.dump(mainMap, file);
             }
@@ -53,6 +54,7 @@ public abstract class InputWriter {
 
     /**
      * Az osztály nevét visszaadó függvény.
+     *
      * @param o az objektum
      * @return az objektum neve
      */
@@ -65,11 +67,10 @@ public abstract class InputWriter {
         for (Field f : fields) {
             fieldList.add(getFieldBlock(f));
         }
-        return  fieldList;
+        return fieldList;
     }
 
     /**
-     *
      * @param f
      * @return
      */
@@ -134,8 +135,7 @@ public abstract class InputWriter {
             } else if (getClassName(g).equals("AxeGear")) {
                 AxeGear out = (AxeGear) g;
                 names.add(getClassName(g) + " " + g.getId() + " used=" + out.isUsed());
-            }
-            else {
+            } else {
                 names.add(getClassName(g) + " " + g.getId());
             }
         }
@@ -160,18 +160,18 @@ public abstract class InputWriter {
 
     private static ArrayList<Object> getAppliedAgentsList() {
         ArrayList<Object> names = new ArrayList<>();
-        for (Agent a :SteppableController.getAppliedAgents()) {
+        for (Agent a : SteppableController.getAppliedAgents()) {
             names.add(getClassName(a) + " " + a.getId() + " on=" + a.getSmearedVirologist().getName() + " remaining=" + a.getVirusTimer());
         }
         return names;
     }
 
     //TODO: should be handled in the model.Game class
-    private static Virologist getWinner(ArrayList<Field> fields){
-        for(Field f: fields){
-            for(Virologist v: f.getVirologists()){
+    private static Virologist getWinner(ArrayList<Field> fields) {
+        for (Field f : fields) {
+            for (Virologist v : f.getVirologists()) {
                 //4 is a temp value, dependent on number of learnable codes
-                if(v.getLearntCodes().size() >= 4){
+                if (v.getLearntCodes().size() >= 4) {
                     return v;
                 }
             }
