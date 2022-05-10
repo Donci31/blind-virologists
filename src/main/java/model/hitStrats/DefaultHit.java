@@ -9,10 +9,11 @@ import model.Virologist;
  */
 public class DefaultHit implements Hit {
     /**
-     *  Normál támadási viselkedés, amely a virológus támadásakor hívódik meg, hatására nem történik semmi sem.
+     * Normál támadási viselkedés, amely a virológus támadásakor hívódik meg, hatására nem történik semmi sem.
+     *
      * @param v - a támadás célpontja, virológus
      */
-    public void hit(Virologist v){
+    public void hit(Virologist v) {
         //do nothing
     }
 }

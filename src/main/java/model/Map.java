@@ -26,11 +26,12 @@ public class Map {
 
     /**
      * Létrehozza a pálya mezőit, beállítja a szomszédosságot. Leteszi a virológusokat random mezőkre.
+     *
      * @param vCount ennyi virológust helyez le
      */
     public void generateMap(int vCount) {
         int r = 90;
-        int k = 10;
+        int k = 19;
         int labor = 0;
         AmniCode amnic = new AmniCode();
         StunCode stunc = new StunCode();
@@ -148,7 +149,7 @@ public class Map {
 
         int i = 1;
         int currfield = 0;
-        fviewlist.get(0).Getpos().setLocation(200, 200);
+        fviewlist.get(0).Getpos().setLocation(350, 300);
         while (i < k) { // i=1-től mert a base is field
 
             Field prevfield = fields.get(currfield);
@@ -197,10 +198,11 @@ public class Map {
             Field field = fields.get((int) (Math.random() * k));
             field.accept(virologist);
 
-            //VirologistView virologistView = new VirologistView(new Point((int)Math.cos(2 * Math.PI * m / vCount), (int)Math.sin(2 * Math.PI * m / vCount)), virologist, m+1);
-            VirologistView virologistView = new VirologistView(new Point(0, 0), virologist, m+1);
+            VirologistView virologistView = new VirologistView(
+                    new Point((int) (Math.cos(2 * Math.PI * m / vCount) * 25) - VirologistView.size / 2,
+                            (int) (Math.sin(2 * Math.PI * m / vCount) * 25) - VirologistView.size / 2), virologist, m + 1);
+            //VirologistView virologistView = new VirologistView(new Point(-15, -15), virologist, m+1);
             Game.addDrawable(virologistView);
         }
     }
-
 }

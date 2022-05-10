@@ -8,26 +8,28 @@ import model.gears.GloveGear;
  * Ilyenkor az osztály absorb függvénye kezeli ezt az eseményt.
  */
 public class GloveAbsorb implements Absorb {
-	GloveGear glove;
+    GloveGear glove;
 
-	/**
-	 * Konstruktor, amely hozzáadja a viselkedéshez azt a kesztű példányt, amihez tartozik.
-	 * @param g kesztyű
-	 */
-	public GloveAbsorb(GloveGear g) {
-		this.glove = g;
-	}
+    /**
+     * Konstruktor, amely hozzáadja a viselkedéshez azt a kesztű példányt, amihez tartozik.
+     *
+     * @param g kesztyű
+     */
+    public GloveAbsorb(GloveGear g) {
+        this.glove = g;
+    }
 
-	/**
-	 * Az ágens hatását az ágenst dobó virológusra fejti ki.
-	 * Az így érintett virológust az ágens egyik attribútumából ismeri.
-	 * @param a - felkent ágens
-	 */
-	public void absorb(Agent a) {
-		if(a.getCrafterVirologist()!=null) {
-			a.setSmearedVirologist(a.getCrafterVirologist());
-		}
-		a.smear(a.getSmearedVirologist());
-		glove.useGlove();
-	}
+    /**
+     * Az ágens hatását az ágenst dobó virológusra fejti ki.
+     * Az így érintett virológust az ágens egyik attribútumából ismeri.
+     *
+     * @param a - felkent ágens
+     */
+    public void absorb(Agent a) {
+        if (a.getCrafterVirologist() != null) {
+            a.setSmearedVirologist(a.getCrafterVirologist());
+        }
+        a.smear(a.getSmearedVirologist());
+        glove.useGlove();
+    }
 }

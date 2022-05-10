@@ -7,11 +7,12 @@ import model.agents.Agent;
  * Ilyenkor az absorb függvénye kezeli az eseményt.
  */
 public class DefaultAbsorb implements Absorb {
-	/**
-	 * Kifejti a paraméterként kapott ágens hatását az ezt meghívó virológusra.
-	 * @param a - ágens
-	 */
-	public void absorb(Agent a) {
-		a.smear(a.getSmearedVirologist());
-	}
+    /**
+     * Kifejti a paraméterként kapott ágens hatását az ezt meghívó virológusra.
+     *
+     * @param a - ágens
+     */
+    public void absorb(Agent a) {
+        a.smear(a.getSmearedVirologist());
+    }
 }

@@ -13,10 +13,11 @@ public class LaboratoryView extends FieldView implements Drawable {
 
     /**
      * Konstruktor, ami beállítja a mező koordinátáit, és azt, hogy melyik laboratóriumhoz tartozik a modellből.
-     * @param pos mező koordinátái
+     *
+     * @param pos        mező koordinátái
      * @param laboratory a nézethez tartozó modellbeli laboratórium mező
      */
-    public LaboratoryView(Point pos,Laboratory laboratory) {
+    public LaboratoryView(Point pos, Laboratory laboratory) {
         super(pos, null);
         this.laboratory = laboratory;
         this.laboratory.setFieldView(this);
@@ -24,6 +25,7 @@ public class LaboratoryView extends FieldView implements Drawable {
 
     /**
      * Kirajzolja az óvóhely mezőt a megadott grafikus kontextusra.
+     *
      * @param g megadott grafikus kontextus
      */
     @Override
@@ -34,7 +36,7 @@ public class LaboratoryView extends FieldView implements Drawable {
         AffineTransform tx = AffineTransform.getTranslateInstance(pos.x, pos.y);
         g2.setTransform(tx);
         this.drawBorder(g);
-        this.drawHexagon(g, new Color(12,88,124), radius);
+        this.drawHexagon(g, new Color(12, 88, 124), radius);
         g2.setTransform(old);
     }
 }

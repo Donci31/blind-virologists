@@ -17,7 +17,8 @@ public class FieldView implements Drawable {
 
     /**
      * Konstruktor, ami beállítja a mező koordinátáit, és azt, hogy melyik szabad területhez tartozik a modellből.
-     * @param pos mező koordinátái
+     *
+     * @param pos   mező koordinátái
      * @param field a nézethez tartozó modellbeli szabad terület mező
      */
     public FieldView(Point pos, Field field) {
@@ -28,11 +29,14 @@ public class FieldView implements Drawable {
         }
     }
 
-    public Point Getpos(){return pos;}
-    
+    public Point Getpos() {
+        return pos;
+    }
+
     /**
      * Kirajzolja a szabad terület mezőt a megadott grafikus kontextusra.
      * A leszármazottai felüldefiniálják.
+     *
      * @param g megadott grafikus kontextus
      */
     @Override
@@ -43,7 +47,7 @@ public class FieldView implements Drawable {
         AffineTransform tx = AffineTransform.getTranslateInstance(pos.x, pos.y);
         g2.setTransform(tx);
         this.drawBorder(g);
-        this.drawHexagon(g, new Color(105,159,4), radius);
+        this.drawHexagon(g, new Color(105, 159, 4), radius);
         g2.setTransform(old);
     }
 
@@ -54,7 +58,7 @@ public class FieldView implements Drawable {
     protected void drawHexagon(Graphics g, Color color, int radius) {
         Polygon p = new Polygon();
         for (int i = 0; i < 6; i++) {
-            double phase = ((2 * i ) * Math.PI / 6);
+            double phase = ((2 * i) * Math.PI / 6);
             p.addPoint((int) (radius * Math.cos(phase)), (int) (radius * Math.sin(phase)));
         }
         g.setColor(color);

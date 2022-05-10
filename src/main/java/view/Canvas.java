@@ -22,7 +22,8 @@ public class Canvas extends JPanel {
 
     /**
      * Konstruktor, amely beállítja a vászon méreteit.
-     * @param width a vászon szélessége
+     *
+     * @param width  a vászon szélessége
      * @param height a vászon magassága
      */
     public Canvas(int width, int height) {
@@ -58,6 +59,7 @@ public class Canvas extends JPanel {
 
     /**
      * Kirajzolja az egész vásznat és a rajta levő objektumokat, azaz meghívja az összes Drawable objektumot draw() metódusát.
+     *
      * @param g grafikus kontextus
      */
     public void drawAll(Graphics g) {
@@ -68,13 +70,14 @@ public class Canvas extends JPanel {
 
     /**
      * Hozzáad egy Drawable objektumot a Drawable objektumokat tartalmazó tömbhöz.
+     *
      * @param d a hozzáadandó Drawable objektum
      */
     public void addDrawable(Drawable d) {
         drawables.add(d);
     }
 
-    public void paintComponent(Graphics _g) {   
+    public void paintComponent(Graphics _g) {
         Graphics2D g = (Graphics2D) _g;
         g.setBackground(new Color(153, 217, 234));
         g.clearRect(0, 0, getWidth(), getHeight());

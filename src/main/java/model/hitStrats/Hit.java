@@ -9,6 +9,7 @@ import model.Virologist;
 public interface Hit {
     /**
      * A virológus támadásakor ez a függvény hívódik meg, ez valósítja meg a támadási viselkedését.
+     *
      * @param v - a támadás célpontja, virológus
      */
     void hit(Virologist v);

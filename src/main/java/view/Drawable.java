@@ -8,6 +8,7 @@ import java.awt.*;
 public interface Drawable {
     /**
      * Kirajzolja az objektumot a megadott grafikus kontextusra.
+     *
      * @param g megadott grafikus kontextus
      */
     void draw(Graphics g);

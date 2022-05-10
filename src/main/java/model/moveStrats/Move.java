@@ -8,10 +8,11 @@ import model.fields.Field;
  * A virológus mozgását befolyásolja.
  */
 public interface Move {
-	/**
-	 * Virológus arrébb lép egy mezővel.
-	 * @param f - kiválasztott mező
-	 * @param v - lépő virológus
-	 */
-	void move(Field f, Virologist v);
+    /**
+     * Virológus arrébb lép egy mezővel.
+     *
+     * @param f - kiválasztott mező
+     * @param v - lépő virológus
+     */
+    void move(Field f, Virologist v);
 }

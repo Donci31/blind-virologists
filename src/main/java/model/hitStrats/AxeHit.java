@@ -12,6 +12,7 @@ public class AxeHit implements Hit {
 
     /**
      * Konstruktor, beállítja a balta példányt, amihez ez a viselkedés tartozik.
+     *
      * @param axe balta, amihez a viselkedés tartozik
      */
     public AxeHit(AxeGear axe) {
@@ -20,9 +21,10 @@ public class AxeHit implements Hit {
 
     /**
      * Megüti a paraméterként kapott virológust, elhasználja a baltát.
+     *
      * @param v - a támadás célpontja, virológus
      */
-    public void hit(Virologist v){
+    public void hit(Virologist v) {
         if (!axe.isUsed()) {
             axe.useAxe();
             v.receiveHit();

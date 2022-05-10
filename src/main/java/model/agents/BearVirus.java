@@ -11,10 +11,12 @@ import model.Virologist;
  */
 public class BearVirus extends Agent {
     private BearMove strat = new BearMove();
+
     /**
      * A paraméterként kapott virológusra kenődik az ágens,
      * az ágensnek megfelelő hatás aktiválódik a virológuson,
      * azaz model.moveStrats.BearMove-ra állítódik a mozgási viselkedése.
+     *
      * @param v - virológus, aki megfertőződik a vírussal
      */
     public void smear(Virologist v) {

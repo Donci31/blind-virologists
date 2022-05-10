@@ -9,9 +9,10 @@ import model.agents.Agent;
  * Ezt az interfészt minden absorb stratégiának meg kell valósítania.
  */
 public interface Absorb {
-	/**
-	 * Kifejti a paraméterként kapott ágens hatását az ezt meghívó virológusra.
-	 * @param a - ágens
-	 */
-	void absorb(Agent a);
+    /**
+     * Kifejti a paraméterként kapott ágens hatását az ezt meghívó virológusra.
+     *
+     * @param a - ágens
+     */
+    void absorb(Agent a);
 }

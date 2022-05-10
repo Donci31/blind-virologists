@@ -10,32 +10,33 @@ import model.Virologist;
  */
 public class StunVirus extends Agent {
 
-	/**
-	 * Konstruktor, ami beállítja, hogy mi legyen a virusTimer alapértéke.
-	 */
-	public StunVirus(){
-		virusTimer=2;
-	}
+    /**
+     * Konstruktor, ami beállítja, hogy mi legyen a virusTimer alapértéke.
+     */
+    public StunVirus() {
+        virusTimer = 2;
+    }
 
-	/**
-	 * A paraméterként kapott virológusra kenődik az ágens, az ágensnek megfelelő hatás aktiválódik a virológuson és az ágens időzítője elkezd visszaszámolni.
-	 * A virológus stunned attribútuma igazra állítódik át.
-	 * @param v - virológus, akire az ágens rá lesz kenve
-	 */
-	public void smear(Virologist v) {
-		v.setStunned(true);
-		super.smear(v);
-	}
+    /**
+     * A paraméterként kapott virológusra kenődik az ágens, az ágensnek megfelelő hatás aktiválódik a virológuson és az ágens időzítője elkezd visszaszámolni.
+     * A virológus stunned attribútuma igazra állítódik át.
+     *
+     * @param v - virológus, akire az ágens rá lesz kenve
+     */
+    public void smear(Virologist v) {
+        v.setStunned(true);
+        super.smear(v);
+    }
 
-	/**
-	 * Körönként meghívódik, ha az ágens már fel van kenve, 1-el csökkenti a virusTimer értékét.
-	 * Ha lejárt az idő, akkor kiveszi a rá jellemző absorb stratégiát a virológusáról (StunAbsorb).
-	 */
-	public void step() {
-		virusTimer--;
-		if (virusTimer == 0) {
-			smearedVirologist.setStunned(false);
-			SteppableController.kidob(this);
-		}
-	}
+    /**
+     * Körönként meghívódik, ha az ágens már fel van kenve, 1-el csökkenti a virusTimer értékét.
+     * Ha lejárt az idő, akkor kiveszi a rá jellemző absorb stratégiát a virológusáról (StunAbsorb).
+     */
+    public void step() {
+        virusTimer--;
+        if (virusTimer == 0) {
+            smearedVirologist.setStunned(false);
+            SteppableController.kidob(this);
+        }
+    }
 }

@@ -13,7 +13,8 @@ public class WarehouseView extends FieldView implements Drawable {
 
     /**
      * Konstruktor, ami beállítja a mező koordinátáit, és azt, hogy melyik raktárhoz tartozik a modellből.
-     * @param pos mező koordinátái
+     *
+     * @param pos       mező koordinátái
      * @param warehouse a nézethez tartozó modellbeli raktár mező
      */
     public WarehouseView(Point pos, Warehouse warehouse) {
@@ -24,6 +25,7 @@ public class WarehouseView extends FieldView implements Drawable {
 
     /**
      * Kirajzolja a raktár mezőt a megadott grafikus kontextusra.
+     *
      * @param g megadott grafikus kontextus
      */
     @Override
@@ -33,7 +35,7 @@ public class WarehouseView extends FieldView implements Drawable {
         AffineTransform tx = AffineTransform.getTranslateInstance(pos.x, pos.y);
         g2.setTransform(tx);
         this.drawBorder(g);
-        this.drawHexagon(g, new Color(240,228,13), radius);
+        this.drawHexagon(g, new Color(240, 228, 13), radius);
         g2.setTransform(old);
     }
 }
