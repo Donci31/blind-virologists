@@ -381,10 +381,7 @@ public class ActionMenu extends JPanel {
         // End turn gomb inicializálása, ActionListener beállítása
         c.gridy++;
         endTurn = new MenuButton("End turn");
-        endTurn.addActionListener(e -> {
-            Virologist activeVirologist = Game.getActiveVirologist();
-            activeVirologist.signalEndTurn();
-        });
+        endTurn.addActionListener(e -> Game.endTurn());
         buttonPanel.add(endTurn, c);
 
         buttonPanel.setBorder(BorderFactory.createMatteBorder(4, 0, 0, 0, Color.black));

@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * A játék elindításáért és megállításáért felelős osztály.
@@ -21,6 +22,28 @@ public class Game {
     private static Virologist activeVirologist;
     private static ActionMenu actionMenu;
 
+    private static ArrayList<Virologist> virologists = new ArrayList<>();
+
+    private static int round = 0;
+
+    /**
+     * A Game.virologist objektumok listájához hozzáad egy új model.Virologist objektumot.
+     *
+     * @param v - hozzáadandó léptethető objektum
+     */
+    public static void addVirologist(Virologist v) {
+        virologists.add(v);
+    }
+
+    /**
+     * A Game.virologist objektumok listájából kivesz egy korábban hozzáadott model.Virologist objektumot.
+     *
+     * @param v - hozzáadandó léptethető objektum
+     */
+    public static void removeVirologist(Virologist v) {
+        virologists.remove(v);
+    }
+
     /**
      * Elindítja a játékot.
      *
@@ -29,7 +52,7 @@ public class Game {
     public static void startGame(int vCount) {
         winner = null;
         map = new Map();
-        map.generateMap();
+        map.generateMap(vCount);
         // TODO controller starts handling virologist turns
     }
 
@@ -55,6 +78,14 @@ public class Game {
         return winner;
     }
 
+    public static void endTurn() {
+        ++round;
+        activeVirologist = virologists.get(round % 2);
+        if (round % 2 == 0) {
+            SteppableController.step();
+        }
+    }
+
     /**
      * Beállítja a frame tulajdonságait.
      */
@@ -67,7 +98,7 @@ public class Game {
 
         BufferedImage gameImage = null;
         try {
-            gameImage = ImageIO.read(Game.class.getClassLoader().getResource("brown_bear.png"));
+            gameImage = ImageIO.read(Game.class.getClassLoader().getResource("bear1.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -104,10 +135,5 @@ public class Game {
         frame.add(actionMenu, BorderLayout.LINE_END);
         startGame(2);
         init();
-        activeVirologist = new Virologist();
-
-        while (true) {
-            SteppableController.step();
-        }
     }
 }

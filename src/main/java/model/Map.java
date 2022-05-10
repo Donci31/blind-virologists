@@ -194,7 +194,7 @@ public class Map {
 
         for (int m = 0; m < vCount; m++) {
             Virologist virologist = new Virologist();
-            // TODO hozzáadni a Steppable/Game virológusaihoz
+            Game.addVirologist(virologist);
 
             Field field = fields.get((int)Math.random() * k);
             field.accept(virologist);
