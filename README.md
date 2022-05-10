@@ -5,24 +5,24 @@ Blind-virologist game.
 ### Maven
 You can use maven to build the project
 ```
-$ mvn compile
+mvn compile
 ```
 And to run execute
 ```
-$ mvn exec:java
+mvn exec:java
 ```
 ### Gradle
 If you don't have maven use gradle to build
 ```
-$ ./gradlew assemble
+./gradlew assemble
 ```
 And to run execute
 ```
-$ ./gradlew run
+./gradlew run
 ```
 ## Creators:
-* Czumbel Péter
-* Horváth Szilárd
-* Sisák Botond
 * Szigeti Donát
 * Szarvas Dániel
+* Horváth Szilárd
+* Czumbel Péter
+* Sisák Botond
