@@ -60,8 +60,9 @@ public class Laboratory extends Field {
      * @param v - mezővel interaktáló virológus
      */
     public void interactWithField(Virologist v) {
-        if (code != null)
+        if (code != null) {
             v.learnCode(code);
+        }
     }
 
     /**
