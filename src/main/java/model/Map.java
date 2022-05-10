@@ -29,8 +29,8 @@ public class Map {
      * @param vCount ennyi virológust helyez le
      */
     public void generateMap(int vCount) {
-        int r = 45;
-        int k = 60;
+        int r = 90;
+        int k = 10;
         int labor = 0;
         AmniCode amnic = new AmniCode();
         StunCode stunc = new StunCode();

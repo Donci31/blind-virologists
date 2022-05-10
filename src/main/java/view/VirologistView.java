@@ -47,7 +47,6 @@ public class VirologistView implements Drawable {
         boolean stunned = virologist.isStunned();
         FieldView fieldView = virologist.getField().getFieldView();
         Point fieldPos = fieldView.Getpos();
-
         if (bear) {
             g.drawImage(bearImg, fieldPos.x + pos.x, fieldPos.y + pos.y, size, size, null);
         } else {

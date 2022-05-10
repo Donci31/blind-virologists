@@ -32,7 +32,7 @@ public class WarehouseView extends FieldView implements Drawable {
         AffineTransform old=g2.getTransform();
         AffineTransform tx = new AffineTransform();
         tx.translate(pos.x, pos.y);
-        g2.setTransform(tx);
+     //   g2.setTransform(tx);
         this.drawBorder(g);
         this.drawHexagon(g, new Color(240,228,13), radius);
         g2.setTransform(old);
