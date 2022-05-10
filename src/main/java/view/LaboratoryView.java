@@ -30,10 +30,9 @@ public class LaboratoryView extends FieldView implements Drawable {
     public void draw(Graphics g) {
 
         Graphics2D g2 = (Graphics2D) g;
-        AffineTransform old=g2.getTransform();
-        AffineTransform tx = new AffineTransform();
-        tx.translate(pos.x, pos.y);
-        //g2.setTransform(tx);
+        AffineTransform old = AffineTransform.getTranslateInstance(0, 0);
+        AffineTransform tx = AffineTransform.getTranslateInstance(pos.x, pos.y);
+        g2.setTransform(tx);
         this.drawBorder(g);
         this.drawHexagon(g, new Color(12,88,124), radius);
         g2.setTransform(old);

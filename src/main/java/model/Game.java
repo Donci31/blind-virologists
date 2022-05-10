@@ -53,7 +53,7 @@ public class Game {
         winner = null;
         map = new Map();
         map.generateMap(vCount);
-        // TODO controller starts handling virologist turns
+        activeVirologist = virologists.get(0);
     }
 
     public static void addDrawable(Drawable d) {
