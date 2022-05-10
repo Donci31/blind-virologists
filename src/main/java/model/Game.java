@@ -52,7 +52,7 @@ public class Game {
     public static void startGame(int vCount) {
         virologists.clear();
         SteppableController.clearSteppables();
-        canvas = new Canvas(600, 600);
+        canvas = new Canvas();
         frame.add(canvas, BorderLayout.CENTER);
         winner = null;
         map = new Map();
@@ -70,8 +70,19 @@ public class Game {
      * Megállítja a játékot
      */
     public static void endGame(Virologist virologist) {
-        //TODO controller should be calling this, for now it has a model.Virologist parameter
         winner = virologist;
+
+        String virologistID = Game.getActiveVirologist().getName();
+        String virologistString = "Player " + virologistID.substring(virologistID.length() - 1);
+        JPanel winnerPanel = new JPanel();
+        JLabel winnerLabel = new JLabel(virologistString + " has won the game!");
+        winnerPanel.add(winnerLabel);
+
+        JOptionPane.showConfirmDialog( frame,
+                winnerLabel,
+                "There is a winner!",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE);
     }
 
     /**
