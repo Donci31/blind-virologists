@@ -10,6 +10,7 @@ import view.Canvas;
 import javax.swing.*;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 /**
@@ -69,16 +70,20 @@ public class ActionMenu extends JPanel {
             }
             Field field = activeVirologist.getField();
 
-            HashMap<String, Field> fieldMap = new HashMap<>();
+            LinkedHashMap<String, Field> fieldMap = new LinkedHashMap<>();
             List<Field> fieldList = field.getNeighbors();
             for (int i = 0; i < fieldList.size(); i++) {
-                if (fieldList.get((i+3) % fieldList.size()) != null) {
-                    fieldMap.put(String.valueOf(i + 1), fieldList.get((i + 3) % fieldList.size()));
+                if (fieldList.get((i + 3) % fieldList.size()) != null) {
+                    String fieldString = String.valueOf(i + 1);
+                    if ((i + 3) % fieldList.size() == 3) {
+                        fieldString += " (North)";
+                    } else if ((i + 3) % fieldList.size() == 0) {
+                        fieldString += " (South)";
+                    }
+                    fieldMap.put(fieldString, fieldList.get((i + 3) % fieldList.size()));
                 }
             }
 
-            hasMoved = true;
-            hasInteractedWithField = false;
             JComboBox cbox1 = new JComboBox(fieldMap.keySet().toArray(new String[0]));
 
             JPanel selectPanel = new JPanel();
@@ -100,10 +105,12 @@ public class ActionMenu extends JPanel {
                     JOptionPane.PLAIN_MESSAGE);
 
             if (result == JOptionPane.OK_OPTION) {
+                hasMoved = true;
+                hasInteractedWithField = false;
                 String neighborString = (String)cbox1.getSelectedItem();
                 activeVirologist.move(fieldMap.get(neighborString));
+                Game.getCanvas().repaint();
             }
-            Game.getCanvas().repaint();
         });
 
         // Smear gomb inicializálása, ActionListener beállítása
@@ -367,6 +374,7 @@ public class ActionMenu extends JPanel {
             hasMoved = false;
             hasInteractedWithField = false;
             Game.endTurn();
+            Game.getCanvas().repaint();
         });
         buttonPanel.add(endTurn, c);
 

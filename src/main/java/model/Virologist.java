@@ -271,7 +271,6 @@ public class Virologist implements Steppable {
      */
     public void loot(Virologist v, Gear g) {
         // Itt már addolja a saját felszereléseihez g model.gears.Gear-t
-        //TODO: check
         if (v.stunned) {
             v.loseGear(g);
             pickUpGear(g);
@@ -478,7 +477,7 @@ public class Virologist implements Steppable {
     /**
      * Kiválasztja az elsődleges védekezési mechanizmust, azt behelyezi az absorb viselkedések listájának első helyére.
      *
-     * @param absorb
+     * @param absorb a kiválasztott védekezési mechanizmus
      */
     public void choosePrimaryAbsorbStrat(Absorb absorb) {
         if (!absorbStrats.contains(absorb)) {

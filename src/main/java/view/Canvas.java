@@ -1,13 +1,8 @@
 package view;
 
-import javax.swing.*;
+import model.Game;
 
-import model.Virologist;
-import model.fields.Field;
-import model.fields.Laboratory;
-import model.fields.Shelter;
-import model.fields.Warehouse;
-import model.gears.SackGear;
+import javax.swing.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -31,30 +26,6 @@ public class Canvas extends JPanel {
         this.height = height;
         this.listeningForClick = false;
         drawables = new ArrayList<>();
-
-        // TODO: remove
-        // Rajzolás teszteléshez:
-        /*
-        int d = 100;
-
-		addDrawable(new FieldView(new Point(100,100), new Field()));
-		addDrawable(new LaboratoryView(new Point(100+d,100), new Laboratory()));
-		addDrawable(new WarehouseView(new Point(100+2*d,100), new Warehouse()));
-        addDrawable(new ShelterView(new Point(100+3*d,100), new Shelter()));
-        Shelter s2 = new Shelter();
-        s2.addGear(new SackGear());
-        addDrawable(new ShelterView(new Point(100+4*d,100), s2));
-
-        addDrawable(new VirologistView(new Point(100,200), new Virologist()));
-        Virologist v1 = new Virologist();
-        v1.setStunned(true);
-        addDrawable(new VirologistView(new Point(100+d,200), v1));
-        Virologist v2 = new Virologist();
-        v2.setBear(true);
-        addDrawable(new VirologistView(new Point(100+2*d,200), v2));
-
-        this.setBorder(BorderFactory.createMatteBorder(4, 4, 4, 0, Color.black));
-        */
     }
 
     /**
@@ -82,5 +53,9 @@ public class Canvas extends JPanel {
         g.setBackground(new Color(153, 217, 234));
         g.clearRect(0, 0, getWidth(), getHeight());
         drawAll(g);
+
+        String virologistID = Game.getActiveVirologist().getName();
+        String virologistString = "Player " + virologistID.substring(virologistID.length() - 1);
+        g.drawString(virologistString, 670, 530);
     }
 }

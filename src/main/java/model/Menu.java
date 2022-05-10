@@ -61,7 +61,7 @@ public class Menu extends JMenuBar {
          */
         @Override
         public void actionPerformed(ActionEvent e) {
-            Object[] possibleVirologistCounts = {2, 3, 4};
+            Object[] possibleVirologistCounts = {1, 2, 3};
             Object[] buttonOptions = {"Start!", "Cancel"};
 
             JFrame frame = new JFrame();

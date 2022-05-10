@@ -50,10 +50,16 @@ public class Game {
      * @param vCount - hány virológussal indítsa a játékot
      */
     public static void startGame(int vCount) {
+        virologists.clear();
+        SteppableController.clearSteppables();
+        canvas = new Canvas(600, 600);
+        frame.add(canvas, BorderLayout.CENTER);
         winner = null;
         map = new Map();
         map.generateMap(vCount);
         activeVirologist = virologists.get(0);
+        init();
+        canvas.repaint();
     }
 
     public static void addDrawable(Drawable d) {
@@ -135,14 +141,8 @@ public class Game {
     public static void main(String[] args) {
         frame = new JFrame();
         menu = new Menu();
-        canvas = new Canvas(600, 600);
         actionMenu = new ActionMenu();
-        //BorderLayout layout = new BorderLayout();
-        //frame.setLayout(layout);
-        frame.add(canvas, BorderLayout.CENTER);
         frame.add(actionMenu, BorderLayout.LINE_END);
         startGame(2);
-        init();
-        canvas.repaint();
     }
 }
