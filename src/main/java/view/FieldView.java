@@ -28,8 +28,6 @@ public class FieldView implements Drawable {
         }
     }
 
-    public void Changepos(Point newpos){pos=newpos;}
-
     public Point Getpos(){return pos;}
     
     /**

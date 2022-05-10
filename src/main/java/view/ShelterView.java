@@ -19,6 +19,7 @@ public class ShelterView extends FieldView implements Drawable  {
     public ShelterView(Point pos, Shelter shelter) {
         super(pos, null);
         this.shelter = shelter;
+        this.shelter.setFieldView(this);
     }
 
     /**

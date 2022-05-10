@@ -90,16 +90,16 @@ public class Map {
 
         }
         if (labor == 0) { // Ha nincs benne labor akkor tesz bele egyet
-            int hany = (int) Math.random() * k;
+            int hany = (int) (Math.random() * k);
             Laboratory j = new Laboratory();
             fields.set(hany, j);
             fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
         }
         while (vanamni == -1 || vandance == -1 || vanprot == -1 || vanstun == -1) {
             if (vanamni == -1) {
-                int hany = (int) Math.random() * k;
+                int hany = (int) (Math.random() * k);
                 while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
-                    hany = (int) Math.random() * k;
+                    hany = (int) (Math.random() * k);
                 }
                 Laboratory j = new Laboratory();
                 j.placeCode(amnic);
@@ -108,9 +108,9 @@ public class Map {
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
             if (vanstun == -1) {
-                int hany = (int) Math.random() * k;
+                int hany = (int) (Math.random() * k);
                 while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
-                    hany = (int) Math.random() * k;
+                    hany = (int) (Math.random() * k);
                 }
                 Laboratory j = new Laboratory();
                 j.placeCode(stunc);
@@ -119,9 +119,9 @@ public class Map {
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
             if (vandance == -1) {
-                int hany = (int) Math.random() * k;
+                int hany = (int) (Math.random() * k);
                 while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
-                    hany = (int) Math.random() * k;
+                    hany = (int) (Math.random() * k);
                 }
                 Laboratory j = new Laboratory();
                 j.placeCode(dancec);
@@ -130,9 +130,9 @@ public class Map {
                 fviewlist.set(hany, new LaboratoryView(new Point(0, 0), j));
             }
             if (vanprot == -1) {
-                int hany = (int) Math.random() * k;
+                int hany = (int) (Math.random() * k);
                 while (hany != vanamni && hany != vanprot || hany != vandance || hany != vanstun) {
-                    hany = (int) Math.random() * k;
+                    hany = (int) (Math.random() * k);
                 }
                 Laboratory j = new Laboratory();
                 j.placeCode(protc);
@@ -196,10 +196,11 @@ public class Map {
             Virologist virologist = new Virologist();
             Game.addVirologist(virologist);
 
-            Field field = fields.get((int)Math.random() * k);
+            Field field = fields.get((int) (Math.random() * k));
             field.accept(virologist);
 
-            VirologistView virologistView = new VirologistView(new Point((int)Math.cos(2 * Math.PI * m / vCount), (int)Math.sin(2 * Math.PI * m / vCount)), virologist, m+1);
+            //VirologistView virologistView = new VirologistView(new Point((int)Math.cos(2 * Math.PI * m / vCount), (int)Math.sin(2 * Math.PI * m / vCount)), virologist, m+1);
+            VirologistView virologistView = new VirologistView(new Point(0, 0), virologist, m+1);
             Game.addDrawable(virologistView);
         }
     }

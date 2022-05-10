@@ -17,7 +17,7 @@ public class VirologistView implements Drawable {
     private Point pos;
     private Image virImg, bearImg;
 
-    private final int size = 50;
+    private final int size = 30;
 
     /**
      * Konstruktor, amely beállítja a nézethez tartozó attribútumokat.

@@ -19,6 +19,7 @@ public class LaboratoryView extends FieldView implements Drawable {
     public LaboratoryView(Point pos,Laboratory laboratory) {
         super(pos, null);
         this.laboratory = laboratory;
+        this.laboratory.setFieldView(this);
     }
 
     /**

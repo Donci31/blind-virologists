@@ -19,6 +19,7 @@ public class WarehouseView extends FieldView implements Drawable {
     public WarehouseView(Point pos, Warehouse warehouse) {
         super(pos, null);
         this.warehouse = warehouse;
+        this.warehouse.setFieldView(this);
     }
 
     /**
