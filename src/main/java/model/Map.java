@@ -86,8 +86,6 @@ public class Map {
                 fields.add(l);
                 fviewlist.add(new WarehouseView(new Point(0, 0), l));
             }
-            fields.add(new Field());
-
         }
         if (labor == 0) { // Ha nincs benne labor akkor tesz bele egyet
             int hany = (int) (Math.random() * k);
