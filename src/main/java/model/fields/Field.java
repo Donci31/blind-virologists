@@ -3,6 +3,7 @@ package model.fields;
 import model.Prototype;
 import model.Virologist;
 import model.agents.BearVirus;
+import view.FieldView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +18,7 @@ public class Field {
 	protected List<Virologist> virologists;
 	protected List<Field> neighbors;
 	private String name;
+	private FieldView fieldView;
 	private static int id_counter = 1;
 
 	/**
@@ -38,6 +40,22 @@ public class Field {
 		virologists = new ArrayList<>();
 		neighbors = new ArrayList<>();
 		Prototype.fields.put(name, this);
+	}
+
+	/**
+	 * A fieldView settere.
+	 * @param fieldView a mező nézete
+	 */
+	public void setFieldView(FieldView fieldView) {
+		this.fieldView = fieldView;
+	}
+
+	/**
+	 * A fieldView gettere.
+	 * @return fieldView
+	 */
+	public FieldView getFieldView() {
+		return fieldView;
 	}
 
 	/**

@@ -23,11 +23,15 @@ public class FieldView implements Drawable {
     public FieldView(Point pos, Field field) {
         this.pos = pos;
         this.field = field;
+        if (this.field != null) {
+            this.field.setFieldView(this);
+        }
     }
 
     public void Changepos(Point newpos){pos=newpos;}
 
     public Point Getpos(){return pos;}
+    
     /**
      * Kirajzolja a szabad terület mezőt a megadott grafikus kontextusra.
      * A leszármazottai felüldefiniálják.
@@ -59,17 +63,5 @@ public class FieldView implements Drawable {
         }
         g.setColor(color);
         g.fillPolygon(p);
-    }
-
-    /**
-     * Leellenőrzi, hogy tényleg a mező területére kattintott-e a felhasználó.
-     * Ha igen, akkor beállítja az ActionMenu selectedField attribútumát a nézethez tartozó mezőre a modellből.
-     * @param clickPos a kattintás pozíciója képernyőkoordinátákban
-     */
-    public void onClick(Point clickPos) {
-        // TODO check if this field was clicked
-//        if (/*this was clicked*/) {
-//            ActionMenu.setSelectedField(field);
-//        }
     }
 }

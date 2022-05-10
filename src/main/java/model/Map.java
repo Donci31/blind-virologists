@@ -22,15 +22,13 @@ import java.util.ArrayList;
  * Felelős a mezők létrehozásáért és nyilvántartásáért, valamint a virológusok által gyűjthető különböző genetikai kódok számának meghatározásáért.
  */
 public class Map {
-    private int uniqueCodeCount;
     private ArrayList<Field> fields = new ArrayList<>();
 
     /**
-     * Létrehozza a pálya mezőit, beállítja a szomszédosságot. Leteszi a
-     * virológusokat
+     * Létrehozza a pálya mezőit, beállítja a szomszédosságot. Leteszi a virológusokat random mezőkre.
+     * @param vCount ennyi virológust helyez le
      */
-    public void generateMap() {
-        // TODO
+    public void generateMap(int vCount) {
         int r = 45;
         int k = 60;
         int labor = 0;
@@ -146,7 +144,6 @@ public class Map {
         for (Field i : fields) {
             i.getNeighbors().clear();
             for (int cs = 0; cs < 6; cs++) {
-
                 i.getNeighbors().add(null);
             }
         }
@@ -186,15 +183,24 @@ public class Map {
                             prevfield.getNeighbors().get(j).getNeighbors().set((1 + u) % 6,
                                     prevfield.getNeighbors().get(u));
                         }
-
                     }
-
                 }
             }
             currfield += 1;
         }
         for (Drawable d : fviewlist) {
             Game.addDrawable(d);
+        }
+
+        for (int m = 0; m < vCount; m++) {
+            Virologist virologist = new Virologist();
+            // TODO hozzáadni a Steppable/Game virológusaihoz
+
+            Field field = fields.get((int)Math.random() * k);
+            field.accept(virologist);
+
+            VirologistView virologistView = new VirologistView(new Point((int)Math.cos(2 * Math.PI * m / vCount), (int)Math.sin(2 * Math.PI * m / vCount)), virologist, m+1);
+            Game.addDrawable(virologistView);
         }
     }
 

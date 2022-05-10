@@ -1,5 +1,6 @@
 package view;
 
+import model.Game;
 import model.Virologist;
 
 import java.awt.*;
@@ -14,29 +15,26 @@ import javax.imageio.ImageIO;
 public class VirologistView implements Drawable {
     Virologist virologist;
     private Point pos;
-    private static Image virImg, bearImg;
+    private Image virImg, bearImg;
 
     private final int size = 50;
-
-    static {
-        try {
-            bearImg =  ImageIO.read(new File("./src/main/resources/brown_bear.png"));
-            virImg =  ImageIO.read(new File("./src/main/resources/mask.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Konstruktor, amely beállítja a nézethez tartozó attribútumokat.
      * @param virologist a nézethez tartozó modellbeli virológus
      * @param pos a virológus képernyőpozíciója
-     * @param virImg a virológus alapállapotú képe
-     * @param bearImg a virológus medveállapotú képe
+     * @param playerID hanyadik játékos
      */
-    public VirologistView(Point pos, Virologist virologist) {
+    public VirologistView(Point pos, Virologist virologist, int playerID) {
         this.virologist = virologist;
-        this.pos = pos;       
+        this.pos = pos;
+
+        try {
+            bearImg =  ImageIO.read(this.getClass().getClassLoader().getResource("bear" + playerID + ".png"));
+            virImg =  ImageIO.read(this.getClass().getClassLoader().getResource("mask" + playerID +  ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -47,17 +45,18 @@ public class VirologistView implements Drawable {
     public void draw(Graphics g) {
         boolean bear = virologist.getBear();
         boolean stunned = virologist.isStunned();
+        FieldView fieldView = virologist.getField().getFieldView();
+        Point fieldPos = fieldView.Getpos();
 
-        // TODO lehet, hogy itt a pos-t a Field-től kéne megkérdezni, hogy a mező melyik részére rakja magát
         if (bear) {
-            g.drawImage(bearImg, pos.x - (size/2), pos.y - (size/2), size, size, null);
+            g.drawImage(bearImg, fieldPos.x + pos.x, fieldPos.y + pos.y, size, size, null);
         } else {
-            g.drawImage(virImg, pos.x - (size/2), pos.y - (size/2), size, size, null);
+            g.drawImage(virImg, fieldPos.x + pos.x, fieldPos.y + pos.y, size, size, null);
         }
 
         if (stunned) {
             g.setColor(new Color(136, 0, 21));
-            g.fillOval(pos.x + size/3, pos.y - size/2, size/2, size/2);
+            g.fillOval(fieldPos.x + pos.x + size/3,  fieldPos.y + pos.y + size/3, size/2, size/2);
         }
     }
 }

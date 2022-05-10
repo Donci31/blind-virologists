@@ -10,8 +10,6 @@ import model.fields.Warehouse;
 import model.gears.SackGear;
 
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 /**
@@ -81,16 +79,5 @@ public class Canvas extends JPanel {
         g.setBackground(new Color(153, 217, 234));
         g.clearRect(0, 0, getWidth(), getHeight());
         drawAll(g);
-    }
-
-    class ClickListener extends MouseAdapter {
-        /**
-         * Ez a függvény kezeli le a vásznon történő egérkattintásokat.
-         * @param e az egér hatására keltett esemény
-         */
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            // TODO
-        }
     }
 }
