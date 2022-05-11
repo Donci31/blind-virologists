@@ -331,7 +331,7 @@ public class Prototype {
         resetAllID();
         SteppableController.clearSteppables();
 
-        File inputFile = new File("./src/test/resources/test" + testid + "/in.txt");
+        File inputFile = new File(Prototype.class.getClassLoader().getResource("test" + testid + "/in.txt").getPath());
 
         try (Scanner input = new Scanner(inputFile)) {
             while (input.hasNextLine()) {
