@@ -22,9 +22,7 @@ public class Game {
     private static Canvas canvas;
     private static Virologist activeVirologist;
     private static ActionMenu actionMenu;
-
     private static ArrayList<Virologist> virologists = new ArrayList<>();
-
     private static int round = 0;
 
     /**
@@ -94,6 +92,9 @@ public class Game {
                 JOptionPane.PLAIN_MESSAGE);
     }
 
+    /**
+     * Lépteti a következő játékosra a játékot.
+     */
     public static void endTurn() {
         ++round;
         activeVirologist = virologists.get(round % virologists.size());

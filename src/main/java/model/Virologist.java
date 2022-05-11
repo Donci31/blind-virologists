@@ -444,6 +444,7 @@ public class Virologist implements Steppable {
         SteppableController.removeVirologistsAgents(this);
         Prototype.virologists.remove(this.name);
         Game.removeVirologist(this);
+        Game.getCanvas().removeDrawable(view);
     }
 
     /**

@@ -46,11 +46,17 @@ public class Canvas extends JPanel {
         g.clearRect(0, 0, getWidth(), getHeight());
         drawAll(g);
 
-//        String virologistID = Game.getActiveVirologist().getName();
-//        String virologistString = "Player " + virologistID.substring(virologistID.length() - 1);
         String virologistString = "Player " + Game.getActiveVirologist().getView().getColorString();
         g.setColor(Color.BLACK);
         g.setFont(new Font(g.getFont().getFontName(), Font.PLAIN, 20));
         g.drawString(virologistString, 600, 515);
+    }
+
+    /**
+     * Egy Drawable objektum törlése a drawables tömbből.
+     * @param d a kiválasztott Drawable
+     */
+    public void removeDrawable(Drawable d) {
+        drawables.remove(d);
     }
 }

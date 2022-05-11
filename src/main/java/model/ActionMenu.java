@@ -207,6 +207,7 @@ public class ActionMenu extends JPanel {
 
                 victim.choosePrimaryAbsorbStrat(selectedAbsorb);
                 activeVirologist.smearAgent(agent, victim);
+                Game.getCanvas().repaint();
             }
         });
         buttonPanel.add(smear, c);

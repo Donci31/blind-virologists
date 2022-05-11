@@ -209,7 +209,14 @@ public class Menu extends JMenuBar {
 
             con.gridx = 1;
             for (Agent agent : activeAgentsOnVirologist) {
-                JLabel label = new JLabel(agent.getClass().getSimpleName() + " (" + agent.getVirusTimer() + " turns left)");
+                JLabel label;
+                if (agent.getClass().getSimpleName().equals(BearVirus.class.getSimpleName())) {
+                    label = new JLabel(agent.getClass().getSimpleName());
+                } else if (agent.getClass().getSimpleName().equals(AmniVirus.class.getSimpleName())) {
+                    continue;
+                } else {
+                    label = new JLabel(agent.getClass().getSimpleName() + " (" + agent.getVirusTimer() + " turns left)");
+                }
                 con.gridy++;
                 panel.add(label, con);
             }
