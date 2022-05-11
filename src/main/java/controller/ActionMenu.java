@@ -1,5 +1,7 @@
-package model;
+package controller;
 
+import model.Game;
+import model.Virologist;
 import model.absorbStrats.Absorb;
 import model.agents.Agent;
 import model.codes.Code;

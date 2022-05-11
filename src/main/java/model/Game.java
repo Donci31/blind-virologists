@@ -1,5 +1,8 @@
 package model;
 
+import controller.ActionMenu;
+import controller.Menu;
+import controller.SteppableController;
 import view.Canvas;
 import view.Drawable;
 import view.VirologistView;
@@ -17,7 +20,7 @@ import java.util.ArrayList;
 public class Game {
     private static Map map;
     private static JFrame frame;
-    private static Menu menu;
+    private static controller.Menu menu;
     private static Canvas canvas;
     private static Virologist activeVirologist;
     private static ActionMenu actionMenu;

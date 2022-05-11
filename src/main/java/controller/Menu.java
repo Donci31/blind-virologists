@@ -1,5 +1,7 @@
-package model;
+package controller;
 
+import model.Game;
+import model.Virologist;
 import model.agents.*;
 import model.codes.*;
 import model.fields.Field;
@@ -12,8 +14,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.PaintEvent;
-import java.awt.event.TextEvent;
 import java.util.ArrayList;
 import java.util.List;
 

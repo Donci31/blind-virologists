@@ -1,5 +1,6 @@
-package model;
+package controller;
 
+import model.Virologist;
 import model.agents.Agent;
 import model.codes.Code;
 import model.fields.Field;

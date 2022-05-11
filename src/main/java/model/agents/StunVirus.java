@@ -1,6 +1,6 @@
 package model.agents;
 
-import model.SteppableController;
+import controller.SteppableController;
 import model.Virologist;
 
 /**

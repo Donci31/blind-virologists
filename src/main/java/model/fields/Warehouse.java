@@ -1,7 +1,7 @@
 package model.fields;
 
 import model.Steppable;
-import model.SteppableController;
+import controller.SteppableController;
 import model.Virologist;
 
 /**
