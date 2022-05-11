@@ -45,11 +45,11 @@ public class Map {
         ArrayList<FieldView> fviewlist = new ArrayList<FieldView>();
         for (int h = 0; h < k; h++) {
             double n = Math.random();
-            if (n < 0.2) {
+            if (n < 0.25) {
                 Field f = new Field();
                 fields.add(f);
                 fviewlist.add(new FieldView(new Point(0, 0), f));
-            } else if (n < 0.63) {
+            } else if (n < 0.32) {
                 Laboratory m = new Laboratory();
                 fields.add(m);
                 double kod = Math.random();
@@ -69,7 +69,7 @@ public class Map {
                 fviewlist.add(new LaboratoryView(new Point(0, 0), m));
                 labor += 1;
             } // itt majd lehet kell hogy az összes kódot lerakja ha az kritérium
-            else if (n < 0.8) {
+            else if (n < 0.65) {
                 Shelter s = new Shelter();
                 fields.add(s);
                 double fel = Math.random();
