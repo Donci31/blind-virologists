@@ -7,8 +7,11 @@ import model.fields.Field;
 import model.gears.Gear;
 import view.Canvas;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -69,16 +72,19 @@ public class ActionMenu extends JPanel {
             }
             Field field = activeVirologist.getField();
 
+            BufferedImage turorialImage = null;
+            try {
+                turorialImage = ImageIO.read(this.getClass().getClassLoader().getResource("numbered_hexa.png"));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            JLabel picLabel = new JLabel(new ImageIcon(turorialImage));
+
             LinkedHashMap<String, Field> fieldMap = new LinkedHashMap<>();
             List<Field> fieldList = field.getNeighbors();
             for (int i = 0; i < fieldList.size(); i++) {
                 if (fieldList.get((i + 3) % fieldList.size()) != null) {
                     String fieldString = String.valueOf(i + 1);
-                    if ((i + 3) % fieldList.size() == 3) {
-                        fieldString += " (North)";
-                    } else if ((i + 3) % fieldList.size() == 0) {
-                        fieldString += " (South)";
-                    }
                     fieldMap.put(fieldString, fieldList.get((i + 3) % fieldList.size()));
                 }
             }
@@ -92,10 +98,15 @@ public class ActionMenu extends JPanel {
             cons.insets = new Insets(00, 20, 30, 20);
             cons.gridx = 0;
             cons.gridy = 0;
-            selectPanel.add(new JLabel("Which field to move to:"), cons);
+            selectPanel.add(new JLabel("Which adjacent field to move to:"), cons);
             cons.gridx = 1;
             cons.gridy = 0;
             selectPanel.add(cbox1, cons);
+            cons.gridx = 0;
+            cons.gridy = 1;
+            cons.gridwidth = 2;
+            cons.anchor = GridBagConstraints.CENTER;
+            selectPanel.add(picLabel, cons);
 
             int result = JOptionPane.showConfirmDialog(this.getParent(),
                     selectPanel,
@@ -127,9 +138,9 @@ public class ActionMenu extends JPanel {
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
                 if (activeVirologist.getName().equals(v.getName())) {
-                    virologistMap.put(v.getName() + " (yourself)", v);
+                    virologistMap.put(v.getView().getColorString() + " (yourself)", v);
                 } else {
-                    virologistMap.put(v.getName(), v);
+                    virologistMap.put(v.getView().getColorString(), v);
                 }
             }
             JComboBox cbox1 = new JComboBox(virologistMap.keySet().toArray(new String[0]));
@@ -227,7 +238,7 @@ public class ActionMenu extends JPanel {
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
                 if (!activeVirologist.getName().equals(v.getName()) && v.isStunned()) {
-                    virologistMap.put(v.getName(), v);
+                    virologistMap.put(v.getView().getColorString(), v);
                 }
             }
 
@@ -335,7 +346,7 @@ public class ActionMenu extends JPanel {
             HashMap<String, Virologist> virologistMap = new HashMap<>();
             for (Virologist v : field.getVirologists()) {
                 if (!activeVirologist.getName().equals(v.getName())) {
-                    virologistMap.put(v.getName(), v);
+                    virologistMap.put(v.getView().getColorString(), v);
                 }
             }
             JComboBox cbox = new JComboBox(virologistMap.keySet().toArray(new String[0]));
@@ -362,6 +373,7 @@ public class ActionMenu extends JPanel {
                 String victimString = (String) cbox.getSelectedItem();
                 Virologist victim = virologistMap.get(victimString);
                 activeVirologist.hit(victim);
+                Game.getCanvas().repaint();
             }
         });
         buttonPanel.add(hit, c);

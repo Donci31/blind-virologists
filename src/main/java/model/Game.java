@@ -2,6 +2,7 @@ package model;
 
 import view.Canvas;
 import view.Drawable;
+import view.VirologistView;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -76,11 +77,15 @@ public class Game {
     public static void endGame(Virologist virologist) {
         winner = virologist;
 
-        String virologistID = Game.getActiveVirologist().getName();
-        String virologistString = "Player " + virologistID.substring(virologistID.length() - 1);
+        VirologistView virologistView = virologist.getView();
+        String virologistString = "Player " + virologistView.getColorString();
         JPanel winnerPanel = new JPanel();
+        winnerPanel.setLayout(new BorderLayout());
         JLabel winnerLabel = new JLabel(virologistString + " has won the game!");
-        winnerPanel.add(winnerLabel);
+        winnerLabel.setForeground(new Color(105, 159, 4));
+        winnerLabel.setHorizontalAlignment(JLabel.CENTER);
+        winnerLabel.setVerticalAlignment(JLabel.CENTER);
+        winnerPanel.add(winnerLabel, BorderLayout.CENTER);
 
         JOptionPane.showConfirmDialog( frame,
                 winnerLabel,

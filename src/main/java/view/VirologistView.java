@@ -1,10 +1,8 @@
 package view;
 
-import model.Game;
 import model.Virologist;
 
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
@@ -16,6 +14,7 @@ public class VirologistView implements Drawable {
     Virologist virologist;
     private Point pos;
     private Image virImg, bearImg;
+    private String colorString;
 
     public static final int size = 30;
 
@@ -36,6 +35,22 @@ public class VirologistView implements Drawable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        if (playerID == 1) {
+            colorString = "Brown";
+        } else if (playerID == 2) {
+            colorString = "Yellow";
+        } else {
+            colorString = "Red";
+        }
+    }
+
+    /**
+     * A virológus színének nevének gettere.
+     * @return a szín neve
+     */
+    public String getColorString() {
+        return colorString;
     }
 
     /**
@@ -57,7 +72,19 @@ public class VirologistView implements Drawable {
 
         if (stunned) {
             g.setColor(new Color(136, 0, 21));
-            g.fillOval(fieldPos.x + pos.x + size / 3, fieldPos.y + pos.y + size / 3, size / 2, size / 2);
+            g.fillOval(fieldPos.x + pos.x + (int)(size * 0.8), fieldPos.y + pos.y, size / 3, size / 3);
+        }
+    }
+
+    /**
+     * A virológust megjelenítő kép gettere.
+     * @return a virológus képe
+     */
+    public Image getImage() {
+        if (virologist.getBear()) {
+            return bearImg;
+        } else {
+            return virImg;
         }
     }
 }

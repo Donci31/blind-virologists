@@ -32,6 +32,9 @@ public class BearMove implements Move {
             Random r = new Random();
 
             f2 = neighbours.get(r.nextInt(neighbours.size()));
+            while (f2 == null) {
+                f2 = neighbours.get(r.nextInt(neighbours.size()));
+            }
         }
         f2.accept(v);
         f2.smearAllVirologists(v);

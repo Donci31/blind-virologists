@@ -29,6 +29,9 @@ public class DanceMove implements Move {
         } else {
             Random r = new Random();
             f2 = neighbours.get(r.nextInt(neighbours.size()));
+            while (f2 == null) {
+                f2 = neighbours.get(r.nextInt(neighbours.size()));
+            }
         }
         f2.accept(v);
     }

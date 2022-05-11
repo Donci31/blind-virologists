@@ -10,6 +10,7 @@ import model.hitStrats.DefaultHit;
 import model.hitStrats.Hit;
 import model.moveStrats.DefaultMove;
 import model.moveStrats.Move;
+import view.VirologistView;
 
 import java.util.*;
 
@@ -36,6 +37,7 @@ public class Virologist implements Steppable {
     private static int id_counter = 1;
     private int chosenAbsorbStratIdx = 0;
     private boolean isBear = false;
+    private VirologistView view;
 
     /**
      * Az isBear gettere.
@@ -519,5 +521,21 @@ public class Virologist implements Steppable {
             throw new IllegalArgumentException();
         }
         chosenAbsorbStratIdx = Math.min(absorbStrats.size() - 1, idx);
+    }
+
+    /**
+     * A view settere.
+     * @param view az új view
+     */
+    public void setView(VirologistView view) {
+        this.view = view;
+    }
+
+    /**
+     * A view gettere.
+     * @return view
+     */
+    public VirologistView getView() {
+        return view;
     }
 }

@@ -202,6 +202,7 @@ public class Map {
                     new Point((int) (Math.cos(2 * Math.PI * m / vCount) * 25) - VirologistView.size / 2,
                             (int) (Math.sin(2 * Math.PI * m / vCount) * 25) - VirologistView.size / 2), virologist, m + 1);
             Game.addDrawable(virologistView);
+            virologist.setView(virologistView);
         }
     }
 }

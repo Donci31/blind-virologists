@@ -3,7 +3,6 @@ package view;
 import model.fields.Field;
 
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 
 /**
  * A modell Field (szabad terület) típusú mezőjének grafikus megjelenítéséért felelős osztály.
@@ -29,6 +28,10 @@ public class FieldView implements Drawable {
         }
     }
 
+    /**
+     * A pozíció gettere.
+     * @return pos
+     */
     public Point Getpos() {
         return pos;
     }
@@ -45,10 +48,20 @@ public class FieldView implements Drawable {
         this.drawHexagon(g, new Color(105, 159, 4), radius);
     }
 
+    /**
+     * A hatszög tusvonalának megrajzolása feketével
+     * @param g grafikus kontextus
+     */
     protected void drawBorder(Graphics g) {
         this.drawHexagon(g, Color.BLACK, radius + 5);
     }
 
+    /**
+     * A hatszög belsejének kirajzolása
+     * @param g grafikus kontextus
+     * @param color mező színe
+     * @param radius hatszög köré írható kör sugara
+     */
     protected void drawHexagon(Graphics g, Color color, int radius) {
         Polygon p = new Polygon();
         for (int i = 0; i < 6; i++) {
