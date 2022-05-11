@@ -204,10 +204,6 @@ public class Map {
                             (int) (Math.sin(2 * Math.PI * m / vCount) * 25) - VirologistView.size / 2), virologist, m + 1);
             Game.addDrawable(virologistView);
             virologist.setView(virologistView);
-            virologist.pickUpGear(new AxeGear());
-            virologist.pickUpGear(new RobeGear());
-            virologist.pickUpGear(new GloveGear());
-            virologist.addCraftedAgent(new StunVirus());
         }
     }
 }

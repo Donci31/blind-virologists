@@ -182,30 +182,32 @@ public class ActionMenu extends JPanel {
                 Agent agent = agentMap.get(agentString);
 
                 // Victim védekezési viselkedésének kiválasztása
-                JPanel absorbPanel = new JPanel();
-                JLabel absorbLabel = new JLabel("Which defense mechanism to use:");
-                HashMap<String, Absorb> absorbMap = new HashMap<>();
-                for (Absorb a : victim.getAbsorbStrats()) {
-                    String absorbName = a.getClass().getSimpleName().replace("Absorb", "");
-                    absorbMap.put(absorbName, a);
+                if (activeVirologist != victim) {
+                    JPanel absorbPanel = new JPanel();
+                    JLabel absorbLabel = new JLabel("Which defense mechanism to use:");
+                    HashMap<String, Absorb> absorbMap = new HashMap<>();
+                    for (Absorb a : victim.getAbsorbStrats()) {
+                        String absorbName = a.getClass().getSimpleName().replace("Absorb", "");
+                        absorbMap.put(absorbName, a);
+                    }
+
+                    String[] stringAbsorbs = absorbMap.keySet().toArray(new String[0]);
+                    JComboBox absorbComboBox = new JComboBox(stringAbsorbs);
+                    absorbComboBox.setSelectedItem(stringAbsorbs[0]);
+                    absorbPanel.add(absorbLabel);
+                    absorbPanel.add(absorbComboBox);
+
+                    JOptionPane.showConfirmDialog(this.getParent(),
+                            absorbPanel,
+                            "Select a defensive mechanism!",
+                            JOptionPane.DEFAULT_OPTION,
+                            JOptionPane.PLAIN_MESSAGE);
+
+                    String absorbString = (String) absorbComboBox.getSelectedItem();
+                    Absorb selectedAbsorb = absorbMap.get(absorbString);
+
+                    victim.choosePrimaryAbsorbStrat(selectedAbsorb);
                 }
-
-                String[] stringAbsorbs = absorbMap.keySet().toArray(new String[0]);
-                JComboBox absorbComboBox = new JComboBox(stringAbsorbs);
-                absorbComboBox.setSelectedItem(stringAbsorbs[0]);
-                absorbPanel.add(absorbLabel);
-                absorbPanel.add(absorbComboBox);
-
-                JOptionPane.showConfirmDialog(this.getParent(),
-                        absorbPanel,
-                        "Select a defensive mechanism!",
-                        JOptionPane.DEFAULT_OPTION,
-                        JOptionPane.PLAIN_MESSAGE);
-
-                String absorbString = (String) absorbComboBox.getSelectedItem();
-                Absorb selectedAbsorb = absorbMap.get(absorbString);
-
-                victim.choosePrimaryAbsorbStrat(selectedAbsorb);
                 activeVirologist.smearAgent(agent, victim);
                 Game.getCanvas().repaint();
             }

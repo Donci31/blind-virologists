@@ -16,7 +16,6 @@ import java.util.ArrayList;
  */
 public class Game {
     private static Map map;
-    private static Virologist winner;
     private static JFrame frame;
     private static Menu menu;
     private static Canvas canvas;
@@ -49,6 +48,15 @@ public class Game {
      * @param vCount - hány virológussal indítsa a játékot
      */
     public static void startGame(int vCount) {
+        if (frame != null) {
+            frame.dispose();
+        }
+
+        frame = new JFrame();
+        menu = new Menu();
+        actionMenu = new ActionMenu();
+        frame.add(actionMenu, BorderLayout.LINE_END);
+
         virologists.clear();
         SteppableController.clearSteppables();
         Virologist.resetID();
@@ -57,7 +65,6 @@ public class Game {
         canvas = new Canvas();
         frame.add(canvas, BorderLayout.CENTER);
 
-        winner = null;
         map = new Map();
         map.generateMap(vCount);
 
@@ -73,8 +80,6 @@ public class Game {
      * Megállítja a játékot
      */
     public static void endGame(Virologist virologist) {
-        winner = virologist;
-
         VirologistView virologistView = virologist.getView();
         String virologistString = "Player " + virologistView.getColorString();
         JPanel winnerPanel = new JPanel();
@@ -151,10 +156,6 @@ public class Game {
      * @param args main argumentumok
      */
     public static void main(String[] args) {
-        frame = new JFrame();
-        menu = new Menu();
-        actionMenu = new ActionMenu();
-        frame.add(actionMenu, BorderLayout.LINE_END);
         startGame(2);
     }
 }
