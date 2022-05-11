@@ -52,14 +52,18 @@ public class Game {
     public static void startGame(int vCount) {
         virologists.clear();
         SteppableController.clearSteppables();
+        Virologist.resetID();
+        round = 0;
+
         canvas = new Canvas();
         frame.add(canvas, BorderLayout.CENTER);
+
         winner = null;
         map = new Map();
         map.generateMap(vCount);
+
         activeVirologist = virologists.get(0);
         init();
-        canvas.repaint();
     }
 
     public static void addDrawable(Drawable d) {
@@ -83,15 +87,6 @@ public class Game {
                 "There is a winner!",
                 JOptionPane.DEFAULT_OPTION,
                 JOptionPane.PLAIN_MESSAGE);
-    }
-
-    /**
-     * Lekérdezi a játék nyertesét. Ha még nem nyert senki, null-t ad vissza
-     *
-     * @return - a nyertes, vagy null
-     */
-    public Virologist getWinner() {
-        return winner;
     }
 
     public static void endTurn() {

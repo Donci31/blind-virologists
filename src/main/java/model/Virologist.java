@@ -36,7 +36,6 @@ public class Virologist implements Steppable {
     private static int id_counter = 1;
     private int chosenAbsorbStratIdx = 0;
     private boolean isBear = false;
-    private boolean endTurn = false;
 
     /**
      * Az isBear gettere.
@@ -520,12 +519,5 @@ public class Virologist implements Steppable {
             throw new IllegalArgumentException();
         }
         chosenAbsorbStratIdx = Math.min(absorbStrats.size() - 1, idx);
-    }
-
-    /**
-     * Jelzik a virológusnak, hogy vége a körének.
-     */
-    public void signalEndTurn() {
-        endTurn = true;
     }
 }

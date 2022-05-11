@@ -69,7 +69,7 @@ public class ActionMenu extends JPanel {
             }
             Field field = activeVirologist.getField();
 
-            HashMap<String, Field> fieldMap = new HashMap<>();
+            LinkedHashMap<String, Field> fieldMap = new LinkedHashMap<>();
             List<Field> fieldList = field.getNeighbors();
             for (int i = 0; i < fieldList.size(); i++) {
                 if (fieldList.get((i + 3) % fieldList.size()) != null) {
@@ -83,8 +83,6 @@ public class ActionMenu extends JPanel {
                 }
             }
 
-            hasMoved = true;
-            hasInteractedWithField = false;
             JComboBox cbox1 = new JComboBox(fieldMap.keySet().toArray(new String[0]));
 
             JPanel selectPanel = new JPanel();

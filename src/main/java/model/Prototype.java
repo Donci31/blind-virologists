@@ -65,9 +65,6 @@ public class Prototype {
     protected static void load(String[] args) {
         var ir = new InputReader();
         ir.readFields("./src/test/resources/" + args[1]);
-        for (Virologist virologist : virologists.values()) {
-            virologist.signalEndTurn();
-        }
     }
 
     /**

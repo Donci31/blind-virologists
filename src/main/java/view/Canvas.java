@@ -48,6 +48,8 @@ public class Canvas extends JPanel {
 
         String virologistID = Game.getActiveVirologist().getName();
         String virologistString = "Player " + virologistID.substring(virologistID.length() - 1);
-        g.drawString(virologistString, 670, 530);
+        g.setColor(Color.BLACK);
+        g.setFont(new Font(g.getFont().getFontName(), Font.PLAIN, 20));
+        g.drawString(virologistString, 650, 515);
     }
 }
