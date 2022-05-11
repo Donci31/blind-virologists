@@ -1,5 +1,7 @@
-package model;
+package controller;
 
+import model.Steppable;
+import model.Virologist;
 import model.agents.Agent;
 
 import java.util.ArrayList;

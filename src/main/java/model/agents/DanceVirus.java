@@ -2,7 +2,7 @@ package model.agents;
 
 import model.moveStrats.DanceMove;
 import model.moveStrats.DefaultMove;
-import model.SteppableController;
+import controller.SteppableController;
 import model.Virologist;
 
 /**

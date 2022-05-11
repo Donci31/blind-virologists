@@ -1,5 +1,6 @@
 package model;
 
+import controller.SteppableController;
 import model.absorbStrats.Absorb;
 import model.absorbStrats.DefaultAbsorb;
 import model.agents.Agent;

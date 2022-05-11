@@ -1,5 +1,9 @@
 package model;
 
+import controller.Command;
+import controller.InputReader;
+import controller.InputWriter;
+import controller.SteppableController;
 import model.agents.Agent;
 import model.codes.Code;
 import model.fields.Field;

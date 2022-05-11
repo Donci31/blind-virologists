@@ -1,4 +1,4 @@
-package model;
+package controller;
 
 /**
  * A prototípus parancsok model.Map-be foglalásához használt segédosztály.
