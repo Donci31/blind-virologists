@@ -1,6 +1,6 @@
 package model.moveStrats;
 
-import model.Prototype;
+import controller.Prototype;
 import model.Virologist;
 import model.fields.Field;
 

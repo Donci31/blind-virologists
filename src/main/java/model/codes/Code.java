@@ -1,6 +1,6 @@
 package model.codes;
 
-import model.Prototype;
+import controller.Prototype;
 import model.Virologist;
 
 /**
@@ -14,7 +14,7 @@ public abstract class Code {
     protected String id;
 
     /**
-     * Konstruktor, amely beállítja az id-t, és hozzáadja az objektumot a model.Prototype id dekódoló map-jéhez.
+     * Konstruktor, amely beállítja az id-t, és hozzáadja az objektumot a controller.Prototype id dekódoló map-jéhez.
      */
     public Code() {
         id = "c" + id_counter++;

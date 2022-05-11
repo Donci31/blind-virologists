@@ -13,8 +13,11 @@ import model.gears.GloveGear;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,7 +44,11 @@ public abstract class InputWriter {
         LinkedHashMap<String, Object> mainMap = new LinkedHashMap<>();
         mainMap.put("Fields", getFieldsList(fields));
         mainMap.put("Applied Agents", getAppliedAgentsList());
-        try (FileWriter file = new FileWriter("./src/test/resources/" + filename)) {
+
+        URL url = InputWriter.class.getClass().getResource("/" + filename.split("/")[0]);
+        File parentDirectory = new File(url.getPath());
+
+        try (FileWriter file = new FileWriter(new File(parentDirectory, "out.yml"))) {
             Virologist v = getWinner(fields);
             if (v != null) {
                 yaml.dump("The game has ended, " + v.getName() + " won!", file);

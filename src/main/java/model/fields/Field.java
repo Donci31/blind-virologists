@@ -1,6 +1,6 @@
 package model.fields;
 
-import model.Prototype;
+import controller.Prototype;
 import model.Virologist;
 import model.agents.BearVirus;
 import view.FieldView;

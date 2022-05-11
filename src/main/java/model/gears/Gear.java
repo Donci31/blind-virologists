@@ -1,6 +1,6 @@
 package model.gears;
 
-import model.Prototype;
+import controller.Prototype;
 import model.Virologist;
 
 /**

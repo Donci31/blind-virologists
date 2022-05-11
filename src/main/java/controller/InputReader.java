@@ -1,6 +1,5 @@
 package controller;
 
-import model.Prototype;
 import model.Virologist;
 import model.agents.*;
 import model.codes.*;

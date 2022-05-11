@@ -1,9 +1,6 @@
-package model;
+package controller;
 
-import controller.Command;
-import controller.InputReader;
-import controller.InputWriter;
-import controller.SteppableController;
+import model.Virologist;
 import model.agents.Agent;
 import model.codes.Code;
 import model.fields.Field;
@@ -68,7 +65,7 @@ public class Prototype {
      */
     protected static void load(String[] args) {
         var ir = new InputReader();
-        ir.readFields("./src/test/resources/" + args[1]);
+        ir.readFields(Prototype.class.getClassLoader().getResource(args[1]).getPath());
     }
 
     /**
