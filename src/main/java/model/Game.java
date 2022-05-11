@@ -80,21 +80,25 @@ public class Game {
      * Megállítja a játékot
      */
     public static void endGame(Virologist virologist) {
+        Object[] buttonOptions = {"Finish!"};
         VirologistView virologistView = virologist.getView();
         String virologistString = "Player " + virologistView.getColorString();
         JPanel winnerPanel = new JPanel();
         winnerPanel.setLayout(new BorderLayout());
-        JLabel winnerLabel = new JLabel(virologistString + " has won the game!");
+        JLabel winnerLabel = new JLabel( "Game won by " + virologistString + "!");
         winnerLabel.setForeground(new Color(105, 159, 4));
         winnerLabel.setHorizontalAlignment(JLabel.CENTER);
         winnerLabel.setVerticalAlignment(JLabel.CENTER);
         winnerPanel.add(winnerLabel, BorderLayout.CENTER);
 
-        JOptionPane.showConfirmDialog( frame,
+        JOptionPane.showOptionDialog( frame,
                 winnerLabel,
                 "There is a winner!",
                 JOptionPane.DEFAULT_OPTION,
-                JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                buttonOptions,
+                buttonOptions[0]);
     }
 
     /**
