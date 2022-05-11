@@ -1,0 +1,17 @@
+Fields:
+-   Type: Field
+    Name: f1
+    Neighbors: [
+        ]
+    Virologists:
+    -   Name: v1
+        nCount: 50
+        aCount: 0
+        Gears: [
+            ]
+        Crafted Agents:
+        - AmniVirus a1
+        Learnt Codes:
+        - AmniCode c1
+Applied Agents: [
+    ]

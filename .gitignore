@@ -9,8 +9,5 @@
 target/
 build/
 
-# Resource output
-out.yml
-
 # Gradle Files
 .gradle/

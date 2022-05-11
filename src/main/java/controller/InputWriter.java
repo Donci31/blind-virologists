@@ -45,10 +45,7 @@ public abstract class InputWriter {
         mainMap.put("Fields", getFieldsList(fields));
         mainMap.put("Applied Agents", getAppliedAgentsList());
 
-        URL url = InputWriter.class.getClass().getResource("/" + filename.split("/")[0]);
-        File parentDirectory = new File(url.getPath());
-
-        try (FileWriter file = new FileWriter(new File(parentDirectory, "out.yml"))) {
+        try (FileWriter file = new FileWriter(Prototype.class.getClassLoader().getResource(filename).getPath())) {
             Virologist v = getWinner(fields);
             if (v != null) {
                 yaml.dump("The game has ended, " + v.getName() + " won!", file);
