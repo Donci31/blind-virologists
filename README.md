@@ -1,24 +1,24 @@
-# ProgChamps
+# Blind Virologists
 ## Description
 Blind-virologist game.
 ## Installation
-### Maven
-You can use maven to build the project
-```
-mvn compile
-```
-And to run execute
-```
-mvn exec:java
-```
 ### Gradle
-If you don't have maven use gradle to build
+Use [Gradle](https://gradle.org/) to build the project
 ```
 ./gradlew assemble
 ```
 And to run execute
 ```
 ./gradlew run
+```
+### Maven
+You can also use [Maven](https://maven.apache.org/) to build
+```
+mvn compile
+```
+And to run execute
+```
+mvn exec:java
 ```
 ## Creators:
 * Szigeti Donát
