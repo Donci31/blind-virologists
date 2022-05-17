@@ -23,8 +23,16 @@ application {
     mainClass = 'model.Game'
 }
 
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'model.Game'
+        )
+    }
+}
+
 dependencies {
     implementation 'org.yaml:snakeyaml:1.30'
     testImplementation 'junit:junit:4.13.2'
-    implementation 'commons-io:commons-io:2.11.0'
+    testImplementation 'commons-io:commons-io:2.11.0'
 }
