@@ -25,9 +25,10 @@ application {
 
 jar {
     manifest {
-        attributes(
-                'Main-Class': 'model.Game'
-        )
+        attributes 'Main-Class': 'model.Game'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
