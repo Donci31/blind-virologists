@@ -81,15 +81,6 @@ public class Tests {
     }
 
     @Test
-    public void test9() throws IOException {
-        Prototype.runTest(9);
-        File out = new File(Tests.class.getClassLoader().getResource("test9/out.yml").getPath());
-        File expected = new File(Tests.class.getClassLoader().getResource("test9/expected.yml").getPath());
-
-        Assert.assertEquals(FileUtils.readLines(out, "UTF-8"), FileUtils.readLines(expected, "UTF-8"));
-    }
-
-    @Test
     public void test10() throws IOException {
         Prototype.runTest(10);
         File out = new File(Tests.class.getClassLoader().getResource("test10/out.yml").getPath());
@@ -121,33 +112,6 @@ public class Tests {
         Prototype.runTest(13);
         File out = new File(Tests.class.getClassLoader().getResource("test13/out.yml").getPath());
         File expected = new File(Tests.class.getClassLoader().getResource("test13/expected.yml").getPath());
-
-        Assert.assertEquals(FileUtils.readLines(out, "UTF-8"), FileUtils.readLines(expected, "UTF-8"));
-    }
-
-    @Test
-    public void test14() throws IOException {
-        Prototype.runTest(14);
-        File out = new File(Tests.class.getClassLoader().getResource("test14/out.yml").getPath());
-        File expected = new File(Tests.class.getClassLoader().getResource("test14/expected.yml").getPath());
-
-        Assert.assertEquals(FileUtils.readLines(out, "UTF-8"), FileUtils.readLines(expected, "UTF-8"));
-    }
-
-    @Test
-    public void test15() throws IOException {
-        Prototype.runTest(15);
-        File out = new File(Tests.class.getClassLoader().getResource("test15/out.yml").getPath());
-        File expected = new File(Tests.class.getClassLoader().getResource("test15/expected.yml").getPath());
-
-        Assert.assertEquals(FileUtils.readLines(out, "UTF-8"), FileUtils.readLines(expected, "UTF-8"));
-    }
-
-    @Test
-    public void test16() throws IOException {
-        Prototype.runTest(16);
-        File out = new File(Tests.class.getClassLoader().getResource("test16/out.yml").getPath());
-        File expected = new File(Tests.class.getClassLoader().getResource("test16/expected.yml").getPath());
 
         Assert.assertEquals(FileUtils.readLines(out, "UTF-8"), FileUtils.readLines(expected, "UTF-8"));
     }
@@ -234,37 +198,10 @@ public class Tests {
     }
 
     @Test
-    public void test27() throws IOException {
-        Prototype.runTest(27);
-        File out = new File(Tests.class.getClassLoader().getResource("test27/out.yml").getPath());
-        File expected = new File(Tests.class.getClassLoader().getResource("test27/expected.yml").getPath());
-
-        Assert.assertEquals(FileUtils.readLines(out, "UTF-8"), FileUtils.readLines(expected, "UTF-8"));
-    }
-
-    @Test
-    public void test33() throws IOException {
-        Prototype.runTest(33);
-        File out = new File(Tests.class.getClassLoader().getResource("test33/out.yml").getPath());
-        File expected = new File(Tests.class.getClassLoader().getResource("test33/expected.yml").getPath());
-
-        Assert.assertEquals(FileUtils.readLines(out, "UTF-8"), FileUtils.readLines(expected, "UTF-8"));
-    }
-
-    @Test
     public void test34() throws IOException {
         Prototype.runTest(34);
         File out = new File(Tests.class.getClassLoader().getResource("test34/out.yml").getPath());
         File expected = new File(Tests.class.getClassLoader().getResource("test34/expected.yml").getPath());
-
-        Assert.assertEquals(FileUtils.readLines(out, "UTF-8"), FileUtils.readLines(expected, "UTF-8"));
-    }
-
-    @Test
-    public void test35() throws IOException {
-        Prototype.runTest(35);
-        File out = new File(Tests.class.getClassLoader().getResource("test35/out.yml").getPath());
-        File expected = new File(Tests.class.getClassLoader().getResource("test35/expected.yml").getPath());
 
         Assert.assertEquals(FileUtils.readLines(out, "UTF-8"), FileUtils.readLines(expected, "UTF-8"));
     }
