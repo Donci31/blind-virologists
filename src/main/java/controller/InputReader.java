@@ -24,7 +24,6 @@ public class InputReader {
      * Visszatér a megadott fáljban elmentett mezők listájával
      *
      * @param path - a betölteni kívánt fájl elérési útja
-     * @return - a létrehozott mezők listája
      */
     public void readFields(String path) {
         Yaml yaml = new Yaml();
