@@ -1,6 +1,4 @@
 # Blind Virologists
-## Description
-Blind-virologist game.
 ## Installation
 ### Gradle
 Use [Gradle](https://gradle.org/) to build the project
