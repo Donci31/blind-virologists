@@ -9,15 +9,6 @@ And to run execute
 ```
 ./gradlew run
 ```
-### Maven
-You can also use [Maven](https://maven.apache.org/) to build
-```
-mvn compile
-```
-And to run execute
-```
-mvn exec:java
-```
 ## Creators:
 * Szigeti Donát
 * Szarvas Dániel

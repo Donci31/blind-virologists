@@ -6,7 +6,6 @@
 *.iml
 
 # Binary Files
-target/
 build/
 
 # Gradle Files
