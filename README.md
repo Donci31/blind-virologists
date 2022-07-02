@@ -10,8 +10,8 @@ And to run execute
 ./gradlew run
 ```
 ## Creators:
-* Szigeti Donát
-* Szarvas Dániel
-* Horváth Szilárd
-* Czumbel Péter
-* Sisák Botond
+* Donát Szigeti
+* Dániel Szarvas
+* Szilárd Horváth
+* Péter Czumbel
+* Botond Sisák
